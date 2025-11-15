@@ -1,19 +1,60 @@
-# Mazdaspeed 3 Enhanced Diagnostics & Tuning Suite
+# Mazda Ultimate Technician Suite (MUTS)
 
-Professional-grade diagnostics and tuning software for Mazdaspeed 3 vehicles, featuring AI-powered tuning recommendations and advanced monitoring.
+## Overview
+MUTS is a full desktop diagnostic and tuning suite for the 2011 Mazdaspeed 3 (VIN 7AT0C13JX20200064).  
+It includes:
+- J2534-based ECU communication
+- Diagnostics (ECM, ABS, SRS, BCM)
+- Tuning (load, boost, ignition, fuel, torque, SWAS)
+- ECU flashing with safety validation
+- Dyno simulation
+- Logging system
+- Role-based security and valet mode
+- PyQt6 GUI
 
-## Features
+## Tech Stack
+- Python 3.11+
+- PyQt6 UI
+- SQLite via SQLAlchemy
+- Numpy, Matplotlib, Pydantic
+- J2534 passthrough interface
+- ISO-TP, UDS, KWP2000 protocols
 
-- **Real-time Monitoring**: Live gauges and graphs for RPM, boost, temperatures
-- **Advanced Diagnostics**: DTC reading/clearing, freeze frame data
-- **AI Tuner**: Machine learning-based timing optimization
-- **Virtual Dyno**: Performance simulation and quarter mile estimates
-- **Data Logging**: CSV export for analysis
-- **Tuning Maps**: VersaTuner/Alientech-style boost and timing maps
+## Project Structure
+See full layout in `/muts_project.zip` or root directories:
+- `core/` – safety, state, ROM logic
+- `comms/` – ECU communication and protocols
+- `diagnostics/` – modules for ECM/ABS/SRS/BCM
+- `tuning/` – maps, torque, performance features
+- `security/` – users, valet, anti-theft
+- `ui/` – PyQt6 interface
+- `simulators/` – virtual ECU + dyno
+- `tools/` – helper scripts
+- `docs/` – architecture and protocols
 
 ## Installation
+### Windows (J2534 recommended)
+1. Install Python 3.11
+2. Install your J2534 cable drivers (OpenPort, VCX, etc.)
+3. Run:
+```
+pip install -r requirements.txt
+```
+4. Launch:
+```
+python main.py
+```
 
-1. Clone repository:
-```bash
-git clone https://github.com/inhumanekiller/Mazda-GUI.git
-cd Mazda-GUI
+## Flashing Disclaimer
+ECU flashing is dangerous by nature. MUTS includes:
+- Battery voltage detection
+- Safe-session handling
+- Checksum patching
+- Automatic rollback
+But you are still fully responsible for what you flash.
+
+## Agents
+See `agent.md` and `agents.md` for internal subsystem behavior documentation.
+
+## License
+MIT License
