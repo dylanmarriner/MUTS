@@ -1,0 +1,12 @@
+maps:
+  load_target:
+    address: 0x00100000
+    rows: 10
+    cols: 12
+    data_type: "uint8"
+
+  boost_target:
+    address: 0x00101000
+    rows: 10
+    cols: 12
+    data_type: "uint8"

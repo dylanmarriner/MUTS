@@ -1,0 +1,29 @@
+
++------------------------------------------------------+
+|                    MUTS GUI (PyQt)                   |
+|  Dashboard | Diagnostics | Tuning | Security | Dyno  |
++---------------------------+--------------------------+
+                            |
+                            v
++------------------------------------------------------+
+|                 Service Layer (Python)               |
+|  DiagnosticsService  TorqueSWASService  Security    |
+|  DynoService  ECUQueue (actions)                    |
++---------------------------+--------------------------+
+                            |
+                            v
++------------------------------------------------------+
+|              Transport Layer (Abstraction)           |
+|        SimulatedExecutor     |   J2534Transport      |
++---------------------------+--------------------------+
+                            |
+                            v
++------------------------------------------------------+
+|                Vehicle ECUs / Modules                |
+|    Engine ECU | ABS | SRS | TCM | Cluster | etc.     |
++------------------------------------------------------+
+
+Data & Logs (future):
+- SQLite database
+- CSV exports
+- Per-vehicle tune and log history

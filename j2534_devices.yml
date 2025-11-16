@@ -1,0 +1,13 @@
+devices:
+  - name: "Tactrix OpenPort 2.0"
+    dll_windows: "op20pt32.dll"
+    protocol: "ISO15765"
+    baud: 500000
+    quirks:
+      init_delay_ms: 50
+
+  - name: "Generic J2534"
+    dll_windows: null
+    protocol: "ISO15765"
+    baud: 500000
+    quirks: {}

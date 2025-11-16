@@ -1,0 +1,105 @@
+{
+  "mazdaspeed3_2011": {
+    "vehicle_info": {
+      "make": "Mazda",
+      "model": "Mazdaspeed 3",
+      "year": 2011,
+      "generation": "BL",
+      "engine_code": "L3-VDT",
+      "display_name": "Mazdaspeed 3 2011 (BL)"
+    },
+    "engine_specifications": {
+      "displacement_l": 2.3,
+      "configuration": "Inline-4",
+      "aspiration": "Turbocharged",
+      "fuel_system": "Direct Injection",
+      "compression_ratio": 9.5,
+      "redline_rpm": 6700,
+      "rev_limit_stock": 6700,
+      "boost_peak_stock": 15.6,
+      "horsepower_stock": 263,
+      "torque_stock": 280,
+      "fuel_octane_min": 91,
+      "injector_flow_ccmin": 265,
+      "fuel_pressure_psi": 58.0
+    },
+    "performance_limits": {
+      "max_boost_safe_psi": 22.0,
+      "max_boost_absolute_psi": 25.0,
+      "max_timing_advance_degrees": 12.0,
+      "min_afr_safe": 10.8,
+      "max_afr_safe": 12.2,
+      "max_egt_safe_c": 950,
+      "max_injector_duty_percent": 85,
+      "max_rpm_safe": 7200,
+      "max_rpm_absolute": 7500
+    },
+    "tuning_parameters": {
+      "supported_features": [
+        "boost_control",
+        "ignition_timing",
+        "fuel_mapping", 
+        "vvt_control",
+        "rev_limit_adjustment",
+        "speed_limit_removal",
+        "launch_control",
+        "flat_shift",
+        "pop_bang_tune"
+      ],
+      "stage_presets": {
+        "stage_1": {
+          "name": "Stage 1",
+          "description": "Mild performance increase with stock hardware",
+          "boost_target_psi": 18.0,
+          "ignition_advance_degrees": 1.5,
+          "afr_target": 11.5,
+          "rev_limit_rpm": 7000,
+          "estimated_hp_gain": 30,
+          "required_modifications": ["cold_air_intake"],
+          "safe_for_stock_hardware": true
+        },
+        "stage_2": {
+          "name": "Stage 2", 
+          "description": "Medium performance with basic bolt-ons",
+          "boost_target_psi": 20.0,
+          "ignition_advance_degrees": 2.5,
+          "afr_target": 11.2,
+          "rev_limit_rpm": 7200,
+          "estimated_hp_gain": 60,
+          "required_modifications": ["cold_air_intake", "catback_exhaust", "high_flow_fuel_pump"],
+          "safe_for_stock_hardware": false
+        },
+        "stage_3": {
+          "name": "Stage 3",
+          "description": "High performance with supporting modifications",
+          "boost_target_psi": 22.0,
+          "ignition_advance_degrees": 3.5,
+          "afr_target": 10.8,
+          "rev_limit_rpm": 7500,
+          "estimated_hp_gain": 90,
+          "required_modifications": ["cold_air_intake", "downpipe", "front_mount_intercooler", "high_flow_fuel_pump"],
+          "safe_for_stock_hardware": false
+        }
+      }
+    },
+    "ecu_parameters": {
+      "can_interface": "can0",
+      "can_bitrate": 500000,
+      "request_id": 3712,
+      "response_id": 3720,
+      "broadcast_id": 2015,
+      "rom_size_bytes": 2097152,
+      "calibration_sector_start": 65536,
+      "calibration_sector_size": 524288,
+      "checksum_algorithm": "crc32",
+      "security_levels": [1, 3, 5]
+    },
+    "maintenance_schedule": {
+      "oil_change_interval_miles": 5000,
+      "spark_plug_interval_miles": 60000,
+      "transmission_fluid_interval_miles": 30000,
+      "timing_chain_inspection_miles": 100000,
+      "turbo_inspection_miles": 75000
+    }
+  }
+}

@@ -1,0 +1,12 @@
+
+site_name: MUTS Documentation
+nav:
+  - Home: index.md
+  - Architecture: ARCHITECTURE.md
+  - ECU Protocols: ECU_PROTOCOLS.md
+  - Maps: MAPS_REFERENCE.md
+  - Safety: SAFETY_MODEL.md
+  - Contributing: CONTRIBUTING.md
+
+theme:
+  name: material

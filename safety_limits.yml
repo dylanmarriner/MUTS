@@ -1,0 +1,14 @@
+boost_psi:
+  max_safe_daily: 22
+  hard_cap: 26
+
+load:
+  max_safe: 2.0
+  hard_cap: 2.2
+
+ignition_advance_deg:
+  max_safe: 22
+
+afr:
+  wot_min: 11.0
+  cruise_max: 16.0

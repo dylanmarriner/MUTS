@@ -1,0 +1,18 @@
+tasks:
+  - id: diagnostics-dtcs
+    title: "Diagnostics: DTC read/clear"
+    acceptance:
+      - "Click 'Read DTCs' shows list from ECU or simulator"
+      - "Click 'Clear DTCs' clears stored codes and UI output"
+
+  - id: tuning-swas
+    title: "Tuning: SWAS + 1st/2nd boost-cut"
+    acceptance:
+      - "Queue contains 'swas_override' action when SWAS toggle is checked"
+      - "Queue contains gear torque deltas for gears 1 and 2 when boost-cut is enabled"
+
+  - id: security-valet
+    title: "Security: Valet mode"
+    acceptance:
+      - "Enabling valet generates an action with torque and RPM caps"
+      - "Disabling valet requires the PIN and clears the caps"

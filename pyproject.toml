@@ -1,2 +1,41 @@
-# pyproject.toml
-# Stub file for MUTS project.
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "muts"
+version = "0.1.0"
+description = "Mazda Ultimate Technician Suite (starter)"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [{name = "Dylan Marriner"}]
+dependencies = [
+  "pyqt5>=5.15",
+  "pyqtgraph>=0.13",
+  "pydantic>=2.8",
+  "numpy>=2.0",
+  "pandas>=2.2",
+  "loguru>=0.7",
+  "rich>=13.7",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest",
+  "pytest-cov",
+  "ruff",
+  "mypy",
+  "black",
+  "tox",
+  "pre-commit",
+]
+
+[tool.ruff]
+line-length = 100
+select = ["E","F","I","B"]
+ignore = []
+
+[tool.mypy]
+python_version = "3.10"
+strict = false

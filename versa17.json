@@ -1,0 +1,106 @@
+{
+  "performance_presets": {
+    "economy_tune": {
+      "name": "Economy Tune",
+      "description": "Optimized for fuel efficiency",
+      "modifications": {
+        "ignition_primary": {"adjustment": -0.5, "operation": "add"},
+        "boost_target": {"adjustment": -2.0, "operation": "add"},
+        "fuel_primary": {"adjustment": 0.1, "operation": "add"},
+        "rev_limit_soft": {"value": 6500, "operation": "set"}
+      },
+      "expected_improvements": {
+        "fuel_economy": "+10%",
+        "power_change": "-5%",
+        "emissions": "Improved"
+      }
+    },
+    "track_tune": {
+      "name": "Track Tune",
+      "description": "Aggressive tune for track use",
+      "modifications": {
+        "ignition_primary": {"adjustment": 3.0, "operation": "add"},
+        "ignition_high_octane": {"adjustment": 4.0, "operation": "add"},
+        "boost_target": {"adjustment": 4.0, "operation": "add"},
+        "fuel_primary": {"adjustment": -0.2, "operation": "add"},
+        "rev_limit_soft": {"value": 7500, "operation": "set"},
+        "speed_limit": {"value": 300, "operation": "set"},
+        "launch_control": {"enabled": true, "rpm": 5500}
+      },
+      "expected_improvements": {
+        "horsepower": "+80-100",
+        "torque": "+70-90",
+        "throttle_response": "Significantly improved"
+      },
+      "requirements": {
+        "fuel": "93 octane or higher",
+        "modifications": ["front_mount_intercooler", "downpipe", "high_flow_fuel_pump"],
+        "cooling": "Upgraded radiator recommended"
+      }
+    },
+    "emissions_delete": {
+      "name": "Emissions Delete",
+      "description": "Removes emissions controls for off-road use",
+      "modifications": {
+        "secondary_air_system": {"enabled": false},
+        "egr_system": {"enabled": false},
+        "catalyst_monitoring": {"enabled": false},
+        "evap_system_monitoring": {"enabled": false}
+      },
+      "legal_notice": "FOR OFF-ROAD USE ONLY - ILLEGAL FOR STREET USE",
+      "effects": {
+        "power_gain": "+5-10%",
+        "exhaust_sound": "More aggressive",
+        "emissions": "Significantly increased"
+      }
+    }
+  },
+  "safety_limits": {
+    "absolute_limits": {
+      "max_boost_psi": 25.0,
+      "max_timing_advance": 15.0,
+      "min_afr": 10.5,
+      "max_rpm": 8000,
+      "max_injector_duty": 95
+    },
+    "recommended_limits": {
+      "max_boost_psi": 22.0,
+      "max_timing_advance": 12.0,
+      "min_afr": 10.8,
+      "max_rpm": 7500,
+      "max_injector_duty": 85
+    }
+  },
+  "modification_effects": {
+    "cold_air_intake": {
+      "power_gain": "5-10 HP",
+      "torque_gain": "5-8 lb-ft",
+      "effect_on_tuning": "May require MAF calibration"
+    },
+    "catback_exhaust": {
+      "power_gain": "5-8 HP",
+      "torque_gain": "5-7 lb-ft", 
+      "effect_on_tuning": "Minimal tuning changes needed"
+    },
+    "downpipe": {
+      "power_gain": "15-25 HP",
+      "torque_gain": "20-30 lb-ft",
+      "effect_on_tuning": "Requires significant boost and fuel adjustments"
+    },
+    "front_mount_intercooler": {
+      "power_gain": "10-15 HP",
+      "torque_gain": "10-15 lb-ft",
+      "effect_on_tuning": "Allows more aggressive timing and boost"
+    },
+    "high_flow_fuel_pump": {
+      "power_gain": "Enables higher power levels",
+      "torque_gain": "Enables higher torque levels",
+      "effect_on_tuning": "Required for power above 300 HP"
+    },
+    "ethanol_blend": {
+      "power_gain": "20-40 HP",
+      "torque_gain": "25-45 lb-ft", 
+      "effect_on_tuning": "Requires significant fuel and timing changes"
+    }
+  }
+}
