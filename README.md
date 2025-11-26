@@ -26,7 +26,7 @@ Complete autonomous tuning and diagnostic system for the 2011 Mazdaspeed 3.
 - Encrypted calibration storage
 - Vehicle-specific tuning file validation
 - Comprehensive safety limits
-- Factory dealer access simulation
+- Factory dealer access
 
 ### 📊 Complete Database
 - Factory ECU calibration data
@@ -34,7 +34,42 @@ Complete autonomous tuning and diagnostic system for the 2011 Mazdaspeed 3.
 - Engine component limits
 - Proprietary tuning secrets
 
-## Installation
+## Safety Systems
+
+MUTS includes multiple layers of safety protection to prevent damage to the vehicle and ECU:
+
+## Parameter Validation
+- **Hard Limits**: Maximum boost (25 psi), timing (30°), minimum AFR (10.5), max RPM (7000)
+- **Mode-Specific Limits**: Different safety thresholds for Stock, Street, Track, Drag, and Safe modes
+- **Real-time Validation**: All tuning parameters are validated before being sent to the ECU
+- **Safety Override**: Password-protected override for advanced users (password: MUTS_OVERRIDE_2024)
+
+## Connection Health Monitoring
+- **Auto-Reconnect**: Automatically reconnects if CAN bus connection is lost
+- **Performance Metrics**: Tracks message rate, error rate, response times
+- **Health Status**: Excellent/Good/Poor/Disconnected status indicators
+- **Failure Detection**: Monitors consecutive failures and triggers recovery
+
+## ROM Integrity Protection
+- **Pre-Flash Verification**: Validates ROM size and checks for corruption before flashing
+- **Checksum Verification**: Multiple checksum algorithms (CRC16/32, MD5, SHA256, Mazda proprietary)
+- **Post-Flash Validation**: Complete ROM integrity verification after flashing
+- **Anti-Brick Protection**: Prevents flashing corrupted or incomplete ROM files
+
+## Emergency Protection
+- **Live Data Monitoring**: Continuous monitoring of coolant temp, oil pressure, EGT
+- **Automatic Shutdown**: System can prevent dangerous operations in critical conditions
+- **Audit Logging**: All safety blocks and violations are logged for review
+
+## Safety Status
+The current safety system status can be checked in the GUI or via the API:
+```python
+from core.safety_validator import get_safety_validator
+safety = get_safety_validator()
+status = safety.get_safety_status()
+```
+
+# Installation
 
 ```bash
 # Clone the repository
