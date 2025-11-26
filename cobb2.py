@@ -6,7 +6,11 @@ Emulates Cobb Access Port J2534 interface for direct ECU flashing
 import ctypes
 import platform
 import struct
-from ctypes import wintypes if platform.system() == 'Windows' else ctypes
+
+if platform.system() == 'Windows':
+    from ctypes import wintypes
+else:
+    wintypes = None  # Non-Windows platforms use ctypes.c_ulong directly
 
 class J2534Protocol:
     """

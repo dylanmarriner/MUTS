@@ -1,10 +1,13 @@
-from typing import List
+from typing import Dict, List
+
+from .diagnostic_manager import DiagnosticManager
 
 class DiagnosticsService:
-    def read_dtcs(self) -> List[str]:
-        # Simulated ECU response
-        return ["P0101", "C0035"]
+    def __init__(self, vin: str = "7AT0C13JX20200064") -> None:
+        self.manager = DiagnosticManager(vin)
+
+    def read_dtcs(self) -> List[Dict[str, str]]:
+        return self.manager.scan_dtcs()
 
     def clear_dtcs(self) -> bool:
-        # Always succeed in simulation
-        return True
+        return self.manager.clear_dtcs()

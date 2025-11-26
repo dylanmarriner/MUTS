@@ -1,0 +1,802 @@
+"""
+ADVANCED PERFORMANCE FEATURES FOR MAZDASPEED 3
+Anti-lag, 2-step rev limiter, and launch control implementations
+"""
+
+import time
+import threading
+import random
+from typing import Dict, List, Optional
+import numpy as np
+import logging
+
+logger = logging.getLogger(__name__)
+
+class AntiLagSystem:
+    """
+    COMPLETE ANTI-LAG SYSTEM IMPLEMENTATION
+    Maintains turbo spool during off-throttle conditions using advanced strategies
+    """
+
+    def __init__(self):
+        self.als_enabled = False
+        self.als_active = False
+        self.als_mode = 'soft'  # 'soft', 'aggressive', 'rally'
+        self.target_turbo_rpm = 50000  # Target turbo RPM to maintain
+        self.ignition_retard_limit = -15.0  # Maximum ignition retard
+        self.fuel_enrichment_limit = 20.0  # Maximum extra fuel %
+
+        # ALS parameters by mode
+        self.als_modes = {
+            'soft': {
+                'ignition_retard': -8.0,
+                'fuel_enrichment': 8.0,
+                'throttle_crack': 2.0,
+                'activation_speed': 30,  # km/h
+                'max_duration': 10.0  # seconds
+            },
+            'aggressive': {
+                'ignition_retard': -12.0,
+                'fuel_enrichment': 15.0,
+                'throttle_crack': 5.0,
+                'activation_speed': 20,
+                'max_duration': 8.0
+            },
+            'rally': {
+                'ignition_retard': -15.0,
+                'fuel_enrichment': 20.0,
+                'throttle_crack': 8.0,
+                'activation_speed': 0,
+                'max_duration': 15.0
+            }
+        }
+
+        # System state
+        self.activation_timer = 0.0
+        self.current_turbo_rpm = 0
+        self.exhaust_temp_als = 0.0
+
+        # Safety systems
+        self.max_exhaust_temp = 950.0  # °C
+        self.max_activation_count = 5  # Maximum activations per minute
+        self.activation_count = 0
+        self.last_activation_time = 0.0
+
+    def calculate_als_parameters(self, vehicle_speed: float, throttle_position: float,
+                               current_turbo_rpm: float, exhaust_temp: float) -> Dict:
+        """
+        Calculate anti-lag system parameters based on current conditions
+        Returns ignition retard, fuel enrichment, and throttle adjustments
+        """
+        if not self.als_enabled:
+            return {'als_active': False}
+
+        # Check activation conditions
+        mode_params = self.als_modes[self.als_mode]
+
+        # Conditions for ALS activation
+        conditions_met = (
+            vehicle_speed >= mode_params['activation_speed'] and
+            throttle_position < 5.0 and  # Off-throttle
+            current_turbo_rpm > 20000 and  # Turbo already spooled
+            exhaust_temp < self.max_exhaust_temp - 100 and  # Temperature safety margin
+            time.time() - self.last_activation_time > 12.0  # Cooldown period
+        )
+
+        if conditions_met and not self.als_active:
+            # Activate ALS
+            self.als_active = True
+            self.activation_timer = time.time()
+            self.activation_count += 1
+            self.last_activation_time = time.time()
+
+        elif self.als_active:
+            # Check deactivation conditions
+            deactivate_conditions = (
+                throttle_position > 15.0 or  # Driver back on throttle
+                time.time() - self.activation_timer > mode_params['max_duration'] or
+                exhaust_temp > self.max_exhaust_temp - 50 or  # Approaching temp limit
+                vehicle_speed < mode_params['activation_speed'] - 10  # Too slow
+            )
+
+            if deactivate_conditions:
+                self.als_active = False
+                return {'als_active': False}
+
+        # Calculate ALS adjustments
+        if self.als_active:
+            # Base adjustments from mode
+            ignition_retard = mode_params['ignition_retard']
+            fuel_enrichment = mode_params['fuel_enrichment']
+            throttle_crack = mode_params['throttle_crack']
+
+            # Dynamic adjustments based on conditions
+            turbo_speed_factor = max(0, 1.0 - (current_turbo_rpm / self.target_turbo_rpm))
+            ignition_retard *= turbo_speed_factor
+
+            # Temperature compensation
+            temp_factor = min(1.0, (self.max_exhaust_temp - exhaust_temp) / 200.0)
+            fuel_enrichment *= temp_factor
+
+            return {
+                'als_active': True,
+                'ignition_retard': ignition_retard,
+                'fuel_enrichment': fuel_enrichment,
+                'throttle_crack': throttle_crack,
+                'target_afr': 10.5,  # Rich mixture for cooling and combustion
+                'exhaust_flow_boost': True
+            }
+
+        return {'als_active': False}
+
+    def calculate_exhaust_energy_boost(self, current_exhaust_energy: float,
+                                     als_parameters: Dict) -> float:
+        """
+        Calculate additional exhaust energy generated by ALS
+        """
+        if not als_parameters.get('als_active', False):
+            return current_exhaust_energy
+
+        # ALS significantly increases exhaust energy through:
+        # 1. Late combustion in exhaust manifold
+        # 2. Additional fuel burning in exhaust
+        # 3. Increased exhaust gas velocity
+
+        als_boost_factor = 2.5  # ALS can double exhaust energy
+
+        # Adjust based on ALS aggressiveness
+        if self.als_mode == 'soft':
+            als_boost_factor = 1.8
+        elif self.als_mode == 'aggressive':
+            als_boost_factor = 2.2
+        elif self.als_mode == 'rally':
+            als_boost_factor = 2.8
+
+        boosted_energy = current_exhaust_energy * als_boost_factor
+
+        return boosted_energy
+
+    def update_turbo_spool_als(self, current_turbo_rpm: float, exhaust_energy: float,
+                             time_step: float = 0.1) -> float:
+        """
+        Update turbo RPM considering ALS effects
+        Uses differential equations for accurate spool modeling
+        """
+        if not self.als_active:
+            return current_turbo_rpm
+
+        # Turbo dynamics with ALS
+        # Enhanced spool due to increased exhaust energy
+        moment_of_inertia = 8.7e-5  # kg·m² (K04 turbo)
+
+        # Turbine power with ALS boost
+        turbine_power = exhaust_energy * 0.7  # 70% efficiency
+
+        # Angular acceleration
+        current_omega = current_turbo_rpm * 2 * np.pi / 60
+        if current_omega < 0.1:
+            current_omega = 0.1
+
+        # Net torque
+        net_torque = turbine_power / current_omega
+
+        # Moment of inertia
+        I = moment_of_inertia
+
+        # Angular acceleration
+        alpha = net_torque / I
+
+        # RPM change
+        delta_rpm = (alpha * 60 / (2 * np.pi)) * time_step
+
+        new_turbo_rpm = current_turbo_rpm + delta_rpm
+
+        return min(new_turbo_rpm, 150000)  # K04 max safe RPM
+
+    def safety_monitor(self, exhaust_temp: float, coolant_temp: float,
+                      engine_rpm: float, vehicle_speed: float) -> Dict:
+        """
+        Monitor safety parameters and override ALS if necessary
+        """
+        safety_status = {
+            'als_safe': True,
+            'override_reason': None,
+            'recommended_action': None
+        }
+
+        # Temperature safety
+        if exhaust_temp > self.max_exhaust_temp:
+            safety_status.update({
+                'als_safe': False,
+                'override_reason': 'Exhaust temperature too high',
+                'recommended_action': 'Disable ALS and allow cooldown'
+            })
+
+        # Coolant temperature safety
+        elif coolant_temp > 105.0:
+            safety_status.update({
+                'als_safe': False,
+                'override_reason': 'Coolant temperature too high',
+                'recommended_action': 'Disable ALS'
+            })
+
+        # RPM safety
+        elif engine_rpm < 1500:
+            safety_status.update({
+                'als_safe': False,
+                'override_reason': 'Engine RPM too low for ALS',
+                'recommended_action': 'Increase RPM before ALS activation'
+            })
+
+        # Activation count safety
+        elif self.activation_count >= self.max_activation_count:
+            safety_status.update({
+                'als_safe': False,
+                'override_reason': 'Maximum ALS activations reached',
+                'recommended_action': 'Wait 60 seconds before next activation'
+            })
+
+        # Reset activation count periodically
+        if time.time() - self.last_activation_time > 60.0:
+            self.activation_count = max(0, self.activation_count - 1)
+
+        return safety_status
+
+class TwoStepRevLimiter:
+    """
+    COMPLETE 2-STEP REV LIMITER IMPLEMENTATION
+    Separate launch RPM limit and normal redline with fuel and ignition cutting
+    """
+
+    def __init__(self):
+        self.two_step_enabled = False
+        self.launch_rpm = 4500  # RPM for launch control
+        self.normal_redline = 6700  # Normal redline
+        self.hard_redline = 7200  # Absolute fuel cut
+
+        # 2-step strategies
+        self.cut_strategies = {
+            'ignition_cut': {
+                'description': 'Cut ignition randomly for anti-lag effect',
+                'implementation': self._ignition_cut_strategy,
+                'max_retard': -25.0
+            },
+            'fuel_cut': {
+                'description': 'Cut fuel to specific cylinders',
+                'implementation': self._fuel_cut_strategy,
+                'max_cut_percent': 50.0
+            },
+            'combined_cut': {
+                'description': 'Combined ignition and fuel cutting',
+                'implementation': self._combined_cut_strategy
+            }
+        }
+
+        self.current_strategy = 'combined_cut'
+        self.launch_active = False
+
+        # System state
+        self.cut_sequence = 0
+        self.last_cut_time = 0.0
+        self.cut_frequency = 30  # Hz - cut frequency
+
+    def calculate_rev_limit_parameters(self, engine_rpm: float, vehicle_speed: float,
+                                    clutch_position: float, throttle_position: float) -> Dict:
+        """
+        Calculate 2-step rev limit parameters based on current conditions
+        """
+        parameters = {
+            'rev_limit_active': False,
+            'target_rpm': self.normal_redline,
+            'ignition_cut': False,
+            'fuel_cut': False,
+            'cut_cylinders': [],
+            'ignition_retard': 0.0,
+            'fuel_reduction': 0.0
+        }
+
+        # Check if launch control should be active
+        launch_conditions = (
+            self.two_step_enabled and
+            vehicle_speed < 5.0 and  # Stationary or very slow
+            clutch_position < 20.0 and  # Clutch depressed
+            throttle_position > 80.0  # High throttle
+        )
+
+        if launch_conditions:
+            self.launch_active = True
+            parameters['target_rpm'] = self.launch_rpm
+            parameters['rev_limit_active'] = True
+
+            # Apply cutting strategy
+            strategy = self.cut_strategies[self.current_strategy]
+            cut_parameters = strategy['implementation'](engine_rpm, self.launch_rpm)
+            parameters.update(cut_parameters)
+
+        elif self.launch_active and vehicle_speed > 10.0:
+            # Deactivate launch control once moving
+            self.launch_active = False
+
+        # Normal redline protection
+        elif engine_rpm > self.normal_redline:
+            parameters['rev_limit_active'] = True
+            parameters['target_rpm'] = self.normal_redline
+
+            # Soft limit - ignition retard
+            rpm_over = engine_rpm - self.normal_redline
+            parameters['ignition_retard'] = -min(15.0, rpm_over * 0.5)  # 0.5° retard per RPM over
+
+        # Hard fuel cut
+        if engine_rpm > self.hard_redline:
+            parameters['fuel_cut'] = True
+            parameters['fuel_reduction'] = 100.0
+
+        return parameters
+
+    def _ignition_cut_strategy(self, current_rpm: float, target_rpm: float) -> Dict:
+        """
+        Ignition cut strategy for 2-step - creates popping and maintains turbo spool
+        """
+        cut_parameters = {
+            'ignition_cut': True,
+            'fuel_cut': False,
+            'cut_cylinders': [],
+            'ignition_retard': 0.0
+        }
+
+        rpm_error = current_rpm - target_rpm
+
+        if rpm_error > 0:
+            # Calculate cut probability based on RPM error
+            cut_probability = min(0.8, rpm_error / 500.0)
+
+            # Random cylinder cut for anti-lag effect
+            if random.random() < cut_probability:
+                # Cut random cylinder(s)
+                cylinders_to_cut = random.sample([1, 2, 3, 4],
+                                               min(2, int(cut_probability * 4)))
+                cut_parameters['cut_cylinders'] = cylinders_to_cut
+
+                # Additional ignition retard
+                cut_parameters['ignition_retard'] = -min(25.0, rpm_error * 0.2)
+
+        return cut_parameters
+
+    def _fuel_cut_strategy(self, current_rpm: float, target_rpm: float) -> Dict:
+        """
+        Fuel cut strategy for 2-step - smoother but less aggressive
+        """
+        cut_parameters = {
+            'ignition_cut': False,
+            'fuel_cut': True,
+            'cut_cylinders': [],
+            'fuel_reduction': 0.0
+        }
+
+        rpm_error = current_rpm - target_rpm
+
+        if rpm_error > 0:
+            # Progressive fuel cut based on RPM error
+            fuel_cut_percent = min(50.0, rpm_error * 0.5)
+            cut_parameters['fuel_reduction'] = fuel_cut_percent
+
+            # Cut specific cylinders alternately
+            current_time = time.time()
+            if current_time - self.last_cut_time > 1.0 / self.cut_frequency:
+                self.cut_sequence = (self.cut_sequence + 1) % 4
+                self.last_cut_time = current_time
+
+            # Cut every other cylinder in sequence
+            cut_cylinders = [(self.cut_sequence + i) % 4 + 1 for i in range(0, 4, 2)]
+            cut_parameters['cut_cylinders'] = cut_cylinders
+
+        return cut_parameters
+
+    def _combined_cut_strategy(self, current_rpm: float, target_rpm: float) -> Dict:
+        """
+        Combined ignition and fuel cut strategy - most effective for launch control
+        """
+        cut_parameters = {
+            'ignition_cut': True,
+            'fuel_cut': True,
+            'cut_cylinders': [],
+            'ignition_retard': 0.0,
+            'fuel_reduction': 0.0
+        }
+
+        rpm_error = current_rpm - target_rpm
+
+        if rpm_error > 0:
+            # Use ignition cut for primary limiting
+            ignition_params = self._ignition_cut_strategy(current_rpm, target_rpm)
+
+            # Use fuel cut as secondary measure
+            fuel_params = self._fuel_cut_strategy(current_rpm, target_rpm)
+
+            # Combine strategies
+            cut_parameters.update(ignition_params)
+            cut_parameters['fuel_reduction'] = fuel_params['fuel_reduction'] * 0.5  # Reduced fuel cut in combined mode
+
+            # Ensure we have some cylinders cut
+            if not cut_parameters['cut_cylinders']:
+                cut_parameters['cut_cylinders'] = [1, 3]  # Default cut pattern
+
+        return cut_parameters
+
+    def calculate_exhaust_pop_effect(self, cut_parameters: Dict, exhaust_temp: float) -> float:
+        """
+        Calculate exhaust popping effect from 2-step operation
+        Returns additional exhaust temperature from unburned fuel ignition
+        """
+        if not cut_parameters.get('ignition_cut', False):
+            return 0.0
+
+        # Unburned fuel entering exhaust and igniting creates popping
+        # and increases exhaust temperature
+        cylinders_cut = len(cut_parameters.get('cut_cylinders', []))
+        total_cylinders = 4
+
+        # Temperature increase proportional to fuel being cut
+        fuel_cut_ratio = cylinders_cut / total_cylinders
+        ignition_retard = abs(cut_parameters.get('ignition_retard', 0.0))
+
+        # Calculate temperature increase
+        base_temp_increase = 50.0  # °C base increase
+        retard_factor = ignition_retard / 25.0  # Scale by retard amount
+        fuel_cut_factor = fuel_cut_ratio
+
+        total_temp_increase = base_temp_increase * retard_factor * fuel_cut_factor
+
+        return min(total_temp_increase, 150.0)  # Cap at 150°C increase
+
+class LaunchControlSystem:
+    """
+    COMPLETE LAUNCH CONTROL SYSTEM
+    Manages optimal launch parameters including boost building, traction control,
+    and shift points for maximum acceleration
+    """
+
+    def __init__(self):
+        self.launch_control_enabled = False
+        self.launch_active = False
+        self.launch_rpm = 4500
+        self.target_launch_boost = 18.0  # PSI target for launch
+
+        # Launch strategies
+        self.launch_strategies = {
+            'drag': {
+                'description': 'Maximum acceleration for drag racing',
+                'wheel_slip_target': 0.15,  # 15% wheel slip
+                'boost_ramp_rate': 2.0,  # PSI/second
+                'shift_rpm': 6800
+            },
+            'street': {
+                'description': 'Balanced launch for street use',
+                'wheel_slip_target': 0.08,  # 8% wheel slip
+                'boost_ramp_rate': 1.5,  # PSI/second
+                'shift_rpm': 6500
+            },
+            'track': {
+                'description': 'Optimized for circuit racing starts',
+                'wheel_slip_target': 0.12,  # 12% wheel slip
+                'boost_ramp_rate': 1.8,  # PSI/second
+                'shift_rpm': 6700
+            }
+        }
+
+        self.current_strategy = 'drag'
+
+        # System state
+        self.launch_start_time = 0.0
+        self.current_launch_boost = 0.0
+        self.wheel_slip_history = []
+
+        # Traction control parameters
+        self.traction_control_active = True
+        self.max_wheel_slip = 0.25  # Maximum allowed wheel slip
+        self.slip_correction_aggression = 0.8  # How aggressively to correct slip
+
+    def calculate_launch_parameters(self, vehicle_speed: float, engine_rpm: float,
+                                 throttle_position: float, clutch_position: float,
+                                 wheel_speeds: List[float], current_boost: float) -> Dict:
+        """
+        Calculate launch control parameters for optimal acceleration
+        """
+        parameters = {
+            'launch_active': False,
+            'target_rpm': self.launch_rpm,
+            'target_boost': self.target_launch_boost,
+            'throttle_override': 0.0,
+            'ignition_retard': 0.0,
+            'boost_control': 'normal',
+            'traction_control': 'active'
+        }
+
+        # Check launch activation conditions
+        launch_conditions = (
+            self.launch_control_enabled and
+            vehicle_speed < 2.0 and  # Essentially stationary
+            clutch_position < 10.0 and  # Clutch fully depressed
+            throttle_position > 90.0  # Full throttle request
+        )
+
+        if launch_conditions and not self.launch_active:
+            # Start launch sequence
+            self.launch_active = True
+            self.launch_start_time = time.time()
+            self.current_launch_boost = current_boost
+
+        elif self.launch_active:
+            parameters['launch_active'] = True
+
+            # Calculate time since launch start
+            launch_time = time.time() - self.launch_start_time
+
+            # Get strategy parameters
+            strategy = self.launch_strategies[self.current_strategy]
+
+            # Boost building during launch
+            if launch_time < 3.0:  # Boost build phase
+                boost_ramp = strategy['boost_ramp_rate'] * launch_time
+                parameters['target_boost'] = min(self.target_launch_boost, boost_ramp)
+                parameters['boost_control'] = 'launch_build'
+
+            else:  # Launch phase - maintain target boost
+                parameters['target_boost'] = self.target_launch_boost
+                parameters['boost_control'] = 'launch_maintain'
+
+            # Traction control during launch
+            if self.traction_control_active and len(wheel_speeds) >= 2:
+                traction_params = self._calculate_traction_control(wheel_speeds, strategy['wheel_slip_target'])
+                parameters.update(traction_params)
+
+            # RPM management
+            rpm_error = engine_rpm - self.launch_rpm
+            if rpm_error > 0:
+                parameters['ignition_retard'] = -min(15.0, rpm_error * 0.3)
+
+            # Check launch completion
+            if vehicle_speed > 20.0:  # Launch complete
+                self.launch_active = False
+
+        elif not launch_conditions and self.launch_active:
+            # Cancel launch
+            self.launch_active = False
+
+        return parameters
+
+    def _calculate_traction_control(self, wheel_speeds: List[float],
+                                 target_slip: float) -> Dict:
+        """
+        Calculate traction control parameters to maintain optimal wheel slip
+        """
+        if len(wheel_speeds) < 2:
+            return {}
+
+        # Calculate wheel slip (assuming front-wheel drive)
+        front_speed = max(wheel_speeds[:2])  # Front wheels
+        rear_speed = max(wheel_speeds[2:]) if len(wheel_speeds) > 2 else front_speed * 0.98
+
+        current_slip = (front_speed - rear_speed) / rear_speed if rear_speed > 0 else 0
+
+        # Store slip history
+        self.wheel_slip_history.append(current_slip)
+        if len(self.wheel_slip_history) > 10:
+            self.wheel_slip_history = self.wheel_slip_history[-10:]
+
+        traction_params = {
+            'traction_control_active': False,
+            'throttle_reduction': 0.0,
+            'ignition_retard_tc': 0.0,
+            'boost_reduction_tc': 0.0
+        }
+
+        # Calculate slip error
+        slip_error = current_slip - target_slip
+
+        if slip_error > 0:
+            # Excessive wheel slip - activate traction control
+            traction_params['traction_control_active'] = True
+
+            # Progressive correction based on slip error
+            correction_strength = min(1.0, slip_error / self.max_wheel_slip)
+
+            # Multiple correction methods
+            traction_params['throttle_reduction'] = correction_strength * 30.0  # Up to 30% throttle reduction
+            traction_params['ignition_retard_tc'] = -correction_strength * 10.0  # Up to 10° retard
+            traction_params['boost_reduction_tc'] = correction_strength * 5.0  # Up to 5 PSI reduction
+
+        return traction_params
+
+    def calculate_optimal_shift_points(self, current_gear: int, engine_rpm: float,
+                                    vehicle_speed: float, throttle_position: float) -> Dict:
+        """
+        Calculate optimal shift points for maximum acceleration during launch
+        """
+        strategy = self.launch_strategies[self.current_strategy]
+        target_shift_rpm = strategy['shift_rpm']
+
+        shift_params = {
+            'shift_light': False,
+            'optimal_shift_rpm': target_shift_rpm,
+            'recommended_gear': current_gear
+        }
+
+        if not self.launch_active:
+            return shift_params
+
+        # Gear-dependent shift points for maximum acceleration
+        gear_shift_points = {
+            1: target_shift_rpm,
+            2: target_shift_rpm - 200,  # Slightly lower in 2nd
+            3: target_shift_rpm - 400   # Lower still in 3rd
+        }
+
+        current_shift_rpm = gear_shift_points.get(current_gear, target_shift_rpm)
+
+        # Check if shift is needed
+        if engine_rpm >= current_shift_rpm - 500:  # 500 RPM before target
+            shift_params['shift_light'] = True
+
+        if engine_rpm >= current_shift_rpm and current_gear < 6:
+            shift_params['recommended_gear'] = current_gear + 1
+
+        return shift_params
+
+    def calculate_launch_timing_advance(self, current_rpm: float, current_boost: float,
+                                      intake_temp: float) -> float:
+        """
+        Calculate optimal ignition timing advance for launch conditions
+        More aggressive timing when boost is controlled and temperatures are favorable
+        """
+        base_timing_advance = 0.0
+
+        if not self.launch_active:
+            return base_timing_advance
+
+        # Boost-based timing adjustment
+        boost_timing = min(5.0, (current_boost / self.target_launch_boost) * 3.0)
+
+        # RPM-based timing adjustment
+        rpm_timing = max(0.0, (current_rpm - 3000) / 1000)  # 1° per 1000 RPM over 3000
+
+        # Temperature-based timing adjustment
+        temp_timing = 0.0
+        if intake_temp < 25.0:
+            temp_timing = 2.0  # Cool air allows more timing
+        elif intake_temp > 40.0:
+            temp_timing = -1.0  # Hot air requires less timing
+
+        total_timing_advance = boost_timing + rpm_timing + temp_timing
+
+        return min(8.0, total_timing_advance)  # Maximum 8° advance for launch
+
+class AdvancedPerformanceManager:
+    """
+    MASTER PERFORMANCE FEATURE MANAGER
+    Coordinates anti-lag, 2-step, and launch control systems
+    """
+
+    def __init__(self):
+        self.anti_lag_system = AntiLagSystem()
+        self.two_step_limiter = TwoStepRevLimiter()
+        self.launch_control_system = LaunchControlSystem()
+
+        # System integration
+        self.performance_modes = {
+            'street': {
+                'als_enabled': False,
+                'two_step_enabled': True,
+                'launch_control_enabled': True,
+                'als_mode': 'soft',
+                'launch_strategy': 'street'
+            },
+            'track': {
+                'als_enabled': True,
+                'two_step_enabled': True,
+                'launch_control_enabled': True,
+                'als_mode': 'aggressive',
+                'launch_strategy': 'track'
+            },
+            'drag': {
+                'als_enabled': True,
+                'two_step_enabled': True,
+                'launch_control_enabled': True,
+                'als_mode': 'rally',
+                'launch_strategy': 'drag'
+            },
+            'off': {
+                'als_enabled': False,
+                'two_step_enabled': False,
+                'launch_control_enabled': False
+            }
+        }
+
+        self.current_mode = 'street'
+
+    def set_performance_mode(self, mode: str):
+        """Set overall performance mode (street, track, drag, off)"""
+        if mode not in self.performance_modes:
+            raise ValueError(f"Unknown performance mode: {mode}")
+
+        self.current_mode = mode
+        mode_params = self.performance_modes[mode]
+
+        # Configure subsystems
+        self.anti_lag_system.als_enabled = mode_params['als_enabled']
+        self.anti_lag_system.als_mode = mode_params.get('als_mode', 'soft')
+
+        self.two_step_limiter.two_step_enabled = mode_params['two_step_enabled']
+
+        self.launch_control_system.launch_control_enabled = mode_params['launch_control_enabled']
+        self.launch_control_system.current_strategy = mode_params.get('launch_strategy', 'street')
+
+    def calculate_integrated_performance_parameters(self, sensor_data: Dict) -> Dict:
+        """
+        Calculate integrated performance parameters from all systems
+        """
+        # Extract sensor data
+        vehicle_speed = sensor_data.get('vehicle_speed', 0.0)
+        engine_rpm = sensor_data.get('engine_rpm', 0.0)
+        throttle_position = sensor_data.get('throttle_position', 0.0)
+        clutch_position = sensor_data.get('clutch_position', 100.0)
+        current_boost = sensor_data.get('boost_psi', 0.0)
+        turbo_rpm = sensor_data.get('turbo_rpm', 0.0)
+        exhaust_temp = sensor_data.get('exhaust_temp', 0.0)
+        wheel_speeds = sensor_data.get('wheel_speeds', [0.0, 0.0, 0.0, 0.0])
+        current_gear = sensor_data.get('current_gear', 1)
+        intake_temp = sensor_data.get('intake_temp', 25.0)
+        coolant_temp = sensor_data.get('coolant_temp', 90.0)
+
+        # Calculate parameters from each system
+        als_params = self.anti_lag_system.calculate_als_parameters(
+            vehicle_speed, throttle_position, turbo_rpm, exhaust_temp
+        )
+
+        two_step_params = self.two_step_limiter.calculate_rev_limit_parameters(
+            engine_rpm, vehicle_speed, clutch_position, throttle_position
+        )
+
+        launch_params = self.launch_control_system.calculate_launch_parameters(
+            vehicle_speed, engine_rpm, throttle_position, clutch_position,
+            wheel_speeds, current_boost
+        )
+
+        shift_params = self.launch_control_system.calculate_optimal_shift_points(
+            current_gear, engine_rpm, vehicle_speed, throttle_position
+        )
+
+        # Safety monitoring
+        safety_status = self.anti_lag_system.safety_monitor(
+            exhaust_temp, coolant_temp, engine_rpm, vehicle_speed
+        )
+
+        # Combine all parameters (with priority handling)
+        combined_params = {
+            'performance_mode': self.current_mode,
+            'anti_lag': als_params,
+            'two_step': two_step_params,
+            'launch_control': launch_params,
+            'shift_recommendations': shift_params,
+            'safety_status': safety_status,
+
+            # Combined adjustments (highest priority wins)
+            'ignition_retard_final': max(
+                als_params.get('ignition_retard', 0.0),
+                two_step_params.get('ignition_retard', 0.0),
+                launch_params.get('ignition_retard', 0.0),
+                launch_params.get('ignition_retard_tc', 0.0)
+            ),
+            'fuel_adjustment_final': max(
+                als_params.get('fuel_enrichment', 0.0),
+                two_step_params.get('fuel_reduction', 0.0) * -1,  # Convert reduction to enrichment
+                launch_params.get('boost_reduction_tc', 0.0) * -0.5  # Partial compensation
+            ),
+            'throttle_override_final': min(
+                100.0,
+                throttle_position - launch_params.get('throttle_reduction', 0.0)
+            ),
+            'boost_target_final': launch_params.get('target_boost', current_boost)
+        }
+
+        return combined_params

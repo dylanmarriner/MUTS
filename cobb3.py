@@ -5,7 +5,7 @@ Complete ECU memory map and parameter definitions for Mazdaspeed 3 2011
 
 import struct
 import binascii
-from typing import Dict, List, Any
+from typing import Dict, List, Any, Optional
 
 class MZRECU:
     """

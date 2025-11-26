@@ -10,7 +10,10 @@ import struct
 import threading
 from typing import Dict, List, Optional, Any, Callable
 from dataclasses import dataclass
-from ..utils.logger import VersaLogger
+from core.ecu_communication import ECUCommunicator
+from utils.logger import get_logger
+
+logger = get_logger(__name__)
 
 @dataclass
 class ECUResponse:
@@ -20,10 +23,11 @@ class ECUResponse:
     timestamp: float
     error_code: Optional[int] = None
 
-class ECUCommunicator:
+# VersaTuner specific extensions to the core ECUCommunicator
+class VersaTunerECU(ECUCommunicator):
     """
-    Main ECU communication class handling CAN bus communication
-    using Mazda-specific protocols reverse engineered from VersaTuner
+    VersaTuner specific ECU communication extensions
+    Builds on the core ECUCommunicator with VersaTuner protocols
     """
     
     # Mazdaspeed 3 specific CAN IDs

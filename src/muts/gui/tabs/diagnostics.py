@@ -18,7 +18,11 @@ class DiagnosticsTab(QtWidgets.QWidget):
 
     def read_dtcs(self) -> None:
         codes = self.service.read_dtcs()
-        msg = "DTCs: " + ", ".join(codes) if codes else "No DTCs."
+        if codes:
+            formatted = ", ".join(f"{c['code']} ({c.get('severity')})" for c in codes)
+            msg = f"DTCs: {formatted}"
+        else:
+            msg = "No DTCs."
         self.output.appendPlainText(msg)
 
     def clear_dtcs(self) -> None:

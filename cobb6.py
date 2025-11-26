@@ -6,6 +6,7 @@ Abstracts communication with physical/virtual Cobb AP hardware
 import serial
 import socket
 import select
+import struct
 from typing import Optional, Union
 
 class HardwareInterface:

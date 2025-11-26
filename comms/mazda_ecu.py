@@ -6,29 +6,15 @@ domain-specific methods for diagnostics, live data, map access, and flashing.
 from __future__ import annotations
 
 import logging
-from dataclasses import dataclass
 from typing import List, Dict, Optional
 
 from .j2534_manager import J2534Manager
 from .iso15765_transport import IsoTpTransport
 from .uds_protocol import UdsClient, UdsError
+from diagnostics.live_data_service import LiveData, LiveDataService
 
 log = logging.getLogger(__name__)
 
-@dataclass
-class LiveData:
-    rpm: int
-    throttle: float
-    engine_load: float
-    boost_psi: float
-    afr_commanded: float
-    afr_actual: float
-    fuel_pressure_psi: float
-    ignition_advance_deg: float
-    knock_retard_deg: float
-    iat_c: float
-    ect_c: float
-    vehicle_speed_kph: float
 
 class MazdaEcu:
     """ECU interface focused on the 2011 Mazdaspeed 3 platform."""
@@ -38,6 +24,7 @@ class MazdaEcu:
         self.device = None
         self.transport: Optional[IsoTpTransport] = None
         self.uds: Optional[UdsClient] = None
+        self.live_data_service: Optional[LiveDataService] = None
         # Typical Mazda ECM CAN IDs; may be overridden by config in future
         self.tx_id = 0x7E0
         self.rx_id = 0x7E8
@@ -49,6 +36,7 @@ class MazdaEcu:
         self.device = dev
         self.transport = IsoTpTransport(dev, self.tx_id, self.rx_id)
         self.uds = UdsClient(self.transport)
+        self.live_data_service = LiveDataService(self.uds)
         # Enter extended diagnostic session if needed
         try:
             self.uds.diag_session_control(0x03)
@@ -61,51 +49,15 @@ class MazdaEcu:
         self.device = None
         self.transport = None
         self.uds = None
+        self.live_data_service = None
 
     # --- Live data & diagnostics ---
 
     def read_live_data(self) -> LiveData:
-        """Read a core set of live data items via UDS DIDs.
-
-        NOTE: The exact DIDs are ECU-specific and may need adjustment.
-        Here we assume Mazda-specific IDs for demonstration.
-        """
-        if not self.uds:
+        """Read a core set of live data items via UDS DIDs."""
+        if not self.live_data_service:
             raise RuntimeError("ECU not connected")
-
-        def did_u16(did: int) -> int:
-            data = self.uds.read_data_by_id(did)
-            return int.from_bytes(data, "big")
-
-        # These DIDs are placeholders and should be updated for real hardware
-        rpm = did_u16(0x0C)            # engine speed
-        throttle = did_u16(0x11) / 10  # %
-        load = did_u16(0x04) / 100     # relative load
-        boost_kpa = did_u16(0x70)      # example
-        boost_psi = boost_kpa * 0.145038
-        afr_cmd = 14.7                 # placeholder
-        afr_act = 14.7                 # placeholder
-        fuel_pressure_psi = did_u16(0x5A) * 0.145038
-        ign = did_u16(0x0E) / 10
-        knock = 0.0                    # placeholder
-        iat_c = did_u16(0x0F) - 40
-        ect_c = did_u16(0x05) - 40
-        vss = did_u16(0x0D)
-
-        return LiveData(
-            rpm=rpm,
-            throttle=throttle,
-            engine_load=load,
-            boost_psi=boost_psi,
-            afr_commanded=afr_cmd,
-            afr_actual=afr_act,
-            fuel_pressure_psi=fuel_pressure_psi,
-            ignition_advance_deg=ign,
-            knock_retard_deg=knock,
-            iat_c=iat_c,
-            ect_c=ect_c,
-            vehicle_speed_kph=vss,
-        )
+        return self.live_data_service.read_all_live_data()
 
     def read_dtc_ecm(self) -> List[str]:
         """Read ECM DTCs via a UDS routine or manufacturer-specific DID.

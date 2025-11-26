@@ -1,16 +1,155 @@
-# MUTS — Mazda Ultimate Technician Suite (Starter)
+# Mazda Universal Tuning Suite (MUTS)
 
-Dealer-level diagnostics + tuning desktop app for a 2011 Mazdaspeed 3 (VIN 7AT0C13JX20200064).  
-This repo scaffolds everything an AI code assistant needs to build the app end-to-end: specs, flows,
-tasks, prompts, CI, stubs, tests, and a local dev environment.
+Complete autonomous tuning and diagnostic system for the 2011 Mazdaspeed 3.
 
-## Quick start
+## Features
+
+### 🚀 Autonomous AI Tuning
+- Real-time AI optimization using reinforcement learning
+- Physics-based engine modeling
+- Adaptive tuning algorithms
+- Safety-first approach with comprehensive limits
+
+### 🔧 Complete Diagnostic System
+- Full CAN bus communication with ECU
+- Diagnostic trouble code reading and clearing
+- Real-time sensor data acquisition
+- Dealer-level diagnostic capabilities
+
+### ⚡ Performance Features
+- Anti-lag system (ALS)
+- 2-step rev limiter
+- Launch control
+- Performance mode switching (Street/Track/Drag)
+
+### 🔒 Security & Safety
+- Encrypted calibration storage
+- Vehicle-specific tuning file validation
+- Comprehensive safety limits
+- Factory dealer access simulation
+
+### 📊 Complete Database
+- Factory ECU calibration data
+- K04 turbocharger specifications
+- Engine component limits
+- Proprietary tuning secrets
+
+## Installation
+
 ```bash
-python -m venv .venv
-source .venv/bin/activate  # Windows: .venv\Scripts\activate
-pip install -e ".[dev]"
-python -m muts
+# Clone the repository
+git clone https://github.com/yourusername/muts.git
+cd muts
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Initialize database
+python main.py db --init
 ```
 
----
-*Generated 2025-11-15*
+## Usage
+
+### Start Autonomous Tuning
+```bash
+python main.py tune --start --mode street
+```
+
+### Diagnostic Functions
+```bash
+# Connect to vehicle
+python main.py diag --connect
+
+# Read DTCs
+python main.py diag --dtc
+
+# Clear DTCs
+python main.py diag --clear
+```
+
+### Security Access
+```bash
+# Request dealer access
+python main.py security --access dealer
+
+# Check security status
+python main.py security --status
+```
+
+### Performance Features
+```bash
+# Enable anti-lag system
+python main.py perf --als enable
+
+# Enable launch control
+python main.py perf --launch enable
+
+# Set track mode
+python main.py perf --mode track
+```
+
+## Architecture
+
+```
+muts/
+├── core/           # Main tuning system
+├── services/       # AI tuner, physics engine, dealer service, performance features
+├── models/         # Engine and turbo models
+├── utils/          # Calculations and security utilities
+├── config/         # Vehicle-specific configuration
+├── comms/          # CAN bus communication
+├── database/       # Complete tuning database
+└── main.py         # Application entry point
+```
+
+## Safety Features
+
+- **Comprehensive Limits**: Boost, timing, temperature, and RPM limits
+- **Real-time Monitoring**: Continuous sensor data validation
+- **Emergency Shutdown**: Automatic system shutdown on safety violations
+- **Data Encryption**: Secure storage of calibration data
+- **Vehicle Validation**: Tuning files locked to specific VINs
+
+## Technical Specifications
+
+### Engine Support
+- 2011 Mazdaspeed 3
+- MZR 2.3L DISI Turbo engine
+- K04 turbocharger (Mitsubishi TD04-HL-15T-6)
+
+### Communication
+- CAN bus (500kbps)
+- ISO15765-4 (CAN) protocol
+- Real-time data acquisition
+- Diagnostic service support
+
+### AI & Physics
+- Reinforcement learning optimization
+- Real thermodynamic calculations
+- Turbocharger spool physics
+- Engine cycle analysis
+
+## Requirements
+
+- Python 3.8+
+- CAN interface hardware (optional for simulation mode)
+- Linux/Windows/macOS
+- 4GB RAM minimum
+
+## Dependencies
+
+- numpy: Numerical computations
+- torch: AI and machine learning
+- scipy: Scientific computing
+- sklearn: Machine learning algorithms
+- sqlalchemy: Database operations
+- cryptography: Security and encryption
+- python-can: CAN bus communication
+
+## License
+
+This project is for educational and research purposes only. Use at your own risk.
+
+## Disclaimer
+
+This software is provided as-is for educational purposes. The authors are not responsible for any damage, injury, or legal consequences resulting from its use. Always consult with qualified professionals before making modifications to your vehicle.
