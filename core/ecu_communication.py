@@ -15,6 +15,7 @@ from enum import Enum
 import logging
 
 from utils.logger import get_logger
+from core.safety_validator import get_safety_validator
 
 logger = get_logger(__name__)
 
@@ -73,6 +74,9 @@ class ECUCommunicator:
         self.security_level = 0
         self.session_active = False
         
+        # Safety integration
+        self.safety_validator = get_safety_validator()
+        
         # Threading
         self._lock = threading.RLock()
         self._response_handlers = {}
@@ -83,7 +87,8 @@ class ECUCommunicator:
             'messages_sent': 0,
             'messages_received': 0,
             'errors': 0,
-            'last_activity': 0
+            'last_activity': 0,
+            'safety_blocks': 0
         }
         
         logger.info(f"ECU Communicator initialized for interface {interface}")
@@ -158,6 +163,60 @@ class ECUCommunicator:
             logger.error(f"Connection test failed: {e}")
             return False
     
+    def _validate_safety_before_write(self, service: int, data: bytes = b'') -> bool:
+        """
+        Validate safety before any write operation
+        
+        Args:
+            service: Service ID
+            data: Data to be written
+            
+        Returns:
+            bool: True if operation is safe
+        """
+        try:
+            # Check if this is a write operation that needs validation
+            write_services = [
+                self.SERVICES['WRITE_DATA'],
+                self.SERVICES['WRITE_MEMORY'],
+                self.SERVICES['ROUTINE_CONTROL']
+            ]
+            
+            if service not in write_services:
+                return True  # Read operations don't need validation
+            
+            # Extract tuning parameters from data (simplified)
+            params = {}
+            if len(data) >= 8:
+                # Parse common tuning parameters from data
+                # This is a simplified implementation - real parsing would be more complex
+                if service == self.SERVICES['WRITE_DATA']:
+                    # Example: extract boost, timing, AFR from write data
+                    if len(data) >= 12:
+                        params['boost_target'] = struct.unpack('>f', data[0:4])[0]
+                        params['timing_base'] = struct.unpack('>f', data[4:8])[0]
+                        params['afr_target'] = struct.unpack('>f', data[8:12])[0]
+            
+            # Validate with safety system
+            if params:
+                is_safe, violations = self.safety_validator.validate_tuning_parameters(params)
+                
+                if not is_safe:
+                    logger.error(f"Safety validation blocked write operation: {len(violations)} violations")
+                    for violation in violations:
+                        logger.error(f"  {violation.message}")
+                    
+                    self.stats['safety_blocks'] += 1
+                    return False
+                else:
+                    logger.info("Safety validation passed for write operation")
+            
+            return True
+            
+        except Exception as e:
+            logger.error(f"Error in safety validation: {e}")
+            return False
+    
     def send_request(self, service: int, subfunction: int = 0, 
                     data: bytes = b'', timeout: float = 2.0) -> ECUResponse:
         """
@@ -176,6 +235,10 @@ class ECUCommunicator:
             with self._lock:
                 if self.state == ECUState.DISCONNECTED:
                     raise ConnectionError("ECU not connected")
+                
+                # SAFETY VALIDATION - CRITICAL FOR PRODUCTION
+                if not self._validate_safety_before_write(service, data):
+                    return ECUResponse(False, b'', time.time(), error_code=-4)
                 
                 # Construct message
                 message_data = bytes([service, subfunction]) + data

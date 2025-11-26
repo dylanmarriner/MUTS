@@ -10,18 +10,10 @@ import struct
 import threading
 from typing import Dict, List, Optional, Any, Callable
 from dataclasses import dataclass
-from core.ecu_communication import ECUCommunicator
+from core.ecu_communication import ECUCommunicator, ECUResponse
 from utils.logger import get_logger
 
 logger = get_logger(__name__)
-
-@dataclass
-class ECUResponse:
-    """Container for ECU response data"""
-    success: bool
-    data: bytes
-    timestamp: float
-    error_code: Optional[int] = None
 
 # VersaTuner specific extensions to the core ECUCommunicator
 class VersaTunerECU(ECUCommunicator):
