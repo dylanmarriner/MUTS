@@ -1,7 +1,7 @@
 import { FastifyPluginAsync } from 'fastify'
 import { z } from 'zod'
 import { prisma } from '../index'
-import { enforceWriteProtection, requireRealHardware } from '../middleware/operator-mode'
+import { enforceWriteProtection, requireRealHardware, requireConfirmation } from '../middleware/operator-mode'
 
 const diagnosticSessionSchema = z.object({
   ecuId: z.string(),
