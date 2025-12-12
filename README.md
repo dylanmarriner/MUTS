@@ -1,190 +1,162 @@
-# Mazda Universal Tuning Suite (MUTS)
+# MUTS - Mazda Universal Tuning System
 
-Complete autonomous tuning and diagnostic system for the 2011 Mazdaspeed 3.
+[![Build Status](https://github.com/dylanmarriner/MUTS/workflows/CI/badge.svg)](https://github.com/dylanmarriner/MUTS/actions)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Release](https://img.shields.io/github/v/release/dylanmarriner/MUTS)](https://github.com/dylanmarriner/MUTS/releases)
 
-## Features
+A professional tuning and diagnostic system for Mazda vehicles, built with safety and transparency as core principles.
 
-### 🚀 Autonomous AI Tuning
-- Real-time AI optimization using reinforcement learning
-- Physics-based engine modeling
-- Adaptive tuning algorithms
-- Safety-first approach with comprehensive limits
+## What MUTS IS
 
-### 🔧 Complete Diagnostic System
-- Full CAN bus communication with ECU
-- Diagnostic trouble code reading and clearing
-- Real-time sensor data acquisition
-- Dealer-level diagnostic capabilities
+- **Professional Diagnostic Tool**: Read and clear DTCs, view live data, and monitor vehicle systems
+- **Tuning Platform**: Safe tuning map editing and application with full audit trails
+- **AI-Assisted Learning**: ADD (Adaptive Decision) system learns from vehicle data to provide recommendations
+- **Multi-Protocol Support**: VERSA, MDS, and COBB tuning protocols
+- **Cross-Platform**: Windows, macOS, and Linux support
 
-### ⚡ Performance Features
-- Anti-lag system (ALS)
-- 2-step rev limiter
-- Launch control
-- Performance mode switching (Street/Track/Drag)
+## What MUTS is NOT
 
-### 🔒 Security & Safety
-- Encrypted calibration storage
-- Vehicle-specific tuning file validation
-- Comprehensive safety limits
-- Factory dealer access
+- **NOT an OEM Tool**: Not affiliated with Mazda Corporation
+- **NOT a "Chip Tune"**: No magic fixes - requires professional knowledge
+- **NOT a Toy**: Real ECU write capabilities with safety controls
+- **NOT a Data Faker**: Never shows fake data as real - see Safety Philosophy
 
-### 📊 Complete Database
-- Factory ECU calibration data
-- K04 turbocharger specifications
-- Engine component limits
-- Proprietary tuning secrets
+## Safety Philosophy
 
-## Safety Systems
+MUTS operates under strict safety principles:
 
-MUTS includes multiple layers of safety protection to prevent damage to the vehicle and ECU:
+1. **No Fake Data**: The system never displays fake or placeholder values as real data
+   - When no interface is connected: Shows `NOT_CONNECTED`
+   - When data is stale (>2s): Shows `STALE`
+   - All values are either real or explicitly marked as invalid
 
-## Parameter Validation
-- **Hard Limits**: Maximum boost (25 psi), timing (30°), minimum AFR (10.5), max RPM (7000)
-- **Mode-Specific Limits**: Different safety thresholds for Stock, Street, Track, Drag, and Safe modes
-- **Real-time Validation**: All tuning parameters are validated before being sent to the ECU
-- **Safety Override**: Password-protected override for advanced users (password: MUTS_OVERRIDE_2024)
+2. **Intentional Writes Only**: All ECU write operations require:
+   - WORKSHOP or LAB operator mode (never in DEV)
+   - Authenticated technician
+   - Active job tracking
+   - Explicit ARM confirmation
+   - Connected interface with vehicle present
 
-## Connection Health Monitoring
-- **Auto-Reconnect**: Automatically reconnects if CAN bus connection is lost
-- **Performance Metrics**: Tracks message rate, error rate, response times
-- **Health Status**: Excellent/Good/Poor/Disconnected status indicators
-- **Failure Detection**: Monitors consecutive failures and triggers recovery
+3. **Full Audit Trail**: Every operation is logged with:
+   - Technician ID
+   - Job ID
+   - Timestamp
+   - Operation details
+   - Success/failure status
 
-## ROM Integrity Protection
-- **Pre-Flash Verification**: Validates ROM size and checks for corruption before flashing
-- **Checksum Verification**: Multiple checksum algorithms (CRC16/32, MD5, SHA256, Mazda proprietary)
-- **Post-Flash Validation**: Complete ROM integrity verification after flashing
-- **Anti-Brick Protection**: Prevents flashing corrupted or incomplete ROM files
+## Operator Modes
 
-## Emergency Protection
-- **Live Data Monitoring**: Continuous monitoring of coolant temp, oil pressure, EGT
-- **Automatic Shutdown**: System can prevent dangerous operations in critical conditions
-- **Audit Logging**: All safety blocks and violations are logged for review
+### 🔧 DEV MODE (Default)
+- Safe for development and exploration
+- All ECU writes blocked
+- No authentication required
+- Perfect for learning the system
 
-## Safety Status
-The current safety system status can be checked in the GUI or via the API:
-```python
-from core.safety_validator import get_safety_validator
-safety = get_safety_validator()
-status = safety.get_safety_status()
-```
+### 🏭 WORKSHOP MODE
+- Professional tuning and diagnostics
+- ECU writes allowed with full authorization
+- Requires technician authentication
+- Complete audit trail
 
-# Installation
+### 🔬 LAB MODE
+- Development and testing
+- Similar to WORKSHOP with debug features
+- ECU writes allowed with proper authorization
+- Enhanced logging
 
+#### Configuration
+Set the operator mode in your `.env` file:
 ```bash
-# Clone the repository
-git clone https://github.com/yourusername/muts.git
-cd muts
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Initialize database
-python main.py db --init
+OPERATOR_MODE=dev  # Options: dev, workshop, lab
 ```
 
-## Usage
+The mode is locked at startup and requires a restart to change.
 
-### Start Autonomous Tuning
+## Supported Use Cases
+
+- **Diagnostics**: Read/clear DTCs, view live data, freeze frames
+- **Data Logging**: Record telemetry for analysis
+- **Tuning**: Safe map editing and application
+- **Learning**: ADD system analyzes data and provides recommendations
+- **Flashing**: ECU firmware updates with rollback capability
+
+## Hardware Requirements
+
+### Minimum
+- J2534 compatible interface
+- OBD-II cable
+- Computer with USB 2.0+
+- 4GB RAM
+- 500MB disk space
+
+### Recommended
+- VERSA J2534 interface
+- High-quality OBD-II cable
+- SSD for better performance
+- 8GB RAM
+- 2GB disk space
+
+## Installation
+
+### Download Installer
+1. Go to [Releases](https://github.com/dylanmarriner/MUTS/releases)
+2. Download for your platform:
+   - Windows: `.exe` installer
+   - macOS: `.dmg` disk image
+   - Linux: `.AppImage` or `.deb`
+
+### Verify Installation
+Check the SHA256 checksum:
 ```bash
-python main.py tune --start --mode street
+sha256sum MUTS-1.0.0-Installer.exe
 ```
 
-### Diagnostic Functions
-```bash
-# Connect to vehicle
-python main.py diag --connect
+### First Run
+See [FIRST_RUN.md](FIRST_RUN.md) for detailed setup instructions.
 
-# Read DTCs
-python main.py diag --dtc
+## Quick Start
 
-# Clear DTCs
-python main.py diag --clear
-```
+1. Launch MUTS
+2. Select Operator Mode (DEV for testing)
+3. Connect J2534 interface
+4. Identify vehicle
+5. Start with diagnostics
 
-### Security Access
-```bash
-# Request dealer access
-python main.py security --access dealer
+## Documentation
 
-# Check security status
-python main.py security --status
-```
+- [First Run Guide](FIRST_RUN.md)
+- [Contributing](CONTRIBUTING.md)
+- [Security Policy](SECURITY.md)
+- [CHANGELOG](CHANGELOG.md)
 
-### Performance Features
-```bash
-# Enable anti-lag system
-python main.py perf --als enable
+## Development
 
-# Enable launch control
-python main.py perf --launch enable
+Built with:
+- Backend: Node.js + TypeScript + Prisma
+- Desktop: Electron + React
+- Core: Rust
+- Database: SQLite
 
-# Set track mode
-python main.py perf --mode track
-```
+## Contributing
 
-## Architecture
-
-```
-muts/
-├── core/           # Main tuning system
-├── services/       # AI tuner, physics engine, dealer service, performance features
-├── models/         # Engine and turbo models
-├── utils/          # Calculations and security utilities
-├── config/         # Vehicle-specific configuration
-├── comms/          # CAN bus communication
-├── database/       # Complete tuning database
-└── main.py         # Application entry point
-```
-
-## Safety Features
-
-- **Comprehensive Limits**: Boost, timing, temperature, and RPM limits
-- **Real-time Monitoring**: Continuous sensor data validation
-- **Emergency Shutdown**: Automatic system shutdown on safety violations
-- **Data Encryption**: Secure storage of calibration data
-- **Vehicle Validation**: Tuning files locked to specific VINs
-
-## Technical Specifications
-
-### Engine Support
-- 2011 Mazdaspeed 3
-- MZR 2.3L DISI Turbo engine
-- K04 turbocharger (Mitsubishi TD04-HL-15T-6)
-
-### Communication
-- CAN bus (500kbps)
-- ISO15765-4 (CAN) protocol
-- Real-time data acquisition
-- Diagnostic service support
-
-### AI & Physics
-- Reinforcement learning optimization
-- Real thermodynamic calculations
-- Turbocharger spool physics
-- Engine cycle analysis
-
-## Requirements
-
-- Python 3.8+
-- CAN interface hardware (optional for simulation mode)
-- Linux/Windows/macOS
-- 4GB RAM minimum
-
-## Dependencies
-
-- numpy: Numerical computations
-- torch: AI and machine learning
-- scipy: Scientific computing
-- sklearn: Machine learning algorithms
-- sqlalchemy: Database operations
-- cryptography: Security and encryption
-- python-can: CAN bus communication
+See [CONTRIBUTING.md](CONTRIBUTING.md) for development guidelines.
 
 ## License
 
-This project is for educational and research purposes only. Use at your own risk.
+MIT License - see [LICENSE](LICENSE) file for details.
 
 ## Disclaimer
 
-This software is provided as-is for educational purposes. The authors are not responsible for any damage, injury, or legal consequences resulting from its use. Always consult with qualified professionals before making modifications to your vehicle.
+MUTS is not affiliated with Mazda Corporation. All trademarks are property of their respective owners.
+
+Use at your own risk. Always follow proper tuning procedures and ensure you have the necessary expertise and permissions.
+
+## Support
+
+- Issues: [GitHub Issues](https://github.com/dylanmarriner/MUTS/issues)
+- Security: See [SECURITY.md](SECURITY.md)
+- Discussions: [GitHub Discussions](https://github.com/dylanmarriner/MUTS/discussions)
+
+---
+
+**Made with ❤️ by Dylan Marriner**

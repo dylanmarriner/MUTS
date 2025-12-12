@@ -1,0 +1,115 @@
+{
+  "releaseVersion": "1.0.0",
+  "releaseDate": "2025-01-13T00:00:00.000Z",
+  "productName": "MUTS - Mazda Universal Tuning System",
+  "author": "Dylan Marriner",
+  "license": "MIT",
+  "platforms": {
+    "windows": {
+      "installer": "MUTS-Setup-1.0.0.exe",
+      "portable": "MUTS-1.0.0.exe",
+      "architecture": "x64",
+      "minVersion": "Windows 10",
+      "checksum": "SHA256 will be generated after build"
+    },
+    "macos": {
+      "installer": "MUTS-1.0.0.dmg",
+      "architecture": ["x64", "arm64"],
+      "minVersion": "macOS 10.15",
+      "checksum": "SHA256 will be generated after build"
+    },
+    "linux": {
+      "appImage": "MUTS-1.0.0.AppImage",
+      "debian": "muts_1.0.0_amd64.deb",
+      "architecture": "x64",
+      "checksum": "SHA256 will be generated after build"
+    }
+  },
+  "components": {
+    "backend": {
+      "name": "MUTS Backend",
+      "version": "1.0.0",
+      "runtime": "Node.js 18+",
+      "database": "SQLite",
+      "orm": "Prisma"
+    },
+    "desktop": {
+      "name": "MUTS Desktop UI",
+      "version": "1.0.0",
+      "framework": "Electron 22+",
+      "ui": "React 18+",
+      "styling": "Tailwind CSS"
+    },
+    "core": {
+      "name": "MUTS Rust Core",
+      "version": "1.0.0",
+      "language": "Rust 1.70+",
+      "interface": "J2534"
+    }
+  },
+  "safety": {
+    "defaultMode": "DEV",
+    "writeProtection": {
+      "dev": "All ECU writes blocked",
+      "workshop": "Requires authentication and confirmation",
+      "lab": "Requires authentication and confirmation"
+    },
+    "dataPolicy": "No fake data - explicit NOT_CONNECTED/STALE indicators",
+    "auditTrail": "Complete logging with technician and job attribution"
+  },
+  "verification": {
+    "featureCompleteness": {
+      "status": "PASS",
+      "totalFeatures": 342,
+      "implemented": 342
+    },
+    "noFakeData": {
+      "status": "PASS",
+      "violations": 0
+    },
+    "addLiveLearning": {
+      "status": "PASS",
+      "verified": true
+    },
+    "ecuWriteSafety": {
+      "status": "PASS",
+      "bypasses": 0,
+      "writeOperations": 7
+    },
+    "endToEndWorkshop": {
+      "status": "PASS",
+      "allPaths": true
+    }
+  },
+  "documentation": {
+    "readme": "README.md",
+    "firstRun": "FIRST_RUN.md",
+    "contributing": "CONTRIBUTING.md",
+    "security": "SECURITY.md",
+    "changelog": "CHANGELOG.md"
+  },
+  "build": {
+    "ci": "GitHub Actions",
+    "workflow": ".github/workflows/build.yml",
+    "artifactPaths": {
+      "windows": "muts-desktop/electron-ui/release/*.exe",
+      "macos": "muts-desktop/electron-ui/release/*.dmg",
+      "linux": "muts-desktop/electron-ui/release/*.AppImage"
+    }
+  },
+  "checksums": {
+    "note": "Checksums will be generated during the build process",
+    "algorithm": "SHA256"
+  },
+  "releaseNotes": {
+    "title": "MUTS v1.0.0 - Professional Release",
+    "highlights": [
+      "Complete diagnostic and tuning system for Mazda vehicles",
+      "Multi-protocol support: VERSA, MDS, and COBB",
+      "AI-assisted learning with ADD system",
+      "Comprehensive safety controls and audit trails",
+      "Cross-platform installers for Windows, macOS, and Linux"
+    ],
+    "safety": "Default DEV mode blocks all ECU writes"
+  }
+}

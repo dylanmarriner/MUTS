@@ -20,6 +20,30 @@ wheels/
 .installed.cfg
 *.egg
 
+# Rust
+target/
+Cargo.lock
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.npm
+.yarn-integrity
+
+# Build outputs
+dist/
+build/
+out/
+release/
+*.tgz
+*.tar.gz
+
+# Electron
+app/
+packages/
+
 # IDE
 .vscode/
 .idea/
@@ -33,9 +57,14 @@ logs/
 # Database
 *.db
 *.sqlite3
+*.sqlite
 
 # Environment
 .env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 .venv
 env/
 venv/
@@ -48,3 +77,10 @@ Thumbs.db
 # Temporary files
 *.tmp
 *.temp
+
+# Build artifacts (keep examples)
+build_artifacts/*.json
+build_artifacts/*.md
+!build_artifacts/*.example
+!build_artifacts/release_manifest.json
+!build_artifacts/installer_build_report.md
