@@ -1,0 +1,45 @@
+{
+  "name": "muts-core",
+  "version": "0.1.0",
+  "description": "MUTS Rust core with NAPI bindings",
+  "main": "index.js",
+  "napi": {
+    "name": "muts-core",
+    "triples": {
+      "defaults": true,
+      "additional": [
+        "x86_64-pc-windows-msvc",
+        "i686-pc-windows-msvc",
+        "x86_64-apple-darwin",
+        "aarch64-apple-darwin",
+        "x86_64-unknown-linux-gnu",
+        "x86_64-unknown-linux-musl",
+        "aarch64-unknown-linux-gnu",
+        "armv7-unknown-linux-gnueabihf"
+      ]
+    }
+  },
+  "scripts": {
+    "artifacts": "napi artifacts",
+    "build": "napi build --platform --release",
+    "build:debug": "napi build --platform",
+    "prepublishOnly": "napi prepublish -t npm",
+    "test": "cargo test",
+    "universal": "napi universal"
+  },
+  "devDependencies": {
+    "@napi-rs/cli": "^2.18.3"
+  },
+  "engines": {
+    "node": ">= 10"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/your-org/muts.git",
+    "directory": "muts-desktop/rust-core"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "@napi-rs/cli": "^2.18.3"
+  }
+}

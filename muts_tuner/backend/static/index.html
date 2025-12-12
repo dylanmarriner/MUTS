@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MUTS Tuner - ECU Tuning System</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+                'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+                sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .app-container {
+            min-height: 100vh;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .status-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ff4444;
+            animation: pulse 2s infinite;
+        }
+
+        .status-indicator.connected {
+            background: #44ff44;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        .main-content {
+            display: flex;
+            height: calc(100vh - 80px);
+        }
+
+        .sidebar {
+            width: 250px;
+            background: #2c3e50;
+            color: white;
+            padding: 1rem;
+            overflow-y: auto;
+        }
+
+        .nav-item {
+            padding: 0.75rem 1rem;
+            margin: 0.25rem 0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-item:hover {
+            background: #34495e;
+            transform: translateX(5px);
+        }
+
+        .nav-item.active {
+            background: #3498db;
+            box-shadow: 0 2px 8px rgba(52, 152, 219, 0.3);
+        }
+
+        .content-area {
+            flex: 1;
+            padding: 2rem;
+            overflow-y: auto;
+            background: #f8f9fa;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-header {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 0.5rem;
+        }
+
+        .gauge-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+            position: relative;
+        }
+
+        .gauge-value {
+            position: absolute;
+            font-size: 2rem;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .gauge-unit {
+            position: absolute;
+            font-size: 0.9rem;
+            color: #7f8c8d;
+            top: 60%;
+        }
+
+        .data-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+        }
+
+        .data-item {
+            text-align: center;
+            padding: 1rem;
+            background: #ecf0f1;
+            border-radius: 8px;
+            transition: background 0.3s ease;
+        }
+
+        .data-item:hover {
+            background: #d5dbdd;
+        }
+
+        .data-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .data-label {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+            margin-top: 0.25rem;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #2980b9, #21618c);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, #27ae60, #229954);
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: linear-gradient(135deg, #229954, #1e8449);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(39, 174, 96, 0.3);
+        }
+
+        .btn-danger {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: linear-gradient(135deg, #c0392b, #a93226);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(231, 76, 60, 0.3);
+        }
+
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .control-panel {
+            display: flex;
+            gap: 1rem;
+            margin: 1rem 0;
+            flex-wrap: wrap;
+        }
+
+        .status-message {
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            font-weight: 500;
+        }
+
+        .status-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .status-error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .status-warning {
+            background: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background: #ecf0f1;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 1rem 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #3498db, #2980b9);
+            transition: width 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .tune-list {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .tune-item {
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin: 0.5rem 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .tune-item:hover {
+            background: #f8f9fa;
+            border-color: #3498db;
+            transform: translateX(5px);
+        }
+
+        .tune-item.selected {
+            background: #e3f2fd;
+            border-color: #2196f3;
+        }
+
+        .connection-status {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+                height: auto;
+            }
+            
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect, useRef } = React;
+
+        // WebSocket connection manager
+        class WebSocketManager {
+            constructor() {
+                this.ws = null;
+                this.callbacks = {};
+                this.reconnectAttempts = 0;
+                this.maxReconnectAttempts = 5;
+                this.reconnectDelay = 1000;
+            }
+
+            connect(clientId = 'default') {
+                const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+                const wsUrl = `${protocol}//${window.location.host}/ws/${clientId}`;
+                
+                try {
+                    this.ws = new WebSocket(wsUrl);
+                    
+                    this.ws.onopen = () => {
+                        console.log('WebSocket connected');
+                        this.reconnectAttempts = 0;
+                        this.trigger('connected');
+                    };
+
+                    this.ws.onmessage = (event) => {
+                        try {
+                            const data = JSON.parse(event.data);
+                            this.trigger('message', data);
+                        } catch (error) {
+                            console.error('Failed to parse WebSocket message:', error);
+                        }
+                    };
+
+                    this.ws.onclose = () => {
+                        console.log('WebSocket disconnected');
+                        this.trigger('disconnected');
+                        this.attemptReconnect();
+                    };
+
+                    this.ws.onerror = (error) => {
+                        console.error('WebSocket error:', error);
+                        this.trigger('error', error);
+                    };
+                } catch (error) {
+                    console.error('Failed to create WebSocket connection:', error);
+                }
+            }
+
+            attemptReconnect() {
+                if (this.reconnectAttempts < this.maxReconnectAttempts) {
+                    this.reconnectAttempts++;
+                    console.log(`Attempting to reconnect (${this.reconnectAttempts}/${this.maxReconnectAttempts})`);
+                    
+                    setTimeout(() => {
+                        this.connect();
+                    }, this.reconnectDelay * this.reconnectAttempts);
+                }
+            }
+
+            send(data) {
+                if (this.ws && this.ws.readyState === WebSocket.OPEN) {
+                    this.ws.send(JSON.stringify(data));
+                }
+            }
+
+            on(event, callback) {
+                if (!this.callbacks[event]) {
+                    this.callbacks[event] = [];
+                }
+                this.callbacks[event].push(callback);
+            }
+
+            trigger(event, data) {
+                if (this.callbacks[event]) {
+                    this.callbacks[event].forEach(callback => callback(data));
+                }
+            }
+
+            disconnect() {
+                if (this.ws) {
+                    this.ws.close();
+                    this.ws = null;
+                }
+            }
+        }
+
+        // Gauge component for displaying values
+        function Gauge({ value, max, unit, label, color }) {
+            const canvasRef = useRef(null);
+
+            useEffect(() => {
+                const canvas = canvasRef.current;
+                if (!canvas) return;
+
+                const ctx = canvas.getContext('2d');
+                const centerX = canvas.width / 2;
+                const centerY = canvas.height / 2;
+                const radius = 70;
+
+                // Clear canvas
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                // Draw background arc
+                ctx.beginPath();
+                ctx.arc(centerX, centerY, radius, Math.PI, 2 * Math.PI);
+                ctx.strokeStyle = '#ecf0f1';
+                ctx.lineWidth = 15;
+                ctx.stroke();
+
+                // Draw value arc
+                const percentage = Math.min(value / max, 1);
+                const endAngle = Math.PI + (Math.PI * percentage);
+                
+                ctx.beginPath();
+                ctx.arc(centerX, centerY, radius, Math.PI, endAngle);
+                ctx.strokeStyle = color || '#3498db';
+                ctx.lineWidth = 15;
+                ctx.lineCap = 'round';
+                ctx.stroke();
+
+                // Draw center circle
+                ctx.beginPath();
+                ctx.arc(centerX, centerY, 5, 0, 2 * Math.PI);
+                ctx.fillStyle = color || '#3498db';
+                ctx.fill();
+
+            }, [value, max, color]);
+
+            return (
+                <div className="gauge-container">
+                    <canvas 
+                        ref={canvasRef}
+                        width={200}
+                        height={200}
+                    />
+                    <div className="gauge-value">{value.toFixed(1)}</div>
+                    <div className="gauge-unit">{unit}</div>
+                </div>
+            );
+        }
+
+        // Dashboard component
+        function Dashboard() {
+            const [ecuData, setEcuData] = useState({
+                rpm: 0,
+                speed: 0,
+                throttle: 0,
+                coolant_temp: 85,
+                intake_temp: 25,
+                boost: 0,
+                knock_correction: 0,
+                afr: 14.7
+            });
+            const [isConnected, setIsConnected] = useState(false);
+            const [wsManager] = useState(() => new WebSocketManager());
+
+            useEffect(() => {
+                // Connect to WebSocket
+                wsManager.connect('dashboard');
+
+                // Set up event handlers
+                wsManager.on('connected', () => {
+                    setIsConnected(true);
+                });
+
+                wsManager.on('disconnected', () => {
+                    setIsConnected(false);
+                });
+
+                wsManager.on('message', (data) => {
+                    if (data.type === 'live_data') {
+                        setEcuData(data.data);
+                    }
+                });
+
+                // Cleanup
+                return () => {
+                    wsManager.disconnect();
+                };
+            }, [wsManager]);
+
+            return (
+                <div className="dashboard-grid">
+                    <div className="card">
+                        <div className="card-header">Engine Speed</div>
+                        <Gauge 
+                            value={ecuData.rpm} 
+                            max={8000} 
+                            unit="RPM" 
+                            color="#e74c3c"
+                        />
+                    </div>
+
+                    <div className="card">
+                        <div className="card-header">Vehicle Speed</div>
+                        <Gauge 
+                            value={ecuData.speed} 
+                            max={200} 
+                            unit="km/h" 
+                            color="#3498db"
+                        />
+                    </div>
+
+                    <div className="card">
+                        <div className="card-header">Throttle Position</div>
+                        <Gauge 
+                            value={ecuData.throttle} 
+                            max={100} 
+                            unit="%" 
+                            color="#f39c12"
+                        />
+                    </div>
+
+                    <div className="card">
+                        <div className="card-header">Boost Pressure</div>
+                        <Gauge 
+                            value={ecuData.boost} 
+                            max={25} 
+                            unit="PSI" 
+                            color="#9b59b6"
+                        />
+                    </div>
+
+                    <div className="card">
+                        <div className="card-header">Engine Temperatures</div>
+                        <div className="data-grid">
+                            <div className="data-item">
+                                <div className="data-value">{ecuData.coolant_temp.toFixed(1)}</div>
+                                <div className="data-label">Coolant (°C)</div>
+                            </div>
+                            <div className="data-item">
+                                <div className="data-value">{ecuData.intake_temp.toFixed(1)}</div>
+                                <div className="data-label">Intake (°C)</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="card">
+                        <div className="card-header">Fuel & Ignition</div>
+                        <div className="data-grid">
+                            <div className="data-item">
+                                <div className="data-value">{ecuData.afr.toFixed(2)}</div>
+                                <div className="data-label">AFR</div>
+                            </div>
+                            <div className="data-item">
+                                <div className="data-value">{ecuData.knock_correction.toFixed(1)}</div>
+                                <div className="data-label">Knock (°)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+
+        // Tuning component
+        function Tuning() {
+            const [tunes, setTunes] = useState([]);
+            const [selectedTune, setSelectedTune] = useState(null);
+            const [flashProgress, setFlashProgress] = useState(0);
+            const [isFlashing, setIsFlashing] = useState(false);
+            const [status, setStatus] = useState('');
+
+            useEffect(() => {
+                loadTunes();
+            }, []);
+
+            const loadTunes = async () => {
+                try {
+                    const response = await fetch('/api/tunes');
+                    const data = await response.json();
+                    setTunes(data.tunes);
+                } catch (error) {
+                    setStatus('Failed to load tunes');
+                }
+            };
+
+            const flashTune = async (tuneId) => {
+                setIsFlashing(true);
+                setFlashProgress(0);
+                setStatus('Starting flash process...');
+
+                try {
+                    const response = await fetch(`/api/tunes/${tuneId}/flash`, {
+                        method: 'POST'
+                    });
+
+                    if (response.ok) {
+                        setStatus('Tune flashed successfully!');
+                    } else {
+                        setStatus('Flash failed');
+                    }
+                } catch (error) {
+                    setStatus('Flash error: ' + error.message);
+                } finally {
+                    setIsFlashing(false);
+                    setFlashProgress(0);
+                }
+            };
+
+            return (
+                <div>
+                    <div className="card">
+                        <div className="card-header">Available Tunes</div>
+                        <div className="tune-list">
+                            {tunes.map(tune => (
+                                <div 
+                                    key={tune.id}
+                                    className={`tune-item ${selectedTune?.id === tune.id ? 'selected' : ''}`}
+                                    onClick={() => setSelectedTune(tune)}
+                                >
+                                    <h3>{tune.name}</h3>
+                                    <p>{tune.description}</p>
+                                    <small>Power Gain: +{tune.power_gain} WHP | Fuel: {tune.fuel_type}</small>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    {selectedTune && (
+                        <div className="card">
+                            <div className="card-header">Flash Tune: {selectedTune.name}</div>
+                            <p>{selectedTune.description}</p>
+                            <p><strong>Power Gain:</strong> +{selectedTune.power_gain} WHP</p>
+                            <p><strong>Required Fuel:</strong> {selectedTune.fuel_type}</p>
+                            
+                            {isFlashing && (
+                                <div className="progress-bar">
+                                    <div 
+                                        className="progress-fill" 
+                                        style={{ width: `${flashProgress}%` }}
+                                    >
+                                        {flashProgress}%
+                                    </div>
+                                </div>
+                            )}
+                            
+                            <div className="control-panel">
+                                <button 
+                                    className="btn btn-success"
+                                    onClick={() => flashTune(selectedTune.id)}
+                                    disabled={isFlashing}
+                                >
+                                    {isFlashing ? 'Flashing...' : 'Flash Tune'}
+                                </button>
+                            </div>
+                            
+                            {status && (
+                                <div className={`status-message ${
+                                    status.includes('success') ? 'status-success' : 
+                                    status.includes('error') || status.includes('failed') ? 'status-error' : 
+                                    'status-warning'
+                                }`}>
+                                    {status}
+                                </div>
+                            )}
+                        </div>
+                    )}
+                </div>
+            );
+        }
+
+        // Diagnostics component
+        function Diagnostics() {
+            const [dtcs, setDtcs] = useState([]);
+            const [readiness, setReadiness] = useState({});
+            const [isScanning, setIsScanning] = useState(false);
+
+            useEffect(() => {
+                loadDiagnostics();
+            }, []);
+
+            const loadDiagnostics = async () => {
+                try {
+                    const response = await fetch('/api/diagnostics');
+                    const data = await response.json();
+                    setDtcs(data.dtcs);
+                    setReadiness(data.readiness_status);
+                } catch (error) {
+                    console.error('Failed to load diagnostics:', error);
+                }
+            };
+
+            const clearDtcs = async () => {
+                try {
+                    const response = await fetch('/api/diagnostics/clear', {
+                        method: 'POST'
+                    });
+                    
+                    if (response.ok) {
+                        setDtcs([]);
+                    }
+                } catch (error) {
+                    console.error('Failed to clear DTCs:', error);
+                }
+            };
+
+            return (
+                <div className="dashboard-grid">
+                    <div className="card">
+                        <div className="card-header">Diagnostic Trouble Codes</div>
+                        {dtcs.length === 0 ? (
+                            <p>No DTCs detected</p>
+                        ) : (
+                            <ul>
+                                {dtcs.map(dtc => (
+                                    <li key={dtc.code}>{dtc.code}: {dtc.description}</li>
+                                ))}
+                            </ul>
+                        )}
+                        <div className="control-panel">
+                            <button className="btn btn-primary" onClick={loadDiagnostics}>
+                                Scan for DTCs
+                            </button>
+                            <button className="btn btn-danger" onClick={clearDtcs} disabled={dtcs.length === 0}>
+                                Clear DTCs
+                            </button>
+                        </div>
+                    </div>
+
+                    <div className="card">
+                        <div className="card-header">Readiness Status</div>
+                        <div className="data-grid">
+                            {Object.entries(readiness).map(([system, ready]) => (
+                                <div key={system} className="data-item">
+                                    <div className="data-value" style={{ color: ready ? '#27ae60' : '#e74c3c' }}>
+                                        {ready ? '✓' : '✗'}
+                                    </div>
+                                    <div className="data-label">{system.replace('_', ' ')}</div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+
+        // Settings component
+        function Settings() {
+            const [vehicleInfo, setVehicleInfo] = useState({});
+
+            useEffect(() => {
+                loadVehicleInfo();
+            }, []);
+
+            const loadVehicleInfo = async () => {
+                try {
+                    const response = await fetch('/api/vehicle/info');
+                    const data = await response.json();
+                    setVehicleInfo(data);
+                } catch (error) {
+                    console.error('Failed to load vehicle info:', error);
+                }
+            };
+
+            return (
+                <div className="dashboard-grid">
+                    <div className="card">
+                        <div className="card-header">Vehicle Information</div>
+                        <div className="data-grid">
+                            <div className="data-item">
+                                <div className="data-value">{vehicleInfo.vin || 'Unknown'}</div>
+                                <div className="data-label">VIN</div>
+                            </div>
+                            <div className="data-item">
+                                <div className="data-value">{vehicleInfo.ecu_part_number || 'Unknown'}</div>
+                                <div className="data-label">ECU Part Number</div>
+                            </div>
+                            <div className="data-item">
+                                <div className="data-value">{vehicleInfo.calibration_id || 'Unknown'}</div>
+                                <div className="data-label">Calibration ID</div>
+                            </div>
+                            <div className="data-item">
+                                <div className="data-value">{vehicleInfo.software_version || 'Unknown'}</div>
+                                <div className="data-label">Software Version</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="card">
+                        <div className="card-header">Application Settings</div>
+                        <p>Configuration options will be available here.</p>
+                    </div>
+                </div>
+            );
+        }
+
+        // Main App component
+        function App() {
+            const [activeTab, setActiveTab] = useState('dashboard');
+            const [isConnected, setIsConnected] = useState(false);
+
+            useEffect(() => {
+                // Check connection status
+                const checkStatus = async () => {
+                    try {
+                        const response = await fetch('/api/status');
+                        const data = await response.json();
+                        setIsConnected(data.ecu_connected);
+                    } catch (error) {
+                        console.error('Failed to check status:', error);
+                    }
+                };
+
+                checkStatus();
+                const interval = setInterval(checkStatus, 5000);
+                return () => clearInterval(interval);
+            }, []);
+
+            const connectECU = async () => {
+                try {
+                    const response = await fetch('/api/ecu/connect', { method: 'POST' });
+                    const data = await response.json();
+                    if (data.success) {
+                        setIsConnected(true);
+                    }
+                } catch (error) {
+                    console.error('Failed to connect ECU:', error);
+                }
+            };
+
+            const disconnectECU = async () => {
+                try {
+                    const response = await fetch('/api/ecu/disconnect', { method: 'POST' });
+                    const data = await response.json();
+                    if (data.success) {
+                        setIsConnected(false);
+                    }
+                } catch (error) {
+                    console.error('Failed to disconnect ECU:', error);
+                }
+            };
+
+            const renderContent = () => {
+                switch (activeTab) {
+                    case 'dashboard':
+                        return <Dashboard />;
+                    case 'tuning':
+                        return <Tuning />;
+                    case 'diagnostics':
+                        return <Diagnostics />;
+                    case 'settings':
+                        return <Settings />;
+                    default:
+                        return <Dashboard />;
+                }
+            };
+
+            return (
+                <div className="app-container">
+                    <header className="header">
+                        <h1>
+                            <div className={`status-indicator ${isConnected ? 'connected' : ''}`}></div>
+                            MUTS Tuner
+                        </h1>
+                        <div className="connection-status">
+                            ECU: {isConnected ? 'Connected' : 'Disconnected'}
+                            <button 
+                                className="btn btn-primary"
+                                onClick={isConnected ? disconnectECU : connectECU}
+                                style={{ marginLeft: '1rem', padding: '0.5rem 1rem', fontSize: '0.8rem' }}
+                            >
+                                {isConnected ? 'Disconnect' : 'Connect'}
+                            </button>
+                        </div>
+                    </header>
+
+                    <div className="main-content">
+                        <aside className="sidebar">
+                            <div 
+                                className={`nav-item ${activeTab === 'dashboard' ? 'active' : ''}`}
+                                onClick={() => setActiveTab('dashboard')}
+                            >
+                                📊 Dashboard
+                            </div>
+                            <div 
+                                className={`nav-item ${activeTab === 'tuning' ? 'active' : ''}`}
+                                onClick={() => setActiveTab('tuning')}
+                            >
+                                ⚙️ Tuning
+                            </div>
+                            <div 
+                                className={`nav-item ${activeTab === 'diagnostics' ? 'active' : ''}`}
+                                onClick={() => setActiveTab('diagnostics')}
+                            >
+                                🔧 Diagnostics
+                            </div>
+                            <div 
+                                className={`nav-item ${activeTab === 'settings' ? 'active' : ''}`}
+                                onClick={() => setActiveTab('settings')}
+                            >
+                                ⚙️ Settings
+                            </div>
+                        </aside>
+
+                        <main className="content-area">
+                            {renderContent()}
+                        </main>
+                    </div>
+                </div>
+            );
+        }
+
+        // Render the app
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+</body>
+</html>

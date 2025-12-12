@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MUTS - Mazda Universal Tuning System</title>
+  <style>
+    /* Guaranteed fallback styles - always visible */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+      color: white;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    
+    .boot-screen {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      animation: fadeIn 0.5s ease-in;
+    }
+    
+    .logo {
+      width: 120px;
+      height: 120px;
+      background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+      font-weight: bold;
+      margin-bottom: 2rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+    
+    .title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      text-align: center;
+    }
+    
+    .subtitle {
+      font-size: 1.2rem;
+      opacity: 0.8;
+      margin-bottom: 3rem;
+      text-align: center;
+    }
+    
+    .status {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 1rem 2rem;
+      border-radius: 10px;
+      backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .spinner {
+      width: 20px;
+      height: 20px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-top-color: white;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    
+    .error {
+      background: rgba(239, 68, 68, 0.2);
+      border: 1px solid rgba(239, 68, 68, 0.5);
+      color: #fca5a5;
+    }
+    
+    .error .spinner {
+      border-top-color: #fca5a5;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    
+    /* Hide boot screen when React loads */
+    .react-loaded .boot-screen {
+      display: none;
+    }
+    
+    /* React app container - hidden initially */
+    #root {
+      display: none;
+      height: 100vh;
+    }
+    
+    .react-loaded #root {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <!-- Guaranteed boot screen - always visible -->
+  <div class="boot-screen" id="boot-screen">
+    <div class="logo">MUTS</div>
+    <h1 class="title">Mazda Universal Tuning System</h1>
+    <p class="subtitle">Professional ECU Tuning Platform</p>
+    <div class="status" id="status">
+      <div class="spinner"></div>
+      <span id="status-text">Initializing system...</span>
+    </div>
+  </div>
+  
+  <!-- React app container -->
+  <div id="root"></div>
+  
+  <!-- React bundle - will be replaced by Vite build -->
+  <script type="module" src="./main.tsx"></script>
+  
+  <!-- Fallback error handler -->
+  <script>
+    // Update status messages
+    const statusEl = document.getElementById('status');
+    const statusText = document.getElementById('status-text');
+    const bootScreen = document.getElementById('boot-screen');
+    
+    // Show loading progress
+    let loadingStep = 0;
+    const loadingMessages = [
+      'Initializing system...',
+      'Loading modules...',
+      'Preparing interface...',
+      'Almost ready...'
+    ];
+    
+    const loadingInterval = setInterval(() => {
+      loadingStep++;
+      if (loadingStep < loadingMessages.length) {
+        statusText.textContent = loadingMessages[loadingStep];
+      }
+    }, 1000);
+    
+    // Error handler for script loading failures
+    window.addEventListener('error', (e) => {
+      clearInterval(loadingInterval);
+      statusEl.classList.add('error');
+      statusText.textContent = 'Failed to load application. Please restart.';
+      console.error('Boot error:', e.error);
+    });
+    
+    // Timeout handler - show error if React doesn't load in 10 seconds
+    setTimeout(() => {
+      if (!document.body.classList.contains('react-loaded')) {
+        clearInterval(loadingInterval);
+        statusEl.classList.add('error');
+        statusText.textContent = 'Loading timeout. Check console for details.';
+      }
+    }, 10000);
+    
+    // Function to hide boot screen when React loads
+    window.hideBootScreen = function() {
+      clearInterval(loadingInterval);
+      document.body.classList.add('react-loaded');
+    };
+  </script>
+</body>
+</html>

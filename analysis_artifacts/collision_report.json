@@ -1,0 +1,106 @@
+{
+  "direct_duplicates": [
+    {
+      "files": [
+        "muts13.py",
+        "muts_tuner/complete_tuner/mds15.py"
+      ],
+      "type": "identical",
+      "size": "16845"
+    },
+    {
+      "files": [
+        "cobb10.py",
+        "cobb7.py"
+      ],
+      "type": "identical",
+      "size": "7284"
+    }
+  ],
+  "functional_overlaps": {
+    "security_algorithms": {
+      "implementation_count": 156,
+      "groups_involved": [
+        "ads",
+        "muts",
+        "security",
+        "other",
+        "versa",
+        "tuning",
+        "mpsrom",
+        "mds",
+        "cobb",
+        "diagnostic"
+      ],
+      "files": [
+        "EEPROMExploiter.py",
+        "MazdaCANEngine.py",
+        "MazdaSecurityCore.py",
+        "MazdaSpeed3TuningSoftware.py",
+        "MazdaTunerAPI.py",
+        "RacingFeatureController.py",
+        "RealTimeAITuner.py",
+        "RealTimeTelemetry.py",
+        "SRSAirbagExploiter.py",
+        "SecureDatabase.py"
+      ]
+    },
+    "can_protocols": {
+      "implementation_count": 157,
+      "groups_involved": [
+        "ads",
+        "muts",
+        "security",
+        "other",
+        "versa",
+        "tuning",
+        "mpsrom",
+        "mds",
+        "cobb",
+        "diagnostic"
+      ],
+      "files": [
+        "EEPROMExploiter.py",
+        "MazdaCANEngine.py",
+        "MazdaSecurityCore.py",
+        "MazdaSpeed3TuningSoftware.py",
+        "MazdaTunerAPI.py",
+        "RacingFeatureController.py",
+        "RealTimeTelemetry.py",
+        "SRSAirbagExploiter.py",
+        "add1.py",
+        "add13.py"
+      ]
+    },
+    "rom_operations": {
+      "implementation_count": 352,
+      "groups_involved": [
+        "ads",
+        "muts",
+        "security",
+        "other",
+        "versa",
+        "tuning",
+        "mpsrom",
+        "mds",
+        "cobb",
+        "diagnostic"
+      ],
+      "files": [
+        "MazdaSpeed3TuningSoftware.py",
+        "add1.py",
+        "add1.py",
+        "add16.py",
+        "add21.py",
+        "add21.py",
+        "add21.py",
+        "add6.py",
+        "add8.py",
+        "base_exploiter.py"
+      ]
+    }
+  },
+  "naming_conflicts": [],
+  "protocol_conflicts": [],
+  "security_conflicts": []
+}

@@ -1,0 +1,149 @@
+[
+  {
+    "file_path": "versa1.py",
+    "features_count": 28,
+    "components_count": 1,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "versa10.py",
+    "features_count": 10,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "versa11.py",
+    "features_count": 61,
+    "components_count": 1,
+    "algorithms_count": 1,
+    "risks_count": 0
+  },
+  {
+    "file_path": "versa12.py",
+    "features_count": 56,
+    "components_count": 1,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "versa13.py",
+    "features_count": 33,
+    "components_count": 2,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "versa14.py",
+    "features_count": 27,
+    "components_count": 1,
+    "algorithms_count": 1,
+    "risks_count": 0
+  },
+  {
+    "file_path": "versa15.py",
+    "features_count": 17,
+    "components_count": 1,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "versa16.json",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "versa16.py",
+    "features_count": 29,
+    "components_count": 2,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "versa17.json",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "versa18.py",
+    "features_count": 39,
+    "components_count": 3,
+    "algorithms_count": 1,
+    "risks_count": 0
+  },
+  {
+    "file_path": "versa19.py",
+    "features_count": 27,
+    "components_count": 3,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "versa2.py",
+    "features_count": 25,
+    "components_count": 1,
+    "algorithms_count": 4,
+    "risks_count": 0
+  },
+  {
+    "file_path": "versa20.md",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "versa3.py",
+    "features_count": 22,
+    "components_count": 2,
+    "algorithms_count": 1,
+    "risks_count": 0
+  },
+  {
+    "file_path": "versa4.py",
+    "features_count": 23,
+    "components_count": 2,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "versa5.py",
+    "features_count": 35,
+    "components_count": 2,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "versa6.py",
+    "features_count": 35,
+    "components_count": 2,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "versa7.py",
+    "features_count": 70,
+    "components_count": 1,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "versa8.py",
+    "features_count": 18,
+    "components_count": 3,
+    "algorithms_count": 1,
+    "risks_count": 0
+  },
+  {
+    "file_path": "versa9.py",
+    "features_count": 18,
+    "components_count": 1,
+    "algorithms_count": 0,
+    "risks_count": 0
+  }
+]

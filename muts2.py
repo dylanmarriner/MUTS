@@ -73,9 +73,9 @@ class SRSAirbag:
         for method in methods:
             if method():
                 self.srs_unlocked = True
-                print("SRS security
+                print("SRS security unlocked successfully")
                 
-        print("All SRS security  methods failed")
+        print("All SRS security methods failed")
         return False
 
     def _srs_manufacturer_backdoor(self) -> bool:

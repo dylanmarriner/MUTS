@@ -1,0 +1,170 @@
+[
+  {
+    "file_path": "add1.py",
+    "features_count": 33,
+    "components_count": 4,
+    "algorithms_count": 4,
+    "risks_count": 0
+  },
+  {
+    "file_path": "add10.py",
+    "features_count": 37,
+    "components_count": 5,
+    "algorithms_count": 6,
+    "risks_count": 0
+  },
+  {
+    "file_path": "add11.py",
+    "features_count": 21,
+    "components_count": 3,
+    "algorithms_count": 6,
+    "risks_count": 0
+  },
+  {
+    "file_path": "add12.py",
+    "features_count": 22,
+    "components_count": 2,
+    "algorithms_count": 9,
+    "risks_count": 0
+  },
+  {
+    "file_path": "add13.py",
+    "features_count": 6,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "add14.py",
+    "features_count": 26,
+    "components_count": 4,
+    "algorithms_count": 9,
+    "risks_count": 0
+  },
+  {
+    "file_path": "add15.py",
+    "features_count": 21,
+    "components_count": 2,
+    "algorithms_count": 9,
+    "risks_count": 0
+  },
+  {
+    "file_path": "add16.py",
+    "features_count": 41,
+    "components_count": 1,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "add17.py",
+    "features_count": 22,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "add18.py",
+    "features_count": 26,
+    "components_count": 2,
+    "algorithms_count": 1,
+    "risks_count": 0
+  },
+  {
+    "file_path": "add19.py",
+    "features_count": 42,
+    "components_count": 7,
+    "algorithms_count": 0,
+    "risks_count": 1
+  },
+  {
+    "file_path": "add2.py",
+    "features_count": 37,
+    "components_count": 5,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "add20.py",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "add21.py",
+    "features_count": 35,
+    "components_count": 3,
+    "algorithms_count": 1,
+    "risks_count": 0
+  },
+  {
+    "file_path": "add22.py",
+    "features_count": 35,
+    "components_count": 3,
+    "algorithms_count": 2,
+    "risks_count": 0
+  },
+  {
+    "file_path": "add23.py",
+    "features_count": 13,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "add24.py",
+    "features_count": 6,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "add3.py",
+    "features_count": 30,
+    "components_count": 4,
+    "algorithms_count": 5,
+    "risks_count": 0
+  },
+  {
+    "file_path": "add4.py",
+    "features_count": 14,
+    "components_count": 2,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "add5.py",
+    "features_count": 22,
+    "components_count": 3,
+    "algorithms_count": 10,
+    "risks_count": 0
+  },
+  {
+    "file_path": "add6.py",
+    "features_count": 35,
+    "components_count": 3,
+    "algorithms_count": 1,
+    "risks_count": 0
+  },
+  {
+    "file_path": "add7.py",
+    "features_count": 37,
+    "components_count": 5,
+    "algorithms_count": 6,
+    "risks_count": 0
+  },
+  {
+    "file_path": "add8.py",
+    "features_count": 35,
+    "components_count": 3,
+    "algorithms_count": 1,
+    "risks_count": 0
+  },
+  {
+    "file_path": "add9.py",
+    "features_count": 22,
+    "components_count": 3,
+    "algorithms_count": 10,
+    "risks_count": 0
+  }
+]

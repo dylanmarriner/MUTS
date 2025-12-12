@@ -1,0 +1,107 @@
+[
+  {
+    "file_path": "mds1.py",
+    "features_count": 39,
+    "components_count": 5,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "mds10.py",
+    "features_count": 44,
+    "components_count": 2,
+    "algorithms_count": 24,
+    "risks_count": 0
+  },
+  {
+    "file_path": "mds11.py",
+    "features_count": 50,
+    "components_count": 4,
+    "algorithms_count": 2,
+    "risks_count": 0
+  },
+  {
+    "file_path": "mds12.py",
+    "features_count": 27,
+    "components_count": 3,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "mds13.py",
+    "features_count": 25,
+    "components_count": 2,
+    "algorithms_count": 1,
+    "risks_count": 0
+  },
+  {
+    "file_path": "mds14.py",
+    "features_count": 40,
+    "components_count": 1,
+    "algorithms_count": 5,
+    "risks_count": 0
+  },
+  {
+    "file_path": "mds15.py",
+    "features_count": 33,
+    "components_count": 4,
+    "algorithms_count": 4,
+    "risks_count": 0
+  },
+  {
+    "file_path": "mds2.py",
+    "features_count": 38,
+    "components_count": 2,
+    "algorithms_count": 10,
+    "risks_count": 0
+  },
+  {
+    "file_path": "mds3.py",
+    "features_count": 21,
+    "components_count": 4,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "mds4.py",
+    "features_count": 30,
+    "components_count": 4,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "mds5.py",
+    "features_count": 37,
+    "components_count": 4,
+    "algorithms_count": 2,
+    "risks_count": 0
+  },
+  {
+    "file_path": "mds6.py",
+    "features_count": 24,
+    "components_count": 7,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "mds7.py",
+    "features_count": 31,
+    "components_count": 1,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "mds8.py",
+    "features_count": 43,
+    "components_count": 4,
+    "algorithms_count": 3,
+    "risks_count": 0
+  },
+  {
+    "file_path": "mds9.py",
+    "features_count": 20,
+    "components_count": 2,
+    "algorithms_count": 10,
+    "risks_count": 0
+  }
+]

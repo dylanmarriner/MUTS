@@ -6,12 +6,10 @@ COMPLETE ROM READER, MAP DEFINITIONS & LIVE DATA EXTRACTION
 """
 
 import struct
-import binascii
 import can
 import time
-from typing import Dict, List, Tuple, Any
+from typing import Dict, List
 from dataclasses import dataclass
-import crcmod
 import numpy as np
 
 @dataclass
@@ -162,9 +160,14 @@ class MazdaECUROMReader:
             self.can_bus.send(request)
             
             # Wait for response
-            response = self._receive_memory_data()
-            if response:
-                data.extend(response)
+            try:
+                response = self._receive_memory_data()
+                if response:
+                    data.extend(response)
+            except Exception:
+                # Handle receive timeout gracefully
+                print("Error receiving memory data")
+                return None
             
             address += chunk_size
             remaining -= chunk_size
@@ -196,7 +199,8 @@ class MazdaECUROMReader:
             if message and message.arbitration_id == 0x7E8:  # ECU response ID
                 if message.data[0] == 0x63:  # Positive response
                     return message.data[2:]  # Skip service ID and length
-        except:
+        except Exception:
+            # Handle receive timeout gracefully
             pass
         return None
     
@@ -230,18 +234,19 @@ class MazdaECUROMReader:
     
     def _parse_pid_value(self, data: bytes, formula: str) -> float:
         """PARSE PID VALUE USING DEFINED FORMULA"""
-        # Convert data to integers based on length
-        if len(data) == 1:
-            A = data[0]
-            return eval(formula)
-        elif len(data) == 2:
-            A, B = data[0], data[1]
-            return eval(formula)
-        elif len(data) == 4:
-            A, B, C, D = data[0], data[1], data[2], data[3]
-            return eval(formula)
+        # Import safe evaluator
+        from src.utils.safe_eval import evaluate_mpsrom_formula
         
-        return 0.0
+        # Convert data to integers
+        int_data = list(data)
+        
+        # Use safe evaluator instead of eval()
+        try:
+            return evaluate_mpsrom_formula(formula, int_data)
+        except Exception:
+            # Log error but don't fail
+            print("Warning: Failed to evaluate formula")
+            return 0.0
     
     def read_data_identifier(self, did: str) -> bytes:
         """READ DATA IDENTIFIER VIA UDS"""
@@ -391,7 +396,8 @@ class LiveDataMonitor:
         }
         
         # In real implementation, write to file or database
-        print(f"Data: {data}")
+        # For now, print the log entry structure
+        print(f"Log entry: {log_entry}")
     
     def stop_monitoring(self):
         """STOP LIVE DATA MONITORING"""

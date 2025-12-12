@@ -1,10 +1,8 @@
-            # Pistons
-            EngineComponentDatabase(
-                component_type="piston",
-                component_name="OEM Forged Piston",
-                oem_part_number="L3K9114071",
-                material="Aluminum Forged",
-                tensile_strength=350.0,
+from core.ecu_communication import ECUCommunicator, ECUResponse, ECUState
+from core.safety_validator import get_safety_validator
+from utils.logger import get_logger
+
+class ADD24ECUExploit:
                 yield_strength=280.0,
                 hardness="HB 120-140",
                 weight=420.0,

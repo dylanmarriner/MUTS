@@ -1,0 +1,56 @@
+{
+  "audit_complete": true,
+  "total_files_processed": 407,
+  "completion_time": "2025-12-12T23:41:56.900509",
+  "group_statistics": {
+    "ads": {
+      "file_count": 24,
+      "total_features": 618,
+      "total_components": 64,
+      "total_algorithms": 80,
+      "total_risks": 1
+    },
+    "cobb": {
+      "file_count": 13,
+      "total_features": 245,
+      "total_components": 15,
+      "total_algorithms": 0,
+      "total_risks": 0
+    },
+    "mpsrom": {
+      "file_count": 4,
+      "total_features": 151,
+      "total_components": 15,
+      "total_algorithms": 48,
+      "total_risks": 3
+    },
+    "muts": {
+      "file_count": 82,
+      "total_features": 1943,
+      "total_components": 196,
+      "total_algorithms": 153,
+      "total_risks": 10
+    },
+    "versa": {
+      "file_count": 21,
+      "total_features": 573,
+      "total_components": 29,
+      "total_algorithms": 9,
+      "total_risks": 0
+    },
+    "mds": {
+      "file_count": 15,
+      "total_features": 502,
+      "total_components": 49,
+      "total_algorithms": 61,
+      "total_risks": 0
+    },
+    "other": {
+      "file_count": 195,
+      "total_features": 2057,
+      "total_components": 286,
+      "total_algorithms": 31,
+      "total_risks": 23
+    }
+  }
+}

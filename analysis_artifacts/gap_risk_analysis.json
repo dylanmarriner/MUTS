@@ -1,0 +1,190 @@
+{
+  "gaps": {
+    "missing_features": [
+      {
+        "feature": "configparser",
+        "description": "Standard library module configparser not found in imports"
+      }
+    ],
+    "incomplete_implementations": [],
+    "documentation_gaps": []
+  },
+  "risks": {
+    "security_risks": [
+      {
+        "file": "RealTimeAITuner.py",
+        "description": "self.eval()"
+      },
+      {
+        "file": "SecureDatabase.py",
+        "description": "import tempfile"
+      },
+      {
+        "file": "SecureDatabase.py",
+        "description": "temp_dir = tempfile.mkdtemp()"
+      },
+      {
+        "file": "add19.py",
+        "description": "def test_ignition_map_retrieval(self):"
+      },
+      {
+        "file": "mpsrom.py",
+        "description": "return eval(formula)"
+      },
+      {
+        "file": "mpsrom.py",
+        "description": "return eval(formula)"
+      },
+      {
+        "file": "mpsrom.py",
+        "description": "return eval(formula)"
+      },
+      {
+        "file": "muts12.py",
+        "description": "import subprocess"
+      },
+      {
+        "file": "muts12.py",
+        "description": "result = subprocess.run(cmd, shell=True, capture_output=True, text=True)"
+      },
+      {
+        "file": "muts12.py",
+        "description": "result = subprocess.run(cmd, shell=True, capture_output=True, text=True)"
+      },
+      {
+        "file": "muts12.py",
+        "description": "subprocess.run(\"crontab /tmp/cron_job\", shell=True)"
+      },
+      {
+        "file": "muts12.py",
+        "description": "subprocess.run(\"crontab /tmp/cron_job\", shell=True)"
+      }
+    ],
+    "maintenance_risks": [],
+    "legal_risks": [],
+    "technical_risks": [
+      {
+        "file": "LICENSE",
+        "description": "Binary files may contain executable code"
+      },
+      {
+        "file": "MUTS_Technical_Spec.pdf",
+        "description": "Binary files may contain executable code"
+      },
+      {
+        "file": "MUTS_Technical_Spec_FULL.pdf",
+        "description": "Binary files may contain executable code"
+      },
+      {
+        "file": "Makefile",
+        "description": "Binary files may contain executable code"
+      },
+      {
+        "file": "installers/build_linux.sh",
+        "description": "Binary files may contain executable code"
+      },
+      {
+        "file": "installers/build_macos.sh",
+        "description": "Binary files may contain executable code"
+      },
+      {
+        "file": "installers/build_windows.bat",
+        "description": "Binary files may contain executable code"
+      },
+      {
+        "file": "logs/muts_20251127.log",
+        "description": "Binary files may contain executable code"
+      },
+      {
+        "file": "muts_technical_spec (2)/MUTS_Technical_Spec.pdf",
+        "description": "Binary files may contain executable code"
+      },
+      {
+        "file": "muts_technical_spec/MUTS_Technical_Spec.pdf",
+        "description": "Binary files may contain executable code"
+      },
+      {
+        "file": "muts_tuner/backend/static/index.html",
+        "description": "Binary files may contain executable code"
+      },
+      {
+        "file": "oracle-cloud-setup/a1-flex-deploy.log",
+        "description": "Binary files may contain executable code"
+      },
+      {
+        "file": "oracle-cloud-setup/console.log",
+        "description": "Binary files may contain executable code"
+      },
+      {
+        "file": "oracle-cloud-setup/console_latest.log",
+        "description": "Binary files may contain executable code"
+      },
+      {
+        "file": "oracle-cloud-setup/deploy-a1-flex-retry.sh",
+        "description": "Binary files may contain executable code"
+      },
+      {
+        "file": "oracle-cloud-setup/deploy-oracle-server.sh",
+        "description": "Binary files may contain executable code"
+      },
+      {
+        "file": "oracle-cloud-setup/known_hosts.tmp",
+        "description": "Binary files may contain executable code"
+      },
+      {
+        "file": "oracle-cloud-setup/remote-setup.sh",
+        "description": "Binary files may contain executable code"
+      },
+      {
+        "file": "oracle-cloud-setup/terraform/main.tf",
+        "description": "Binary files may contain executable code"
+      },
+      {
+        "file": "oracle-cloud-setup/terraform/terraform.tfstate",
+        "description": "Binary files may contain executable code"
+      },
+      {
+        "file": "oracle-cloud-setup/terraform/terraform.tfvars",
+        "description": "Binary files may contain executable code"
+      },
+      {
+        "file": "oracle-cloud-setup/terraform/tfplan",
+        "description": "Binary files may contain executable code"
+      },
+      {
+        "file": "oracle-cloud-setup/terraform/variables.tf",
+        "description": "Binary files may contain executable code"
+      },
+      {
+        "file": "pyproject.toml",
+        "description": "Binary files may contain executable code"
+      },
+      {
+        "file": "src/muts.egg-info/PKG-INFO",
+        "description": "Binary files may contain executable code"
+      }
+    ]
+  },
+  "opportunities": [
+    {
+      "opportunity": "Code Consolidation",
+      "description": "407 files contain significant duplication that can be reduced",
+      "impact": "High"
+    },
+    {
+      "opportunity": "Security Standardization",
+      "description": "Multiple security implementations can be unified",
+      "impact": "High"
+    },
+    {
+      "opportunity": "Protocol Abstraction",
+      "description": "CAN/ISO-TP protocols have multiple implementations",
+      "impact": "Medium"
+    },
+    {
+      "opportunity": "GUI Unification",
+      "description": "Multiple GUI frameworks can be consolidated",
+      "impact": "Medium"
+    }
+  ]
+}

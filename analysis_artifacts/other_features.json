@@ -1,0 +1,1367 @@
+[
+  {
+    "file_path": "ARCHITECTURE.md",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "ARCHITECTURE_DIAGRAM.txt",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "BUILD_INSTRUCTIONS.md",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "COMPLETE_IMPLEMENTATION_LIST.md",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "CONTRIBUTING.md",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "ECU_PROTOCOLS.md",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "EEPROMExploiter.py",
+    "features_count": 14,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "LICENSE",
+    "features_count": 1,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 1
+  },
+  {
+    "file_path": "MAPS_REFERENCE.md",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "Makefile",
+    "features_count": 1,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 1
+  },
+  {
+    "file_path": "MazdaCANEngine.py",
+    "features_count": 42,
+    "components_count": 3,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "MazdaTunerAPI.py",
+    "features_count": 43,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "README.md",
+    "features_count": 1,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "RacingFeatureController.py",
+    "features_count": 25,
+    "components_count": 7,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "RealTimeAITuner.py",
+    "features_count": 12,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 1
+  },
+  {
+    "file_path": "RealTimeTelemetry.py",
+    "features_count": 43,
+    "components_count": 6,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "SAFETY_MODEL.md",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "SRSAirbagExploiter.py",
+    "features_count": 23,
+    "components_count": 8,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "SecureDatabase.py",
+    "features_count": 34,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 2
+  },
+  {
+    "file_path": "agent.md",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "agents.md",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "analysis_artifacts/enumerate_files.py",
+    "features_count": 9,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "analyze_platforms.py",
+    "features_count": 12,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "base_exploiter.py",
+    "features_count": 33,
+    "components_count": 7,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "claude.md",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "comms/iso15765_transport.py",
+    "features_count": 13,
+    "components_count": 2,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "comms/j2534_api.py",
+    "features_count": 6,
+    "components_count": 1,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "comms/j2534_device.py",
+    "features_count": 15,
+    "components_count": 2,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "comms/j2534_manager.py",
+    "features_count": 16,
+    "components_count": 2,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "comms/kwp2000_protocol.py",
+    "features_count": 9,
+    "components_count": 2,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "comms/mazda_ecu.py",
+    "features_count": 19,
+    "components_count": 1,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "comms/uds_protocol.py",
+    "features_count": 19,
+    "components_count": 2,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "config/defaults.yml",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "config/j2534_devices.yml",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "config/logging.yml",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "config/maps_mps3_gen2.yml",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "config/safety_limits.yml",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "core/app_state.py",
+    "features_count": 35,
+    "components_count": 6,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "core/checksum.py",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "core/connection_monitor.py",
+    "features_count": 29,
+    "components_count": 3,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "core/data_manager.py",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "core/ecu_communication.py",
+    "features_count": 31,
+    "components_count": 3,
+    "algorithms_count": 1,
+    "risks_count": 0
+  },
+  {
+    "file_path": "core/factory_maps.py",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "core/limit_finder.py",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "core/logging_manager.py",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "core/rom_verifier.py",
+    "features_count": 22,
+    "components_count": 3,
+    "algorithms_count": 1,
+    "risks_count": 0
+  },
+  {
+    "file_path": "core/safety_limits.py",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "core/safety_validator.py",
+    "features_count": 19,
+    "components_count": 4,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "database/models.py",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "database/session.py",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "defaults.yml",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "docs/ARCHITECTURE.md",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "docs/ASSISTANT_PROMPTS/COPILOT_TASKS.md",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "docs/ASSISTANT_PROMPTS/HIGH_LEVEL_DIRECTIVE.md",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "docs/CONTRIBUTING.md",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "docs/ECU_PROTOCOLS.md",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "docs/IMPLEMENTATION_FLOWS.md",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "docs/MAPS_REFERENCE.md",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "docs/PRODUCT_SPEC.md",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "docs/ROADMAP.md",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "docs/SAFETY_MODEL.md",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "eeprom_exploiter.py",
+    "features_count": 22,
+    "components_count": 4,
+    "algorithms_count": 1,
+    "risks_count": 0
+  },
+  {
+    "file_path": "elm327_gui.py",
+    "features_count": 107,
+    "components_count": 12,
+    "algorithms_count": 1,
+    "risks_count": 0
+  },
+  {
+    "file_path": "example_telemetry_usage.py",
+    "features_count": 15,
+    "components_count": 1,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "fix_platforms.py",
+    "features_count": 31,
+    "components_count": 1,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "gui/main_window.py",
+    "features_count": 59,
+    "components_count": 7,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "hardware_factory.py",
+    "features_count": 28,
+    "components_count": 2,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "index.md",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "installers/build_linux.sh",
+    "features_count": 1,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 1
+  },
+  {
+    "file_path": "installers/build_macos.sh",
+    "features_count": 1,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 1
+  },
+  {
+    "file_path": "installers/build_windows.bat",
+    "features_count": 1,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 1
+  },
+  {
+    "file_path": "j2534_can_engine.py",
+    "features_count": 22,
+    "components_count": 2,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "j2534_devices.yml",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "logging.yml",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "logs/muts_20251127.log",
+    "features_count": 1,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 1
+  },
+  {
+    "file_path": "main.py",
+    "features_count": 6,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "maps_mps3_gen2.yml",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "mazda_can_engine.py",
+    "features_count": 44,
+    "components_count": 9,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "mazda_diag/__init__.py",
+    "features_count": 4,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "mazda_ecu_exploiter.py",
+    "features_count": 28,
+    "components_count": 6,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "mazda_memory_map.py",
+    "features_count": 40,
+    "components_count": 7,
+    "algorithms_count": 2,
+    "risks_count": 0
+  },
+  {
+    "file_path": "mazda_obd_service.py",
+    "features_count": 26,
+    "components_count": 8,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "mazda_protocols/__init__.py",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "mazda_tool/__init__.py",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "mazda_tool/core/__init__.py",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "mazda_tool/core/ai_tuner.py",
+    "features_count": 37,
+    "components_count": 3,
+    "algorithms_count": 1,
+    "risks_count": 0
+  },
+  {
+    "file_path": "mazda_tool/core/config_manager.py",
+    "features_count": 13,
+    "components_count": 1,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "mazda_tool/core/data_manager.py",
+    "features_count": 16,
+    "components_count": 1,
+    "algorithms_count": 2,
+    "risks_count": 0
+  },
+  {
+    "file_path": "mazda_tool/core/dyno_simulator.py",
+    "features_count": 13,
+    "components_count": 1,
+    "algorithms_count": 1,
+    "risks_count": 0
+  },
+  {
+    "file_path": "mazda_tool/core/mazdaspeed_knowledge.py",
+    "features_count": 12,
+    "components_count": 2,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "mazda_tool/core/obd_connection.py",
+    "features_count": 25,
+    "components_count": 1,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "mazda_tool/core/real_obd.py",
+    "features_count": 10,
+    "components_count": 1,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "mazda_tool/main.py",
+    "features_count": 20,
+    "components_count": 1,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "mazda_tool/modules/__init__.py",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "mazda_tool/ui/__init__.py",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "mazda_tool/ui/ai_learning_tab.py",
+    "features_count": 5,
+    "components_count": 1,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "mazda_tool/ui/help_system.py",
+    "features_count": 15,
+    "components_count": 1,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "mazda_tool/ui/main_window.py",
+    "features_count": 3,
+    "components_count": 1,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "mazda_tool/utils/__init__.py",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "mazda_tool/utils/logger.py",
+    "features_count": 5,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "mazda_tuner_api.py",
+    "features_count": 48,
+    "components_count": 7,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "mkdocs.yml",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "models.py",
+    "features_count": 21,
+    "components_count": 20,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "mps safe tune.py",
+    "features_count": 18,
+    "components_count": 2,
+    "algorithms_count": 1,
+    "risks_count": 0
+  },
+  {
+    "file_path": "mps tune.py",
+    "features_count": 18,
+    "components_count": 2,
+    "algorithms_count": 1,
+    "risks_count": 0
+  },
+  {
+    "file_path": "oracle-cloud-setup/README.md",
+    "features_count": 2,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "oracle-cloud-setup/a1-flex-deploy.log",
+    "features_count": 1,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 1
+  },
+  {
+    "file_path": "oracle-cloud-setup/console.log",
+    "features_count": 1,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 1
+  },
+  {
+    "file_path": "oracle-cloud-setup/console_latest.log",
+    "features_count": 1,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 1
+  },
+  {
+    "file_path": "oracle-cloud-setup/deploy-a1-flex-retry.sh",
+    "features_count": 1,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 1
+  },
+  {
+    "file_path": "oracle-cloud-setup/deploy-oracle-server.sh",
+    "features_count": 1,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 1
+  },
+  {
+    "file_path": "oracle-cloud-setup/known_hosts.tmp",
+    "features_count": 1,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 1
+  },
+  {
+    "file_path": "oracle-cloud-setup/remote-setup.sh",
+    "features_count": 1,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 1
+  },
+  {
+    "file_path": "oracle-cloud-setup/terraform/cloud-init.yml",
+    "features_count": 2,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "oracle-cloud-setup/terraform/main.tf",
+    "features_count": 1,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 1
+  },
+  {
+    "file_path": "oracle-cloud-setup/terraform/terraform.tfstate",
+    "features_count": 1,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 1
+  },
+  {
+    "file_path": "oracle-cloud-setup/terraform/terraform.tfvars",
+    "features_count": 1,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 1
+  },
+  {
+    "file_path": "oracle-cloud-setup/terraform/tfplan",
+    "features_count": 1,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 1
+  },
+  {
+    "file_path": "oracle-cloud-setup/terraform/variables.tf",
+    "features_count": 1,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 1
+  },
+  {
+    "file_path": "pids.py",
+    "features_count": 14,
+    "components_count": 4,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "pyproject.toml",
+    "features_count": 1,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 1
+  },
+  {
+    "file_path": "python_can_engine.py",
+    "features_count": 22,
+    "components_count": 2,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "real_time_ai_tuner.py",
+    "features_count": 45,
+    "components_count": 7,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "real_time_telemetry.py",
+    "features_count": 54,
+    "components_count": 6,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "requirements.txt",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "run_muts.py",
+    "features_count": 9,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "safety_limits.yml",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "secure_database.py",
+    "features_count": 27,
+    "components_count": 5,
+    "algorithms_count": 1,
+    "risks_count": 0
+  },
+  {
+    "file_path": "simulators/dyno_sim.py",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "simulators/virtual_ecu.py",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "src/muts.egg-info/PKG-INFO",
+    "features_count": 1,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 1
+  },
+  {
+    "file_path": "src/muts.egg-info/SOURCES.txt",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "src/muts.egg-info/dependency_links.txt",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "src/muts.egg-info/requires.txt",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "src/muts.egg-info/top_level.txt",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "src/muts/__init__.py",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "src/muts/__main__.py",
+    "features_count": 2,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "src/muts/app.py",
+    "features_count": 5,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "src/muts/gui/main_window.py",
+    "features_count": 36,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "src/muts/gui/tabs/cobb.py",
+    "features_count": 33,
+    "components_count": 8,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "src/muts/gui/tabs/comms.py",
+    "features_count": 4,
+    "components_count": 1,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "src/muts/gui/tabs/dashboard.py",
+    "features_count": 3,
+    "components_count": 1,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "src/muts/gui/tabs/dyno.py",
+    "features_count": 6,
+    "components_count": 1,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "src/muts/gui/tabs/integration.py",
+    "features_count": 11,
+    "components_count": 1,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "src/muts/gui/tabs/mds.py",
+    "features_count": 19,
+    "components_count": 6,
+    "algorithms_count": 1,
+    "risks_count": 0
+  },
+  {
+    "file_path": "src/muts/gui/tabs/mpsrom.py",
+    "features_count": 19,
+    "components_count": 5,
+    "algorithms_count": 2,
+    "risks_count": 0
+  },
+  {
+    "file_path": "src/muts/gui/tabs/muts.py",
+    "features_count": 19,
+    "components_count": 7,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "src/muts/gui/tabs/repository_explorer.py",
+    "features_count": 14,
+    "components_count": 2,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "src/muts/gui/tabs/tune_library.py",
+    "features_count": 10,
+    "components_count": 2,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "src/muts/gui/tabs/versa.py",
+    "features_count": 21,
+    "components_count": 6,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "src/muts/services/cobb_stack.py",
+    "features_count": 54,
+    "components_count": 9,
+    "algorithms_count": 1,
+    "risks_count": 0
+  },
+  {
+    "file_path": "src/muts/services/comms_service.py",
+    "features_count": 12,
+    "components_count": 3,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "src/muts/services/dyno.py",
+    "features_count": 1,
+    "components_count": 1,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "src/muts/services/integration_stack.py",
+    "features_count": 33,
+    "components_count": 2,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "src/muts/services/mazda_obd.py",
+    "features_count": 12,
+    "components_count": 1,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "src/muts/services/mds_stack.py",
+    "features_count": 27,
+    "components_count": 10,
+    "algorithms_count": 2,
+    "risks_count": 0
+  },
+  {
+    "file_path": "src/muts/services/metadata.py",
+    "features_count": 10,
+    "components_count": 1,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "src/muts/services/mpsrom_stack.py",
+    "features_count": 39,
+    "components_count": 6,
+    "algorithms_count": 10,
+    "risks_count": 0
+  },
+  {
+    "file_path": "src/muts/services/muts_stack.py",
+    "features_count": 27,
+    "components_count": 7,
+    "algorithms_count": 1,
+    "risks_count": 0
+  },
+  {
+    "file_path": "src/muts/services/queue.py",
+    "features_count": 7,
+    "components_count": 1,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "src/muts/services/repository_catalog.py",
+    "features_count": 13,
+    "components_count": 3,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "src/muts/services/torque_swas.py",
+    "features_count": 5,
+    "components_count": 1,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "src/muts/services/tune_library.py",
+    "features_count": 10,
+    "components_count": 2,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "src/muts/services/versa_stack.py",
+    "features_count": 29,
+    "components_count": 5,
+    "algorithms_count": 1,
+    "risks_count": 0
+  },
+  {
+    "file_path": "src/muts/storage.py",
+    "features_count": 12,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "test_core_system.py",
+    "features_count": 52,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "test_integration.py",
+    "features_count": 20,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "test_platform_imports.py",
+    "features_count": 9,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "test_real_time_telemetry.py",
+    "features_count": 23,
+    "components_count": 1,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "tests/test_comms.py",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "tests/test_live_data_service.py",
+    "features_count": 7,
+    "components_count": 1,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "tests/test_queue.py",
+    "features_count": 3,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "tests/test_ui_smoke.py",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "tools/export_tune_to_csv.py",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "tools/generate_dummy_logs.py",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "tools/import_stock_rom.py",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "ui/dialogs/cable_selector_dialog.py",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "ui/dialogs/flash_warning_dialog.py",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "ui/dialogs/log_export_dialog.py",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "ui/dialogs/tune_save_dialog.py",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "ui/main_window.py",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "ui/style.py",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "ui/tabs/dashboard_tab.py",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "ui/tabs/dyno_tab.py",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "ui/tabs/logs_tab.py",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "ui/tabs/torque_tab.py",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "ui/widgets/abs_srs_view.py",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "ui/widgets/connection_panel.py",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "ui/widgets/dtc_view.py",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "ui/widgets/dyno_view.py",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "ui/widgets/live_gauges.py",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "ui/widgets/logging_view.py",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "ui/widgets/map_table_editor.py",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "ui/widgets/torque_view.py",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "utils/logger.py",
+    "features_count": 20,
+    "components_count": 2,
+    "algorithms_count": 0,
+    "risks_count": 0
+  }
+]

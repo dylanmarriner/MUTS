@@ -1,0 +1,7392 @@
+{
+  "unique_components": {
+    "MazdaCANError": {
+      "file": "MazdaCANEngine.py",
+      "group": [
+        "other"
+      ],
+      "line": 22
+    },
+    "CANMessageID": {
+      "file": "MazdaCANEngine.py",
+      "group": [
+        "other"
+      ],
+      "line": 26
+    },
+    "SecurityAlgorithm": {
+      "file": "MazdaSecurityCore.py",
+      "group": [
+        "security"
+      ],
+      "line": 17
+    },
+    "TuneProfile": {
+      "file": "MazdaSpeed3TuningSoftware.py",
+      "group": [
+        "tuning"
+      ],
+      "line": 45
+    },
+    "FeatureState": {
+      "file": "RacingFeatureController.py",
+      "group": [
+        "other"
+      ],
+      "line": 22
+    },
+    "FeatureStatus": {
+      "file": "RacingFeatureController.py",
+      "group": [
+        "other"
+      ],
+      "line": 29
+    },
+    "LaunchControlMode": {
+      "file": "RacingFeatureController.py",
+      "group": [
+        "other"
+      ],
+      "line": 57
+    },
+    "AntiLagMode": {
+      "file": "RacingFeatureController.py",
+      "group": [
+        "other"
+      ],
+      "line": 65
+    },
+    "TwoStepMode": {
+      "file": "RacingFeatureController.py",
+      "group": [
+        "other"
+      ],
+      "line": 73
+    },
+    "RacingFeatureConfig": {
+      "file": "RacingFeatureController.py",
+      "group": [
+        "other"
+      ],
+      "line": 81
+    },
+    "CAN_ID": {
+      "file": "RealTimeTelemetry.py",
+      "group": [
+        "other"
+      ],
+      "line": 18
+    },
+    "TelemetryDataPoint": {
+      "file": "RealTimeTelemetry.py",
+      "group": [
+        "other"
+      ],
+      "line": 28
+    },
+    "TelemetryMetric": {
+      "file": "RealTimeTelemetry.py",
+      "group": [
+        "other"
+      ],
+      "line": 43
+    },
+    "CANMessageDecoder": {
+      "file": "RealTimeTelemetry.py",
+      "group": [
+        "other"
+      ],
+      "line": 102
+    },
+    "SRSError": {
+      "file": "SRSAirbagExploiter.py",
+      "group": [
+        "other"
+      ],
+      "line": 24
+    },
+    "SafetyError": {
+      "file": "SRSAirbagExploiter.py",
+      "group": [
+        "other"
+      ],
+      "line": 32
+    },
+    "SRSState": {
+      "file": "SRSAirbagExploiter.py",
+      "group": [
+        "other"
+      ],
+      "line": 36
+    },
+    "SRSSafetyCheck": {
+      "file": "SRSAirbagExploiter.py",
+      "group": [
+        "other"
+      ],
+      "line": 42
+    },
+    "SRSCrashData": {
+      "file": "SRSAirbagExploiter.py",
+      "group": [
+        "other"
+      ],
+      "line": 64
+    },
+    "SRSTransport": {
+      "file": "SRSAirbagExploiter.py",
+      "group": [
+        "other"
+      ],
+      "line": 611
+    },
+    "TestECUDatabase": {
+      "file": "add19.py",
+      "group": [
+        "ads"
+      ],
+      "line": 19
+    },
+    "TestPhysicsEngine": {
+      "file": "add19.py",
+      "group": [
+        "ads"
+      ],
+      "line": 37
+    },
+    "TestAITuning": {
+      "file": "add19.py",
+      "group": [
+        "ads"
+      ],
+      "line": 66
+    },
+    "TestPerformanceFeatures": {
+      "file": "add19.py",
+      "group": [
+        "ads"
+      ],
+      "line": 101
+    },
+    "TestTurboModels": {
+      "file": "add19.py",
+      "group": [
+        "ads"
+      ],
+      "line": 149
+    },
+    "TestSecurity": {
+      "file": "add19.py",
+      "group": [
+        "ads"
+      ],
+      "line": 175
+    },
+    "TestTuningSecrets": {
+      "file": "add19.py",
+      "group": [
+        "ads"
+      ],
+      "line": 215
+    },
+    "DarkWebIntelligence": {
+      "file": "add2.py",
+      "group": [
+        "ads"
+      ],
+      "line": 22
+    },
+    "BlackMarketTuning": {
+      "file": "add2.py",
+      "group": [
+        "ads"
+      ],
+      "line": 103
+    },
+    "CriminalEnterpriseTools": {
+      "file": "add2.py",
+      "group": [
+        "ads"
+      ],
+      "line": 182
+    },
+    "AdvancedExploitation": {
+      "file": "add2.py",
+      "group": [
+        "ads"
+      ],
+      "line": 254
+    },
+    "IllegalMarketAnalysis": {
+      "file": "add2.py",
+      "group": [
+        "ads"
+      ],
+      "line": 329
+    },
+    "DataLogger": {
+      "file": "add22.py",
+      "group": [
+        "ads"
+      ],
+      "line": 43
+    },
+    "DataAnalyzer": {
+      "file": "add22.py",
+      "group": [
+        "ads"
+      ],
+      "line": 578
+    },
+    "ExploiterError": {
+      "file": "base_exploiter.py",
+      "group": [
+        "other"
+      ],
+      "line": 24
+    },
+    "SecurityViolationError": {
+      "file": "base_exploiter.py",
+      "group": [
+        "other"
+      ],
+      "line": 29
+    },
+    "CommunicationError": {
+      "file": "base_exploiter.py",
+      "group": [
+        "other"
+      ],
+      "line": 34
+    },
+    "OperationError": {
+      "file": "base_exploiter.py",
+      "group": [
+        "other"
+      ],
+      "line": 39
+    },
+    "OperationResult": {
+      "file": "base_exploiter.py",
+      "group": [
+        "other"
+      ],
+      "line": 45
+    },
+    "ExploiterConfig": {
+      "file": "base_exploiter.py",
+      "group": [
+        "other"
+      ],
+      "line": 64
+    },
+    "BaseExploiter": {
+      "file": "base_exploiter.py",
+      "group": [
+        "other"
+      ],
+      "line": 82
+    },
+    "MZRCANProtocol": {
+      "file": "cobb1.py",
+      "group": [
+        "cobb"
+      ],
+      "line": 15
+    },
+    "FlashManager": {
+      "file": "cobb11.py",
+      "group": [
+        "cobb"
+      ],
+      "line": 13
+    },
+    "RealTimeMonitor": {
+      "file": "cobb12.py",
+      "group": [
+        "cobb"
+      ],
+      "line": 16
+    },
+    "LiveTuner": {
+      "file": "cobb12.py",
+      "group": [
+        "cobb"
+      ],
+      "line": 194
+    },
+    "MZRECU": {
+      "file": "cobb3.py",
+      "group": [
+        "cobb"
+      ],
+      "line": 13
+    },
+    "IsoTpError": {
+      "file": "comms/iso15765_transport.py",
+      "group": [
+        "other"
+      ],
+      "line": 21
+    },
+    "IsoTpTransport": {
+      "file": "comms/iso15765_transport.py",
+      "group": [
+        "other"
+      ],
+      "line": 24
+    },
+    "J2534Device": {
+      "file": "comms/j2534_device.py",
+      "group": [
+        "other"
+      ],
+      "line": 18
+    },
+    "DeviceConfig": {
+      "file": "comms/j2534_manager.py",
+      "group": [
+        "other"
+      ],
+      "line": 16
+    },
+    "J2534Manager": {
+      "file": "comms/j2534_manager.py",
+      "group": [
+        "other"
+      ],
+      "line": 23
+    },
+    "KwpError": {
+      "file": "comms/kwp2000_protocol.py",
+      "group": [
+        "other"
+      ],
+      "line": 10
+    },
+    "KwpClient": {
+      "file": "comms/kwp2000_protocol.py",
+      "group": [
+        "other"
+      ],
+      "line": 13
+    },
+    "MazdaEcu": {
+      "file": "comms/mazda_ecu.py",
+      "group": [
+        "other"
+      ],
+      "line": 19
+    },
+    "UdsError": {
+      "file": "comms/uds_protocol.py",
+      "group": [
+        "other"
+      ],
+      "line": 11
+    },
+    "UdsClient": {
+      "file": "comms/uds_protocol.py",
+      "group": [
+        "other"
+      ],
+      "line": 14
+    },
+    "SystemState": {
+      "file": "core/app_state.py",
+      "group": [
+        "other"
+      ],
+      "line": 18
+    },
+    "PerformanceMode": {
+      "file": "core/app_state.py",
+      "group": [
+        "other"
+      ],
+      "line": 28
+    },
+    "TuningParameters": {
+      "file": "core/app_state.py",
+      "group": [
+        "other"
+      ],
+      "line": 60
+    },
+    "SystemStatus": {
+      "file": "core/app_state.py",
+      "group": [
+        "other"
+      ],
+      "line": 76
+    },
+    "AppStateManager": {
+      "file": "core/app_state.py",
+      "group": [
+        "other"
+      ],
+      "line": 88
+    },
+    "ConnectionHealth": {
+      "file": "core/connection_monitor.py",
+      "group": [
+        "other"
+      ],
+      "line": 21
+    },
+    "ConnectionMetrics": {
+      "file": "core/connection_monitor.py",
+      "group": [
+        "other"
+      ],
+      "line": 30
+    },
+    "ConnectionHealthMonitor": {
+      "file": "core/connection_monitor.py",
+      "group": [
+        "other"
+      ],
+      "line": 40
+    },
+    "ChecksumInfo": {
+      "file": "core/rom_verifier.py",
+      "group": [
+        "other"
+      ],
+      "line": 29
+    },
+    "ROMChecksumVerifier": {
+      "file": "core/rom_verifier.py",
+      "group": [
+        "other"
+      ],
+      "line": 38
+    },
+    "SafetyLimits": {
+      "file": "core/safety_validator.py",
+      "group": [
+        "other"
+      ],
+      "line": 27
+    },
+    "SafetyViolation": {
+      "file": "core/safety_validator.py",
+      "group": [
+        "other"
+      ],
+      "line": 41
+    },
+    "AbsWheelSpeed": {
+      "file": "diagnostics/abs_module.py",
+      "group": [
+        "diagnostic"
+      ],
+      "line": 13
+    },
+    "AbsModule": {
+      "file": "diagnostics/abs_module.py",
+      "group": [
+        "diagnostic"
+      ],
+      "line": 19
+    },
+    "SwasState": {
+      "file": "diagnostics/bcm_module.py",
+      "group": [
+        "diagnostic"
+      ],
+      "line": 7
+    },
+    "BcmModule": {
+      "file": "diagnostics/bcm_module.py",
+      "group": [
+        "diagnostic"
+      ],
+      "line": 10
+    },
+    "DTC": {
+      "file": "diagnostics/dtc_manager.py",
+      "group": [
+        "diagnostic"
+      ],
+      "line": 11
+    },
+    "DtcManager": {
+      "file": "diagnostics/dtc_manager.py",
+      "group": [
+        "diagnostic"
+      ],
+      "line": 17
+    },
+    "FreezeFrame": {
+      "file": "diagnostics/freeze_frame.py",
+      "group": [
+        "diagnostic"
+      ],
+      "line": 8
+    },
+    "LiveDataSample": {
+      "file": "diagnostics/live_data.py",
+      "group": [
+        "diagnostic"
+      ],
+      "line": 12
+    },
+    "LiveDataPoller": {
+      "file": "diagnostics/live_data.py",
+      "group": [
+        "diagnostic"
+      ],
+      "line": 16
+    },
+    "LiveData": {
+      "file": "diagnostics/live_data_service.py",
+      "group": [
+        "diagnostic"
+      ],
+      "line": 12
+    },
+    "LiveDataService": {
+      "file": "diagnostics/live_data_service.py",
+      "group": [
+        "diagnostic"
+      ],
+      "line": 27
+    },
+    "SrsStatus": {
+      "file": "diagnostics/srs_module.py",
+      "group": [
+        "diagnostic"
+      ],
+      "line": 8
+    },
+    "SrsModule": {
+      "file": "diagnostics/srs_module.py",
+      "group": [
+        "diagnostic"
+      ],
+      "line": 13
+    },
+    "EEPROMError": {
+      "file": "eeprom_exploiter.py",
+      "group": [
+        "other"
+      ],
+      "line": 24
+    },
+    "EEPROMAccessError": {
+      "file": "eeprom_exploiter.py",
+      "group": [
+        "other"
+      ],
+      "line": 29
+    },
+    "EEPROMChecksumError": {
+      "file": "eeprom_exploiter.py",
+      "group": [
+        "other"
+      ],
+      "line": 34
+    },
+    "ELM327Commands": {
+      "file": "elm327_gui.py",
+      "group": [
+        "other"
+      ],
+      "line": 34
+    },
+    "Mazdaspeed3PIDs": {
+      "file": "elm327_gui.py",
+      "group": [
+        "other"
+      ],
+      "line": 56
+    },
+    "ELM327Interface": {
+      "file": "elm327_gui.py",
+      "group": [
+        "other"
+      ],
+      "line": 71
+    },
+    "AITuner": {
+      "file": "elm327_gui.py",
+      "group": [
+        "other"
+      ],
+      "line": 286
+    },
+    "AdvancedTuningMaps": {
+      "file": "elm327_gui.py",
+      "group": [
+        "other"
+      ],
+      "line": 376
+    },
+    "VirtualDyno": {
+      "file": "elm327_gui.py",
+      "group": [
+        "other"
+      ],
+      "line": 434
+    },
+    "EnhancedELM327Interface": {
+      "file": "elm327_gui.py",
+      "group": [
+        "other"
+      ],
+      "line": 461
+    },
+    "RealTimeGauge": {
+      "file": "elm327_gui.py",
+      "group": [
+        "other"
+      ],
+      "line": 494
+    },
+    "DataGraphWidget": {
+      "file": "elm327_gui.py",
+      "group": [
+        "other"
+      ],
+      "line": 540
+    },
+    "TuningMapWidget": {
+      "file": "elm327_gui.py",
+      "group": [
+        "other"
+      ],
+      "line": 589
+    },
+    "MazdaspeedTunerGUI": {
+      "file": "elm327_gui.py",
+      "group": [
+        "other"
+      ],
+      "line": 665
+    },
+    "EnhancedMazdaspeedTunerGUI": {
+      "file": "elm327_gui.py",
+      "group": [
+        "other"
+      ],
+      "line": 1036
+    },
+    "PlatformFixer": {
+      "file": "fix_platforms.py",
+      "group": [
+        "other"
+      ],
+      "line": 17
+    },
+    "GUIState": {
+      "file": "gui/main_window.py",
+      "group": [
+        "other"
+      ],
+      "line": 32
+    },
+    "PlatformConfig": {
+      "file": "gui/main_window.py",
+      "group": [
+        "other"
+      ],
+      "line": 42
+    },
+    "DataUpdateThread": {
+      "file": "gui/main_window.py",
+      "group": [
+        "other"
+      ],
+      "line": 50
+    },
+    "MUTSMainWindow": {
+      "file": "gui/main_window.py",
+      "group": [
+        "other"
+      ],
+      "line": 538
+    },
+    "HardwareBackend": {
+      "file": "hardware_factory.py",
+      "group": [
+        "other"
+      ],
+      "line": 18
+    },
+    "HardwareFactory": {
+      "file": "hardware_factory.py",
+      "group": [
+        "other"
+      ],
+      "line": 24
+    },
+    "J2534Config": {
+      "file": "j2534_can_engine.py",
+      "group": [
+        "other"
+      ],
+      "line": 24
+    },
+    "J2534CANEngine": {
+      "file": "j2534_can_engine.py",
+      "group": [
+        "other"
+      ],
+      "line": 56
+    },
+    "CANState": {
+      "file": "mazda_can_engine.py",
+      "group": [
+        "other"
+      ],
+      "line": 24
+    },
+    "CANInterfaceConfig": {
+      "file": "mazda_can_engine.py",
+      "group": [
+        "other"
+      ],
+      "line": 54
+    },
+    "CANStatistics": {
+      "file": "mazda_can_engine.py",
+      "group": [
+        "other"
+      ],
+      "line": 71
+    },
+    "CANInterfaceError": {
+      "file": "mazda_can_engine.py",
+      "group": [
+        "other"
+      ],
+      "line": 97
+    },
+    "CANProtocolError": {
+      "file": "mazda_can_engine.py",
+      "group": [
+        "other"
+      ],
+      "line": 102
+    },
+    "ECUInfo": {
+      "file": "mazda_ecu_exploiter.py",
+      "group": [
+        "other"
+      ],
+      "line": 27
+    },
+    "FlashSession": {
+      "file": "mazda_ecu_exploiter.py",
+      "group": [
+        "other"
+      ],
+      "line": 57
+    },
+    "ECUExploiterError": {
+      "file": "mazda_ecu_exploiter.py",
+      "group": [
+        "other"
+      ],
+      "line": 83
+    },
+    "ECUCommunicationError": {
+      "file": "mazda_ecu_exploiter.py",
+      "group": [
+        "other"
+      ],
+      "line": 88
+    },
+    "ECUFlashError": {
+      "file": "mazda_ecu_exploiter.py",
+      "group": [
+        "other"
+      ],
+      "line": 93
+    },
+    "MazdaECUExploiter": {
+      "file": "mazda_ecu_exploiter.py",
+      "group": [
+        "other"
+      ],
+      "line": 98
+    },
+    "AccessType": {
+      "file": "mazda_memory_map.py",
+      "group": [
+        "other"
+      ],
+      "line": 30
+    },
+    "MemoryRange": {
+      "file": "mazda_memory_map.py",
+      "group": [
+        "other"
+      ],
+      "line": 40
+    },
+    "CalibrationTable": {
+      "file": "mazda_memory_map.py",
+      "group": [
+        "other"
+      ],
+      "line": 80
+    },
+    "FlashSector": {
+      "file": "mazda_memory_map.py",
+      "group": [
+        "other"
+      ],
+      "line": 104
+    },
+    "MemoryMapError": {
+      "file": "mazda_memory_map.py",
+      "group": [
+        "other"
+      ],
+      "line": 118
+    },
+    "MazdaMemoryMap": {
+      "file": "mazda_memory_map.py",
+      "group": [
+        "other"
+      ],
+      "line": 123
+    },
+    "OBDCommandMode": {
+      "file": "mazda_obd_service.py",
+      "group": [
+        "other"
+      ],
+      "line": 21
+    },
+    "OBDResponseCode": {
+      "file": "mazda_obd_service.py",
+      "group": [
+        "other"
+      ],
+      "line": 35
+    },
+    "OBDPID": {
+      "file": "mazda_obd_service.py",
+      "group": [
+        "other"
+      ],
+      "line": 48
+    },
+    "OBDError": {
+      "file": "mazda_obd_service.py",
+      "group": [
+        "other"
+      ],
+      "line": 112
+    },
+    "OBDTimeoutError": {
+      "file": "mazda_obd_service.py",
+      "group": [
+        "other"
+      ],
+      "line": 117
+    },
+    "OBDProtocolError": {
+      "file": "mazda_obd_service.py",
+      "group": [
+        "other"
+      ],
+      "line": 122
+    },
+    "MazdaPIDRegistry": {
+      "file": "mazda_obd_service.py",
+      "group": [
+        "other"
+      ],
+      "line": 127
+    },
+    "AuthenticationError": {
+      "file": "mazda_security_core.py",
+      "group": [
+        "security"
+      ],
+      "line": 31
+    },
+    "AuthorizationError": {
+      "file": "mazda_security_core.py",
+      "group": [
+        "security"
+      ],
+      "line": 36
+    },
+    "MazdaAdvancedDiagnostics": {
+      "file": "mazda_tool/core/advanced_diagnostics.py",
+      "group": [
+        "diagnostic"
+      ],
+      "line": 2
+    },
+    "DrivingPattern": {
+      "file": "mazda_tool/core/ai_tuner.py",
+      "group": [
+        "other"
+      ],
+      "line": 13
+    },
+    "ConfigManager": {
+      "file": "mazda_tool/core/config_manager.py",
+      "group": [
+        "other"
+      ],
+      "line": 8
+    },
+    "MazdaDataManager": {
+      "file": "mazda_tool/core/data_manager.py",
+      "group": [
+        "other"
+      ],
+      "line": 8
+    },
+    "RealDynoSimulator": {
+      "file": "mazda_tool/core/dyno_simulator.py",
+      "group": [
+        "other"
+      ],
+      "line": 6
+    },
+    "TuningStrategy": {
+      "file": "mazda_tool/core/mazdaspeed_knowledge.py",
+      "group": [
+        "other"
+      ],
+      "line": 8
+    },
+    "MazdaspeedKnowledgeEngine": {
+      "file": "mazda_tool/core/mazdaspeed_knowledge.py",
+      "group": [
+        "other"
+      ],
+      "line": 15
+    },
+    "AdvancedOBD2Bluetooth": {
+      "file": "mazda_tool/core/obd_connection.py",
+      "group": [
+        "other"
+      ],
+      "line": 10
+    },
+    "RealOBDConnection": {
+      "file": "mazda_tool/core/real_obd.py",
+      "group": [
+        "other"
+      ],
+      "line": 6
+    },
+    "MazdaTechnicianTool": {
+      "file": "mazda_tool/main.py",
+      "group": [
+        "other"
+      ],
+      "line": 13
+    },
+    "AILearningTab": {
+      "file": "mazda_tool/ui/ai_learning_tab.py",
+      "group": [
+        "other"
+      ],
+      "line": 2
+    },
+    "DiagnosticDashboard": {
+      "file": "mazda_tool/ui/diagnostic_dashboard.py",
+      "group": [
+        "diagnostic"
+      ],
+      "line": 8
+    },
+    "MazdaspeedHelpSystem": {
+      "file": "mazda_tool/ui/help_system.py",
+      "group": [
+        "other"
+      ],
+      "line": 9
+    },
+    "UltimateMazdaTechnicianSuite": {
+      "file": "mazda_tool/ui/main_window.py",
+      "group": [
+        "other"
+      ],
+      "line": 2
+    },
+    "TelemetryResponse": {
+      "file": "mazda_tuner_api.py",
+      "group": [
+        "other"
+      ],
+      "line": 36
+    },
+    "TuningTargetRequest": {
+      "file": "mazda_tuner_api.py",
+      "group": [
+        "other"
+      ],
+      "line": 59
+    },
+    "SessionStartRequest": {
+      "file": "mazda_tuner_api.py",
+      "group": [
+        "other"
+      ],
+      "line": 69
+    },
+    "SessionResponse": {
+      "file": "mazda_tuner_api.py",
+      "group": [
+        "other"
+      ],
+      "line": 76
+    },
+    "APIResponse": {
+      "file": "mazda_tuner_api.py",
+      "group": [
+        "other"
+      ],
+      "line": 88
+    },
+    "ErrorResponse": {
+      "file": "mazda_tuner_api.py",
+      "group": [
+        "other"
+      ],
+      "line": 96
+    },
+    "SafetyResult": {
+      "file": "mazdaspeed3_tuning/core/safety_validator.py",
+      "group": [
+        "tuning"
+      ],
+      "line": 22
+    },
+    "VehicleState": {
+      "file": "models.py",
+      "group": [
+        "other"
+      ],
+      "line": 13
+    },
+    "CANPriority": {
+      "file": "models.py",
+      "group": [
+        "other"
+      ],
+      "line": 32
+    },
+    "ExploiterState": {
+      "file": "models.py",
+      "group": [
+        "other"
+      ],
+      "line": 71
+    },
+    "EEPROMOperation": {
+      "file": "models.py",
+      "group": [
+        "other"
+      ],
+      "line": 91
+    },
+    "ECUOperation": {
+      "file": "models.py",
+      "group": [
+        "other"
+      ],
+      "line": 102
+    },
+    "OBDPacket": {
+      "file": "models.py",
+      "group": [
+        "other"
+      ],
+      "line": 134
+    },
+    "TelemetryData": {
+      "file": "models.py",
+      "group": [
+        "other"
+      ],
+      "line": 151
+    },
+    "CANFilter": {
+      "file": "models.py",
+      "group": [
+        "other"
+      ],
+      "line": 323
+    },
+    "SafeFuelLimits": {
+      "file": "mps safe tune.py",
+      "group": [
+        "other"
+      ],
+      "line": 13
+    },
+    "SafePremiumFuelTuner": {
+      "file": "mps safe tune.py",
+      "group": [
+        "other"
+      ],
+      "line": 19
+    },
+    "PremiumFuelLimits": {
+      "file": "mps tune.py",
+      "group": [
+        "other"
+      ],
+      "line": 13
+    },
+    "PremiumFuelTuner": {
+      "file": "mps tune.py",
+      "group": [
+        "other"
+      ],
+      "line": 19
+    },
+    "MazdaECUROMReader": {
+      "file": "mpsrom.py",
+      "group": [
+        "mpsrom"
+      ],
+      "line": 26
+    },
+    "LiveDataMonitor": {
+      "file": "mpsrom.py",
+      "group": [
+        "mpsrom"
+      ],
+      "line": 356
+    },
+    "PerformanceTuningMap": {
+      "file": "muts/database/tuning_database.py",
+      "group": [
+        "muts",
+        "tuning"
+      ],
+      "line": 17
+    },
+    "TurbochargerDatabase": {
+      "file": "muts/database/tuning_database.py",
+      "group": [
+        "muts",
+        "tuning"
+      ],
+      "line": 45
+    },
+    "EngineComponentDatabase": {
+      "file": "muts/database/tuning_database.py",
+      "group": [
+        "muts",
+        "tuning"
+      ],
+      "line": 82
+    },
+    "TuningSecret": {
+      "file": "muts/database/tuning_database.py",
+      "group": [
+        "muts",
+        "tuning"
+      ],
+      "line": 113
+    },
+    "MazdaDealerSecurity": {
+      "file": "muts/services/dealer_service.py",
+      "group": [
+        "muts"
+      ],
+      "line": 18
+    },
+    "MazdaBackdoor": {
+      "file": "muts12.py",
+      "group": [
+        "muts"
+      ],
+      "line": 22
+    },
+    "J2534DeviceConfig": {
+      "file": "muts16.py",
+      "group": [
+        "muts"
+      ],
+      "line": 19
+    },
+    "CANBusConfig": {
+      "file": "muts16.py",
+      "group": [
+        "muts"
+      ],
+      "line": 28
+    },
+    "VehicleTarget": {
+      "file": "muts16.py",
+      "group": [
+        "muts"
+      ],
+      "line": 37
+    },
+    "HardwareInterfaceConfig": {
+      "file": "muts16.py",
+      "group": [
+        "muts"
+      ],
+      "line": 45
+    },
+    "VehicleSpecificData": {
+      "file": "muts16.py",
+      "group": [
+        "muts"
+      ],
+      "line": 172
+    },
+    "CalibrationData": {
+      "file": "muts16.py",
+      "group": [
+        "muts"
+      ],
+      "line": 357
+    },
+    "TestingData": {
+      "file": "muts16.py",
+      "group": [
+        "muts"
+      ],
+      "line": 480
+    },
+    "SystemConfiguration": {
+      "file": "muts16.py",
+      "group": [
+        "muts"
+      ],
+      "line": 608
+    },
+    "EEPROMPatch": {
+      "file": "muts3.py",
+      "group": [
+        "muts"
+      ],
+      "line": 17
+    },
+    "ComponentWearReset": {
+      "file": "muts3.py",
+      "group": [
+        "muts"
+      ],
+      "line": 651
+    },
+    "AITuningModel": {
+      "file": "muts4.py",
+      "group": [
+        "muts"
+      ],
+      "line": 344
+    },
+    "MazdaTunerFrontend": {
+      "file": "muts4.py",
+      "group": [
+        "muts"
+      ],
+      "line": 791
+    },
+    "TestMazdaTuner": {
+      "file": "muts4.py",
+      "group": [
+        "muts"
+      ],
+      "line": 1138
+    },
+    "DiagnosticExploiter": {
+      "file": "muts8.py",
+      "group": [
+        "muts"
+      ],
+      "line": 458
+    },
+    "PerformanceAnalytics": {
+      "file": "muts8.py",
+      "group": [
+        "muts"
+      ],
+      "line": 668
+    },
+    "EnhancedMazdaTunerAPI": {
+      "file": "muts8.py",
+      "group": [
+        "muts"
+      ],
+      "line": 808
+    },
+    "TestRacingFeatures": {
+      "file": "muts8.py",
+      "group": [
+        "muts"
+      ],
+      "line": 930
+    },
+    "Vehicle": {
+      "file": "muts9.py",
+      "group": [
+        "muts"
+      ],
+      "line": 5
+    },
+    "FlashService": {
+      "file": "muts_tuner/backend/flash_service.py",
+      "group": [
+        "muts"
+      ],
+      "line": 50
+    },
+    "TuneFile": {
+      "file": "muts_tuner/backend/main.py",
+      "group": [
+        "muts"
+      ],
+      "line": 54
+    },
+    "VehicleInfo": {
+      "file": "muts_tuner/backend/main.py",
+      "group": [
+        "muts"
+      ],
+      "line": 62
+    },
+    "ConnectionManager": {
+      "file": "muts_tuner/backend/main.py",
+      "group": [
+        "muts"
+      ],
+      "line": 70
+    },
+    "MockECUInterface": {
+      "file": "muts_tuner/backend/main.py",
+      "group": [
+        "muts"
+      ],
+      "line": 117
+    },
+    "TestBackendAPI": {
+      "file": "muts_tuner/backend/test_api.py",
+      "group": [
+        "muts"
+      ],
+      "line": 19
+    },
+    "TestWebSocketFunctionality": {
+      "file": "muts_tuner/backend/test_api.py",
+      "group": [
+        "muts"
+      ],
+      "line": 151
+    },
+    "TestECUInterface": {
+      "file": "muts_tuner/backend/test_api.py",
+      "group": [
+        "muts"
+      ],
+      "line": 211
+    },
+    "TestErrorHandling": {
+      "file": "muts_tuner/backend/test_api.py",
+      "group": [
+        "muts"
+      ],
+      "line": 249
+    },
+    "TestPerformance": {
+      "file": "muts_tuner/backend/test_api.py",
+      "group": [
+        "muts"
+      ],
+      "line": 273
+    },
+    "TestIntegrationWorkflow": {
+      "file": "muts_tuner/backend/test_api.py",
+      "group": [
+        "muts"
+      ],
+      "line": 340
+    },
+    "AdvancedModeWarning": {
+      "file": "muts_tuner/complete_tuner/advanced_ecu_access.py",
+      "group": [
+        "muts"
+      ],
+      "line": 22
+    },
+    "AdvancedECUAccess": {
+      "file": "muts_tuner/complete_tuner/advanced_ecu_access.py",
+      "group": [
+        "muts"
+      ],
+      "line": 75
+    },
+    "IntegrationTest": {
+      "file": "muts_tuner/complete_tuner/integration_test.py",
+      "group": [
+        "muts"
+      ],
+      "line": 26
+    },
+    "CalibrationStatus": {
+      "file": "muts_tuner/complete_tuner/mazda_calibration_manager.py",
+      "group": [
+        "muts"
+      ],
+      "line": 43
+    },
+    "CalibrationFile": {
+      "file": "muts_tuner/complete_tuner/mazda_calibration_manager.py",
+      "group": [
+        "muts"
+      ],
+      "line": 71
+    },
+    "MazdaCalibrationManager": {
+      "file": "muts_tuner/complete_tuner/mazda_calibration_manager.py",
+      "group": [
+        "muts"
+      ],
+      "line": 80
+    },
+    "CommunicationMethod": {
+      "file": "muts_tuner/complete_tuner/mazda_ecu_core.py",
+      "group": [
+        "muts"
+      ],
+      "line": 26
+    },
+    "ECUConnection": {
+      "file": "muts_tuner/complete_tuner/mazda_ecu_core.py",
+      "group": [
+        "muts"
+      ],
+      "line": 33
+    },
+    "MazdaECUCore": {
+      "file": "muts_tuner/complete_tuner/mazda_ecu_core.py",
+      "group": [
+        "muts"
+      ],
+      "line": 42
+    },
+    "ConnectionWorker": {
+      "file": "muts_tuner/complete_tuner/mazda_tuner_gui.py",
+      "group": [
+        "muts"
+      ],
+      "line": 33
+    },
+    "SecurityWorker": {
+      "file": "muts_tuner/complete_tuner/mazda_tuner_gui.py",
+      "group": [
+        "muts"
+      ],
+      "line": 64
+    },
+    "MemoryWorker": {
+      "file": "muts_tuner/complete_tuner/mazda_tuner_gui.py",
+      "group": [
+        "muts"
+      ],
+      "line": 93
+    },
+    "MazdaTunerGUI": {
+      "file": "muts_tuner/complete_tuner/mazda_tuner_gui.py",
+      "group": [
+        "muts"
+      ],
+      "line": 124
+    },
+    "MDSCompatibilityLayer": {
+      "file": "muts_tuner/complete_tuner/mds_compatibility.py",
+      "group": [
+        "muts"
+      ],
+      "line": 27
+    },
+    "J2534FilterType": {
+      "file": "muts_tuner/j2534_interface.py",
+      "group": [
+        "muts"
+      ],
+      "line": 33
+    },
+    "J2534ErrorCode": {
+      "file": "muts_tuner/j2534_interface.py",
+      "group": [
+        "muts"
+      ],
+      "line": 39
+    },
+    "J2534Message": {
+      "file": "muts_tuner/j2534_interface.py",
+      "group": [
+        "muts"
+      ],
+      "line": 70
+    },
+    "ServiceType": {
+      "file": "pids.py",
+      "group": [
+        "other"
+      ],
+      "line": 12
+    },
+    "PIDDefinition": {
+      "file": "pids.py",
+      "group": [
+        "other"
+      ],
+      "line": 26
+    },
+    "Mazdaspeed3DiagnosticDatabase": {
+      "file": "pids.py",
+      "group": [
+        "other"
+      ],
+      "line": 47
+    },
+    "PythonCANConfig": {
+      "file": "python_can_engine.py",
+      "group": [
+        "other"
+      ],
+      "line": 23
+    },
+    "PythonCANEngine": {
+      "file": "python_can_engine.py",
+      "group": [
+        "other"
+      ],
+      "line": 50
+    },
+    "AIModelType": {
+      "file": "real_time_ai_tuner.py",
+      "group": [
+        "other"
+      ],
+      "line": 31
+    },
+    "TuningTarget": {
+      "file": "real_time_ai_tuner.py",
+      "group": [
+        "other"
+      ],
+      "line": 41
+    },
+    "ModelMetrics": {
+      "file": "real_time_ai_tuner.py",
+      "group": [
+        "other"
+      ],
+      "line": 63
+    },
+    "AITunerError": {
+      "file": "real_time_ai_tuner.py",
+      "group": [
+        "other"
+      ],
+      "line": 84
+    },
+    "ModelNotTrainedError": {
+      "file": "real_time_ai_tuner.py",
+      "group": [
+        "other"
+      ],
+      "line": 89
+    },
+    "InsufficientDataError": {
+      "file": "real_time_ai_tuner.py",
+      "group": [
+        "other"
+      ],
+      "line": 94
+    },
+    "TelemetryState": {
+      "file": "real_time_telemetry.py",
+      "group": [
+        "other"
+      ],
+      "line": 28
+    },
+    "TelemetryConfig": {
+      "file": "real_time_telemetry.py",
+      "group": [
+        "other"
+      ],
+      "line": 38
+    },
+    "TelemetryStats": {
+      "file": "real_time_telemetry.py",
+      "group": [
+        "other"
+      ],
+      "line": 71
+    },
+    "TelemetryError": {
+      "file": "real_time_telemetry.py",
+      "group": [
+        "other"
+      ],
+      "line": 103
+    },
+    "TelemetryConfigError": {
+      "file": "real_time_telemetry.py",
+      "group": [
+        "other"
+      ],
+      "line": 108
+    },
+    "SessionPhase": {
+      "file": "real_time_tuning_session.py",
+      "group": [
+        "tuning"
+      ],
+      "line": 28
+    },
+    "SessionState": {
+      "file": "real_time_tuning_session.py",
+      "group": [
+        "tuning"
+      ],
+      "line": 41
+    },
+    "SessionConfig": {
+      "file": "real_time_tuning_session.py",
+      "group": [
+        "tuning"
+      ],
+      "line": 50
+    },
+    "PhaseResult": {
+      "file": "real_time_tuning_session.py",
+      "group": [
+        "tuning"
+      ],
+      "line": 71
+    },
+    "RollbackData": {
+      "file": "real_time_tuning_session.py",
+      "group": [
+        "tuning"
+      ],
+      "line": 86
+    },
+    "TuningSessionError": {
+      "file": "real_time_tuning_session.py",
+      "group": [
+        "tuning"
+      ],
+      "line": 103
+    },
+    "SessionPhaseError": {
+      "file": "real_time_tuning_session.py",
+      "group": [
+        "tuning"
+      ],
+      "line": 108
+    },
+    "RollbackFailedError": {
+      "file": "real_time_tuning_session.py",
+      "group": [
+        "tuning"
+      ],
+      "line": 113
+    },
+    "RealTimeTuningSession": {
+      "file": "real_time_tuning_session.py",
+      "group": [
+        "tuning"
+      ],
+      "line": 118
+    },
+    "DatabaseError": {
+      "file": "secure_database.py",
+      "group": [
+        "other"
+      ],
+      "line": 26
+    },
+    "DatabaseConnectionError": {
+      "file": "secure_database.py",
+      "group": [
+        "other"
+      ],
+      "line": 31
+    },
+    "DatabaseSecurityError": {
+      "file": "secure_database.py",
+      "group": [
+        "other"
+      ],
+      "line": 36
+    },
+    "DatabaseConfig": {
+      "file": "secure_database.py",
+      "group": [
+        "other"
+      ],
+      "line": 42
+    },
+    "CobbTab": {
+      "file": "src/muts/gui/tabs/cobb.py",
+      "group": [
+        "other"
+      ],
+      "line": 8
+    },
+    "CobbSecurityWidget": {
+      "file": "src/muts/gui/tabs/cobb.py",
+      "group": [
+        "other"
+      ],
+      "line": 32
+    },
+    "CobbJ2534Widget": {
+      "file": "src/muts/gui/tabs/cobb.py",
+      "group": [
+        "other"
+      ],
+      "line": 67
+    },
+    "CobbMapWidget": {
+      "file": "src/muts/gui/tabs/cobb.py",
+      "group": [
+        "other"
+      ],
+      "line": 131
+    },
+    "CobbHardwareWidget": {
+      "file": "src/muts/gui/tabs/cobb.py",
+      "group": [
+        "other"
+      ],
+      "line": 172
+    },
+    "CobbOBDWidget": {
+      "file": "src/muts/gui/tabs/cobb.py",
+      "group": [
+        "other"
+      ],
+      "line": 209
+    },
+    "CobbFlashWidget": {
+      "file": "src/muts/gui/tabs/cobb.py",
+      "group": [
+        "other"
+      ],
+      "line": 241
+    },
+    "CobbRealtimeWidget": {
+      "file": "src/muts/gui/tabs/cobb.py",
+      "group": [
+        "other"
+      ],
+      "line": 265
+    },
+    "CommsTab": {
+      "file": "src/muts/gui/tabs/comms.py",
+      "group": [
+        "other"
+      ],
+      "line": 5
+    },
+    "DiagnosticLibraryTab": {
+      "file": "src/muts/gui/tabs/diagnostic_library.py",
+      "group": [
+        "diagnostic"
+      ],
+      "line": 8
+    },
+    "PIDLibraryWidget": {
+      "file": "src/muts/gui/tabs/diagnostic_library.py",
+      "group": [
+        "diagnostic"
+      ],
+      "line": 21
+    },
+    "DTCLibraryWidget": {
+      "file": "src/muts/gui/tabs/diagnostic_library.py",
+      "group": [
+        "diagnostic"
+      ],
+      "line": 62
+    },
+    "DynoTab": {
+      "file": "src/muts/gui/tabs/dyno.py",
+      "group": [
+        "other"
+      ],
+      "line": 4
+    },
+    "IntegrationTab": {
+      "file": "src/muts/gui/tabs/integration.py",
+      "group": [
+        "other"
+      ],
+      "line": 10
+    },
+    "MDSTab": {
+      "file": "src/muts/gui/tabs/mds.py",
+      "group": [
+        "other"
+      ],
+      "line": 14
+    },
+    "MDSProtocolWidget": {
+      "file": "src/muts/gui/tabs/mds.py",
+      "group": [
+        "other"
+      ],
+      "line": 39
+    },
+    "MDSSecurityWidget": {
+      "file": "src/muts/gui/tabs/mds.py",
+      "group": [
+        "other"
+      ],
+      "line": 62
+    },
+    "MDSDiagnosticsWidget": {
+      "file": "src/muts/gui/tabs/mds.py",
+      "group": [
+        "other"
+      ],
+      "line": 79
+    },
+    "MDSCalibrationWidget": {
+      "file": "src/muts/gui/tabs/mds.py",
+      "group": [
+        "other"
+      ],
+      "line": 104
+    },
+    "MDSChecksumWidget": {
+      "file": "src/muts/gui/tabs/mds.py",
+      "group": [
+        "other"
+      ],
+      "line": 123
+    },
+    "MPSROMTab": {
+      "file": "src/muts/gui/tabs/mpsrom.py",
+      "group": [
+        "other"
+      ],
+      "line": 8
+    },
+    "MPSROMStructureWidget": {
+      "file": "src/muts/gui/tabs/mpsrom.py",
+      "group": [
+        "other"
+      ],
+      "line": 27
+    },
+    "MPSChecksumWidget": {
+      "file": "src/muts/gui/tabs/mpsrom.py",
+      "group": [
+        "other"
+      ],
+      "line": 65
+    },
+    "MPSecurityWidget": {
+      "file": "src/muts/gui/tabs/mpsrom.py",
+      "group": [
+        "other"
+      ],
+      "line": 96
+    },
+    "MPSMapWidget": {
+      "file": "src/muts/gui/tabs/mpsrom.py",
+      "group": [
+        "other"
+      ],
+      "line": 121
+    },
+    "MUTSTab": {
+      "file": "src/muts/gui/tabs/muts.py",
+      "group": [
+        "other"
+      ],
+      "line": 10
+    },
+    "MUTSSecurityWidget": {
+      "file": "src/muts/gui/tabs/muts.py",
+      "group": [
+        "other"
+      ],
+      "line": 30
+    },
+    "MUTSSRSWidget": {
+      "file": "src/muts/gui/tabs/muts.py",
+      "group": [
+        "other"
+      ],
+      "line": 49
+    },
+    "MUTSEEPROMWidget": {
+      "file": "src/muts/gui/tabs/muts.py",
+      "group": [
+        "other"
+      ],
+      "line": 69
+    },
+    "MUTSBackdoorWidget": {
+      "file": "src/muts/gui/tabs/muts.py",
+      "group": [
+        "other"
+      ],
+      "line": 88
+    },
+    "MUTSExploitWidget": {
+      "file": "src/muts/gui/tabs/muts.py",
+      "group": [
+        "other"
+      ],
+      "line": 107
+    },
+    "MUTSKnowledgeWidget": {
+      "file": "src/muts/gui/tabs/muts.py",
+      "group": [
+        "other"
+      ],
+      "line": 126
+    },
+    "RepositoryExplorerTab": {
+      "file": "src/muts/gui/tabs/repository_explorer.py",
+      "group": [
+        "other"
+      ],
+      "line": 10
+    },
+    "DirectoryWidget": {
+      "file": "src/muts/gui/tabs/repository_explorer.py",
+      "group": [
+        "other"
+      ],
+      "line": 24
+    },
+    "SecurityTab": {
+      "file": "src/muts/gui/tabs/security.py",
+      "group": [
+        "security"
+      ],
+      "line": 4
+    },
+    "TuneLibraryTab": {
+      "file": "src/muts/gui/tabs/tune_library.py",
+      "group": [
+        "other"
+      ],
+      "line": 8
+    },
+    "TuneCategoryWidget": {
+      "file": "src/muts/gui/tabs/tune_library.py",
+      "group": [
+        "other"
+      ],
+      "line": 20
+    },
+    "VersaTab": {
+      "file": "src/muts/gui/tabs/versa.py",
+      "group": [
+        "other"
+      ],
+      "line": 8
+    },
+    "VersaCommWidget": {
+      "file": "src/muts/gui/tabs/versa.py",
+      "group": [
+        "other"
+      ],
+      "line": 28
+    },
+    "VersaSecurityWidget": {
+      "file": "src/muts/gui/tabs/versa.py",
+      "group": [
+        "other"
+      ],
+      "line": 66
+    },
+    "VersaROMWidget": {
+      "file": "src/muts/gui/tabs/versa.py",
+      "group": [
+        "other"
+      ],
+      "line": 85
+    },
+    "VersaMapWidget": {
+      "file": "src/muts/gui/tabs/versa.py",
+      "group": [
+        "other"
+      ],
+      "line": 116
+    },
+    "VersaDiagWidget": {
+      "file": "src/muts/gui/tabs/versa.py",
+      "group": [
+        "other"
+      ],
+      "line": 143
+    },
+    "CobbSecurityService": {
+      "file": "src/muts/services/cobb_stack.py",
+      "group": [
+        "other"
+      ],
+      "line": 34
+    },
+    "CobbJ2534Service": {
+      "file": "src/muts/services/cobb_stack.py",
+      "group": [
+        "other"
+      ],
+      "line": 99
+    },
+    "ECUMapService": {
+      "file": "src/muts/services/cobb_stack.py",
+      "group": [
+        "other"
+      ],
+      "line": 145
+    },
+    "HardwareEmulationService": {
+      "file": "src/muts/services/cobb_stack.py",
+      "group": [
+        "other"
+      ],
+      "line": 160
+    },
+    "HardwareInterfaceService": {
+      "file": "src/muts/services/cobb_stack.py",
+      "group": [
+        "other"
+      ],
+      "line": 174
+    },
+    "CobbOBDService": {
+      "file": "src/muts/services/cobb_stack.py",
+      "group": [
+        "other"
+      ],
+      "line": 190
+    },
+    "CobbFlashManager": {
+      "file": "src/muts/services/cobb_stack.py",
+      "group": [
+        "other"
+      ],
+      "line": 201
+    },
+    "RealTimeMonitorService": {
+      "file": "src/muts/services/cobb_stack.py",
+      "group": [
+        "other"
+      ],
+      "line": 232
+    },
+    "CobbCoordinator": {
+      "file": "src/muts/services/cobb_stack.py",
+      "group": [
+        "other"
+      ],
+      "line": 249
+    },
+    "CommunicationProtocol": {
+      "file": "src/muts/services/comms_service.py",
+      "group": [
+        "other"
+      ],
+      "line": 9
+    },
+    "J2534DeviceInfo": {
+      "file": "src/muts/services/comms_service.py",
+      "group": [
+        "other"
+      ],
+      "line": 19
+    },
+    "CommunicationService": {
+      "file": "src/muts/services/comms_service.py",
+      "group": [
+        "other"
+      ],
+      "line": 26
+    },
+    "DiagnosticDatabaseService": {
+      "file": "src/muts/services/diagnostic_database.py",
+      "group": [
+        "diagnostic"
+      ],
+      "line": 9
+    },
+    "DiagnosticsService": {
+      "file": "src/muts/services/diagnostics.py",
+      "group": [
+        "diagnostic"
+      ],
+      "line": 5
+    },
+    "DynoService": {
+      "file": "src/muts/services/dyno.py",
+      "group": [
+        "other"
+      ],
+      "line": 1
+    },
+    "StackSummary": {
+      "file": "src/muts/services/integration_stack.py",
+      "group": [
+        "other"
+      ],
+      "line": 29
+    },
+    "IntegrationCoordinator": {
+      "file": "src/muts/services/integration_stack.py",
+      "group": [
+        "other"
+      ],
+      "line": 46
+    },
+    "MazdaSeedKeyManager": {
+      "file": "src/muts/services/mds_stack.py",
+      "group": [
+        "other"
+      ],
+      "line": 35
+    },
+    "DiagnosticTestStatus": {
+      "file": "src/muts/services/mds_stack.py",
+      "group": [
+        "other"
+      ],
+      "line": 59
+    },
+    "MazdaDiagnosticTests": {
+      "file": "src/muts/services/mds_stack.py",
+      "group": [
+        "other"
+      ],
+      "line": 66
+    },
+    "CalibrationOperationLevel": {
+      "file": "src/muts/services/mds_stack.py",
+      "group": [
+        "other"
+      ],
+      "line": 78
+    },
+    "MazdaIDSCoordinator": {
+      "file": "src/muts/services/mds_stack.py",
+      "group": [
+        "other"
+      ],
+      "line": 116
+    },
+    "MetadataService": {
+      "file": "src/muts/services/metadata.py",
+      "group": [
+        "other"
+      ],
+      "line": 11
+    },
+    "ROMAnalyzer": {
+      "file": "src/muts/services/mpsrom_stack.py",
+      "group": [
+        "other"
+      ],
+      "line": 22
+    },
+    "ChecksumAnalyzer": {
+      "file": "src/muts/services/mpsrom_stack.py",
+      "group": [
+        "other"
+      ],
+      "line": 75
+    },
+    "SecurityAccessService": {
+      "file": "src/muts/services/mpsrom_stack.py",
+      "group": [
+        "other"
+      ],
+      "line": 133
+    },
+    "MapLibrary": {
+      "file": "src/muts/services/mpsrom_stack.py",
+      "group": [
+        "other"
+      ],
+      "line": 166
+    },
+    "MPSROMCoordinator": {
+      "file": "src/muts/services/mpsrom_stack.py",
+      "group": [
+        "other"
+      ],
+      "line": 196
+    },
+    "MutsSecurityService": {
+      "file": "src/muts/services/muts_stack.py",
+      "group": [
+        "other"
+      ],
+      "line": 10
+    },
+    "MutsSRSService": {
+      "file": "src/muts/services/muts_stack.py",
+      "group": [
+        "other"
+      ],
+      "line": 42
+    },
+    "MutsEEPROMService": {
+      "file": "src/muts/services/muts_stack.py",
+      "group": [
+        "other"
+      ],
+      "line": 66
+    },
+    "MutsBackdoorService": {
+      "file": "src/muts/services/muts_stack.py",
+      "group": [
+        "other"
+      ],
+      "line": 79
+    },
+    "MutsExploitService": {
+      "file": "src/muts/services/muts_stack.py",
+      "group": [
+        "other"
+      ],
+      "line": 98
+    },
+    "MutsKnowledgeService": {
+      "file": "src/muts/services/muts_stack.py",
+      "group": [
+        "other"
+      ],
+      "line": 110
+    },
+    "MutsCoordinator": {
+      "file": "src/muts/services/muts_stack.py",
+      "group": [
+        "other"
+      ],
+      "line": 119
+    },
+    "ECUQueue": {
+      "file": "src/muts/services/queue.py",
+      "group": [
+        "other"
+      ],
+      "line": 4
+    },
+    "FileSummary": {
+      "file": "src/muts/services/repository_catalog.py",
+      "group": [
+        "other"
+      ],
+      "line": 9
+    },
+    "DirectoryCatalog": {
+      "file": "src/muts/services/repository_catalog.py",
+      "group": [
+        "other"
+      ],
+      "line": 16
+    },
+    "RepositoryCatalogService": {
+      "file": "src/muts/services/repository_catalog.py",
+      "group": [
+        "other"
+      ],
+      "line": 23
+    },
+    "SecurityService": {
+      "file": "src/muts/services/security.py",
+      "group": [
+        "security"
+      ],
+      "line": 3
+    },
+    "TorqueSWASService": {
+      "file": "src/muts/services/torque_swas.py",
+      "group": [
+        "other"
+      ],
+      "line": 4
+    },
+    "TuneMetadata": {
+      "file": "src/muts/services/tune_library.py",
+      "group": [
+        "other"
+      ],
+      "line": 8
+    },
+    "TuneLibraryService": {
+      "file": "src/muts/services/tune_library.py",
+      "group": [
+        "other"
+      ],
+      "line": 93
+    },
+    "VersaCommunicator": {
+      "file": "src/muts/services/versa_stack.py",
+      "group": [
+        "other"
+      ],
+      "line": 13
+    },
+    "VersaSecurityManager": {
+      "file": "src/muts/services/versa_stack.py",
+      "group": [
+        "other"
+      ],
+      "line": 40
+    },
+    "VersaROMOperations": {
+      "file": "src/muts/services/versa_stack.py",
+      "group": [
+        "other"
+      ],
+      "line": 72
+    },
+    "VersaMapManager": {
+      "file": "src/muts/services/versa_stack.py",
+      "group": [
+        "other"
+      ],
+      "line": 96
+    },
+    "VersaCoordinator": {
+      "file": "src/muts/services/versa_stack.py",
+      "group": [
+        "other"
+      ],
+      "line": 118
+    },
+    "TestLiveDataService": {
+      "file": "tests/test_live_data_service.py",
+      "group": [
+        "other"
+      ],
+      "line": 8
+    },
+    "TorqueConfig": {
+      "file": "tuning/models.py",
+      "group": [
+        "tuning"
+      ],
+      "line": 7
+    },
+    "PerformanceFeaturesConfig": {
+      "file": "tuning/models.py",
+      "group": [
+        "tuning"
+      ],
+      "line": 10
+    },
+    "TuneConfiguration": {
+      "file": "tuning/models.py",
+      "group": [
+        "tuning"
+      ],
+      "line": 19
+    },
+    "RomManager": {
+      "file": "tuning/rom_manager.py",
+      "group": [
+        "tuning"
+      ],
+      "line": 15
+    },
+    "SwasManager": {
+      "file": "tuning/swas_manager.py",
+      "group": [
+        "tuning"
+      ],
+      "line": 6
+    },
+    "TuneProfileManager": {
+      "file": "tuning/tune_profile_manager.py",
+      "group": [
+        "tuning"
+      ],
+      "line": 10
+    },
+    "ColoredFormatter": {
+      "file": "utils/logger.py",
+      "group": [
+        "other"
+      ],
+      "line": 19
+    },
+    "VersaTunerECU": {
+      "file": "versa1.py",
+      "group": [
+        "versa"
+      ],
+      "line": 19
+    },
+    "DiagnosticService": {
+      "file": "versa13.py",
+      "group": [
+        "versa"
+      ],
+      "line": 18
+    },
+    "FileManager": {
+      "file": "versa14.py",
+      "group": [
+        "versa"
+      ],
+      "line": 16
+    },
+    "CompressionManager": {
+      "file": "versa15.py",
+      "group": [
+        "versa"
+      ],
+      "line": 14
+    },
+    "DTCInfo": {
+      "file": "versa16.py",
+      "group": [
+        "versa"
+      ],
+      "line": 17
+    },
+    "DTCHandler": {
+      "file": "versa16.py",
+      "group": [
+        "versa"
+      ],
+      "line": 28
+    },
+    "TestECUCommunication": {
+      "file": "versa18.py",
+      "group": [
+        "versa"
+      ],
+      "line": 23
+    },
+    "TestSecurityAccess": {
+      "file": "versa18.py",
+      "group": [
+        "versa"
+      ],
+      "line": 211
+    },
+    "TestROMOperations": {
+      "file": "versa18.py",
+      "group": [
+        "versa"
+      ],
+      "line": 257
+    },
+    "TestMapDefinitions": {
+      "file": "versa19.py",
+      "group": [
+        "versa"
+      ],
+      "line": 20
+    },
+    "TestMapEditor": {
+      "file": "versa19.py",
+      "group": [
+        "versa"
+      ],
+      "line": 69
+    },
+    "TestMapDataConversion": {
+      "file": "versa19.py",
+      "group": [
+        "versa"
+      ],
+      "line": 189
+    },
+    "ROMOperations": {
+      "file": "versa3.py",
+      "group": [
+        "versa"
+      ],
+      "line": 25
+    },
+    "MapDefinition": {
+      "file": "versa4.py",
+      "group": [
+        "versa"
+      ],
+      "line": 14
+    },
+    "MapDefinitionManager": {
+      "file": "versa4.py",
+      "group": [
+        "versa"
+      ],
+      "line": 29
+    },
+    "MapData": {
+      "file": "versa5.py",
+      "group": [
+        "versa"
+      ],
+      "line": 15
+    },
+    "MapEditor": {
+      "file": "versa5.py",
+      "group": [
+        "versa"
+      ],
+      "line": 21
+    },
+    "RealTimeTuner": {
+      "file": "versa6.py",
+      "group": [
+        "versa"
+      ],
+      "line": 27
+    },
+    "VersaTunerGUI": {
+      "file": "versa7.py",
+      "group": [
+        "versa"
+      ],
+      "line": 20
+    },
+    "EngineSpecs": {
+      "file": "versa8.py",
+      "group": [
+        "versa"
+      ],
+      "line": 12
+    },
+    "PerformanceLimits": {
+      "file": "versa8.py",
+      "group": [
+        "versa"
+      ],
+      "line": 23
+    },
+    "Mazdaspeed32011": {
+      "file": "versa8.py",
+      "group": [
+        "versa"
+      ],
+      "line": 32
+    }
+  },
+  "duplicate_components": {
+    "MazdaCANEngine": [
+      {
+        "file": "MazdaCANEngine.py",
+        "group": [
+          "other"
+        ],
+        "line": 60
+      },
+      {
+        "file": "mazda_can_engine.py",
+        "group": [
+          "other"
+        ],
+        "line": 107
+      },
+      {
+        "file": "muts4.py",
+        "group": [
+          "muts"
+        ],
+        "line": 108
+      }
+    ],
+    "SecurityLevel": [
+      {
+        "file": "MazdaSecurityCore.py",
+        "group": [
+          "security"
+        ],
+        "line": 24
+      },
+      {
+        "file": "models.py",
+        "group": [
+          "other"
+        ],
+        "line": 22
+      },
+      {
+        "file": "muts_tuner/complete_tuner/advanced_ecu_access.py",
+        "group": [
+          "muts"
+        ],
+        "line": 56
+      }
+    ],
+    "SecurityCredentials": [
+      {
+        "file": "MazdaSecurityCore.py",
+        "group": [
+          "security"
+        ],
+        "line": 32
+      },
+      {
+        "file": "models.py",
+        "group": [
+          "other"
+        ],
+        "line": 302
+      },
+      {
+        "file": "muts16.py",
+        "group": [
+          "muts"
+        ],
+        "line": 256
+      }
+    ],
+    "MazdaSecurityCore": [
+      {
+        "file": "MazdaSecurityCore.py",
+        "group": [
+          "security"
+        ],
+        "line": 42
+      },
+      {
+        "file": "mazda_security_core.py",
+        "group": [
+          "security"
+        ],
+        "line": 41
+      },
+      {
+        "file": "muts4.py",
+        "group": [
+          "muts"
+        ],
+        "line": 45
+      }
+    ],
+    "TuningMode": [
+      {
+        "file": "MazdaSpeed3TuningSoftware.py",
+        "group": [
+          "tuning"
+        ],
+        "line": 23
+      },
+      {
+        "file": "models.py",
+        "group": [
+          "other"
+        ],
+        "line": 50
+      },
+      {
+        "file": "muts15.py",
+        "group": [
+          "muts"
+        ],
+        "line": 15
+      },
+      {
+        "file": "muts6.py",
+        "group": [
+          "muts"
+        ],
+        "line": 15
+      }
+    ],
+    "TuningParameter": [
+      {
+        "file": "MazdaSpeed3TuningSoftware.py",
+        "group": [
+          "tuning"
+        ],
+        "line": 30
+      },
+      {
+        "file": "models.py",
+        "group": [
+          "other"
+        ],
+        "line": 221
+      }
+    ],
+    "MazdaSpeed3TuningSoftware": [
+      {
+        "file": "MazdaSpeed3TuningSoftware.py",
+        "group": [
+          "tuning"
+        ],
+        "line": 65
+      },
+      {
+        "file": "muts15.py",
+        "group": [
+          "muts"
+        ],
+        "line": 421
+      },
+      {
+        "file": "muts6.py",
+        "group": [
+          "muts"
+        ],
+        "line": 421
+      }
+    ],
+    "RacingFeatureController": [
+      {
+        "file": "RacingFeatureController.py",
+        "group": [
+          "other"
+        ],
+        "line": 140
+      },
+      {
+        "file": "muts8.py",
+        "group": [
+          "muts"
+        ],
+        "line": 44
+      }
+    ],
+    "RealTimeTelemetry": [
+      {
+        "file": "RealTimeTelemetry.py",
+        "group": [
+          "other"
+        ],
+        "line": 145
+      },
+      {
+        "file": "muts8.py",
+        "group": [
+          "muts"
+        ],
+        "line": 260
+      },
+      {
+        "file": "real_time_telemetry.py",
+        "group": [
+          "other"
+        ],
+        "line": 113
+      }
+    ],
+    "MockCANBus": [
+      {
+        "file": "RealTimeTelemetry.py",
+        "group": [
+          "other"
+        ],
+        "line": 321
+      },
+      {
+        "file": "example_telemetry_usage.py",
+        "group": [
+          "other"
+        ],
+        "line": 36
+      },
+      {
+        "file": "test_real_time_telemetry.py",
+        "group": [
+          "other"
+        ],
+        "line": 144
+      }
+    ],
+    "SecurityError": [
+      {
+        "file": "SRSAirbagExploiter.py",
+        "group": [
+          "other"
+        ],
+        "line": 28
+      },
+      {
+        "file": "add18.py",
+        "group": [
+          "ads"
+        ],
+        "line": 241
+      },
+      {
+        "file": "mazda_security_core.py",
+        "group": [
+          "security"
+        ],
+        "line": 26
+      },
+      {
+        "file": "muts/utils/security.py",
+        "group": [
+          "muts",
+          "security"
+        ],
+        "line": 241
+      }
+    ],
+    "SRSAirbagExploiter": [
+      {
+        "file": "SRSAirbagExploiter.py",
+        "group": [
+          "other"
+        ],
+        "line": 76
+      },
+      {
+        "file": "muts4.py",
+        "group": [
+          "muts"
+        ],
+        "line": 256
+      }
+    ],
+    "MazdaECUExploit": [
+      {
+        "file": "add1.py",
+        "group": [
+          "ads"
+        ],
+        "line": 15
+      },
+      {
+        "file": "mds15.py",
+        "group": [
+          "mds"
+        ],
+        "line": 15
+      },
+      {
+        "file": "muts13.py",
+        "group": [
+          "muts"
+        ],
+        "line": 15
+      },
+      {
+        "file": "muts_tuner/complete_tuner/mds15.py",
+        "group": [
+          "muts"
+        ],
+        "line": 15
+      },
+      {
+        "file": "tuning_module.py",
+        "group": [
+          "tuning"
+        ],
+        "line": 25
+      }
+    ],
+    "AutonomousTuner": [
+      {
+        "file": "add1.py",
+        "group": [
+          "ads"
+        ],
+        "line": 127
+      },
+      {
+        "file": "mds15.py",
+        "group": [
+          "mds"
+        ],
+        "line": 127
+      },
+      {
+        "file": "muts13.py",
+        "group": [
+          "muts"
+        ],
+        "line": 127
+      },
+      {
+        "file": "muts_tuner/complete_tuner/mds15.py",
+        "group": [
+          "muts"
+        ],
+        "line": 127
+      },
+      {
+        "file": "tuning_module.py",
+        "group": [
+          "tuning"
+        ],
+        "line": 128
+      }
+    ],
+    "DiagnosticExploits": [
+      {
+        "file": "add1.py",
+        "group": [
+          "ads"
+        ],
+        "line": 257
+      },
+      {
+        "file": "mds15.py",
+        "group": [
+          "mds"
+        ],
+        "line": 257
+      },
+      {
+        "file": "muts13.py",
+        "group": [
+          "muts"
+        ],
+        "line": 257
+      },
+      {
+        "file": "muts_tuner/complete_tuner/mds15.py",
+        "group": [
+          "muts"
+        ],
+        "line": 257
+      },
+      {
+        "file": "tuning_module.py",
+        "group": [
+          "tuning"
+        ],
+        "line": 219
+      }
+    ],
+    "CANInjection": [
+      {
+        "file": "add1.py",
+        "group": [
+          "ads"
+        ],
+        "line": 323
+      },
+      {
+        "file": "mds15.py",
+        "group": [
+          "mds"
+        ],
+        "line": 323
+      },
+      {
+        "file": "muts13.py",
+        "group": [
+          "muts"
+        ],
+        "line": 323
+      },
+      {
+        "file": "muts_tuner/complete_tuner/mds15.py",
+        "group": [
+          "muts"
+        ],
+        "line": 323
+      },
+      {
+        "file": "tuning_module.py",
+        "group": [
+          "tuning"
+        ],
+        "line": 279
+      }
+    ],
+    "AdvancedTurboPhysics": [
+      {
+        "file": "add10.py",
+        "group": [
+          "ads"
+        ],
+        "line": 12
+      },
+      {
+        "file": "add7.py",
+        "group": [
+          "ads"
+        ],
+        "line": 12
+      }
+    ],
+    "AdvancedAITuning": [
+      {
+        "file": "add10.py",
+        "group": [
+          "ads"
+        ],
+        "line": 309
+      },
+      {
+        "file": "add7.py",
+        "group": [
+          "ads"
+        ],
+        "line": 309
+      }
+    ],
+    "PrioritizedReplayBuffer": [
+      {
+        "file": "add10.py",
+        "group": [
+          "ads"
+        ],
+        "line": 542
+      },
+      {
+        "file": "add7.py",
+        "group": [
+          "ads"
+        ],
+        "line": 542
+      }
+    ],
+    "ActorNetwork": [
+      {
+        "file": "add10.py",
+        "group": [
+          "ads"
+        ],
+        "line": 365
+      },
+      {
+        "file": "add7.py",
+        "group": [
+          "ads"
+        ],
+        "line": 365
+      }
+    ],
+    "CriticNetwork": [
+      {
+        "file": "add10.py",
+        "group": [
+          "ads"
+        ],
+        "line": 393
+      },
+      {
+        "file": "add7.py",
+        "group": [
+          "ads"
+        ],
+        "line": 393
+      }
+    ],
+    "IdealGasPhysics": [
+      {
+        "file": "add11.py",
+        "group": [
+          "ads"
+        ],
+        "line": 12
+      },
+      {
+        "file": "muts/models/engine_models.py",
+        "group": [
+          "muts"
+        ],
+        "line": 11
+      }
+    ],
+    "TurbochargerDynamics": [
+      {
+        "file": "add11.py",
+        "group": [
+          "ads"
+        ],
+        "line": 96
+      },
+      {
+        "file": "muts/models/engine_models.py",
+        "group": [
+          "muts"
+        ],
+        "line": 95
+      }
+    ],
+    "EngineCycleAnalysis": [
+      {
+        "file": "add11.py",
+        "group": [
+          "ads"
+        ],
+        "line": 264
+      },
+      {
+        "file": "muts/models/engine_models.py",
+        "group": [
+          "muts"
+        ],
+        "line": 222
+      }
+    ],
+    "AdvancedCalculations": [
+      {
+        "file": "add12.py",
+        "group": [
+          "ads"
+        ],
+        "line": 11
+      },
+      {
+        "file": "mazdaspeed3_tuning/utils/calculations.py",
+        "group": [
+          "tuning"
+        ],
+        "line": 11
+      },
+      {
+        "file": "muts/utils/calculations.py",
+        "group": [
+          "muts"
+        ],
+        "line": 10
+      }
+    ],
+    "TuningSecrets": [
+      {
+        "file": "add12.py",
+        "group": [
+          "ads"
+        ],
+        "line": 206
+      },
+      {
+        "file": "mazdaspeed3_tuning/utils/calculations.py",
+        "group": [
+          "tuning"
+        ],
+        "line": 206
+      },
+      {
+        "file": "muts/utils/calculations.py",
+        "group": [
+          "muts"
+        ],
+        "line": 206
+      }
+    ],
+    "AntiLagSystem": [
+      {
+        "file": "add14.py",
+        "group": [
+          "ads"
+        ],
+        "line": 13
+      },
+      {
+        "file": "muts/services/performance_features.py",
+        "group": [
+          "muts"
+        ],
+        "line": 15
+      }
+    ],
+    "TwoStepRevLimiter": [
+      {
+        "file": "add14.py",
+        "group": [
+          "ads"
+        ],
+        "line": 240
+      },
+      {
+        "file": "muts/services/performance_features.py",
+        "group": [
+          "muts"
+        ],
+        "line": 245
+      }
+    ],
+    "LaunchControlSystem": [
+      {
+        "file": "add14.py",
+        "group": [
+          "ads"
+        ],
+        "line": 448
+      },
+      {
+        "file": "muts/services/performance_features.py",
+        "group": [
+          "muts"
+        ],
+        "line": 452
+      }
+    ],
+    "AdvancedPerformanceManager": [
+      {
+        "file": "add14.py",
+        "group": [
+          "ads"
+        ],
+        "line": 670
+      },
+      {
+        "file": "muts/services/performance_features.py",
+        "group": [
+          "muts"
+        ],
+        "line": 674
+      }
+    ],
+    "K04Turbocharger": [
+      {
+        "file": "add15.py",
+        "group": [
+          "ads"
+        ],
+        "line": 12
+      },
+      {
+        "file": "muts/models/turbo_models.py",
+        "group": [
+          "muts"
+        ],
+        "line": 11
+      }
+    ],
+    "TurboSystemManager": [
+      {
+        "file": "add15.py",
+        "group": [
+          "ads"
+        ],
+        "line": 326
+      },
+      {
+        "file": "muts/models/turbo_models.py",
+        "group": [
+          "muts"
+        ],
+        "line": 325
+      }
+    ],
+    "Mazdaspeed3Tuner": [
+      {
+        "file": "add16.py",
+        "group": [
+          "ads"
+        ],
+        "line": 32
+      },
+      {
+        "file": "muts/core/main.py",
+        "group": [
+          "muts"
+        ],
+        "line": 37
+      }
+    ],
+    "SecurityManager": [
+      {
+        "file": "add18.py",
+        "group": [
+          "ads"
+        ],
+        "line": 18
+      },
+      {
+        "file": "muts/utils/security.py",
+        "group": [
+          "muts",
+          "security"
+        ],
+        "line": 19
+      },
+      {
+        "file": "versa2.py",
+        "group": [
+          "versa"
+        ],
+        "line": 16
+      }
+    ],
+    "CANMessage": [
+      {
+        "file": "add21.py",
+        "group": [
+          "ads"
+        ],
+        "line": 18
+      },
+      {
+        "file": "models.py",
+        "group": [
+          "other"
+        ],
+        "line": 118
+      },
+      {
+        "file": "muts/comms/can_interface.py",
+        "group": [
+          "muts"
+        ],
+        "line": 17
+      }
+    ],
+    "Mazdaspeed3CANInterface": [
+      {
+        "file": "add21.py",
+        "group": [
+          "ads"
+        ],
+        "line": 26
+      },
+      {
+        "file": "muts/comms/can_interface.py",
+        "group": [
+          "muts"
+        ],
+        "line": 25
+      }
+    ],
+    "CANUtilities": [
+      {
+        "file": "add21.py",
+        "group": [
+          "ads"
+        ],
+        "line": 470
+      },
+      {
+        "file": "muts/comms/can_interface.py",
+        "group": [
+          "muts"
+        ],
+        "line": 470
+      }
+    ],
+    "LogEntry": [
+      {
+        "file": "add22.py",
+        "group": [
+          "ads"
+        ],
+        "line": 21
+      },
+      {
+        "file": "models.py",
+        "group": [
+          "other"
+        ],
+        "line": 338
+      }
+    ],
+    "MazdaRaceEngineering": [
+      {
+        "file": "add3.py",
+        "group": [
+          "ads"
+        ],
+        "line": 15
+      },
+      {
+        "file": "muts14.py",
+        "group": [
+          "muts"
+        ],
+        "line": 15
+      }
+    ],
+    "MazdaDealershipSecrets": [
+      {
+        "file": "add3.py",
+        "group": [
+          "ads"
+        ],
+        "line": 114
+      },
+      {
+        "file": "muts14.py",
+        "group": [
+          "muts"
+        ],
+        "line": 114
+      }
+    ],
+    "AdvancedTuningSecrets": [
+      {
+        "file": "add3.py",
+        "group": [
+          "ads"
+        ],
+        "line": 195
+      },
+      {
+        "file": "muts14.py",
+        "group": [
+          "muts"
+        ],
+        "line": 195
+      }
+    ],
+    "MazdaSpeed3RaceTuning": [
+      {
+        "file": "add3.py",
+        "group": [
+          "ads"
+        ],
+        "line": 272
+      },
+      {
+        "file": "muts14.py",
+        "group": [
+          "muts"
+        ],
+        "line": 272
+      }
+    ],
+    "ECUCalibration": [
+      {
+        "file": "add4.py",
+        "group": [
+          "ads"
+        ],
+        "line": 16
+      },
+      {
+        "file": "mds4.py",
+        "group": [
+          "mds"
+        ],
+        "line": 45
+      },
+      {
+        "file": "muts/database/ecu_database.py",
+        "group": [
+          "muts"
+        ],
+        "line": 16
+      },
+      {
+        "file": "muts_tuner/complete_tuner/mds4.py",
+        "group": [
+          "muts"
+        ],
+        "line": 45
+      }
+    ],
+    "Mazdaspeed3Database": [
+      {
+        "file": "add4.py",
+        "group": [
+          "ads"
+        ],
+        "line": 67
+      },
+      {
+        "file": "muts/database/ecu_database.py",
+        "group": [
+          "muts"
+        ],
+        "line": 67
+      }
+    ],
+    "TurbochargerPhysics": [
+      {
+        "file": "add5.py",
+        "group": [
+          "ads"
+        ],
+        "line": 12
+      },
+      {
+        "file": "add9.py",
+        "group": [
+          "ads"
+        ],
+        "line": 12
+      },
+      {
+        "file": "muts/services/physics_engine.py",
+        "group": [
+          "muts"
+        ],
+        "line": 11
+      }
+    ],
+    "EngineThermodynamics": [
+      {
+        "file": "add5.py",
+        "group": [
+          "ads"
+        ],
+        "line": 162
+      },
+      {
+        "file": "add9.py",
+        "group": [
+          "ads"
+        ],
+        "line": 162
+      },
+      {
+        "file": "muts/services/physics_engine.py",
+        "group": [
+          "muts"
+        ],
+        "line": 161
+      }
+    ],
+    "PerformanceCalculator": [
+      {
+        "file": "add5.py",
+        "group": [
+          "ads"
+        ],
+        "line": 275
+      },
+      {
+        "file": "add9.py",
+        "group": [
+          "ads"
+        ],
+        "line": 275
+      },
+      {
+        "file": "muts/services/physics_engine.py",
+        "group": [
+          "muts"
+        ],
+        "line": 273
+      }
+    ],
+    "AITuningNetwork": [
+      {
+        "file": "add6.py",
+        "group": [
+          "ads"
+        ],
+        "line": 17
+      },
+      {
+        "file": "add8.py",
+        "group": [
+          "ads"
+        ],
+        "line": 17
+      },
+      {
+        "file": "muts/services/ai_tuner.py",
+        "group": [
+          "muts"
+        ],
+        "line": 16
+      }
+    ],
+    "ReinforcementTuner": [
+      {
+        "file": "add6.py",
+        "group": [
+          "ads"
+        ],
+        "line": 39
+      },
+      {
+        "file": "add8.py",
+        "group": [
+          "ads"
+        ],
+        "line": 39
+      },
+      {
+        "file": "muts/services/ai_tuner.py",
+        "group": [
+          "muts"
+        ],
+        "line": 38
+      }
+    ],
+    "AITuningSystem": [
+      {
+        "file": "add6.py",
+        "group": [
+          "ads"
+        ],
+        "line": 113
+      },
+      {
+        "file": "add8.py",
+        "group": [
+          "ads"
+        ],
+        "line": 113
+      },
+      {
+        "file": "muts/services/ai_tuner.py",
+        "group": [
+          "muts"
+        ],
+        "line": 112
+      }
+    ],
+    "OBD2Protocol": [
+      {
+        "file": "cobb10.py",
+        "group": [
+          "cobb"
+        ],
+        "line": 10
+      },
+      {
+        "file": "cobb7.py",
+        "group": [
+          "cobb"
+        ],
+        "line": 10
+      }
+    ],
+    "J2534Protocol": [
+      {
+        "file": "cobb2.py",
+        "group": [
+          "cobb"
+        ],
+        "line": 18
+      },
+      {
+        "file": "mds6.py",
+        "group": [
+          "mds"
+        ],
+        "line": 47
+      },
+      {
+        "file": "muts_tuner/complete_tuner/integration_test.py",
+        "group": [
+          "muts"
+        ],
+        "line": 522
+      },
+      {
+        "file": "muts_tuner/complete_tuner/mds6.py",
+        "group": [
+          "muts"
+        ],
+        "line": 47
+      },
+      {
+        "file": "muts_tuner/complete_tuner/mds_compatibility.py",
+        "group": [
+          "muts"
+        ],
+        "line": 71
+      },
+      {
+        "file": "muts_tuner/j2534_interface.py",
+        "group": [
+          "muts"
+        ],
+        "line": 20
+      }
+    ],
+    "PASSTHRU_MSG": [
+      {
+        "file": "cobb2.py",
+        "group": [
+          "cobb"
+        ],
+        "line": 135
+      },
+      {
+        "file": "comms/j2534_api.py",
+        "group": [
+          "other"
+        ],
+        "line": 22
+      }
+    ],
+    "CobbDeviceState": [
+      {
+        "file": "cobb5.py",
+        "group": [
+          "cobb"
+        ],
+        "line": 16
+      },
+      {
+        "file": "cobb8.py",
+        "group": [
+          "cobb"
+        ],
+        "line": 13
+      }
+    ],
+    "CobbAccessPortEmulator": [
+      {
+        "file": "cobb5.py",
+        "group": [
+          "cobb"
+        ],
+        "line": 23
+      },
+      {
+        "file": "cobb8.py",
+        "group": [
+          "cobb"
+        ],
+        "line": 20
+      }
+    ],
+    "HardwareInterface": [
+      {
+        "file": "cobb6.py",
+        "group": [
+          "cobb"
+        ],
+        "line": 15
+      },
+      {
+        "file": "cobb9.py",
+        "group": [
+          "cobb"
+        ],
+        "line": 11
+      }
+    ],
+    "J2534Error": [
+      {
+        "file": "comms/j2534_device.py",
+        "group": [
+          "other"
+        ],
+        "line": 15
+      },
+      {
+        "file": "mds6.py",
+        "group": [
+          "mds"
+        ],
+        "line": 17
+      },
+      {
+        "file": "muts_tuner/complete_tuner/mds6.py",
+        "group": [
+          "muts"
+        ],
+        "line": 17
+      },
+      {
+        "file": "muts_tuner/complete_tuner/mds_compatibility.py",
+        "group": [
+          "muts"
+        ],
+        "line": 60
+      }
+    ],
+    "ECUData": [
+      {
+        "file": "core/app_state.py",
+        "group": [
+          "other"
+        ],
+        "line": 38
+      },
+      {
+        "file": "muts9.py",
+        "group": [
+          "muts"
+        ],
+        "line": 28
+      },
+      {
+        "file": "muts_tuner/backend/main.py",
+        "group": [
+          "muts"
+        ],
+        "line": 42
+      }
+    ],
+    "ECUState": [
+      {
+        "file": "core/ecu_communication.py",
+        "group": [
+          "other"
+        ],
+        "line": 22
+      },
+      {
+        "file": "mazdaspeed3_tuning/core/ecu_communication.py",
+        "group": [
+          "tuning"
+        ],
+        "line": 12
+      },
+      {
+        "file": "models.py",
+        "group": [
+          "other"
+        ],
+        "line": 81
+      },
+      {
+        "file": "muts_tuner/complete_tuner/core/ecu_communication.py",
+        "group": [
+          "muts"
+        ],
+        "line": 23
+      }
+    ],
+    "ECUResponse": [
+      {
+        "file": "core/ecu_communication.py",
+        "group": [
+          "other"
+        ],
+        "line": 31
+      },
+      {
+        "file": "mazdaspeed3_tuning/core/ecu_communication.py",
+        "group": [
+          "tuning"
+        ],
+        "line": 20
+      },
+      {
+        "file": "muts_tuner/complete_tuner/core/ecu_communication.py",
+        "group": [
+          "muts"
+        ],
+        "line": 16
+      }
+    ],
+    "ECUCommunicator": [
+      {
+        "file": "core/ecu_communication.py",
+        "group": [
+          "other"
+        ],
+        "line": 39
+      },
+      {
+        "file": "mazdaspeed3_tuning/core/ecu_communication.py",
+        "group": [
+          "tuning"
+        ],
+        "line": 27
+      },
+      {
+        "file": "muts_tuner/complete_tuner/core/ecu_communication.py",
+        "group": [
+          "muts"
+        ],
+        "line": 31
+      }
+    ],
+    "ChecksumType": [
+      {
+        "file": "core/rom_verifier.py",
+        "group": [
+          "other"
+        ],
+        "line": 20
+      },
+      {
+        "file": "mds9.py",
+        "group": [
+          "mds"
+        ],
+        "line": 16
+      },
+      {
+        "file": "muts_tuner/complete_tuner/integration_test.py",
+        "group": [
+          "muts"
+        ],
+        "line": 579
+      },
+      {
+        "file": "muts_tuner/complete_tuner/mds9.py",
+        "group": [
+          "muts"
+        ],
+        "line": 16
+      },
+      {
+        "file": "muts_tuner/complete_tuner/mds_compatibility.py",
+        "group": [
+          "muts"
+        ],
+        "line": 96
+      }
+    ],
+    "SafetyLevel": [
+      {
+        "file": "core/safety_validator.py",
+        "group": [
+          "other"
+        ],
+        "line": 19
+      },
+      {
+        "file": "mazdaspeed3_tuning/core/safety_validator.py",
+        "group": [
+          "tuning"
+        ],
+        "line": 14
+      }
+    ],
+    "SafetyValidator": [
+      {
+        "file": "core/safety_validator.py",
+        "group": [
+          "other"
+        ],
+        "line": 50
+      },
+      {
+        "file": "mazdaspeed3_tuning/core/safety_validator.py",
+        "group": [
+          "tuning"
+        ],
+        "line": 31
+      },
+      {
+        "file": "muts_tuner/complete_tuner/core/safety_validator.py",
+        "group": [
+          "muts"
+        ],
+        "line": 14
+      }
+    ],
+    "MazdaProtocol": [
+      {
+        "file": "diagnostic_module.py",
+        "group": [
+          "diagnostic"
+        ],
+        "line": 19
+      },
+      {
+        "file": "mds1.py",
+        "group": [
+          "mds"
+        ],
+        "line": 21
+      },
+      {
+        "file": "muts_tuner/complete_tuner/mds1.py",
+        "group": [
+          "muts"
+        ],
+        "line": 21
+      },
+      {
+        "file": "src/muts/services/mds_stack.py",
+        "group": [
+          "other"
+        ],
+        "line": 11
+      }
+    ],
+    "DiagnosticSession": [
+      {
+        "file": "diagnostic_module.py",
+        "group": [
+          "diagnostic"
+        ],
+        "line": 29
+      },
+      {
+        "file": "mds1.py",
+        "group": [
+          "mds"
+        ],
+        "line": 31
+      },
+      {
+        "file": "muts_tuner/complete_tuner/mds1.py",
+        "group": [
+          "muts"
+        ],
+        "line": 31
+      },
+      {
+        "file": "src/muts/services/mds_stack.py",
+        "group": [
+          "other"
+        ],
+        "line": 21
+      }
+    ],
+    "SecurityAccessLevel": [
+      {
+        "file": "diagnostic_module.py",
+        "group": [
+          "diagnostic"
+        ],
+        "line": 37
+      },
+      {
+        "file": "mds1.py",
+        "group": [
+          "mds"
+        ],
+        "line": 39
+      },
+      {
+        "file": "muts_tuner/complete_tuner/mds1.py",
+        "group": [
+          "muts"
+        ],
+        "line": 39
+      },
+      {
+        "file": "src/muts/services/mds_stack.py",
+        "group": [
+          "other"
+        ],
+        "line": 29
+      }
+    ],
+    "DiagnosticMessage": [
+      {
+        "file": "diagnostic_module.py",
+        "group": [
+          "diagnostic"
+        ],
+        "line": 48
+      },
+      {
+        "file": "mds1.py",
+        "group": [
+          "mds"
+        ],
+        "line": 50
+      },
+      {
+        "file": "muts_tuner/complete_tuner/mds1.py",
+        "group": [
+          "muts"
+        ],
+        "line": 50
+      }
+    ],
+    "MazdaDiagnosticProtocol": [
+      {
+        "file": "diagnostic_module.py",
+        "group": [
+          "diagnostic"
+        ],
+        "line": 58
+      },
+      {
+        "file": "mds1.py",
+        "group": [
+          "mds"
+        ],
+        "line": 60
+      },
+      {
+        "file": "muts_tuner/complete_tuner/mds1.py",
+        "group": [
+          "muts"
+        ],
+        "line": 60
+      }
+    ],
+    "EEPROMExploiter": [
+      {
+        "file": "eeprom_exploiter.py",
+        "group": [
+          "other"
+        ],
+        "line": 39
+      },
+      {
+        "file": "muts3.py",
+        "group": [
+          "muts"
+        ],
+        "line": 24
+      },
+      {
+        "file": "muts4.py",
+        "group": [
+          "muts"
+        ],
+        "line": 184
+      }
+    ],
+    "DashboardTab": [
+      {
+        "file": "gui/main_window.py",
+        "group": [
+          "other"
+        ],
+        "line": 83
+      },
+      {
+        "file": "src/muts/gui/tabs/dashboard.py",
+        "group": [
+          "other"
+        ],
+        "line": 3
+      }
+    ],
+    "TuningTab": [
+      {
+        "file": "gui/main_window.py",
+        "group": [
+          "other"
+        ],
+        "line": 251
+      },
+      {
+        "file": "src/muts/gui/tabs/tuning.py",
+        "group": [
+          "tuning"
+        ],
+        "line": 4
+      }
+    ],
+    "DiagnosticsTab": [
+      {
+        "file": "gui/main_window.py",
+        "group": [
+          "other"
+        ],
+        "line": 432
+      },
+      {
+        "file": "src/muts/gui/tabs/diagnostics.py",
+        "group": [
+          "diagnostic"
+        ],
+        "line": 4
+      }
+    ],
+    "CANError": [
+      {
+        "file": "mazda_can_engine.py",
+        "group": [
+          "other"
+        ],
+        "line": 33
+      },
+      {
+        "file": "mazda_can_engine.py",
+        "group": [
+          "other"
+        ],
+        "line": 92
+      }
+    ],
+    "CANFrameType": [
+      {
+        "file": "mazda_can_engine.py",
+        "group": [
+          "other"
+        ],
+        "line": 45
+      },
+      {
+        "file": "mds12.py",
+        "group": [
+          "mds"
+        ],
+        "line": 19
+      },
+      {
+        "file": "muts_tuner/complete_tuner/mds12.py",
+        "group": [
+          "muts"
+        ],
+        "line": 19
+      }
+    ],
+    "MemoryRegion": [
+      {
+        "file": "mazda_memory_map.py",
+        "group": [
+          "other"
+        ],
+        "line": 18
+      },
+      {
+        "file": "muts_tuner/complete_tuner/advanced_ecu_access.py",
+        "group": [
+          "muts"
+        ],
+        "line": 66
+      }
+    ],
+    "MazdaOBDService": [
+      {
+        "file": "mazda_obd_service.py",
+        "group": [
+          "other"
+        ],
+        "line": 285
+      },
+      {
+        "file": "muts10.py",
+        "group": [
+          "muts"
+        ],
+        "line": 10
+      },
+      {
+        "file": "src/muts/services/mazda_obd.py",
+        "group": [
+          "other"
+        ],
+        "line": 8
+      }
+    ],
+    "TuningAdjustment": [
+      {
+        "file": "mazda_tool/core/ai_tuner.py",
+        "group": [
+          "other"
+        ],
+        "line": 24
+      },
+      {
+        "file": "versa6.py",
+        "group": [
+          "versa"
+        ],
+        "line": 17
+      }
+    ],
+    "MazdaAITuner": [
+      {
+        "file": "mazda_tool/core/ai_tuner.py",
+        "group": [
+          "other"
+        ],
+        "line": 34
+      },
+      {
+        "file": "mazda_tool/core/ai_tuning_engine.py",
+        "group": [
+          "tuning"
+        ],
+        "line": 8
+      }
+    ],
+    "MazdaTunerAPI": [
+      {
+        "file": "mazda_tuner_api.py",
+        "group": [
+          "other"
+        ],
+        "line": 104
+      },
+      {
+        "file": "muts4.py",
+        "group": [
+          "muts"
+        ],
+        "line": 530
+      }
+    ],
+    "MazdaECUType": [
+      {
+        "file": "mds10.py",
+        "group": [
+          "mds"
+        ],
+        "line": 20
+      },
+      {
+        "file": "muts/security/seed_key.py",
+        "group": [
+          "muts",
+          "security"
+        ],
+        "line": 15
+      },
+      {
+        "file": "muts_tuner/complete_tuner/mds10.py",
+        "group": [
+          "muts"
+        ],
+        "line": 20
+      }
+    ],
+    "MazdaSeedKeyDatabase": [
+      {
+        "file": "mds10.py",
+        "group": [
+          "mds"
+        ],
+        "line": 31
+      },
+      {
+        "file": "muts/security/seed_key.py",
+        "group": [
+          "muts",
+          "security"
+        ],
+        "line": 26
+      },
+      {
+        "file": "muts_tuner/complete_tuner/mds10.py",
+        "group": [
+          "muts"
+        ],
+        "line": 31
+      }
+    ],
+    "DiagnosticTestType": [
+      {
+        "file": "mds11.py",
+        "group": [
+          "mds"
+        ],
+        "line": 17
+      },
+      {
+        "file": "muts_tuner/complete_tuner/mds11.py",
+        "group": [
+          "muts"
+        ],
+        "line": 17
+      }
+    ],
+    "TestStatus": [
+      {
+        "file": "mds11.py",
+        "group": [
+          "mds"
+        ],
+        "line": 26
+      },
+      {
+        "file": "muts_tuner/complete_tuner/mds11.py",
+        "group": [
+          "muts"
+        ],
+        "line": 26
+      }
+    ],
+    "DiagnosticTest": [
+      {
+        "file": "mds11.py",
+        "group": [
+          "mds"
+        ],
+        "line": 35
+      },
+      {
+        "file": "muts_tuner/complete_tuner/mds11.py",
+        "group": [
+          "muts"
+        ],
+        "line": 35
+      }
+    ],
+    "MazdaDiagnosticService": [
+      {
+        "file": "mds11.py",
+        "group": [
+          "mds"
+        ],
+        "line": 45
+      },
+      {
+        "file": "muts_tuner/complete_tuner/mds11.py",
+        "group": [
+          "muts"
+        ],
+        "line": 45
+      }
+    ],
+    "CANFrame": [
+      {
+        "file": "mds12.py",
+        "group": [
+          "mds"
+        ],
+        "line": 27
+      },
+      {
+        "file": "muts_tuner/complete_tuner/mds12.py",
+        "group": [
+          "muts"
+        ],
+        "line": 27
+      }
+    ],
+    "MazdaCANInterface": [
+      {
+        "file": "mds12.py",
+        "group": [
+          "mds"
+        ],
+        "line": 35
+      },
+      {
+        "file": "muts_tuner/complete_tuner/mds12.py",
+        "group": [
+          "muts"
+        ],
+        "line": 35
+      }
+    ],
+    "OBDProtocol": [
+      {
+        "file": "mds13.py",
+        "group": [
+          "mds"
+        ],
+        "line": 16
+      },
+      {
+        "file": "models.py",
+        "group": [
+          "other"
+        ],
+        "line": 41
+      },
+      {
+        "file": "muts_tuner/complete_tuner/mds13.py",
+        "group": [
+          "muts"
+        ],
+        "line": 16
+      }
+    ],
+    "MazdaOBDInterface": [
+      {
+        "file": "mds13.py",
+        "group": [
+          "mds"
+        ],
+        "line": 29
+      },
+      {
+        "file": "muts_tuner/complete_tuner/mds13.py",
+        "group": [
+          "muts"
+        ],
+        "line": 29
+      }
+    ],
+    "MazdaDataConverter": [
+      {
+        "file": "mds14.py",
+        "group": [
+          "mds"
+        ],
+        "line": 13
+      },
+      {
+        "file": "muts_tuner/complete_tuner/integration_test.py",
+        "group": [
+          "muts"
+        ],
+        "line": 600
+      },
+      {
+        "file": "muts_tuner/complete_tuner/mds14.py",
+        "group": [
+          "muts"
+        ],
+        "line": 13
+      }
+    ],
+    "MazdaSecurityAlgorithm": [
+      {
+        "file": "mds2.py",
+        "group": [
+          "mds"
+        ],
+        "line": 23
+      },
+      {
+        "file": "muts_tuner/complete_tuner/mds2.py",
+        "group": [
+          "muts"
+        ],
+        "line": 23
+      }
+    ],
+    "MazdaSecurityAccess": [
+      {
+        "file": "mds2.py",
+        "group": [
+          "mds"
+        ],
+        "line": 33
+      },
+      {
+        "file": "muts_tuner/complete_tuner/mds2.py",
+        "group": [
+          "muts"
+        ],
+        "line": 33
+      }
+    ],
+    "DTCSeverity": [
+      {
+        "file": "mds3.py",
+        "group": [
+          "mds"
+        ],
+        "line": 15
+      },
+      {
+        "file": "muts_tuner/complete_tuner/mds3.py",
+        "group": [
+          "muts"
+        ],
+        "line": 15
+      }
+    ],
+    "DTCStatus": [
+      {
+        "file": "mds3.py",
+        "group": [
+          "mds"
+        ],
+        "line": 21
+      },
+      {
+        "file": "muts_tuner/complete_tuner/mds3.py",
+        "group": [
+          "muts"
+        ],
+        "line": 21
+      }
+    ],
+    "DTCDefinition": [
+      {
+        "file": "mds3.py",
+        "group": [
+          "mds"
+        ],
+        "line": 28
+      },
+      {
+        "file": "muts_tuner/complete_tuner/mds3.py",
+        "group": [
+          "muts"
+        ],
+        "line": 28
+      },
+      {
+        "file": "pids.py",
+        "group": [
+          "other"
+        ],
+        "line": 38
+      }
+    ],
+    "MazdaDTCDatabase": [
+      {
+        "file": "mds3.py",
+        "group": [
+          "mds"
+        ],
+        "line": 44
+      },
+      {
+        "file": "muts_tuner/complete_tuner/mds3.py",
+        "group": [
+          "muts"
+        ],
+        "line": 44
+      }
+    ],
+    "CalibrationType": [
+      {
+        "file": "mds4.py",
+        "group": [
+          "mds"
+        ],
+        "line": 17
+      },
+      {
+        "file": "muts_tuner/complete_tuner/mazda_calibration_manager.py",
+        "group": [
+          "muts"
+        ],
+        "line": 32
+      },
+      {
+        "file": "muts_tuner/complete_tuner/mds4.py",
+        "group": [
+          "muts"
+        ],
+        "line": 17
+      }
+    ],
+    "CalibrationMap": [
+      {
+        "file": "mds4.py",
+        "group": [
+          "mds"
+        ],
+        "line": 28
+      },
+      {
+        "file": "muts_tuner/complete_tuner/mazda_calibration_manager.py",
+        "group": [
+          "muts"
+        ],
+        "line": 52
+      },
+      {
+        "file": "muts_tuner/complete_tuner/mds4.py",
+        "group": [
+          "muts"
+        ],
+        "line": 28
+      }
+    ],
+    "MazdaCalibrationDatabase": [
+      {
+        "file": "mds4.py",
+        "group": [
+          "mds"
+        ],
+        "line": 56
+      },
+      {
+        "file": "muts_tuner/complete_tuner/mds4.py",
+        "group": [
+          "muts"
+        ],
+        "line": 56
+      }
+    ],
+    "ProgrammingSession": [
+      {
+        "file": "mds5.py",
+        "group": [
+          "mds"
+        ],
+        "line": 21
+      },
+      {
+        "file": "muts_tuner/complete_tuner/mds5.py",
+        "group": [
+          "muts"
+        ],
+        "line": 21
+      }
+    ],
+    "ProgrammingState": [
+      {
+        "file": "mds5.py",
+        "group": [
+          "mds"
+        ],
+        "line": 33
+      },
+      {
+        "file": "muts_tuner/complete_tuner/mds5.py",
+        "group": [
+          "muts"
+        ],
+        "line": 33
+      }
+    ],
+    "ProgrammingBlock": [
+      {
+        "file": "mds5.py",
+        "group": [
+          "mds"
+        ],
+        "line": 45
+      },
+      {
+        "file": "muts_tuner/complete_tuner/mds5.py",
+        "group": [
+          "muts"
+        ],
+        "line": 45
+      }
+    ],
+    "MazdaProgrammingService": [
+      {
+        "file": "mds5.py",
+        "group": [
+          "mds"
+        ],
+        "line": 53
+      },
+      {
+        "file": "muts_tuner/complete_tuner/mds5.py",
+        "group": [
+          "muts"
+        ],
+        "line": 53
+      }
+    ],
+    "J2534Ioctl": [
+      {
+        "file": "mds6.py",
+        "group": [
+          "mds"
+        ],
+        "line": 61
+      },
+      {
+        "file": "muts_tuner/complete_tuner/mds6.py",
+        "group": [
+          "muts"
+        ],
+        "line": 61
+      }
+    ],
+    "J2534MessageFlag": [
+      {
+        "file": "mds6.py",
+        "group": [
+          "mds"
+        ],
+        "line": 78
+      },
+      {
+        "file": "muts_tuner/complete_tuner/mds6.py",
+        "group": [
+          "muts"
+        ],
+        "line": 78
+      }
+    ],
+    "J2534Interface": [
+      {
+        "file": "mds6.py",
+        "group": [
+          "mds"
+        ],
+        "line": 85
+      },
+      {
+        "file": "muts_tuner/complete_tuner/integration_test.py",
+        "group": [
+          "muts"
+        ],
+        "line": 527
+      },
+      {
+        "file": "muts_tuner/complete_tuner/mds6.py",
+        "group": [
+          "muts"
+        ],
+        "line": 85
+      },
+      {
+        "file": "muts_tuner/j2534_interface.py",
+        "group": [
+          "muts"
+        ],
+        "line": 82
+      }
+    ],
+    "ConfigList": [
+      {
+        "file": "mds6.py",
+        "group": [
+          "mds"
+        ],
+        "line": 328
+      },
+      {
+        "file": "muts_tuner/complete_tuner/mds6.py",
+        "group": [
+          "muts"
+        ],
+        "line": 328
+      }
+    ],
+    "PassThruMsg": [
+      {
+        "file": "mds6.py",
+        "group": [
+          "mds"
+        ],
+        "line": 371
+      },
+      {
+        "file": "muts_tuner/complete_tuner/mds6.py",
+        "group": [
+          "muts"
+        ],
+        "line": 371
+      }
+    ],
+    "MazdaIDSSoftware": [
+      {
+        "file": "mds7.py",
+        "group": [
+          "mds"
+        ],
+        "line": 21
+      },
+      {
+        "file": "muts_tuner/complete_tuner/mds7.py",
+        "group": [
+          "muts"
+        ],
+        "line": 21
+      }
+    ],
+    "CalibrationOperation": [
+      {
+        "file": "mds8.py",
+        "group": [
+          "mds"
+        ],
+        "line": 19
+      },
+      {
+        "file": "muts_tuner/complete_tuner/mds8.py",
+        "group": [
+          "muts"
+        ],
+        "line": 19
+      }
+    ],
+    "MapAdjustmentType": [
+      {
+        "file": "mds8.py",
+        "group": [
+          "mds"
+        ],
+        "line": 29
+      },
+      {
+        "file": "muts_tuner/complete_tuner/mds8.py",
+        "group": [
+          "muts"
+        ],
+        "line": 29
+      }
+    ],
+    "MapAdjustment": [
+      {
+        "file": "mds8.py",
+        "group": [
+          "mds"
+        ],
+        "line": 37
+      },
+      {
+        "file": "muts_tuner/complete_tuner/integration_test.py",
+        "group": [
+          "muts"
+        ],
+        "line": 553
+      },
+      {
+        "file": "muts_tuner/complete_tuner/mds8.py",
+        "group": [
+          "muts"
+        ],
+        "line": 37
+      },
+      {
+        "file": "muts_tuner/complete_tuner/mds_compatibility.py",
+        "group": [
+          "muts"
+        ],
+        "line": 83
+      }
+    ],
+    "MazdaCalibrationService": [
+      {
+        "file": "mds8.py",
+        "group": [
+          "mds"
+        ],
+        "line": 44
+      },
+      {
+        "file": "muts_tuner/complete_tuner/integration_test.py",
+        "group": [
+          "muts"
+        ],
+        "line": 563
+      },
+      {
+        "file": "muts_tuner/complete_tuner/mds8.py",
+        "group": [
+          "muts"
+        ],
+        "line": 44
+      },
+      {
+        "file": "src/muts/services/mds_stack.py",
+        "group": [
+          "other"
+        ],
+        "line": 86
+      }
+    ],
+    "MazdaChecksumCalculator": [
+      {
+        "file": "mds9.py",
+        "group": [
+          "mds"
+        ],
+        "line": 25
+      },
+      {
+        "file": "muts_tuner/complete_tuner/integration_test.py",
+        "group": [
+          "muts"
+        ],
+        "line": 585
+      },
+      {
+        "file": "muts_tuner/complete_tuner/mds9.py",
+        "group": [
+          "muts"
+        ],
+        "line": 25
+      },
+      {
+        "file": "src/muts/services/mds_stack.py",
+        "group": [
+          "other"
+        ],
+        "line": 107
+      }
+    ],
+    "FlashState": [
+      {
+        "file": "models.py",
+        "group": [
+          "other"
+        ],
+        "line": 59
+      },
+      {
+        "file": "muts_tuner/backend/flash_service.py",
+        "group": [
+          "muts"
+        ],
+        "line": 21
+      }
+    ],
+    "TuningProfile": [
+      {
+        "file": "models.py",
+        "group": [
+          "other"
+        ],
+        "line": 243
+      },
+      {
+        "file": "muts9.py",
+        "group": [
+          "muts"
+        ],
+        "line": 77
+      }
+    ],
+    "DiagnosticTroubleCode": [
+      {
+        "file": "models.py",
+        "group": [
+          "other"
+        ],
+        "line": 267
+      },
+      {
+        "file": "muts/database/tuning_database.py",
+        "group": [
+          "muts",
+          "tuning"
+        ],
+        "line": 140
+      },
+      {
+        "file": "muts9.py",
+        "group": [
+          "muts"
+        ],
+        "line": 56
+      }
+    ],
+    "FlashOperation": [
+      {
+        "file": "models.py",
+        "group": [
+          "other"
+        ],
+        "line": 284
+      },
+      {
+        "file": "muts_tuner/backend/flash_service.py",
+        "group": [
+          "muts"
+        ],
+        "line": 35
+      }
+    ],
+    "ROMDefinition": [
+      {
+        "file": "mpsrom.py",
+        "group": [
+          "mpsrom"
+        ],
+        "line": 18
+      },
+      {
+        "file": "src/muts/services/mpsrom_stack.py",
+        "group": [
+          "other"
+        ],
+        "line": 14
+      },
+      {
+        "file": "versa3.py",
+        "group": [
+          "versa"
+        ],
+        "line": 17
+      }
+    ],
+    "ChecksumDefinition": [
+      {
+        "file": "mpsrom2.py",
+        "group": [
+          "mpsrom"
+        ],
+        "line": 19
+      },
+      {
+        "file": "mpsrom3.py",
+        "group": [
+          "mpsrom"
+        ],
+        "line": 19
+      },
+      {
+        "file": "mpsrom4.py",
+        "group": [
+          "mpsrom"
+        ],
+        "line": 19
+      }
+    ],
+    "AdvancedROMAnalyzer": [
+      {
+        "file": "mpsrom2.py",
+        "group": [
+          "mpsrom"
+        ],
+        "line": 29
+      },
+      {
+        "file": "mpsrom3.py",
+        "group": [
+          "mpsrom"
+        ],
+        "line": 29
+      },
+      {
+        "file": "mpsrom4.py",
+        "group": [
+          "mpsrom"
+        ],
+        "line": 29
+      }
+    ],
+    "MapModificationEngine": [
+      {
+        "file": "mpsrom2.py",
+        "group": [
+          "mpsrom"
+        ],
+        "line": 244
+      },
+      {
+        "file": "mpsrom3.py",
+        "group": [
+          "mpsrom"
+        ],
+        "line": 244
+      },
+      {
+        "file": "mpsrom4.py",
+        "group": [
+          "mpsrom"
+        ],
+        "line": 244
+      }
+    ],
+    "ROMComparisonTool": [
+      {
+        "file": "mpsrom2.py",
+        "group": [
+          "mpsrom"
+        ],
+        "line": 345
+      },
+      {
+        "file": "mpsrom3.py",
+        "group": [
+          "mpsrom"
+        ],
+        "line": 345
+      },
+      {
+        "file": "mpsrom4.py",
+        "group": [
+          "mpsrom"
+        ],
+        "line": 345
+      }
+    ],
+    "ECUMemoryAddress": [
+      {
+        "file": "muts15.py",
+        "group": [
+          "muts"
+        ],
+        "line": 23
+      },
+      {
+        "file": "muts6.py",
+        "group": [
+          "muts"
+        ],
+        "line": 23
+      }
+    ],
+    "MazdaSeedKeyAlgorithm": [
+      {
+        "file": "muts15.py",
+        "group": [
+          "muts"
+        ],
+        "line": 98
+      },
+      {
+        "file": "muts6.py",
+        "group": [
+          "muts"
+        ],
+        "line": 98
+      }
+    ],
+    "MazdaRaceCalibrations": [
+      {
+        "file": "muts15.py",
+        "group": [
+          "muts"
+        ],
+        "line": 153
+      },
+      {
+        "file": "muts6.py",
+        "group": [
+          "muts"
+        ],
+        "line": 153
+      }
+    ],
+    "DealerToolAccess": [
+      {
+        "file": "muts15.py",
+        "group": [
+          "muts"
+        ],
+        "line": 283
+      },
+      {
+        "file": "muts6.py",
+        "group": [
+          "muts"
+        ],
+        "line": 283
+      }
+    ],
+    "AdvancedDiagnosticProcedures": [
+      {
+        "file": "muts15.py",
+        "group": [
+          "muts"
+        ],
+        "line": 356
+      },
+      {
+        "file": "muts6.py",
+        "group": [
+          "muts"
+        ],
+        "line": 356
+      }
+    ],
+    "RealTimeAITuner": [
+      {
+        "file": "muts4.py",
+        "group": [
+          "muts"
+        ],
+        "line": 365
+      },
+      {
+        "file": "real_time_ai_tuner.py",
+        "group": [
+          "other"
+        ],
+        "line": 99
+      }
+    ],
+    "SecureDatabase": [
+      {
+        "file": "muts4.py",
+        "group": [
+          "muts"
+        ],
+        "line": 438
+      },
+      {
+        "file": "secure_database.py",
+        "group": [
+          "other"
+        ],
+        "line": 58
+      }
+    ],
+    "MockCANEngine": [
+      {
+        "file": "muts4.py",
+        "group": [
+          "muts"
+        ],
+        "line": 1159
+      },
+      {
+        "file": "muts8.py",
+        "group": [
+          "muts"
+        ],
+        "line": 936
+      }
+    ],
+    "MazdaSpeed3TunerGUI": [
+      {
+        "file": "muts5.py",
+        "group": [
+          "muts"
+        ],
+        "line": 31
+      },
+      {
+        "file": "muts7.py",
+        "group": [
+          "muts"
+        ],
+        "line": 31
+      }
+    ],
+    "CalibrationValidationResult": [
+      {
+        "file": "muts_tuner/complete_tuner/integration_test.py",
+        "group": [
+          "muts"
+        ],
+        "line": 558
+      },
+      {
+        "file": "muts_tuner/complete_tuner/mds_compatibility.py",
+        "group": [
+          "muts"
+        ],
+        "line": 22
+      }
+    ],
+    "DiagnosticManager": [
+      {
+        "file": "src/muts/services/diagnostic_manager.py",
+        "group": [
+          "diagnostic"
+        ],
+        "line": 12
+      },
+      {
+        "file": "versa13.py",
+        "group": [
+          "versa"
+        ],
+        "line": 26
+      }
+    ],
+    "VersaLogger": [
+      {
+        "file": "utils/logger.py",
+        "group": [
+          "other"
+        ],
+        "line": 35
+      },
+      {
+        "file": "versa9.py",
+        "group": [
+          "versa"
+        ],
+        "line": 14
+      }
+    ],
+    "TuningConsole": [
+      {
+        "file": "versa11.py",
+        "group": [
+          "versa"
+        ],
+        "line": 25
+      },
+      {
+        "file": "versa12.py",
+        "group": [
+          "versa"
+        ],
+        "line": 23
+      }
+    ]
+  },
+  "component_hierarchy": {
+    "communication": [
+      {
+        "name": "MazdaCANError",
+        "instances": 1
+      },
+      {
+        "name": "CANMessageID",
+        "instances": 1
+      },
+      {
+        "name": "MazdaCANEngine",
+        "instances": 3
+      },
+      {
+        "name": "CAN_ID",
+        "instances": 1
+      },
+      {
+        "name": "CANMessageDecoder",
+        "instances": 1
+      },
+      {
+        "name": "MockCANBus",
+        "instances": 3
+      },
+      {
+        "name": "CANInjection",
+        "instances": 5
+      },
+      {
+        "name": "EngineCycleAnalysis",
+        "instances": 2
+      },
+      {
+        "name": "TestPhysicsEngine",
+        "instances": 1
+      },
+      {
+        "name": "CANMessage",
+        "instances": 3
+      },
+      {
+        "name": "Mazdaspeed3CANInterface",
+        "instances": 2
+      },
+      {
+        "name": "CANUtilities",
+        "instances": 2
+      },
+      {
+        "name": "MazdaRaceEngineering",
+        "instances": 2
+      },
+      {
+        "name": "EngineThermodynamics",
+        "instances": 3
+      },
+      {
+        "name": "MZRCANProtocol",
+        "instances": 1
+      },
+      {
+        "name": "J2534CANEngine",
+        "instances": 1
+      },
+      {
+        "name": "CANState",
+        "instances": 1
+      },
+      {
+        "name": "CANError",
+        "instances": 2
+      },
+      {
+        "name": "CANFrameType",
+        "instances": 3
+      },
+      {
+        "name": "CANInterfaceConfig",
+        "instances": 1
+      },
+      {
+        "name": "CANStatistics",
+        "instances": 1
+      },
+      {
+        "name": "CANInterfaceError",
+        "instances": 1
+      },
+      {
+        "name": "CANProtocolError",
+        "instances": 1
+      },
+      {
+        "name": "MazdaspeedKnowledgeEngine",
+        "instances": 1
+      },
+      {
+        "name": "CANFrame",
+        "instances": 2
+      },
+      {
+        "name": "MazdaCANInterface",
+        "instances": 2
+      },
+      {
+        "name": "CANPriority",
+        "instances": 1
+      },
+      {
+        "name": "CANFilter",
+        "instances": 1
+      },
+      {
+        "name": "MapModificationEngine",
+        "instances": 3
+      },
+      {
+        "name": "EngineComponentDatabase",
+        "instances": 1
+      },
+      {
+        "name": "CANBusConfig",
+        "instances": 1
+      },
+      {
+        "name": "MockCANEngine",
+        "instances": 2
+      },
+      {
+        "name": "PythonCANConfig",
+        "instances": 1
+      },
+      {
+        "name": "PythonCANEngine",
+        "instances": 1
+      },
+      {
+        "name": "EngineSpecs",
+        "instances": 1
+      }
+    ],
+    "security": [
+      {
+        "name": "SecurityAlgorithm",
+        "instances": 1
+      },
+      {
+        "name": "SecurityLevel",
+        "instances": 3
+      },
+      {
+        "name": "SecurityCredentials",
+        "instances": 3
+      },
+      {
+        "name": "MazdaSecurityCore",
+        "instances": 3
+      },
+      {
+        "name": "SecurityError",
+        "instances": 4
+      },
+      {
+        "name": "TestSecurity",
+        "instances": 1
+      },
+      {
+        "name": "SecurityViolationError",
+        "instances": 1
+      },
+      {
+        "name": "SecurityAccessLevel",
+        "instances": 4
+      },
+      {
+        "name": "AuthenticationError",
+        "instances": 1
+      },
+      {
+        "name": "AuthorizationError",
+        "instances": 1
+      },
+      {
+        "name": "MazdaSecurityAlgorithm",
+        "instances": 2
+      },
+      {
+        "name": "MazdaSecurityAccess",
+        "instances": 2
+      },
+      {
+        "name": "MazdaDealerSecurity",
+        "instances": 1
+      },
+      {
+        "name": "SecurityWorker",
+        "instances": 1
+      },
+      {
+        "name": "DatabaseSecurityError",
+        "instances": 1
+      },
+      {
+        "name": "CobbSecurityWidget",
+        "instances": 1
+      },
+      {
+        "name": "MDSSecurityWidget",
+        "instances": 1
+      },
+      {
+        "name": "MPSecurityWidget",
+        "instances": 1
+      },
+      {
+        "name": "MUTSSecurityWidget",
+        "instances": 1
+      },
+      {
+        "name": "VersaSecurityWidget",
+        "instances": 1
+      },
+      {
+        "name": "CobbSecurityService",
+        "instances": 1
+      },
+      {
+        "name": "SecurityAccessService",
+        "instances": 1
+      },
+      {
+        "name": "MutsSecurityService",
+        "instances": 1
+      },
+      {
+        "name": "SecurityService",
+        "instances": 1
+      },
+      {
+        "name": "TestSecurityAccess",
+        "instances": 1
+      }
+    ],
+    "other": [
+      {
+        "name": "TuningMode",
+        "instances": 4
+      },
+      {
+        "name": "TuningParameter",
+        "instances": 2
+      },
+      {
+        "name": "TuneProfile",
+        "instances": 1
+      },
+      {
+        "name": "MazdaSpeed3TuningSoftware",
+        "instances": 3
+      },
+      {
+        "name": "FeatureState",
+        "instances": 1
+      },
+      {
+        "name": "FeatureStatus",
+        "instances": 1
+      },
+      {
+        "name": "LaunchControlMode",
+        "instances": 1
+      },
+      {
+        "name": "AntiLagMode",
+        "instances": 1
+      },
+      {
+        "name": "TwoStepMode",
+        "instances": 1
+      },
+      {
+        "name": "RacingFeatureConfig",
+        "instances": 1
+      },
+      {
+        "name": "RacingFeatureController",
+        "instances": 2
+      },
+      {
+        "name": "TelemetryDataPoint",
+        "instances": 1
+      },
+      {
+        "name": "TelemetryMetric",
+        "instances": 1
+      },
+      {
+        "name": "RealTimeTelemetry",
+        "instances": 3
+      },
+      {
+        "name": "SRSError",
+        "instances": 1
+      },
+      {
+        "name": "SafetyError",
+        "instances": 1
+      },
+      {
+        "name": "SRSState",
+        "instances": 1
+      },
+      {
+        "name": "SRSSafetyCheck",
+        "instances": 1
+      },
+      {
+        "name": "SRSCrashData",
+        "instances": 1
+      },
+      {
+        "name": "SRSAirbagExploiter",
+        "instances": 2
+      },
+      {
+        "name": "SRSTransport",
+        "instances": 1
+      },
+      {
+        "name": "MazdaECUExploit",
+        "instances": 5
+      },
+      {
+        "name": "AutonomousTuner",
+        "instances": 5
+      },
+      {
+        "name": "AdvancedTurboPhysics",
+        "instances": 2
+      },
+      {
+        "name": "AdvancedAITuning",
+        "instances": 2
+      },
+      {
+        "name": "PrioritizedReplayBuffer",
+        "instances": 2
+      },
+      {
+        "name": "ActorNetwork",
+        "instances": 2
+      },
+      {
+        "name": "CriticNetwork",
+        "instances": 2
+      },
+      {
+        "name": "IdealGasPhysics",
+        "instances": 2
+      },
+      {
+        "name": "TurbochargerDynamics",
+        "instances": 2
+      },
+      {
+        "name": "AdvancedCalculations",
+        "instances": 3
+      },
+      {
+        "name": "TuningSecrets",
+        "instances": 3
+      },
+      {
+        "name": "AntiLagSystem",
+        "instances": 2
+      },
+      {
+        "name": "TwoStepRevLimiter",
+        "instances": 2
+      },
+      {
+        "name": "LaunchControlSystem",
+        "instances": 2
+      },
+      {
+        "name": "K04Turbocharger",
+        "instances": 2
+      },
+      {
+        "name": "Mazdaspeed3Tuner",
+        "instances": 2
+      },
+      {
+        "name": "TestECUDatabase",
+        "instances": 1
+      },
+      {
+        "name": "TestAITuning",
+        "instances": 1
+      },
+      {
+        "name": "TestPerformanceFeatures",
+        "instances": 1
+      },
+      {
+        "name": "TestTurboModels",
+        "instances": 1
+      },
+      {
+        "name": "TestTuningSecrets",
+        "instances": 1
+      },
+      {
+        "name": "DarkWebIntelligence",
+        "instances": 1
+      },
+      {
+        "name": "BlackMarketTuning",
+        "instances": 1
+      },
+      {
+        "name": "CriminalEnterpriseTools",
+        "instances": 1
+      },
+      {
+        "name": "AdvancedExploitation",
+        "instances": 1
+      },
+      {
+        "name": "IllegalMarketAnalysis",
+        "instances": 1
+      },
+      {
+        "name": "LogEntry",
+        "instances": 2
+      },
+      {
+        "name": "DataLogger",
+        "instances": 1
+      },
+      {
+        "name": "DataAnalyzer",
+        "instances": 1
+      },
+      {
+        "name": "MazdaDealershipSecrets",
+        "instances": 2
+      },
+      {
+        "name": "AdvancedTuningSecrets",
+        "instances": 2
+      },
+      {
+        "name": "MazdaSpeed3RaceTuning",
+        "instances": 2
+      },
+      {
+        "name": "ECUCalibration",
+        "instances": 4
+      },
+      {
+        "name": "Mazdaspeed3Database",
+        "instances": 2
+      },
+      {
+        "name": "TurbochargerPhysics",
+        "instances": 3
+      },
+      {
+        "name": "PerformanceCalculator",
+        "instances": 3
+      },
+      {
+        "name": "AITuningNetwork",
+        "instances": 3
+      },
+      {
+        "name": "ReinforcementTuner",
+        "instances": 3
+      },
+      {
+        "name": "AITuningSystem",
+        "instances": 3
+      },
+      {
+        "name": "ExploiterError",
+        "instances": 1
+      },
+      {
+        "name": "CommunicationError",
+        "instances": 1
+      },
+      {
+        "name": "OperationError",
+        "instances": 1
+      },
+      {
+        "name": "OperationResult",
+        "instances": 1
+      },
+      {
+        "name": "ExploiterConfig",
+        "instances": 1
+      },
+      {
+        "name": "BaseExploiter",
+        "instances": 1
+      },
+      {
+        "name": "OBD2Protocol",
+        "instances": 2
+      },
+      {
+        "name": "RealTimeMonitor",
+        "instances": 1
+      },
+      {
+        "name": "LiveTuner",
+        "instances": 1
+      },
+      {
+        "name": "J2534Protocol",
+        "instances": 6
+      },
+      {
+        "name": "PASSTHRU_MSG",
+        "instances": 2
+      },
+      {
+        "name": "MZRECU",
+        "instances": 1
+      },
+      {
+        "name": "CobbDeviceState",
+        "instances": 2
+      },
+      {
+        "name": "CobbAccessPortEmulator",
+        "instances": 2
+      },
+      {
+        "name": "HardwareInterface",
+        "instances": 2
+      },
+      {
+        "name": "IsoTpError",
+        "instances": 1
+      },
+      {
+        "name": "IsoTpTransport",
+        "instances": 1
+      },
+      {
+        "name": "J2534Error",
+        "instances": 4
+      },
+      {
+        "name": "J2534Device",
+        "instances": 1
+      },
+      {
+        "name": "DeviceConfig",
+        "instances": 1
+      },
+      {
+        "name": "KwpError",
+        "instances": 1
+      },
+      {
+        "name": "KwpClient",
+        "instances": 1
+      },
+      {
+        "name": "MazdaEcu",
+        "instances": 1
+      },
+      {
+        "name": "UdsError",
+        "instances": 1
+      },
+      {
+        "name": "UdsClient",
+        "instances": 1
+      },
+      {
+        "name": "SystemState",
+        "instances": 1
+      },
+      {
+        "name": "PerformanceMode",
+        "instances": 1
+      },
+      {
+        "name": "ECUData",
+        "instances": 3
+      },
+      {
+        "name": "TuningParameters",
+        "instances": 1
+      },
+      {
+        "name": "SystemStatus",
+        "instances": 1
+      },
+      {
+        "name": "ConnectionHealth",
+        "instances": 1
+      },
+      {
+        "name": "ConnectionMetrics",
+        "instances": 1
+      },
+      {
+        "name": "ConnectionHealthMonitor",
+        "instances": 1
+      },
+      {
+        "name": "ECUState",
+        "instances": 4
+      },
+      {
+        "name": "ECUResponse",
+        "instances": 3
+      },
+      {
+        "name": "ECUCommunicator",
+        "instances": 3
+      },
+      {
+        "name": "ChecksumType",
+        "instances": 5
+      },
+      {
+        "name": "ChecksumInfo",
+        "instances": 1
+      },
+      {
+        "name": "ROMChecksumVerifier",
+        "instances": 1
+      },
+      {
+        "name": "SafetyLevel",
+        "instances": 2
+      },
+      {
+        "name": "SafetyLimits",
+        "instances": 1
+      },
+      {
+        "name": "SafetyViolation",
+        "instances": 1
+      },
+      {
+        "name": "SafetyValidator",
+        "instances": 3
+      },
+      {
+        "name": "MazdaProtocol",
+        "instances": 4
+      },
+      {
+        "name": "AbsWheelSpeed",
+        "instances": 1
+      },
+      {
+        "name": "AbsModule",
+        "instances": 1
+      },
+      {
+        "name": "SwasState",
+        "instances": 1
+      },
+      {
+        "name": "BcmModule",
+        "instances": 1
+      },
+      {
+        "name": "DTC",
+        "instances": 1
+      },
+      {
+        "name": "FreezeFrame",
+        "instances": 1
+      },
+      {
+        "name": "LiveDataSample",
+        "instances": 1
+      },
+      {
+        "name": "LiveDataPoller",
+        "instances": 1
+      },
+      {
+        "name": "LiveData",
+        "instances": 1
+      },
+      {
+        "name": "LiveDataService",
+        "instances": 1
+      },
+      {
+        "name": "SrsStatus",
+        "instances": 1
+      },
+      {
+        "name": "SrsModule",
+        "instances": 1
+      },
+      {
+        "name": "EEPROMError",
+        "instances": 1
+      },
+      {
+        "name": "EEPROMAccessError",
+        "instances": 1
+      },
+      {
+        "name": "EEPROMChecksumError",
+        "instances": 1
+      },
+      {
+        "name": "EEPROMExploiter",
+        "instances": 3
+      },
+      {
+        "name": "ELM327Commands",
+        "instances": 1
+      },
+      {
+        "name": "Mazdaspeed3PIDs",
+        "instances": 1
+      },
+      {
+        "name": "ELM327Interface",
+        "instances": 1
+      },
+      {
+        "name": "AITuner",
+        "instances": 1
+      },
+      {
+        "name": "AdvancedTuningMaps",
+        "instances": 1
+      },
+      {
+        "name": "VirtualDyno",
+        "instances": 1
+      },
+      {
+        "name": "EnhancedELM327Interface",
+        "instances": 1
+      },
+      {
+        "name": "RealTimeGauge",
+        "instances": 1
+      },
+      {
+        "name": "DataGraphWidget",
+        "instances": 1
+      },
+      {
+        "name": "TuningMapWidget",
+        "instances": 1
+      },
+      {
+        "name": "PlatformFixer",
+        "instances": 1
+      },
+      {
+        "name": "PlatformConfig",
+        "instances": 1
+      },
+      {
+        "name": "DataUpdateThread",
+        "instances": 1
+      },
+      {
+        "name": "HardwareBackend",
+        "instances": 1
+      },
+      {
+        "name": "HardwareFactory",
+        "instances": 1
+      },
+      {
+        "name": "J2534Config",
+        "instances": 1
+      },
+      {
+        "name": "ECUInfo",
+        "instances": 1
+      },
+      {
+        "name": "FlashSession",
+        "instances": 1
+      },
+      {
+        "name": "ECUExploiterError",
+        "instances": 1
+      },
+      {
+        "name": "ECUCommunicationError",
+        "instances": 1
+      },
+      {
+        "name": "ECUFlashError",
+        "instances": 1
+      },
+      {
+        "name": "MazdaECUExploiter",
+        "instances": 1
+      },
+      {
+        "name": "MemoryRegion",
+        "instances": 2
+      },
+      {
+        "name": "AccessType",
+        "instances": 1
+      },
+      {
+        "name": "MemoryRange",
+        "instances": 1
+      },
+      {
+        "name": "FlashSector",
+        "instances": 1
+      },
+      {
+        "name": "MemoryMapError",
+        "instances": 1
+      },
+      {
+        "name": "MazdaMemoryMap",
+        "instances": 1
+      },
+      {
+        "name": "OBDCommandMode",
+        "instances": 1
+      },
+      {
+        "name": "OBDResponseCode",
+        "instances": 1
+      },
+      {
+        "name": "OBDPID",
+        "instances": 1
+      },
+      {
+        "name": "OBDError",
+        "instances": 1
+      },
+      {
+        "name": "OBDTimeoutError",
+        "instances": 1
+      },
+      {
+        "name": "OBDProtocolError",
+        "instances": 1
+      },
+      {
+        "name": "MazdaPIDRegistry",
+        "instances": 1
+      },
+      {
+        "name": "MazdaOBDService",
+        "instances": 3
+      },
+      {
+        "name": "DrivingPattern",
+        "instances": 1
+      },
+      {
+        "name": "TuningAdjustment",
+        "instances": 2
+      },
+      {
+        "name": "MazdaAITuner",
+        "instances": 2
+      },
+      {
+        "name": "RealDynoSimulator",
+        "instances": 1
+      },
+      {
+        "name": "TuningStrategy",
+        "instances": 1
+      },
+      {
+        "name": "AdvancedOBD2Bluetooth",
+        "instances": 1
+      },
+      {
+        "name": "RealOBDConnection",
+        "instances": 1
+      },
+      {
+        "name": "MazdaTechnicianTool",
+        "instances": 1
+      },
+      {
+        "name": "MazdaspeedHelpSystem",
+        "instances": 1
+      },
+      {
+        "name": "UltimateMazdaTechnicianSuite",
+        "instances": 1
+      },
+      {
+        "name": "TelemetryResponse",
+        "instances": 1
+      },
+      {
+        "name": "TuningTargetRequest",
+        "instances": 1
+      },
+      {
+        "name": "SessionStartRequest",
+        "instances": 1
+      },
+      {
+        "name": "SessionResponse",
+        "instances": 1
+      },
+      {
+        "name": "APIResponse",
+        "instances": 1
+      },
+      {
+        "name": "ErrorResponse",
+        "instances": 1
+      },
+      {
+        "name": "MazdaTunerAPI",
+        "instances": 2
+      },
+      {
+        "name": "SafetyResult",
+        "instances": 1
+      },
+      {
+        "name": "MazdaECUType",
+        "instances": 3
+      },
+      {
+        "name": "MazdaSeedKeyDatabase",
+        "instances": 3
+      },
+      {
+        "name": "TestStatus",
+        "instances": 2
+      },
+      {
+        "name": "OBDProtocol",
+        "instances": 3
+      },
+      {
+        "name": "MazdaOBDInterface",
+        "instances": 2
+      },
+      {
+        "name": "MazdaDataConverter",
+        "instances": 3
+      },
+      {
+        "name": "DTCSeverity",
+        "instances": 2
+      },
+      {
+        "name": "DTCStatus",
+        "instances": 2
+      },
+      {
+        "name": "DTCDefinition",
+        "instances": 3
+      },
+      {
+        "name": "MazdaDTCDatabase",
+        "instances": 2
+      },
+      {
+        "name": "CalibrationType",
+        "instances": 3
+      },
+      {
+        "name": "CalibrationMap",
+        "instances": 3
+      },
+      {
+        "name": "MazdaCalibrationDatabase",
+        "instances": 2
+      },
+      {
+        "name": "ProgrammingSession",
+        "instances": 2
+      },
+      {
+        "name": "ProgrammingState",
+        "instances": 2
+      },
+      {
+        "name": "ProgrammingBlock",
+        "instances": 2
+      },
+      {
+        "name": "MazdaProgrammingService",
+        "instances": 2
+      },
+      {
+        "name": "J2534Ioctl",
+        "instances": 2
+      },
+      {
+        "name": "J2534MessageFlag",
+        "instances": 2
+      },
+      {
+        "name": "J2534Interface",
+        "instances": 4
+      },
+      {
+        "name": "ConfigList",
+        "instances": 2
+      },
+      {
+        "name": "PassThruMsg",
+        "instances": 2
+      },
+      {
+        "name": "MazdaIDSSoftware",
+        "instances": 2
+      },
+      {
+        "name": "CalibrationOperation",
+        "instances": 2
+      },
+      {
+        "name": "MapAdjustmentType",
+        "instances": 2
+      },
+      {
+        "name": "MapAdjustment",
+        "instances": 4
+      },
+      {
+        "name": "MazdaCalibrationService",
+        "instances": 4
+      },
+      {
+        "name": "MazdaChecksumCalculator",
+        "instances": 4
+      },
+      {
+        "name": "VehicleState",
+        "instances": 1
+      },
+      {
+        "name": "FlashState",
+        "instances": 2
+      },
+      {
+        "name": "ExploiterState",
+        "instances": 1
+      },
+      {
+        "name": "EEPROMOperation",
+        "instances": 1
+      },
+      {
+        "name": "ECUOperation",
+        "instances": 1
+      },
+      {
+        "name": "OBDPacket",
+        "instances": 1
+      },
+      {
+        "name": "TelemetryData",
+        "instances": 1
+      },
+      {
+        "name": "TuningProfile",
+        "instances": 2
+      },
+      {
+        "name": "FlashOperation",
+        "instances": 2
+      },
+      {
+        "name": "SafeFuelLimits",
+        "instances": 1
+      },
+      {
+        "name": "SafePremiumFuelTuner",
+        "instances": 1
+      },
+      {
+        "name": "PremiumFuelLimits",
+        "instances": 1
+      },
+      {
+        "name": "PremiumFuelTuner",
+        "instances": 1
+      },
+      {
+        "name": "ROMDefinition",
+        "instances": 3
+      },
+      {
+        "name": "MazdaECUROMReader",
+        "instances": 1
+      },
+      {
+        "name": "LiveDataMonitor",
+        "instances": 1
+      },
+      {
+        "name": "ChecksumDefinition",
+        "instances": 3
+      },
+      {
+        "name": "AdvancedROMAnalyzer",
+        "instances": 3
+      },
+      {
+        "name": "ROMComparisonTool",
+        "instances": 3
+      },
+      {
+        "name": "PerformanceTuningMap",
+        "instances": 1
+      },
+      {
+        "name": "TurbochargerDatabase",
+        "instances": 1
+      },
+      {
+        "name": "TuningSecret",
+        "instances": 1
+      },
+      {
+        "name": "MazdaBackdoor",
+        "instances": 1
+      },
+      {
+        "name": "ECUMemoryAddress",
+        "instances": 2
+      },
+      {
+        "name": "MazdaSeedKeyAlgorithm",
+        "instances": 2
+      },
+      {
+        "name": "MazdaRaceCalibrations",
+        "instances": 2
+      },
+      {
+        "name": "DealerToolAccess",
+        "instances": 2
+      },
+      {
+        "name": "J2534DeviceConfig",
+        "instances": 1
+      },
+      {
+        "name": "VehicleTarget",
+        "instances": 1
+      },
+      {
+        "name": "HardwareInterfaceConfig",
+        "instances": 1
+      },
+      {
+        "name": "VehicleSpecificData",
+        "instances": 1
+      },
+      {
+        "name": "CalibrationData",
+        "instances": 1
+      },
+      {
+        "name": "TestingData",
+        "instances": 1
+      },
+      {
+        "name": "SystemConfiguration",
+        "instances": 1
+      },
+      {
+        "name": "EEPROMPatch",
+        "instances": 1
+      },
+      {
+        "name": "ComponentWearReset",
+        "instances": 1
+      },
+      {
+        "name": "AITuningModel",
+        "instances": 1
+      },
+      {
+        "name": "RealTimeAITuner",
+        "instances": 2
+      },
+      {
+        "name": "SecureDatabase",
+        "instances": 2
+      },
+      {
+        "name": "MazdaTunerFrontend",
+        "instances": 1
+      },
+      {
+        "name": "TestMazdaTuner",
+        "instances": 1
+      },
+      {
+        "name": "PerformanceAnalytics",
+        "instances": 1
+      },
+      {
+        "name": "EnhancedMazdaTunerAPI",
+        "instances": 1
+      },
+      {
+        "name": "TestRacingFeatures",
+        "instances": 1
+      },
+      {
+        "name": "Vehicle",
+        "instances": 1
+      },
+      {
+        "name": "FlashService",
+        "instances": 1
+      },
+      {
+        "name": "TuneFile",
+        "instances": 1
+      },
+      {
+        "name": "VehicleInfo",
+        "instances": 1
+      },
+      {
+        "name": "MockECUInterface",
+        "instances": 1
+      },
+      {
+        "name": "TestBackendAPI",
+        "instances": 1
+      },
+      {
+        "name": "TestWebSocketFunctionality",
+        "instances": 1
+      },
+      {
+        "name": "TestECUInterface",
+        "instances": 1
+      },
+      {
+        "name": "TestErrorHandling",
+        "instances": 1
+      },
+      {
+        "name": "TestPerformance",
+        "instances": 1
+      },
+      {
+        "name": "TestIntegrationWorkflow",
+        "instances": 1
+      },
+      {
+        "name": "AdvancedModeWarning",
+        "instances": 1
+      },
+      {
+        "name": "AdvancedECUAccess",
+        "instances": 1
+      },
+      {
+        "name": "IntegrationTest",
+        "instances": 1
+      },
+      {
+        "name": "CalibrationValidationResult",
+        "instances": 2
+      },
+      {
+        "name": "CalibrationStatus",
+        "instances": 1
+      },
+      {
+        "name": "CalibrationFile",
+        "instances": 1
+      },
+      {
+        "name": "CommunicationMethod",
+        "instances": 1
+      },
+      {
+        "name": "ECUConnection",
+        "instances": 1
+      },
+      {
+        "name": "MazdaECUCore",
+        "instances": 1
+      },
+      {
+        "name": "ConnectionWorker",
+        "instances": 1
+      },
+      {
+        "name": "MemoryWorker",
+        "instances": 1
+      },
+      {
+        "name": "MDSCompatibilityLayer",
+        "instances": 1
+      },
+      {
+        "name": "J2534FilterType",
+        "instances": 1
+      },
+      {
+        "name": "J2534ErrorCode",
+        "instances": 1
+      },
+      {
+        "name": "J2534Message",
+        "instances": 1
+      },
+      {
+        "name": "ServiceType",
+        "instances": 1
+      },
+      {
+        "name": "PIDDefinition",
+        "instances": 1
+      },
+      {
+        "name": "AIModelType",
+        "instances": 1
+      },
+      {
+        "name": "TuningTarget",
+        "instances": 1
+      },
+      {
+        "name": "ModelMetrics",
+        "instances": 1
+      },
+      {
+        "name": "AITunerError",
+        "instances": 1
+      },
+      {
+        "name": "ModelNotTrainedError",
+        "instances": 1
+      },
+      {
+        "name": "InsufficientDataError",
+        "instances": 1
+      },
+      {
+        "name": "TelemetryState",
+        "instances": 1
+      },
+      {
+        "name": "TelemetryConfig",
+        "instances": 1
+      },
+      {
+        "name": "TelemetryStats",
+        "instances": 1
+      },
+      {
+        "name": "TelemetryError",
+        "instances": 1
+      },
+      {
+        "name": "TelemetryConfigError",
+        "instances": 1
+      },
+      {
+        "name": "SessionPhase",
+        "instances": 1
+      },
+      {
+        "name": "SessionState",
+        "instances": 1
+      },
+      {
+        "name": "SessionConfig",
+        "instances": 1
+      },
+      {
+        "name": "PhaseResult",
+        "instances": 1
+      },
+      {
+        "name": "RollbackData",
+        "instances": 1
+      },
+      {
+        "name": "TuningSessionError",
+        "instances": 1
+      },
+      {
+        "name": "SessionPhaseError",
+        "instances": 1
+      },
+      {
+        "name": "RollbackFailedError",
+        "instances": 1
+      },
+      {
+        "name": "RealTimeTuningSession",
+        "instances": 1
+      },
+      {
+        "name": "DatabaseError",
+        "instances": 1
+      },
+      {
+        "name": "DatabaseConnectionError",
+        "instances": 1
+      },
+      {
+        "name": "DatabaseConfig",
+        "instances": 1
+      },
+      {
+        "name": "CobbJ2534Widget",
+        "instances": 1
+      },
+      {
+        "name": "CobbMapWidget",
+        "instances": 1
+      },
+      {
+        "name": "CobbHardwareWidget",
+        "instances": 1
+      },
+      {
+        "name": "CobbOBDWidget",
+        "instances": 1
+      },
+      {
+        "name": "CobbFlashWidget",
+        "instances": 1
+      },
+      {
+        "name": "CobbRealtimeWidget",
+        "instances": 1
+      },
+      {
+        "name": "PIDLibraryWidget",
+        "instances": 1
+      },
+      {
+        "name": "DTCLibraryWidget",
+        "instances": 1
+      },
+      {
+        "name": "MDSProtocolWidget",
+        "instances": 1
+      },
+      {
+        "name": "MDSCalibrationWidget",
+        "instances": 1
+      },
+      {
+        "name": "MDSChecksumWidget",
+        "instances": 1
+      },
+      {
+        "name": "MPSROMStructureWidget",
+        "instances": 1
+      },
+      {
+        "name": "MPSChecksumWidget",
+        "instances": 1
+      },
+      {
+        "name": "MPSMapWidget",
+        "instances": 1
+      },
+      {
+        "name": "MUTSSRSWidget",
+        "instances": 1
+      },
+      {
+        "name": "MUTSEEPROMWidget",
+        "instances": 1
+      },
+      {
+        "name": "MUTSBackdoorWidget",
+        "instances": 1
+      },
+      {
+        "name": "MUTSExploitWidget",
+        "instances": 1
+      },
+      {
+        "name": "MUTSKnowledgeWidget",
+        "instances": 1
+      },
+      {
+        "name": "DirectoryWidget",
+        "instances": 1
+      },
+      {
+        "name": "TuneCategoryWidget",
+        "instances": 1
+      },
+      {
+        "name": "VersaCommWidget",
+        "instances": 1
+      },
+      {
+        "name": "VersaROMWidget",
+        "instances": 1
+      },
+      {
+        "name": "VersaMapWidget",
+        "instances": 1
+      },
+      {
+        "name": "VersaDiagWidget",
+        "instances": 1
+      },
+      {
+        "name": "CobbJ2534Service",
+        "instances": 1
+      },
+      {
+        "name": "ECUMapService",
+        "instances": 1
+      },
+      {
+        "name": "HardwareEmulationService",
+        "instances": 1
+      },
+      {
+        "name": "HardwareInterfaceService",
+        "instances": 1
+      },
+      {
+        "name": "CobbOBDService",
+        "instances": 1
+      },
+      {
+        "name": "RealTimeMonitorService",
+        "instances": 1
+      },
+      {
+        "name": "CobbCoordinator",
+        "instances": 1
+      },
+      {
+        "name": "CommunicationProtocol",
+        "instances": 1
+      },
+      {
+        "name": "J2534DeviceInfo",
+        "instances": 1
+      },
+      {
+        "name": "CommunicationService",
+        "instances": 1
+      },
+      {
+        "name": "DynoService",
+        "instances": 1
+      },
+      {
+        "name": "StackSummary",
+        "instances": 1
+      },
+      {
+        "name": "IntegrationCoordinator",
+        "instances": 1
+      },
+      {
+        "name": "CalibrationOperationLevel",
+        "instances": 1
+      },
+      {
+        "name": "MazdaIDSCoordinator",
+        "instances": 1
+      },
+      {
+        "name": "MetadataService",
+        "instances": 1
+      },
+      {
+        "name": "ROMAnalyzer",
+        "instances": 1
+      },
+      {
+        "name": "ChecksumAnalyzer",
+        "instances": 1
+      },
+      {
+        "name": "MapLibrary",
+        "instances": 1
+      },
+      {
+        "name": "MPSROMCoordinator",
+        "instances": 1
+      },
+      {
+        "name": "MutsSRSService",
+        "instances": 1
+      },
+      {
+        "name": "MutsEEPROMService",
+        "instances": 1
+      },
+      {
+        "name": "MutsBackdoorService",
+        "instances": 1
+      },
+      {
+        "name": "MutsExploitService",
+        "instances": 1
+      },
+      {
+        "name": "MutsKnowledgeService",
+        "instances": 1
+      },
+      {
+        "name": "MutsCoordinator",
+        "instances": 1
+      },
+      {
+        "name": "ECUQueue",
+        "instances": 1
+      },
+      {
+        "name": "FileSummary",
+        "instances": 1
+      },
+      {
+        "name": "DirectoryCatalog",
+        "instances": 1
+      },
+      {
+        "name": "RepositoryCatalogService",
+        "instances": 1
+      },
+      {
+        "name": "TorqueSWASService",
+        "instances": 1
+      },
+      {
+        "name": "TuneMetadata",
+        "instances": 1
+      },
+      {
+        "name": "TuneLibraryService",
+        "instances": 1
+      },
+      {
+        "name": "VersaCommunicator",
+        "instances": 1
+      },
+      {
+        "name": "VersaROMOperations",
+        "instances": 1
+      },
+      {
+        "name": "VersaCoordinator",
+        "instances": 1
+      },
+      {
+        "name": "TestLiveDataService",
+        "instances": 1
+      },
+      {
+        "name": "TorqueConfig",
+        "instances": 1
+      },
+      {
+        "name": "PerformanceFeaturesConfig",
+        "instances": 1
+      },
+      {
+        "name": "TuneConfiguration",
+        "instances": 1
+      },
+      {
+        "name": "ColoredFormatter",
+        "instances": 1
+      },
+      {
+        "name": "VersaLogger",
+        "instances": 2
+      },
+      {
+        "name": "VersaTunerECU",
+        "instances": 1
+      },
+      {
+        "name": "TuningConsole",
+        "instances": 2
+      },
+      {
+        "name": "DTCInfo",
+        "instances": 1
+      },
+      {
+        "name": "DTCHandler",
+        "instances": 1
+      },
+      {
+        "name": "TestECUCommunication",
+        "instances": 1
+      },
+      {
+        "name": "TestROMOperations",
+        "instances": 1
+      },
+      {
+        "name": "TestMapDefinitions",
+        "instances": 1
+      },
+      {
+        "name": "TestMapEditor",
+        "instances": 1
+      },
+      {
+        "name": "TestMapDataConversion",
+        "instances": 1
+      },
+      {
+        "name": "ROMOperations",
+        "instances": 1
+      },
+      {
+        "name": "MapDefinition",
+        "instances": 1
+      },
+      {
+        "name": "MapData",
+        "instances": 1
+      },
+      {
+        "name": "MapEditor",
+        "instances": 1
+      },
+      {
+        "name": "RealTimeTuner",
+        "instances": 1
+      },
+      {
+        "name": "PerformanceLimits",
+        "instances": 1
+      },
+      {
+        "name": "Mazdaspeed32011",
+        "instances": 1
+      }
+    ],
+    "diagnostic": [
+      {
+        "name": "DiagnosticExploits",
+        "instances": 5
+      },
+      {
+        "name": "DiagnosticSession",
+        "instances": 4
+      },
+      {
+        "name": "DiagnosticMessage",
+        "instances": 3
+      },
+      {
+        "name": "MazdaDiagnosticProtocol",
+        "instances": 3
+      },
+      {
+        "name": "MazdaAdvancedDiagnostics",
+        "instances": 1
+      },
+      {
+        "name": "DiagnosticDashboard",
+        "instances": 1
+      },
+      {
+        "name": "DiagnosticTestType",
+        "instances": 2
+      },
+      {
+        "name": "DiagnosticTest",
+        "instances": 2
+      },
+      {
+        "name": "MazdaDiagnosticService",
+        "instances": 2
+      },
+      {
+        "name": "DiagnosticTroubleCode",
+        "instances": 3
+      },
+      {
+        "name": "AdvancedDiagnosticProcedures",
+        "instances": 2
+      },
+      {
+        "name": "DiagnosticExploiter",
+        "instances": 1
+      },
+      {
+        "name": "Mazdaspeed3DiagnosticDatabase",
+        "instances": 1
+      },
+      {
+        "name": "MDSDiagnosticsWidget",
+        "instances": 1
+      },
+      {
+        "name": "DiagnosticDatabaseService",
+        "instances": 1
+      },
+      {
+        "name": "DiagnosticsService",
+        "instances": 1
+      },
+      {
+        "name": "DiagnosticTestStatus",
+        "instances": 1
+      },
+      {
+        "name": "MazdaDiagnosticTests",
+        "instances": 1
+      },
+      {
+        "name": "DiagnosticService",
+        "instances": 1
+      }
+    ],
+    "management": [
+      {
+        "name": "AdvancedPerformanceManager",
+        "instances": 2
+      },
+      {
+        "name": "TurboSystemManager",
+        "instances": 2
+      },
+      {
+        "name": "SecurityManager",
+        "instances": 3
+      },
+      {
+        "name": "FlashManager",
+        "instances": 1
+      },
+      {
+        "name": "J2534Manager",
+        "instances": 1
+      },
+      {
+        "name": "AppStateManager",
+        "instances": 1
+      },
+      {
+        "name": "DtcManager",
+        "instances": 1
+      },
+      {
+        "name": "ConfigManager",
+        "instances": 1
+      },
+      {
+        "name": "MazdaDataManager",
+        "instances": 1
+      },
+      {
+        "name": "ConnectionManager",
+        "instances": 1
+      },
+      {
+        "name": "MazdaCalibrationManager",
+        "instances": 1
+      },
+      {
+        "name": "CobbFlashManager",
+        "instances": 1
+      },
+      {
+        "name": "DiagnosticManager",
+        "instances": 2
+      },
+      {
+        "name": "MazdaSeedKeyManager",
+        "instances": 1
+      },
+      {
+        "name": "VersaSecurityManager",
+        "instances": 1
+      },
+      {
+        "name": "VersaMapManager",
+        "instances": 1
+      },
+      {
+        "name": "RomManager",
+        "instances": 1
+      },
+      {
+        "name": "SwasManager",
+        "instances": 1
+      },
+      {
+        "name": "TuneProfileManager",
+        "instances": 1
+      },
+      {
+        "name": "FileManager",
+        "instances": 1
+      },
+      {
+        "name": "CompressionManager",
+        "instances": 1
+      },
+      {
+        "name": "MapDefinitionManager",
+        "instances": 1
+      }
+    ],
+    "ui": [
+      {
+        "name": "MazdaspeedTunerGUI",
+        "instances": 1
+      },
+      {
+        "name": "EnhancedMazdaspeedTunerGUI",
+        "instances": 1
+      },
+      {
+        "name": "GUIState",
+        "instances": 1
+      },
+      {
+        "name": "DashboardTab",
+        "instances": 2
+      },
+      {
+        "name": "TuningTab",
+        "instances": 2
+      },
+      {
+        "name": "DiagnosticsTab",
+        "instances": 2
+      },
+      {
+        "name": "MUTSMainWindow",
+        "instances": 1
+      },
+      {
+        "name": "CalibrationTable",
+        "instances": 1
+      },
+      {
+        "name": "AILearningTab",
+        "instances": 1
+      },
+      {
+        "name": "MazdaSpeed3TunerGUI",
+        "instances": 2
+      },
+      {
+        "name": "MazdaTunerGUI",
+        "instances": 1
+      },
+      {
+        "name": "CobbTab",
+        "instances": 1
+      },
+      {
+        "name": "CommsTab",
+        "instances": 1
+      },
+      {
+        "name": "DiagnosticLibraryTab",
+        "instances": 1
+      },
+      {
+        "name": "DynoTab",
+        "instances": 1
+      },
+      {
+        "name": "IntegrationTab",
+        "instances": 1
+      },
+      {
+        "name": "MDSTab",
+        "instances": 1
+      },
+      {
+        "name": "MPSROMTab",
+        "instances": 1
+      },
+      {
+        "name": "MUTSTab",
+        "instances": 1
+      },
+      {
+        "name": "RepositoryExplorerTab",
+        "instances": 1
+      },
+      {
+        "name": "SecurityTab",
+        "instances": 1
+      },
+      {
+        "name": "TuneLibraryTab",
+        "instances": 1
+      },
+      {
+        "name": "VersaTab",
+        "instances": 1
+      },
+      {
+        "name": "VersaTunerGUI",
+        "instances": 1
+      }
+    ]
+  },
+  "dependencies": {}
+}
