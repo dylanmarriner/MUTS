@@ -41,6 +41,18 @@ jobs:
           cd muts-desktop/electron-ui
           npm ci
 
+      - name: Run Watchdog
+        run: |
+          npm run watchdog
+        continue-on-error: false
+
+      - name: Upload Watchdog Status
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: watchdog-status
+          path: build_artifacts/watchdog_status.json
+
       - name: Run backend tests
         run: |
           cd backend

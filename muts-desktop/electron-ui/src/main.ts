@@ -5,14 +5,29 @@
 
 import { app, BrowserWindow, ipcMain, Menu, shell, dialog } from 'electron';
 import * as path from 'path';
+import * as fs from 'fs';
 import { logger } from './utils/logger';
 import { createWindow } from './window';
 import { initializeWebSocket } from './services/websocket';
+import { getHealthProbe, CHECKPOINTS } from './utils/healthProbe';
 
 let mainWindow: BrowserWindow | null = null;
+const healthProbe = getHealthProbe();
+// Check if running in CI/headless mode (module-level for use in callbacks)
+const isCI = process.env.CI === 'true' || process.env.HEADLESS === 'true';
 
 function createMainWindow(): void {
+  
+  healthProbe.checkpoint(CHECKPOINTS.MAIN_STARTED, 'Main process started', 'PASS');
+  
   // Create the browser window
+  const preloadPath = path.join(__dirname, 'preload.js');
+  
+  // Verify preload file exists
+  if (!fs.existsSync(preloadPath)) {
+    healthProbe.checkpoint(CHECKPOINTS.PRELOAD_OK, 'Preload script exists', 'FAIL', `Preload file not found: ${preloadPath}`);
+  }
+  
   mainWindow = new BrowserWindow({
     width: 1400,
     height: 900,
@@ -21,31 +36,66 @@ function createMainWindow(): void {
     webPreferences: {
       nodeIntegration: false,
       contextIsolation: true,
-      preload: path.join(__dirname, 'preload.js')
+      preload: preloadPath
     },
     icon: path.join(__dirname, '../assets/icon.png'),
     titleBarStyle: 'default',
-    show: false, // Don't show until ready-to-show
+    show: !isCI, // Don't show in CI/headless mode
   });
 
   // Load the app - always use production file loading
-  console.log('Loading app from:', path.join(__dirname, 'renderer/src/index.html'));
-  mainWindow.loadFile(path.join(__dirname, 'renderer/src/index.html'))
+  const htmlPath = path.join(__dirname, 'renderer/src/index.html');
+  
+  // Verify HTML file exists
+  if (!fs.existsSync(htmlPath)) {
+    healthProbe.checkpoint(CHECKPOINTS.RENDERER_LOADED, 'Renderer HTML exists', 'FAIL', `HTML file not found: ${htmlPath}`);
+  }
+  
+  console.log('Loading app from:', htmlPath);
+  mainWindow.loadFile(htmlPath)
+    .then(() => {
+      healthProbe.checkpoint(CHECKPOINTS.RENDERER_LOADED, 'Renderer HTML loaded', 'PASS');
+    })
     .catch(err => {
       console.error('Failed to load app:', err);
+      healthProbe.checkpoint(CHECKPOINTS.RENDERER_LOADED, 'Renderer HTML loaded', 'FAIL', err.message);
       // Show error screen
       if (mainWindow) {
-        mainWindow.loadURL('data:text/html,<html><body style="background:#1e293b;color:white;font-family:sans-serif;display:flex;align-items:center;justify-content:center;height:100vh;margin:0;"><div style="text-align:center;"><h1 style="color:#ef4444;">Failed to Load Application</h1><p>Could not load the renderer. Please restart the application.</p></div></body></html>');
+        const errorHTML = generateErrorUI('Failed to Load Application', 'Could not load the renderer. Please restart the application.', err.message);
+        mainWindow.loadURL(`data:text/html,${encodeURIComponent(errorHTML)}`);
       }
     }); 
-  mainWindow.webContents.openDevTools();
+  // Only open DevTools in non-CI mode
+  if (!isCI && !app.isPackaged) {
+    mainWindow.webContents.openDevTools();
+  }
+  
+  // Filter out expected console errors (backend not available in standalone mode)
+  mainWindow.webContents.on('console-message', (event, level, message, line, sourceId) => {
+    if (level === 2 || level === 3) { // error or warning
+      // Filter out expected errors (backend not available in standalone mode)
+      const messageStr = String(message);
+      const isExpectedError = 
+        messageStr.includes('Failed to load technicians') ||
+        messageStr.includes('Failed to fetch') && messageStr.includes('localhost:3000') ||
+        messageStr.includes('TypeError: Failed to fetch') && messageStr.includes('technicians');
+      
+      // Silently ignore expected errors, log others
+      if (!isExpectedError) {
+        console.error(`[Renderer ${level === 2 ? 'Error' : 'Warning'}]`, message);
+      }
+    }
+  });
 
-  // Show window when ready
+  // Show window when ready (unless in CI mode)
   mainWindow.once('ready-to-show', () => {
     console.log('Window ready to show');
-    mainWindow?.show();
+    if (!isCI) {
+      mainWindow?.show();
+    }
+    healthProbe.checkpoint(CHECKPOINTS.UI_VISIBLE, 'Window ready (visible or headless)', 'PASS');
     
-    if (!app.isPackaged) {
+    if (!isCI && !app.isPackaged) {
       mainWindow?.webContents.openDevTools();
     }
   });
@@ -176,10 +226,28 @@ app.on('open-url', (event, url) => {
   // Handle deep link (e.g., muts://open?file=path/to/rom)
 });
 
+// IPC handler for debug logging from renderer (kept for compatibility, but no-op)
+ipcMain.handle('debug:log', (_, location: string, message: string, data: any, hypothesisId: string) => {
+  // Debug logging disabled - handler kept for compatibility
+});
+
+// IPC handler for health checkpoints from renderer
+ipcMain.handle('health:checkpoint', (_, id: string, name: string, status: 'PASS' | 'FAIL' | 'DEGRADED', error?: string, metadata?: Record<string, any>) => {
+  healthProbe.checkpoint(id, name, status, error, metadata);
+});
+
+// IPC handler for health report request
+ipcMain.handle('health:report', () => {
+  return healthProbe.getStatus();
+});
+
 // IPC handlers for main process
 ipcMain.handle('app:getVersion', () => {
   return app.getVersion();
 });
+
+// Mark IPC as ready after handlers are registered
+healthProbe.checkpoint(CHECKPOINTS.IPC_READY, 'IPC handlers registered', 'PASS');
 
 ipcMain.handle('app:getPath', (_, name: string) => {
   return app.getPath(name as any);
@@ -247,11 +315,35 @@ ipcMain.handle('interface:getStatus', async () => {
   }
 });
 
+ipcMain.handle('interface:connect', async (_, interfaceId: string) => {
+  try {
+    // TODO: Implement actual interface connection
+    // For now, return a mock session
+    const sessionId = `session-${Date.now()}`;
+    logger.info(`Connecting to interface: ${interfaceId}`);
+    return { sessionId, interfaceId, connected: true };
+  } catch (error) {
+    console.error('Failed to connect interface:', error);
+    throw error;
+  }
+});
+
+ipcMain.handle('interface:disconnect', async () => {
+  try {
+    // TODO: Implement actual interface disconnection
+    logger.info('Disconnecting interface');
+    return { success: true };
+  } catch (error) {
+    console.error('Failed to disconnect interface:', error);
+    throw error;
+  }
+});
+
 // Flash handlers
 ipcMain.handle('flash:validate', async (_, romData: ArrayBuffer) => {
   try {
     // Return basic validation for now
-    return { valid: true, errors: [] };
+    return { valid: true, errors: [], ecuType: 'Unknown', calibrationId: 'Unknown' };
   } catch (error) {
     console.error('Failed to validate ROM:', error);
     return { valid: false, errors: ['Validation failed'] };
@@ -260,11 +352,53 @@ ipcMain.handle('flash:validate', async (_, romData: ArrayBuffer) => {
 
 ipcMain.handle('flash:checksum', async (_, romData: ArrayBuffer) => {
   try {
-    // Return dummy checksum for now
-    return { checksum: '00000000', valid: true };
+    // Calculate simple checksum
+    const buffer = Buffer.from(romData);
+    let checksum = 0;
+    for (let i = 0; i < buffer.length; i++) {
+      checksum = (checksum + buffer[i]) & 0xFFFFFFFF;
+    }
+    return { checksum: checksum.toString(16).padStart(8, '0'), valid: true, calculated: checksum };
   } catch (error) {
     console.error('Failed to calculate checksum:', error);
     return { checksum: '00000000', valid: false };
+  }
+});
+
+ipcMain.handle('flash:prepare', async (_, romData: Buffer, options: any) => {
+  try {
+    // TODO: Implement actual flash preparation
+    const jobId = `flash-job-${Date.now()}`;
+    const blocksToWrite = Math.ceil(romData.length / 1024); // Assume 1KB blocks
+    const estimatedTimeSec = blocksToWrite * 0.1; // 0.1 seconds per block
+    
+    logger.info(`Preparing flash job: ${jobId}, blocks: ${blocksToWrite}`);
+    return { jobId, blocksToWrite, estimatedTimeSec };
+  } catch (error) {
+    console.error('Failed to prepare flash:', error);
+    throw error;
+  }
+});
+
+ipcMain.handle('flash:execute', async (_, jobId: string) => {
+  try {
+    // TODO: Implement actual flash execution
+    logger.info(`Executing flash job: ${jobId}`);
+    return { success: true, jobId };
+  } catch (error) {
+    console.error('Failed to execute flash:', error);
+    throw error;
+  }
+});
+
+ipcMain.handle('flash:abort', async (_, jobId: string) => {
+  try {
+    // TODO: Implement actual flash abortion
+    logger.info(`Aborting flash job: ${jobId}`);
+    return { success: true, jobId };
+  } catch (error) {
+    console.error('Failed to abort flash:', error);
+    throw error;
   }
 });
 
@@ -276,6 +410,52 @@ ipcMain.handle('tuning:createSession', async (_, changesetId: string) => {
   } catch (error) {
     console.error('Failed to create tuning session:', error);
     return null;
+  }
+});
+
+ipcMain.handle('tuning:apply', async (_, sessionId: string, changes: any) => {
+  try {
+    // TODO: Implement actual tuning apply
+    logger.info(`Applying tuning changes for session: ${sessionId}`);
+    return { success: true, sessionId, changesApplied: Object.keys(changes).length };
+  } catch (error) {
+    console.error('Failed to apply tuning:', error);
+    throw error;
+  }
+});
+
+// Diagnostic handlers
+ipcMain.handle('diagnostic:start', async () => {
+  try {
+    // TODO: Implement actual diagnostic session start
+    const sessionId = `diag-${Date.now()}`;
+    logger.info(`Starting diagnostic session: ${sessionId}`);
+    return sessionId;
+  } catch (error) {
+    console.error('Failed to start diagnostic:', error);
+    throw error;
+  }
+});
+
+ipcMain.handle('diagnostic:readDTCs', async () => {
+  try {
+    // TODO: Implement actual DTC reading
+    // Return empty array for now (no DTCs)
+    return [];
+  } catch (error) {
+    console.error('Failed to read DTCs:', error);
+    return [];
+  }
+});
+
+ipcMain.handle('diagnostic:clearDTCs', async (_, sessionId: string) => {
+  try {
+    // TODO: Implement actual DTC clearing
+    logger.info(`Clearing DTCs for session: ${sessionId}`);
+    return { success: true, sessionId };
+  } catch (error) {
+    console.error('Failed to clear DTCs:', error);
+    throw error;
   }
 });
 
@@ -332,10 +512,14 @@ ipcMain.handle('db:profile:list', async (_, vehicleId?: string) => {
 ipcMain.handle('telemetry:export', async (_, sessionId: string, format: string) => {
   try {
     console.log(`Exporting telemetry for session ${sessionId} as ${format}`);
-    return { url: '', filename: `telemetry-${sessionId}.${format}` };
+    // TODO: Implement actual telemetry export
+    // For now, return empty CSV buffer
+    const csvHeader = 'timestamp,engine_rpm,boost_pressure,vehicle_speed\n';
+    const csvData = csvHeader; // Empty data for now
+    return Buffer.from(csvData, 'utf-8');
   } catch (error) {
     console.error('Failed to export telemetry:', error);
-    return null;
+    throw error;
   }
 });
 
@@ -346,6 +530,51 @@ ipcMain.handle('metrics:get', async () => {
   } catch (error) {
     console.error('Failed to get metrics:', error);
     return {};
+  }
+});
+
+// Safety handlers
+ipcMain.handle('safety:getStatus', async () => {
+  try {
+    // Return default safety status
+    return { armed: false, level: 'ReadOnly', violations: [] };
+  } catch (error) {
+    console.error('Failed to get safety status:', error);
+    return { armed: false, level: 'ReadOnly', violations: [] };
+  }
+});
+
+ipcMain.handle('safety:arm', async (_, level: string) => {
+  try {
+    // TODO: Implement actual safety arming
+    logger.info(`Arming safety system: ${level}`);
+    return { success: true, level, armed: true };
+  } catch (error) {
+    console.error('Failed to arm safety:', error);
+    throw error;
+  }
+});
+
+ipcMain.handle('safety:disarm', async () => {
+  try {
+    // TODO: Implement actual safety disarming
+    logger.info('Disarming safety system');
+    return { success: true, armed: false, level: 'ReadOnly' };
+  } catch (error) {
+    console.error('Failed to disarm safety:', error);
+    throw error;
+  }
+});
+
+ipcMain.handle('safety:createSnapshot', async (_, telemetry: any) => {
+  try {
+    // TODO: Implement actual snapshot creation
+    const snapshotId = `snapshot-${Date.now()}`;
+    logger.info(`Creating safety snapshot: ${snapshotId}`);
+    return { snapshotId, timestamp: Date.now(), telemetry };
+  } catch (error) {
+    console.error('Failed to create snapshot:', error);
+    throw error;
   }
 });
 
@@ -369,7 +598,113 @@ app.whenReady().then(() => {
     Menu.setApplicationMenu(menu);
   }
   initializeWebSocket();
+  
+  // Check backend availability (non-blocking)
+  checkBackendHealth();
+  
+  // Generate health report after 5 seconds
+  setTimeout(() => {
+    const report = healthProbe.generateReport();
+    console.log('Health Report:', JSON.stringify(report, null, 2));
+    
+    // In CI mode, exit after health check
+    if (isCI) {
+      const critical = ['MAIN_STARTED', 'PRELOAD_OK', 'RENDERER_LOADED', 'IPC_READY', 'UI_VISIBLE'];
+      const allCriticalPassed = critical.every(id => {
+        const checkpoint = report.checkpoints.find(c => c.id === id);
+        return checkpoint && checkpoint.status === 'PASS';
+      });
+      
+      if (report.overall === 'FAILED' || !allCriticalPassed) {
+        console.error('❌ Health check failed - exiting with error code');
+        if (mainWindow) {
+          mainWindow.close();
+        }
+        process.exit(1);
+      } else {
+        console.log('✓ Health check passed - exiting');
+        if (mainWindow) {
+          mainWindow.close();
+        }
+        process.exit(0);
+      }
+    }
+  }, 5000);
 }).catch((error) => {
   console.error('Failed to initialize app:', error);
+  healthProbe.checkpoint(CHECKPOINTS.MAIN_STARTED, 'Main process started', 'FAIL', error.message);
+  healthProbe.generateReport();
   app.quit();
+  process.exit(1);
 });
+
+// Check backend health (non-blocking, graceful failure)
+async function checkBackendHealth(): Promise<void> {
+  try {
+    // Use Node.js http module instead of fetch
+    const http = require('http');
+    const request = http.get('http://localhost:3000/health', { timeout: 2000 }, (res: any) => {
+      if (res.statusCode === 200) {
+        healthProbe.checkpoint(CHECKPOINTS.BACKEND_READY, 'Backend available', 'PASS');
+      } else {
+        healthProbe.checkpoint(CHECKPOINTS.BACKEND_READY, 'Backend available', 'DEGRADED', 'Backend not running (standalone mode)');
+      }
+    });
+    request.on('error', () => {
+      healthProbe.checkpoint(CHECKPOINTS.BACKEND_READY, 'Backend available', 'DEGRADED', 'Backend not available (standalone mode)');
+    });
+    request.on('timeout', () => {
+      request.destroy();
+      healthProbe.checkpoint(CHECKPOINTS.BACKEND_READY, 'Backend available', 'DEGRADED', 'Backend not available (standalone mode)');
+    });
+  } catch (error: any) {
+    healthProbe.checkpoint(CHECKPOINTS.BACKEND_READY, 'Backend available', 'DEGRADED', 'Backend not available (standalone mode)');
+  }
+}
+
+// Generate error UI HTML
+function generateErrorUI(title: string, message: string, details?: string): string {
+  return `<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>${title}</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+      color: white;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .error-container {
+      text-align: center;
+      max-width: 600px;
+      padding: 2rem;
+    }
+    h1 { color: #ef4444; margin-bottom: 1rem; font-size: 2rem; }
+    p { margin-bottom: 1rem; font-size: 1.1rem; }
+    .details {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 1rem;
+      border-radius: 8px;
+      margin-top: 1rem;
+      font-family: monospace;
+      font-size: 0.9rem;
+      text-align: left;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="error-container">
+    <h1>${title}</h1>
+    <p>${message}</p>
+    ${details ? `<div class="details">${details}</div>` : ''}
+  </div>
+</body>
+</html>`;
+}

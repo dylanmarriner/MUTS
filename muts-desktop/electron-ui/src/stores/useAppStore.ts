@@ -5,6 +5,8 @@
 
 import { create } from 'zustand';
 import { subscribeWithSelector } from 'zustand/middleware';
+import { shallow } from 'zustand/shallow';
+import { OperatorMode, Technician } from '../types';
 
 // Type definitions
 export type SafetyLevel = 'ReadOnly' | 'Simulate' | 'LiveApply' | 'Flash';
@@ -80,6 +82,14 @@ interface AppStore {
     calibrationId?: string;
   };
 
+  // Operator state
+  operatorMode: OperatorMode | null;
+  technician: Technician | null;
+  showStartup: boolean;
+  setOperatorMode: (mode: OperatorMode | null) => void;
+  setTechnician: (tech: Technician | null) => void;
+  setShowStartup: (show: boolean) => void;
+
   // Actions
   setConnectionStatus: (status: ConnectionStatus) => void;
   setConnectedInterface: (interface: InterfaceInfo | null) => void;
@@ -126,11 +136,21 @@ const initialState = {
   maxHistorySize: 1000,
 
   vehicleInfo: {},
+
+  // Operator state
+  operatorMode: null as OperatorMode | null,
+  technician: null as Technician | null,
+  showStartup: true,
 };
 
 export const useAppStore = create<AppStore>()(
   subscribeWithSelector((set, get) => ({
     ...initialState,
+
+    // Operator setters
+    setOperatorMode: (mode) => set({ operatorMode: mode }),
+    setTechnician: (tech) => set({ technician: tech }),
+    setShowStartup: (show) => set({ showStartup: show }),
 
     setConnectionStatus: (status) => set({ connectionStatus: status }),
 
@@ -209,44 +229,41 @@ export const useAppStore = create<AppStore>()(
 
 // Selectors for commonly used combinations
 export const useConnectionState = () => {
-  const connectionStatus = useAppStore((state) => state.connectionStatus);
-  const connectedInterface = useAppStore((state) => state.connectedInterface);
-  const currentSession = useAppStore((state) => state.currentSession);
-  
-  return {
-    connectionStatus,
-    connectedInterface,
-    currentSession,
-    isConnected: connectionStatus === 'CONNECTED',
-    isDisconnected: connectionStatus === 'NO_INTERFACE_CONNECTED',
-    canConnect: connectionStatus === 'NO_INTERFACE_CONNECTED' || connectionStatus === 'ERROR',
-  };
+  return useAppStore(
+    (state) => ({
+      connectionStatus: state.connectionStatus,
+      connectedInterface: state.connectedInterface,
+      currentSession: state.currentSession,
+      isConnected: state.connectionStatus === 'CONNECTED',
+      isDisconnected: state.connectionStatus === 'NO_INTERFACE_CONNECTED',
+      canConnect: state.connectionStatus === 'NO_INTERFACE_CONNECTED' || state.connectionStatus === 'ERROR',
+    }),
+    shallow
+  );
 };
 
 export const useSafetyState = () => {
-  const safetyState = useAppStore((state) => state.safetyState);
-  const safetyArmed = useAppStore((state) => state.safetyArmed);
-  const safetyLevel = useAppStore((state) => state.safetyLevel);
-  
-  return {
-    safetyState,
-    safetyArmed,
-    safetyLevel,
-    canFlash: safetyArmed && safetyLevel === 'Flash',
-    canApplyLive: safetyArmed && (safetyLevel === 'LiveApply' || safetyLevel === 'Flash'),
-    hasCriticalViolations: safetyState.violations.some(v => v.severity === 'Critical'),
-  };
+  return useAppStore(
+    (state) => ({
+      safetyState: state.safetyState,
+      safetyArmed: state.safetyArmed,
+      safetyLevel: state.safetyLevel,
+      canFlash: state.safetyArmed && state.safetyLevel === 'Flash',
+      canApplyLive: state.safetyArmed && (state.safetyLevel === 'LiveApply' || state.safetyLevel === 'Flash'),
+      hasCriticalViolations: state.safetyState.violations.some(v => v.severity === 'Critical'),
+    }),
+    shallow
+  );
 };
 
 export const useTelemetryState = () => {
-  const isStreaming = useAppStore((state) => state.isStreaming);
-  const currentTelemetry = useAppStore((state) => state.currentTelemetry);
-  const telemetryHistory = useAppStore((state) => state.telemetryHistory);
-  
-  return {
-    isStreaming,
-    currentTelemetry,
-    telemetryHistory,
-    hasData: currentTelemetry !== null,
-  };
+  return useAppStore(
+    (state) => ({
+      isStreaming: state.isStreaming,
+      currentTelemetry: state.currentTelemetry,
+      telemetryHistory: state.telemetryHistory,
+      hasData: state.currentTelemetry !== null,
+    }),
+    shallow
+  );
 };

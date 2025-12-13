@@ -20,6 +20,7 @@ import {
 } from 'lucide-react';
 import WorkshopStartupScreen from './components/WorkshopStartupScreen';
 import { OperatorMode, Technician } from './types';
+import { useAppStore, useConnectionState, useSafetyState } from './stores/useAppStore';
 
 // Import tab components
 import VehicleInfoTab from './tabs/VehicleInfoTab';
@@ -64,54 +65,79 @@ const StatusIndicator = ({ status, label }: { status: 'good' | 'warning' | 'erro
 };
 
 function App() {
+  console.log('=== App component rendering ===');
+  
   const location = useLocation();
   const navigate = useNavigate();
-  const [showStartup, setShowStartup] = useState(true);
+  const { 
+    operatorMode, 
+    setOperatorMode, 
+    technician, 
+    setTechnician,
+    showStartup,
+    setShowStartup
+  } = useAppStore();
+  
+  const connectionState = useConnectionState();
+  const safetyState = useSafetyState();
   const [currentTime, setCurrentTime] = useState(new Date());
-  const [configLoaded, setConfigLoaded] = useState(false);
+  const [currentSession, setCurrentSession] = useState<any>(null);
 
-  // Load initial config
+  // Get operator mode from Electron - run once
   useEffect(() => {
-    console.log('App: Loading initial config');
-    
+    const getOperatorMode = async () => {
+      try {
+        const mode = await window.electronAPI.getOperatorMode?.();
+        if (mode) {
+          setOperatorMode(mode as OperatorMode);
+        }
+      } catch (error) {
+        console.error('App: Failed to get operator mode:', error);
+      }
+    };
+    getOperatorMode();
+  }, [setOperatorMode]);
+
+  // Load initial config - run once
+  useEffect(() => {
     const loadConfig = async () => {
       try {
-        console.log('App: Calling config.load()');
         const config = await window.electronAPI.config.load();
-        console.log('App: Config loaded:', config);
+        
+        setOperatorMode(config.operatorMode);
+        setTechnician(config.technicianId ? { id: config.technicianId } : null);
+        
+        // Report config loaded
+        if (window.electronAPI.healthCheckpoint) {
+          window.electronAPI.healthCheckpoint('CONFIG_LOADED', 'Configuration loaded', 'PASS', undefined, { operatorMode: config.operatorMode });
+        }
         
         // Check if mode selection is required
         if (config.requireModeSelection) {
-          console.log('App: Mode selection required');
           setShowStartup(true);
         } else {
-          console.log('App: Mode selection not required');
           setShowStartup(false);
         }
       } catch (error) {
         console.error('App: Failed to load config:', error);
+        if (window.electronAPI.healthCheckpoint) {
+          window.electronAPI.healthCheckpoint('CONFIG_LOADED', 'Configuration loaded', 'DEGRADED', error instanceof Error ? error.message : String(error));
+        }
         setShowStartup(true);
       }
-      setConfigLoaded(true);
     };
-    
     loadConfig();
-  }, []);
+  }, [setOperatorMode, setTechnician, setShowStartup]);
 
-  // Initialize connection status on mount
+  // Initialize connection status on mount - run once
   useEffect(() => {
-    console.log('App: Initializing connection status');
-    
     const initializeApp = async () => {
       try {
-        console.log('App: Getting available interfaces');
         // Get available interfaces
         const interfaces = await window.electronAPI.interface.list();
-        console.log('App: Interfaces:', interfaces);
         
         // Get current connection status
         const status = await window.electronAPI.interface.getStatus();
-        console.log('App: Connection status:', status);
       } catch (error) {
         console.error('App: Failed to initialize app:', error);
       }
@@ -122,10 +148,13 @@ function App() {
 
   // Hide boot screen when app is ready
   useEffect(() => {
-    if (!showStartup) {
-      console.log('App: Hiding boot screen - app is ready');
-      window.hideBootScreen();
-    }
+    // Always hide boot screen after a short delay to ensure React has rendered
+    const timer = setTimeout(() => {
+      if (window.hideBootScreen) {
+        window.hideBootScreen();
+      }
+    }, 100);
+    return () => clearTimeout(timer);
   }, [showStartup]);
 
   // Update time
@@ -139,8 +168,6 @@ function App() {
   // Handle menu actions from main process
   useEffect(() => {
     window.electronAPI.onMenuAction((action: string) => {
-      console.log('App: Menu action:', action);
-      
       switch (action) {
         case 'open-rom':
           navigate('/rom-tools');
@@ -159,7 +186,8 @@ function App() {
   }, [navigate]);
 
   const handleModeSelected = (mode: OperatorMode, selectedTechnician?: Technician) => {
-    console.log('App: Mode selected:', mode, selectedTechnician);
+    setOperatorMode(mode);
+    setTechnician(selectedTechnician || null);
     
     // Save mode and technician
     const saveMode = async () => {
@@ -180,19 +208,28 @@ function App() {
 
   // Show startup screen if needed
   if (showStartup) {
-    console.log('App: Showing startup screen');
     return <WorkshopStartupScreen onModeSelected={handleModeSelected} />;
   }
-
-  console.log('App: Rendering main app with tabs');
   
   return (
-    <div className="h-screen flex flex-col bg-gray-900 text-white">
-      {/* Header with navigation */}
-      <header className="bg-gray-800 border-b border-gray-700 px-4 py-2">
+    <div className="h-screen flex flex-col text-white relative" style={{ background: 'radial-gradient(ellipse at center, rgba(30, 41, 59, 1), rgba(0, 0, 0, 1))' }}>
+      {/* Header with navigation - Dylan Sci-fi Theme */}
+      <header className="px-4 py-2 relative z-10" style={{ 
+        background: 'rgba(15, 23, 42, 0.9)',
+        backdropFilter: 'blur(8px)',
+        borderBottom: '1px solid rgba(6, 182, 212, 0.3)',
+        boxShadow: '0 0 20px rgba(6, 182, 212, 0.1)'
+      }}>
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-6">
-            <h1 className="text-lg font-bold">MUTS - Mazda Universal Tuning System</h1>
+            <h1 className="text-lg font-bold" style={{ 
+              background: 'linear-gradient(to right, rgba(6, 182, 212, 1), rgba(217, 70, 239, 1))',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text'
+            }}>
+              MUTS - Mazda Universal Tuning System
+            </h1>
             <nav className="flex gap-1">
               {tabs.map((tab) => {
                 const isActive = location.pathname === tab.path;
@@ -200,11 +237,33 @@ function App() {
                   <button
                     key={tab.id}
                     onClick={() => navigate(tab.path)}
-                    className={`flex items-center gap-2 px-3 py-1 rounded text-sm transition-colors ${
-                      isActive 
-                        ? 'bg-blue-600 text-white' 
-                        : 'text-gray-400 hover:text-white hover:bg-gray-700'
-                    }`}
+                    className="flex items-center gap-2 px-3 py-1 rounded text-sm transition-all"
+                    style={{
+                      background: isActive 
+                        ? 'rgba(6, 182, 212, 0.2)' 
+                        : 'transparent',
+                      border: isActive 
+                        ? '1px solid rgba(6, 182, 212, 0.5)' 
+                        : '1px solid transparent',
+                      color: isActive 
+                        ? 'rgba(6, 182, 212, 1)' 
+                        : 'rgba(203, 213, 225, 1)',
+                      boxShadow: isActive 
+                        ? '0 0 10px rgba(6, 182, 212, 0.5)' 
+                        : 'none'
+                    }}
+                    onMouseEnter={(e) => {
+                      if (!isActive) {
+                        e.currentTarget.style.background = 'rgba(6, 182, 212, 0.1)';
+                        e.currentTarget.style.borderColor = 'rgba(6, 182, 212, 0.3)';
+                      }
+                    }}
+                    onMouseLeave={(e) => {
+                      if (!isActive) {
+                        e.currentTarget.style.background = 'transparent';
+                        e.currentTarget.style.borderColor = 'transparent';
+                      }
+                    }}
                   >
                     <tab.icon className="w-4 h-4" />
                     {tab.label}
@@ -216,14 +275,19 @@ function App() {
           
           <div className="flex items-center gap-4">
             <StatusIndicator 
-              status="error" 
-              label="Not Connected" 
+              status={connectionState.connected ? 'good' : 'error'} 
+              label={connectionState.connected ? 'Connected' : 'Not Connected'} 
             />
             <StatusIndicator 
-              status="warning" 
-              label="Safety Disarmed" 
+              status={safetyState.armed ? 'error' : 'warning'} 
+              label={safetyState.armed ? 'Safety Armed' : 'Safety Disarmed'} 
             />
-            <span className="text-xs text-gray-400">
+            {currentSession && (
+              <span className="text-xs" style={{ color: 'rgba(148, 163, 184, 1)' }}>
+                Session: {currentSession.id.substring(0, 8)}
+              </span>
+            )}
+            <span className="text-xs font-mono" style={{ color: 'rgba(6, 182, 212, 1)' }}>
               {currentTime.toLocaleTimeString()}
             </span>
           </div>

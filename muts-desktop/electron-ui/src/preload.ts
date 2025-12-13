@@ -24,6 +24,15 @@ const electronAPI: any = {
       return '';
     }
   },
+  
+  getOperatorMode: () => {
+    try {
+      return ipcRenderer.invoke('system:getOperatorMode');
+    } catch (error) {
+      console.error('Failed to get operator mode:', error);
+      return Promise.resolve('dev'); // Safe default
+    }
+  },
 
   // State management (non-blocking)
   subscribe: (channel: string, callback: (data: any) => void) => {
@@ -58,16 +67,18 @@ const electronAPI: any = {
   interface: {
     connect: (interfaceId: string) => {
       try {
-        electronAPI.sendCommand('connection:connect', { interfaceId });
+        return ipcRenderer.invoke('interface:connect', interfaceId);
       } catch (error) {
         console.error('Failed to connect interface:', error);
+        return Promise.reject(error);
       }
     },
     disconnect: () => {
       try {
-        electronAPI.sendCommand('connection:disconnect');
+        return ipcRenderer.invoke('interface:disconnect');
       } catch (error) {
         console.error('Failed to disconnect:', error);
+        return Promise.reject(error);
       }
     },
     subscribe: (callback: (state: any) => void) => {
@@ -129,21 +140,31 @@ const electronAPI: any = {
         return ipcRenderer.invoke('safety:getStatus');
       } catch (error) {
         console.error('Failed to get safety status:', error);
-        return { armed: false, mode: 'unknown' };
+        return Promise.resolve({ armed: false, mode: 'unknown' });
       }
     },
-    arm: () => {
+    arm: (level: string) => {
       try {
-        electronAPI.sendCommand('safety:arm');
+        return ipcRenderer.invoke('safety:arm', level);
       } catch (error) {
         console.error('Failed to arm safety:', error);
+        return Promise.reject(error);
       }
     },
     disarm: () => {
       try {
-        electronAPI.sendCommand('safety:disarm');
+        return ipcRenderer.invoke('safety:disarm');
       } catch (error) {
         console.error('Failed to disarm safety:', error);
+        return Promise.reject(error);
+      }
+    },
+    createSnapshot: (telemetry: any) => {
+      try {
+        return ipcRenderer.invoke('safety:createSnapshot', telemetry);
+      } catch (error) {
+        console.error('Failed to create snapshot:', error);
+        return Promise.reject(error);
       }
     },
     subscribe: (callback: (state: any) => void) => {
@@ -280,12 +301,19 @@ const electronAPI: any = {
         return () => {};
       }
     },
+    unsubscribe: () => {
+      try {
+        electronAPI.sendCommand('telemetry:unsubscribe');
+      } catch (error) {
+        console.error('Failed to unsubscribe from telemetry:', error);
+      }
+    },
     export: (sessionId: string, format: string) => {
       try {
         return ipcRenderer.invoke('telemetry:export', sessionId, format);
       } catch (error) {
         console.error('Failed to export telemetry:', error);
-        return null;
+        return Promise.resolve(null);
       }
     },
   },
@@ -297,7 +325,7 @@ const electronAPI: any = {
         return ipcRenderer.invoke('flash:validate', romData);
       } catch (error) {
         console.error('Failed to validate ROM:', error);
-        return { valid: false, errors: ['Validation failed'] };
+        return Promise.resolve({ valid: false, errors: ['Validation failed'] });
       }
     },
     checksum: (romData: ArrayBuffer) => {
@@ -305,7 +333,31 @@ const electronAPI: any = {
         return ipcRenderer.invoke('flash:checksum', romData);
       } catch (error) {
         console.error('Failed to calculate checksum:', error);
-        return { checksum: '00000000', valid: false };
+        return Promise.resolve({ checksum: '00000000', valid: false });
+      }
+    },
+    prepare: (romData: Buffer, options: any) => {
+      try {
+        return ipcRenderer.invoke('flash:prepare', romData, options);
+      } catch (error) {
+        console.error('Failed to prepare flash:', error);
+        return Promise.reject(error);
+      }
+    },
+    execute: (jobId: string) => {
+      try {
+        return ipcRenderer.invoke('flash:execute', jobId);
+      } catch (error) {
+        console.error('Failed to execute flash:', error);
+        return Promise.reject(error);
+      }
+    },
+    abort: (jobId: string) => {
+      try {
+        return ipcRenderer.invoke('flash:abort', jobId);
+      } catch (error) {
+        console.error('Failed to abort flash:', error);
+        return Promise.reject(error);
       }
     },
   },
@@ -318,6 +370,42 @@ const electronAPI: any = {
       } catch (error) {
         console.error('Failed to create tuning session:', error);
         return null;
+      }
+    },
+    apply: (sessionId: string, changes: any) => {
+      try {
+        return ipcRenderer.invoke('tuning:apply', sessionId, changes);
+      } catch (error) {
+        console.error('Failed to apply tuning:', error);
+        return Promise.reject(error);
+      }
+    },
+  },
+  
+  // Diagnostic operations
+  diagnostic: {
+    start: () => {
+      try {
+        return ipcRenderer.invoke('diagnostic:start');
+      } catch (error) {
+        console.error('Failed to start diagnostic:', error);
+        return Promise.reject(error);
+      }
+    },
+    readDTCs: () => {
+      try {
+        return ipcRenderer.invoke('diagnostic:readDTCs');
+      } catch (error) {
+        console.error('Failed to read DTCs:', error);
+        return Promise.resolve([]);
+      }
+    },
+    clearDTCs: (sessionId: string) => {
+      try {
+        return ipcRenderer.invoke('diagnostic:clearDTCs', sessionId);
+      } catch (error) {
+        console.error('Failed to clear DTCs:', error);
+        return Promise.reject(error);
       }
     },
   },
@@ -333,13 +421,44 @@ const electronAPI: any = {
       console.error('Failed to set up menu listeners:', error);
     }
   },
+  
+  // Debug logging
+  debugLog: (location: string, message: string, data: any, hypothesisId: string) => {
+    try {
+      ipcRenderer.invoke('debug:log', location, message, data, hypothesisId);
+    } catch (error) {
+      console.error('Failed to send debug log:', error);
+    }
+  },
+  
+  // Health probe
+  healthCheckpoint: (id: string, name: string, status: 'PASS' | 'FAIL' | 'DEGRADED', error?: string, metadata?: Record<string, any>) => {
+    try {
+      ipcRenderer.invoke('health:checkpoint', id, name, status, error, metadata);
+    } catch (err) {
+      console.error('Failed to send health checkpoint:', err);
+    }
+  },
+  
+  healthReport: () => {
+    try {
+      return ipcRenderer.invoke('health:report');
+    } catch (err) {
+      console.error('Failed to get health report:', err);
+      return null;
+    }
+  },
 };
 
 // Expose the API to the renderer process
 try {
   contextBridge.exposeInMainWorld('electronAPI', electronAPI);
+  // Report preload success to health probe
+  ipcRenderer.invoke('health:checkpoint', 'PRELOAD_OK', 'Preload script executed', 'PASS').catch(() => {});
 } catch (error) {
   console.error('Failed to expose electronAPI:', error);
+  // Report preload failure to health probe
+  ipcRenderer.invoke('health:checkpoint', 'PRELOAD_OK', 'Preload script executed', 'FAIL', error instanceof Error ? error.message : String(error)).catch(() => {});
 }
 
 // Type definitions for the renderer

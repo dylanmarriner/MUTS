@@ -11,7 +11,14 @@
     "dev:renderer": "vite",
     "start": "electron dist/main.js",
     "pack": "electron-builder",
-    "dist": "npm run build && electron-builder --publish never"
+    "dist": "npm run build && electron-builder --publish never",
+    "self-test": "npm run build && node test/self_test.js",
+    "test": "npm run self-test",
+    "dev:verify": "npm run build && node test/self_test.js",
+    "watch:test": "chokidar 'src/**/*.{ts,tsx}' 'test/**/*.js' -c 'npm run self-test' --initial",
+    "test:e2e": "npm run build && node test/e2e/comprehensive_e2e.js",
+    "test:e2e:basic": "npm run build && node test/e2e/e2e_runner.js",
+    "test:e2e:ui": "npm run build && npx playwright test test/e2e/e2e_test.spec.ts --ui"
   },
   "dependencies": {
     "clsx": "^1.2.1",
@@ -25,6 +32,7 @@
     "zustand": "^4.3.2"
   },
   "devDependencies": {
+    "@playwright/test": "^1.40.0",
     "@types/electron": "^1.6.12",
     "@types/node": "^25.0.1",
     "@types/react": "^18.3.27",

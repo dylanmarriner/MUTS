@@ -1,0 +1,79 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Watchdog Verify",
+      "type": "shell",
+      "command": "pnpm run watchdog",
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "focus": true,
+        "clear": true,
+        "showReuseMessage": false
+      },
+      "problemMatcher": {
+        "owner": "muts-watchdog",
+        "pattern": {
+          "regexp": "^(❌|✗|ERROR|FAILED|FATAL|WATCHDOG.*FAILED):\\s*(.+)$",
+          "file": 1,
+          "message": 2,
+          "severity": "error"
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "WATCHDOG.*Starting",
+          "endsPattern": "WATCHDOG.*(PASSED|FAILED)|Status written"
+        }
+      },
+      "runOptions": {
+        "runOn": "default"
+      }
+    },
+    {
+      "label": "Watchdog Dev (Auto)",
+      "type": "shell",
+      "command": "pnpm run watchdog",
+      "group": {
+        "kind": "test",
+        "isDefault": false
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "focus": false,
+        "clear": true
+      },
+      "problemMatcher": {
+        "owner": "muts-watchdog",
+        "pattern": {
+          "regexp": "^(❌|✗|ERROR|FAILED|FATAL|WATCHDOG.*FAILED):\\s*(.+)$",
+          "file": 1,
+          "message": 2,
+          "severity": "error"
+        }
+      },
+      "isBackground": false
+    },
+    {
+      "label": "Build App",
+      "type": "shell",
+      "command": "pnpm run build:desktop",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "focus": false
+      },
+      "problemMatcher": "$tsc"
+    }
+  ]
+}
+
