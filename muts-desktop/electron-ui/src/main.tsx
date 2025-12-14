@@ -7,7 +7,7 @@ console.log('=== main.tsx starting ===');
 
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 import App from './App';
 import './index.css';
 
@@ -48,9 +48,9 @@ const renderApp = () => {
     console.log('React main.tsx: Rendering App component');
     root.render(
       <React.StrictMode>
-        <BrowserRouter>
+        <HashRouter>
           <App />
-        </BrowserRouter>
+        </HashRouter>
       </React.StrictMode>
     );
     

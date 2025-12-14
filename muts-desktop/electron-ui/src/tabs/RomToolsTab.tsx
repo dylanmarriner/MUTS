@@ -40,8 +40,8 @@ const RomToolsTab: React.FC = () => {
       const buffer = await selectedFile.arrayBuffer();
       const romData = new Uint8Array(buffer);
       
-      const validation = await window.electronAPI.flash.validate(Buffer.from(romData));
-      const checksum = await window.electronAPI.flash.checksum(Buffer.from(romData));
+      const validation = await window.electronAPI.flash.validate(romData);
+      const checksum = await window.electronAPI.flash.checksum(romData);
       
       setRomInfo({
         fileName: selectedFile.name,

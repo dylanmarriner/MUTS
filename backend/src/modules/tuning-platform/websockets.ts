@@ -4,7 +4,7 @@
  */
 
 import { FastifyInstance, FastifyRequest } from 'fastify'
-import { WebSocket } from '@fastify/websocket'
+import { SocketStream } from '@fastify/websocket'
 import { SafetyOrchestrator } from './safety-orchestrator'
 import { VersaEngine } from './engines/versa-engine'
 import { CobbEngine } from './engines/cobb-engine'
@@ -25,11 +25,13 @@ const engines = {
 /**
  * Telemetry stream - broadcasts real-time sensor data
  */
-export async function telemetryStream(connection: WebSocket, req: FastifyRequest) {
+export async function telemetryStream(connection: SocketStream, req: FastifyRequest) {
   console.log('WebSocket telemetry client connected')
   
+  const { socket } = connection
+  
   // Send initial status
-  connection.send(JSON.stringify({
+  socket.send(JSON.stringify({
     type: 'status',
     data: {
       connected: true,
@@ -50,20 +52,20 @@ export async function telemetryStream(connection: WebSocket, req: FastifyRequest
       timestamp: new Date().toISOString()
     }
 
-    connection.send(JSON.stringify({
+    socket.send(JSON.stringify({
       type: 'telemetry',
       data: telemetry
     }))
   }, 100)
 
-  connection.on('message', message => {
+  socket.on('message', message => {
     try {
       const data = JSON.parse(message.toString())
       console.log('Received telemetry command:', data)
       
       // Handle commands like subscribe/unsubscribe to specific sensors
       if (data.command === 'subscribe') {
-        connection.send(JSON.stringify({
+        socket.send(JSON.stringify({
           type: 'subscribed',
           sensors: data.sensors || ['all']
         }))
@@ -73,7 +75,7 @@ export async function telemetryStream(connection: WebSocket, req: FastifyRequest
     }
   })
 
-  connection.on('close', () => {
+  socket.on('close', () => {
     console.log('WebSocket telemetry client disconnected')
     clearInterval(telemetryInterval)
   })
@@ -82,13 +84,14 @@ export async function telemetryStream(connection: WebSocket, req: FastifyRequest
 /**
  * Safety stream - broadcasts safety violations and session events
  */
-export async function safetyStream(connection: WebSocket, req: FastifyRequest) {
+export async function safetyStream(connection: SocketStream, req: FastifyRequest) {
   console.log('WebSocket safety client connected')
   
+  const { socket } = connection
   const safetyOrchestrator = new SafetyOrchestrator()
 
   // Send initial safety status
-  connection.send(JSON.stringify({
+  socket.send(JSON.stringify({
     type: 'safetyStatus',
     data: {
       level: safetyOrchestrator.getCurrentLevel(),
@@ -100,7 +103,7 @@ export async function safetyStream(connection: WebSocket, req: FastifyRequest) {
 
   // Listen to safety events
   const onSafetyViolation = (data: any) => {
-    connection.send(JSON.stringify({
+    socket.send(JSON.stringify({
       type: 'safetyViolation',
       data: {
         ...data,
@@ -110,7 +113,7 @@ export async function safetyStream(connection: WebSocket, req: FastifyRequest) {
   }
 
   const onSessionCreated = (session: any) => {
-    connection.send(JSON.stringify({
+    socket.send(JSON.stringify({
       type: 'sessionCreated',
       data: {
         ...session,
@@ -120,7 +123,7 @@ export async function safetyStream(connection: WebSocket, req: FastifyRequest) {
   }
 
   const onSessionExpired = (sessionId: string) => {
-    connection.send(JSON.stringify({
+    socket.send(JSON.stringify({
       type: 'sessionExpired',
       data: {
         sessionId,
@@ -134,13 +137,13 @@ export async function safetyStream(connection: WebSocket, req: FastifyRequest) {
   // safetyOrchestrator.on('sessionCreated', onSessionCreated)
   // safetyOrchestrator.on('sessionExpired', onSessionExpired)
 
-  connection.on('message', message => {
+  socket.on('message', message => {
     try {
       const data = JSON.parse(message.toString())
       console.log('Received safety command:', data)
       
       if (data.command === 'arm') {
-        connection.send(JSON.stringify({
+        socket.send(JSON.stringify({
           type: 'armStatus',
           data: {
             success: true,
@@ -148,7 +151,7 @@ export async function safetyStream(connection: WebSocket, req: FastifyRequest) {
           }
         }))
       } else if (data.command === 'disarm') {
-        connection.send(JSON.stringify({
+        socket.send(JSON.stringify({
           type: 'disarmStatus',
           data: {
             success: true,
@@ -161,7 +164,7 @@ export async function safetyStream(connection: WebSocket, req: FastifyRequest) {
     }
   })
 
-  connection.on('close', () => {
+  socket.on('close', () => {
     console.log('WebSocket safety client disconnected')
     // Remove event listeners
     // safetyOrchestrator.off('safetyViolation', onSafetyViolation)
@@ -173,7 +176,8 @@ export async function safetyStream(connection: WebSocket, req: FastifyRequest) {
 /**
  * Engine-specific tuning stream
  */
-export async function engineTuningStream(connection: WebSocket, req: FastifyRequest) {
+export async function engineTuningStream(connection: SocketStream, req: FastifyRequest) {
+  const { socket } = connection
   const params = req.params as { engine: string }
   const query = req.query as { profileId?: string }
   const engineId = params.engine
@@ -181,21 +185,21 @@ export async function engineTuningStream(connection: WebSocket, req: FastifyRequ
   const engine = engines[engineId as keyof typeof engines]
 
   if (!engine) {
-    connection.send(JSON.stringify({
+    socket.send(JSON.stringify({
       type: 'error',
       data: {
         message: `Engine ${engineId} not found`,
         timestamp: new Date().toISOString()
       }
     }))
-    connection.close()
+    socket.close()
     return
   }
 
   console.log(`WebSocket tuning client connected for engine: ${engineId}`)
 
   // Send initial engine status
-  connection.send(JSON.stringify({
+  socket.send(JSON.stringify({
     type: 'engineStatus',
     data: {
       engine: engineId,
@@ -208,7 +212,7 @@ export async function engineTuningStream(connection: WebSocket, req: FastifyRequ
   // Subscribe to engine telemetry if supported
   if (engine.subscribeTelemetry) {
     engine.subscribeTelemetry((data: any) => {
-      connection.send(JSON.stringify({
+      socket.send(JSON.stringify({
         type: 'engineTelemetry',
         engine: engineId,
         data: {
@@ -219,7 +223,7 @@ export async function engineTuningStream(connection: WebSocket, req: FastifyRequ
     })
   }
 
-  connection.on('message', message => {
+  socket.on('message', message => {
     try {
       const data = JSON.parse(message.toString())
       console.log(`Received tuning command for ${engineId}:`, data)
@@ -228,7 +232,7 @@ export async function engineTuningStream(connection: WebSocket, req: FastifyRequ
       switch (data.command) {
         case 'getMaps':
           engine.listMaps(profileId || '').then(maps => {
-            connection.send(JSON.stringify({
+            socket.send(JSON.stringify({
               type: 'maps',
               engine: engineId,
               data: maps
@@ -238,7 +242,7 @@ export async function engineTuningStream(connection: WebSocket, req: FastifyRequ
 
         case 'getMap':
           engine.getMap(data.mapId).then(map => {
-            connection.send(JSON.stringify({
+            socket.send(JSON.stringify({
               type: 'map',
               engine: engineId,
               data: map
@@ -248,13 +252,13 @@ export async function engineTuningStream(connection: WebSocket, req: FastifyRequ
 
         case 'updateMap':
           engine.updateMap(data.mapId, data.payload).then(result => {
-            connection.send(JSON.stringify({
+            socket.send(JSON.stringify({
               type: 'mapUpdated',
               engine: engineId,
               data: result
             }))
           }).catch(error => {
-            connection.send(JSON.stringify({
+            socket.send(JSON.stringify({
               type: 'error',
               engine: engineId,
               data: { message: error.message }
@@ -264,7 +268,7 @@ export async function engineTuningStream(connection: WebSocket, req: FastifyRequ
 
         case 'validate':
           engine.validateChanges(data.changeset).then(result => {
-            connection.send(JSON.stringify({
+            socket.send(JSON.stringify({
               type: 'validationResult',
               engine: engineId,
               data: result
@@ -274,7 +278,7 @@ export async function engineTuningStream(connection: WebSocket, req: FastifyRequ
 
         case 'simulate':
           engine.simulate(data.changeset).then(result => {
-            connection.send(JSON.stringify({
+            socket.send(JSON.stringify({
               type: 'simulationResult',
               engine: engineId,
               data: result
@@ -284,7 +288,7 @@ export async function engineTuningStream(connection: WebSocket, req: FastifyRequ
       }
     } catch (error) {
       console.error(`Invalid tuning message for ${engineId}:`, error)
-      connection.send(JSON.stringify({
+      socket.send(JSON.stringify({
         type: 'error',
         engine: engineId,
         data: { message: 'Invalid message format' }
@@ -292,7 +296,7 @@ export async function engineTuningStream(connection: WebSocket, req: FastifyRequ
     }
   })
 
-  connection.on('close', () => {
+  socket.on('close', () => {
     console.log(`WebSocket tuning client disconnected for engine: ${engineId}`)
   })
 }
@@ -300,26 +304,27 @@ export async function engineTuningStream(connection: WebSocket, req: FastifyRequ
 /**
  * Flash progress stream
  */
-export async function flashStream(connection: WebSocket, req: FastifyRequest) {
+export async function flashStream(connection: SocketStream, req: FastifyRequest) {
+  const { socket } = connection
   const params = req.params as { engine: string }
   const engineId = params.engine
   const engine = engines[engineId as keyof typeof engines]
 
   if (!engine) {
-    connection.send(JSON.stringify({
+    socket.send(JSON.stringify({
       type: 'error',
       data: {
         message: `Engine ${engineId} not found`,
         timestamp: new Date().toISOString()
       }
     }))
-    connection.close()
+    socket.close()
     return
   }
 
   console.log(`WebSocket flash client connected for engine: ${engineId}`)
 
-  connection.on('message', message => {
+  socket.on('message', message => {
     try {
       const data = JSON.parse(message.toString())
       console.log(`Received flash command for ${engineId}:`, data)
@@ -327,7 +332,7 @@ export async function flashStream(connection: WebSocket, req: FastifyRequest) {
       switch (data.command) {
         case 'prepare':
           engine.buildFlashImage(data.profile || data.changeset).then(image => {
-            connection.send(JSON.stringify({
+            socket.send(JSON.stringify({
               type: 'flashPrepared',
               engine: engineId,
               data: {
@@ -337,7 +342,7 @@ export async function flashStream(connection: WebSocket, req: FastifyRequest) {
               }
             }))
           }).catch(error => {
-            connection.send(JSON.stringify({
+            socket.send(JSON.stringify({
               type: 'error',
               engine: engineId,
               data: { message: error.message }
@@ -355,7 +360,7 @@ export async function flashStream(connection: WebSocket, req: FastifyRequest) {
               progress = 100
               clearInterval(flashInterval)
               
-              connection.send(JSON.stringify({
+              socket.send(JSON.stringify({
                 type: 'flashComplete',
                 engine: engineId,
                 data: {
@@ -365,7 +370,7 @@ export async function flashStream(connection: WebSocket, req: FastifyRequest) {
                 }
               }))
             } else {
-              connection.send(JSON.stringify({
+              socket.send(JSON.stringify({
                 type: 'flashProgress',
                 engine: engineId,
                 data: {
@@ -379,7 +384,7 @@ export async function flashStream(connection: WebSocket, req: FastifyRequest) {
           break
 
         case 'abort':
-          connection.send(JSON.stringify({
+          socket.send(JSON.stringify({
             type: 'flashAborted',
             engine: engineId,
             data: {
@@ -394,7 +399,7 @@ export async function flashStream(connection: WebSocket, req: FastifyRequest) {
     }
   })
 
-  connection.on('close', () => {
+  socket.on('close', () => {
     console.log(`WebSocket flash client disconnected for engine: ${engineId}`)
   })
 }

@@ -10,7 +10,7 @@ import { useConnectionState, useAppStore } from '../stores/useAppStore';
 interface CanFrame {
   id: number;
   extended: boolean;
-  data: Buffer;
+  data: Uint8Array;
   timestamp: Date;
 }
 
@@ -29,7 +29,7 @@ const StreamTab: React.FC = () => {
           const mockFrame: CanFrame = {
             id: Math.floor(Math.random() * 0x800),
             extended: Math.random() > 0.5,
-            data: Buffer.from(Array.from({ length: 8 }, () => Math.floor(Math.random() * 256))),
+            data: new Uint8Array(Array.from({ length: 8 }, () => Math.floor(Math.random() * 256))),
             timestamp: new Date(),
           };
           
@@ -41,7 +41,7 @@ const StreamTab: React.FC = () => {
     }
   }, [isConnected, isPaused]);
 
-  const formatHex = (buffer: Buffer) => {
+  const formatHex = (buffer: Uint8Array) => {
     return Array.from(buffer)
       .map(b => b.toString(16).padStart(2, '0').toUpperCase())
       .join(' ');

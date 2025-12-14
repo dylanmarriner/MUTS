@@ -19,6 +19,7 @@ import {
   User
 } from 'lucide-react';
 import WorkshopStartupScreen from './components/WorkshopStartupScreen';
+import ErrorBoundary from './components/ErrorBoundary';
 import { OperatorMode, Technician } from './types';
 import { useAppStore, useConnectionState, useSafetyState } from './stores/useAppStore';
 
@@ -151,8 +152,8 @@ function App() {
     // Always hide boot screen after a short delay to ensure React has rendered
     const timer = setTimeout(() => {
       if (window.hideBootScreen) {
-        window.hideBootScreen();
-      }
+      window.hideBootScreen();
+    }
     }, 100);
     return () => clearTimeout(timer);
   }, [showStartup]);
@@ -184,6 +185,11 @@ function App() {
       }
     });
   }, [navigate]);
+
+  // Track navigation events (using console only - no Node.js modules in renderer)
+  useEffect(() => {
+    console.log('App: location changed', { pathname: location.pathname });
+  }, [location]);
 
   const handleModeSelected = (mode: OperatorMode, selectedTechnician?: Technician) => {
     setOperatorMode(mode);
@@ -236,7 +242,10 @@ function App() {
                 return (
                   <button
                     key={tab.id}
-                    onClick={() => navigate(tab.path)}
+                    onClick={() => {
+                      console.log('Navigating to:', tab.path);
+                      navigate(tab.path);
+                    }}
                     className="flex items-center gap-2 px-3 py-1 rounded text-sm transition-all"
                     style={{
                       background: isActive 
@@ -296,18 +305,60 @@ function App() {
 
       {/* Main content area */}
       <main className="flex-1 overflow-hidden">
+        <ErrorBoundary>
         <Routes>
-          <Route path="/" element={<VehicleInfoTab />} />
-          <Route path="/connect" element={<ConnectTab />} />
-          <Route path="/live-data" element={<LiveDataTab />} />
-          <Route path="/stream" element={<StreamTab />} />
-          <Route path="/diagnostics" element={<DiagnosticsTab />} />
-          <Route path="/tuning" element={<TuningTab />} />
-          <Route path="/rom-tools" element={<RomToolsTab />} />
-          <Route path="/flashing" element={<FlashingTab />} />
-          <Route path="/logs" element={<LogsTab />} />
-          <Route path="/settings" element={<SettingsTab />} />
+            <Route path="/" element={
+              <ErrorBoundary>
+                <VehicleInfoTab />
+              </ErrorBoundary>
+            } />
+            <Route path="/connect" element={
+              <ErrorBoundary>
+                <ConnectTab />
+              </ErrorBoundary>
+            } />
+            <Route path="/live-data" element={
+              <ErrorBoundary>
+                <LiveDataTab />
+              </ErrorBoundary>
+            } />
+            <Route path="/stream" element={
+              <ErrorBoundary>
+                <StreamTab />
+              </ErrorBoundary>
+            } />
+            <Route path="/diagnostics" element={
+              <ErrorBoundary>
+                <DiagnosticsTab />
+              </ErrorBoundary>
+            } />
+            <Route path="/tuning" element={
+              <ErrorBoundary>
+                <TuningTab />
+              </ErrorBoundary>
+            } />
+            <Route path="/rom-tools" element={
+              <ErrorBoundary>
+                <RomToolsTab />
+              </ErrorBoundary>
+            } />
+            <Route path="/flashing" element={
+              <ErrorBoundary>
+                <FlashingTab />
+              </ErrorBoundary>
+            } />
+            <Route path="/logs" element={
+              <ErrorBoundary>
+                <LogsTab />
+              </ErrorBoundary>
+            } />
+            <Route path="/settings" element={
+              <ErrorBoundary>
+                <SettingsTab />
+              </ErrorBoundary>
+            } />
         </Routes>
+        </ErrorBoundary>
       </main>
     </div>
   );

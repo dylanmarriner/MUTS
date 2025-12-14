@@ -127,8 +127,8 @@ const TuningTab: React.FC = () => {
       const changes = [
         {
           address: 0x123456,
-          oldValue: Buffer.from([0x0F, 0x00]),
-          newValue: Buffer.from([0x10, 0x00]),
+          oldValue: new Uint8Array([0x0F, 0x00]),
+          newValue: new Uint8Array([0x10, 0x00]),
           changeType: 'SingleByte' as const,
         },
       ];

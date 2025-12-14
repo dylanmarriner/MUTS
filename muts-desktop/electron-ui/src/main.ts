@@ -17,15 +17,46 @@ const healthProbe = getHealthProbe();
 const isCI = process.env.CI === 'true' || process.env.HEADLESS === 'true';
 
 function createMainWindow(): void {
+  // #region agent log
+  const DEBUG_LOG_PATH = path.resolve(__dirname, '../../../.cursor/debug.log');
+  function writeDebugLog(location: string, message: string, data: any, hypothesisId: string) {
+    try {
+      const logDir = path.dirname(DEBUG_LOG_PATH);
+      if (!fs.existsSync(logDir)) {
+        fs.mkdirSync(logDir, { recursive: true });
+      }
+      const logEntry = JSON.stringify({
+        location,
+        message,
+        data,
+        timestamp: Date.now(),
+        sessionId: 'debug-session',
+        runId: 'run1',
+        hypothesisId
+      }) + '\n';
+      fs.appendFileSync(DEBUG_LOG_PATH, logEntry, 'utf-8');
+    } catch (err) {
+      // Ignore log write errors
+    }
+  }
+  writeDebugLog('main.ts:19', 'createMainWindow entry', { __dirname, isCI }, 'C');
+  // #endregion
   
   healthProbe.checkpoint(CHECKPOINTS.MAIN_STARTED, 'Main process started', 'PASS');
   
   // Create the browser window
   const preloadPath = path.join(__dirname, 'preload.js');
   
+  // #region agent log
+  writeDebugLog('main.ts:27', 'preload path check', { preloadPath, exists: fs.existsSync(preloadPath) }, 'C');
+  // #endregion
+  
   // Verify preload file exists
   if (!fs.existsSync(preloadPath)) {
     healthProbe.checkpoint(CHECKPOINTS.PRELOAD_OK, 'Preload script exists', 'FAIL', `Preload file not found: ${preloadPath}`);
+    // #region agent log
+    writeDebugLog('main.ts:30', 'preload file not found', { preloadPath }, 'C');
+    // #endregion
   }
   
   mainWindow = new BrowserWindow({
@@ -46,17 +77,49 @@ function createMainWindow(): void {
   // Load the app - always use production file loading
   const htmlPath = path.join(__dirname, 'renderer/src/index.html');
   
+  // #region agent log
+  writeDebugLog('main.ts:47', 'HTML path check', { htmlPath, exists: fs.existsSync(htmlPath) }, 'C');
+  // #endregion
+  
   // Verify HTML file exists
   if (!fs.existsSync(htmlPath)) {
     healthProbe.checkpoint(CHECKPOINTS.RENDERER_LOADED, 'Renderer HTML exists', 'FAIL', `HTML file not found: ${htmlPath}`);
+    // #region agent log
+    writeDebugLog('main.ts:52', 'HTML file not found', { htmlPath }, 'C');
+    // #endregion
   }
   
   console.log('Loading app from:', htmlPath);
-  mainWindow.loadFile(htmlPath)
+  // #region agent log
+  writeDebugLog('main.ts:92', 'before loadFile call', { htmlPath, timestamp: Date.now() }, 'C');
+  // #endregion
+  
+  const loadPromise = mainWindow.loadFile(htmlPath);
+  // #region agent log
+  writeDebugLog('main.ts:95', 'loadFile promise created', { timestamp: Date.now() }, 'C');
+  // #endregion
+  
+  // Add timeout to detect hanging loadFile
+  const loadTimeout = setTimeout(() => {
+    // #region agent log
+    writeDebugLog('main.ts:99', 'loadFile timeout warning', { htmlPath, elapsed: Date.now() - (Date.now() - 5000) }, 'C');
+    // #endregion
+    console.warn('loadFile is taking longer than expected...');
+  }, 5000);
+  
+  loadPromise
     .then(() => {
+      clearTimeout(loadTimeout);
+      // #region agent log
+      writeDebugLog('main.ts:105', 'loadFile success', { htmlPath, timestamp: Date.now() }, 'C');
+      // #endregion
       healthProbe.checkpoint(CHECKPOINTS.RENDERER_LOADED, 'Renderer HTML loaded', 'PASS');
     })
     .catch(err => {
+      clearTimeout(loadTimeout);
+      // #region agent log
+      writeDebugLog('main.ts:111', 'loadFile failed', { htmlPath, error: err.message, stack: err.stack, timestamp: Date.now() }, 'C');
+      // #endregion
       console.error('Failed to load app:', err);
       healthProbe.checkpoint(CHECKPOINTS.RENDERER_LOADED, 'Renderer HTML loaded', 'FAIL', err.message);
       // Show error screen
@@ -67,9 +130,9 @@ function createMainWindow(): void {
     }); 
   // Only open DevTools in non-CI mode
   if (!isCI && !app.isPackaged) {
-    mainWindow.webContents.openDevTools();
+  mainWindow.webContents.openDevTools();
   }
-  
+
   // Filter out expected console errors (backend not available in standalone mode)
   mainWindow.webContents.on('console-message', (event, level, message, line, sourceId) => {
     if (level === 2 || level === 3) { // error or warning
@@ -89,15 +152,42 @@ function createMainWindow(): void {
 
   // Show window when ready (unless in CI mode)
   mainWindow.once('ready-to-show', () => {
+    // #region agent log
+    writeDebugLog('main.ts:138', 'ready-to-show event', { timestamp: Date.now() }, 'C');
+    // #endregion
     console.log('Window ready to show');
     if (!isCI) {
-      mainWindow?.show();
+    mainWindow?.show();
+      // #region agent log
+      writeDebugLog('main.ts:142', 'window.show() called', { timestamp: Date.now() }, 'C');
+      // #endregion
     }
     healthProbe.checkpoint(CHECKPOINTS.UI_VISIBLE, 'Window ready (visible or headless)', 'PASS');
     
     if (!isCI && !app.isPackaged) {
       mainWindow?.webContents.openDevTools();
     }
+  });
+  
+  // Add did-finish-load event listener
+  mainWindow.webContents.once('did-finish-load', () => {
+    // #region agent log
+    writeDebugLog('main.ts:152', 'did-finish-load event', { url: mainWindow?.webContents.getURL(), timestamp: Date.now() }, 'C');
+    // #endregion
+  });
+  
+  // Add did-fail-load event listener for more detailed error info
+  mainWindow.webContents.on('did-fail-load', (event, errorCode, errorDescription, validatedURL) => {
+    // Ignore navigation failures for client-side routes (React Router handles these)
+    // Only log actual file loading failures
+    if (errorCode === -6 && validatedURL && validatedURL.startsWith('file:///') && !validatedURL.includes('index.html')) {
+      // This is a React Router navigation - ignore it
+      return;
+    }
+    // #region agent log
+    writeDebugLog('main.ts:158', 'did-fail-load event', { errorCode, errorDescription, validatedURL, timestamp: Date.now() }, 'C');
+    // #endregion
+    console.error('Failed to load:', { errorCode, errorDescription, validatedURL });
   });
 
   // Fallback: show window after 3 seconds even if not ready
@@ -316,13 +406,44 @@ ipcMain.handle('interface:getStatus', async () => {
 });
 
 ipcMain.handle('interface:connect', async (_, interfaceId: string) => {
+  // #region agent log
+  const DEBUG_LOG_PATH = path.resolve(__dirname, '../../../.cursor/debug.log');
+  function writeDebugLog(location: string, message: string, data: any, hypothesisId: string) {
+    try {
+      const logDir = path.dirname(DEBUG_LOG_PATH);
+      if (!fs.existsSync(logDir)) {
+        fs.mkdirSync(logDir, { recursive: true });
+      }
+      const logEntry = JSON.stringify({
+        location,
+        message,
+        data,
+        timestamp: Date.now(),
+        sessionId: 'debug-session',
+        runId: 'run1',
+        hypothesisId
+      }) + '\n';
+      fs.appendFileSync(DEBUG_LOG_PATH, logEntry, 'utf-8');
+    } catch (err) {
+      // Ignore log write errors
+    }
+  }
+  writeDebugLog('main.ts:318', 'interface:connect entry', { interfaceId }, 'D');
+  // #endregion
+  
   try {
     // TODO: Implement actual interface connection
     // For now, return a mock session
     const sessionId = `session-${Date.now()}`;
     logger.info(`Connecting to interface: ${interfaceId}`);
+    // #region agent log
+    writeDebugLog('main.ts:325', 'interface:connect success', { sessionId, interfaceId }, 'D');
+    // #endregion
     return { sessionId, interfaceId, connected: true };
-  } catch (error) {
+  } catch (error: any) {
+    // #region agent log
+    writeDebugLog('main.ts:329', 'interface:connect error', { interfaceId, error: error.message, stack: error.stack }, 'D');
+    // #endregion
     console.error('Failed to connect interface:', error);
     throw error;
   }
@@ -638,28 +759,118 @@ app.whenReady().then(() => {
   process.exit(1);
 });
 
-// Check backend health (non-blocking, graceful failure)
+// Check backend health with retry mechanism (non-blocking, graceful failure)
 async function checkBackendHealth(): Promise<void> {
-  try {
-    // Use Node.js http module instead of fetch
-    const http = require('http');
-    const request = http.get('http://localhost:3000/health', { timeout: 2000 }, (res: any) => {
-      if (res.statusCode === 200) {
-        healthProbe.checkpoint(CHECKPOINTS.BACKEND_READY, 'Backend available', 'PASS');
-      } else {
-        healthProbe.checkpoint(CHECKPOINTS.BACKEND_READY, 'Backend available', 'DEGRADED', 'Backend not running (standalone mode)');
+  // #region agent log
+  const DEBUG_LOG_PATH = path.resolve(__dirname, '../../../.cursor/debug.log');
+  function writeDebugLog(location: string, message: string, data: any, hypothesisId: string) {
+    try {
+      const logDir = path.dirname(DEBUG_LOG_PATH);
+      if (!fs.existsSync(logDir)) {
+        fs.mkdirSync(logDir, { recursive: true });
       }
-    });
-    request.on('error', () => {
-      healthProbe.checkpoint(CHECKPOINTS.BACKEND_READY, 'Backend available', 'DEGRADED', 'Backend not available (standalone mode)');
-    });
-    request.on('timeout', () => {
-      request.destroy();
-      healthProbe.checkpoint(CHECKPOINTS.BACKEND_READY, 'Backend available', 'DEGRADED', 'Backend not available (standalone mode)');
-    });
-  } catch (error: any) {
-    healthProbe.checkpoint(CHECKPOINTS.BACKEND_READY, 'Backend available', 'DEGRADED', 'Backend not available (standalone mode)');
+      const logEntry = JSON.stringify({
+        location,
+        message,
+        data,
+        timestamp: Date.now(),
+        sessionId: 'debug-session',
+        runId: 'run1',
+        hypothesisId
+      }) + '\n';
+      fs.appendFileSync(DEBUG_LOG_PATH, logEntry, 'utf-8');
+    } catch (err) {
+      // Ignore log write errors
+    }
   }
+  writeDebugLog('main.ts:717', 'checkBackendHealth entry', { timestamp: Date.now() }, 'A');
+  // #endregion
+  
+  const maxRetries = 3;
+  const retryDelay = 2000; // 2 seconds between retries
+  
+  const attemptConnection = (attempt: number): Promise<void> => {
+    return new Promise((resolve) => {
+      // #region agent log
+      writeDebugLog('main.ts:730', 'backend connection attempt', { attempt, maxRetries, url: 'http://localhost:3000/health' }, 'A');
+      // #endregion
+      
+      const http = require('http');
+      const request = http.get('http://localhost:3000/health', { timeout: 2000 }, (res: any) => {
+        // #region agent log
+        writeDebugLog('main.ts:735', 'http.get response', { statusCode: res.statusCode, attempt }, 'A');
+        // #endregion
+        
+        if (res.statusCode === 200) {
+          healthProbe.checkpoint(CHECKPOINTS.BACKEND_READY, 'Backend available', 'PASS');
+          // #region agent log
+          writeDebugLog('main.ts:739', 'backend health PASS', { attempt }, 'A');
+          // #endregion
+          resolve();
+        } else {
+          if (attempt < maxRetries) {
+            // #region agent log
+            writeDebugLog('main.ts:744', 'backend retry scheduled', { attempt, nextAttempt: attempt + 1, delay: retryDelay }, 'A');
+            // #endregion
+            setTimeout(() => attemptConnection(attempt + 1).then(resolve), retryDelay);
+          } else {
+            healthProbe.checkpoint(CHECKPOINTS.BACKEND_READY, 'Backend available', 'DEGRADED', 'Backend not running (standalone mode)');
+            // #region agent log
+            writeDebugLog('main.ts:750', 'backend health DEGRADED - max retries', { attempt, statusCode: res.statusCode }, 'A');
+            // #endregion
+            resolve();
+          }
+        }
+      });
+      
+      request.on('error', (err: any) => {
+        // #region agent log
+        writeDebugLog('main.ts:757', 'http.get error', { error: err.message, code: err.code, attempt }, 'B');
+        // #endregion
+        
+        if (attempt < maxRetries) {
+          // #region agent log
+          writeDebugLog('main.ts:761', 'backend retry scheduled after error', { attempt, nextAttempt: attempt + 1, delay: retryDelay }, 'B');
+          // #endregion
+          setTimeout(() => attemptConnection(attempt + 1).then(resolve), retryDelay);
+        } else {
+          healthProbe.checkpoint(CHECKPOINTS.BACKEND_READY, 'Backend available', 'DEGRADED', 'Backend not available (standalone mode)');
+          // #region agent log
+          writeDebugLog('main.ts:767', 'backend health DEGRADED - max retries after error', { attempt }, 'B');
+          // #endregion
+          resolve();
+        }
+      });
+      
+      request.on('timeout', () => {
+        // #region agent log
+        writeDebugLog('main.ts:774', 'http.get timeout', { attempt }, 'B');
+        // #endregion
+        request.destroy();
+        
+        if (attempt < maxRetries) {
+          // #region agent log
+          writeDebugLog('main.ts:779', 'backend retry scheduled after timeout', { attempt, nextAttempt: attempt + 1, delay: retryDelay }, 'B');
+          // #endregion
+          setTimeout(() => attemptConnection(attempt + 1).then(resolve), retryDelay);
+        } else {
+          healthProbe.checkpoint(CHECKPOINTS.BACKEND_READY, 'Backend available', 'DEGRADED', 'Backend not available (standalone mode)');
+          // #region agent log
+          writeDebugLog('main.ts:785', 'backend health DEGRADED - max retries after timeout', { attempt }, 'B');
+          // #endregion
+          resolve();
+        }
+      });
+    });
+  };
+  
+  // Start first attempt
+  attemptConnection(1).catch((error: any) => {
+    // #region agent log
+    writeDebugLog('main.ts:793', 'checkBackendHealth catch', { error: error.message, stack: error.stack }, 'B');
+    // #endregion
+    healthProbe.checkpoint(CHECKPOINTS.BACKEND_READY, 'Backend available', 'DEGRADED', 'Backend not available (standalone mode)');
+  });
 }
 
 // Generate error UI HTML

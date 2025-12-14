@@ -42,7 +42,7 @@ class LiveDataService:
         return self._read_did_u16(0x04) / 100
 
     def read_boost_psi(self) -> float:
-        boost_kpa = self._read_did_u16(0x70)
+        boost_kpa = self._read_did_u16(0x70) / 10
         return boost_kpa * 0.145038
 
     def read_fuel_pressure_psi(self) -> float:

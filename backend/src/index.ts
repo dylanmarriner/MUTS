@@ -99,13 +99,52 @@ process.on('SIGTERM', async () => {
 })
 
 const start = async () => {
+  // #region agent log
+  const fs = require('fs');
+  const path = require('path');
+  const DEBUG_LOG_PATH = path.resolve(__dirname, '../../.cursor/debug.log');
+  function writeDebugLog(location: string, message: string, data: any, hypothesisId: string) {
+    try {
+      const logDir = path.dirname(DEBUG_LOG_PATH);
+      if (!fs.existsSync(logDir)) {
+        fs.mkdirSync(logDir, { recursive: true });
+      }
+      const logEntry = JSON.stringify({
+        location,
+        message,
+        data,
+        timestamp: Date.now(),
+        sessionId: 'debug-session',
+        runId: 'run1',
+        hypothesisId
+      }) + '\n';
+      fs.appendFileSync(DEBUG_LOG_PATH, logEntry, 'utf-8');
+    } catch (err) {
+      // Ignore log write errors
+    }
+  }
+  writeDebugLog('backend/index.ts:101', 'start function entry', { env: { PORT: process.env.PORT, HOST: process.env.HOST } }, 'E');
+  // #endregion
+  
   try {
     const port = parseInt(process.env.PORT || '3000', 10)
     const host = process.env.HOST || '0.0.0.0'
     
+    // #region agent log
+    writeDebugLog('backend/index.ts:107', 'before fastify.listen', { port, host }, 'E');
+    // #endregion
+    
     await fastify.listen({ port, host })
+    
+    // #region agent log
+    writeDebugLog('backend/index.ts:110', 'fastify.listen success', { port, host }, 'E');
+    // #endregion
+    
     fastify.log.info(`Server listening on ${host}:${port}`)
-  } catch (err) {
+  } catch (err: any) {
+    // #region agent log
+    writeDebugLog('backend/index.ts:115', 'start function error', { error: err.message, code: err.code, stack: err.stack }, 'E');
+    // #endregion
     fastify.log.error(err)
     process.exit(1)
   }

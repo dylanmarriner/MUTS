@@ -8,6 +8,13 @@ import { Plug, Wifi, WifiOff, AlertCircle, CheckCircle } from 'lucide-react';
 import { useConnectionState, useAppStore } from '../stores/useAppStore';
 
 const ConnectTab: React.FC = () => {
+  // Component mounted - log via IPC if available
+  useEffect(() => {
+    if (window.electronAPI?.healthCheckpoint) {
+      window.electronAPI.healthCheckpoint('COMPONENT_MOUNT', 'ConnectTab mounted', 'PASS');
+    }
+  }, []);
+  
   const { 
     connectionStatus, 
     connectedInterface, 

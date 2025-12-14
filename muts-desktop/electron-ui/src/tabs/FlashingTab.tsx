@@ -79,7 +79,7 @@ const FlashingTab: React.FC = () => {
       const romData = new Uint8Array(buffer);
       
       const result = await window.electronAPI.flash.prepare(
-        Buffer.from(romData),
+        romData,
         {
           verifyAfterWrite: verifyEnabled,
           backupBeforeFlash: backupEnabled,

@@ -24,7 +24,7 @@ const electronAPI: any = {
       return '';
     }
   },
-  
+
   getOperatorMode: () => {
     try {
       return ipcRenderer.invoke('system:getOperatorMode');
@@ -320,25 +320,28 @@ const electronAPI: any = {
 
   // Flash operations
   flash: {
-    validate: (romData: ArrayBuffer) => {
+    validate: (romData: ArrayBuffer | Uint8Array) => {
       try {
-        return ipcRenderer.invoke('flash:validate', romData);
+        const buffer = Buffer.from(romData);
+        return ipcRenderer.invoke('flash:validate', buffer);
       } catch (error) {
         console.error('Failed to validate ROM:', error);
         return Promise.resolve({ valid: false, errors: ['Validation failed'] });
       }
     },
-    checksum: (romData: ArrayBuffer) => {
+    checksum: (romData: ArrayBuffer | Uint8Array) => {
       try {
-        return ipcRenderer.invoke('flash:checksum', romData);
+        const buffer = Buffer.from(romData);
+        return ipcRenderer.invoke('flash:checksum', buffer);
       } catch (error) {
         console.error('Failed to calculate checksum:', error);
         return Promise.resolve({ checksum: '00000000', valid: false });
       }
     },
-    prepare: (romData: Buffer, options: any) => {
+    prepare: (romData: ArrayBuffer | Uint8Array, options: any) => {
       try {
-        return ipcRenderer.invoke('flash:prepare', romData, options);
+        const buffer = Buffer.from(romData);
+        return ipcRenderer.invoke('flash:prepare', buffer, options);
       } catch (error) {
         console.error('Failed to prepare flash:', error);
         return Promise.reject(error);
@@ -374,7 +377,13 @@ const electronAPI: any = {
     },
     apply: (sessionId: string, changes: any) => {
       try {
-        return ipcRenderer.invoke('tuning:apply', sessionId, changes);
+        // Convert Uint8Array to Buffer in changes if needed
+        const convertedChanges = changes.map((change: any) => ({
+          ...change,
+          oldValue: change.oldValue instanceof Uint8Array ? Buffer.from(change.oldValue) : change.oldValue,
+          newValue: change.newValue instanceof Uint8Array ? Buffer.from(change.newValue) : change.newValue,
+        }));
+        return ipcRenderer.invoke('tuning:apply', sessionId, convertedChanges);
       } catch (error) {
         console.error('Failed to apply tuning:', error);
         return Promise.reject(error);

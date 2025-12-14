@@ -1,37 +1,68 @@
 {
   "name": "muts-ui",
   "version": "1.0.0",
+  "description": "MUTS Technician Interface - Desktop Application",
+  "main": "public/electron.js",
+  "homepage": "./",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "dev": "concurrently \"npm run dev:vite\" \"wait-on http://localhost:5173 && npm run dev:electron\"",
+    "dev:vite": "vite",
+    "dev:electron": "cross-env NODE_ENV=development electron . --no-sandbox",
+    "build": "npm run build:vite && npm run build:electron",
+    "build:vite": "vite build",
+    "build:electron": "electron-builder",
+    "dist": "npm run build",
+    "start": "electron .",
     "lint": "next lint"
   },
   "dependencies": {
-    "@radix-ui/react-progress": "^1.0.3",
-    "@radix-ui/react-slot": "^1.2.4",
-    "@radix-ui/react-tabs": "^1.0.4",
-    "@tanstack/react-query": "^5.0.0",
-    "axios": "^1.6.0",
-    "class-variance-authority": "^0.7.1",
-    "clsx": "^2.0.0",
-    "lucide-react": "^0.294.0",
-    "next": "14.0.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "@tanstack/react-query": "^5.0.0",
+    "axios": "^1.6.0",
+    "lucide-react": "^0.294.0",
     "recharts": "^2.8.0",
-    "tailwind-merge": "^2.6.0"
+    "clsx": "^2.0.0"
   },
   "devDependencies": {
+    "typescript": "^5.3.3",
     "@types/node": "^20.10.5",
     "@types/react": "^18.2.45",
     "@types/react-dom": "^18.2.18",
     "autoprefixer": "^10.4.16",
-    "eslint": "^8.55.0",
-    "eslint-config-next": "14.0.4",
     "postcss": "^8.4.32",
     "tailwindcss": "^3.3.6",
-    "typescript": "^5.3.3"
+    "eslint": "^8.55.0",
+    "electron": "^28.0.0",
+    "electron-builder": "^24.6.4",
+    "concurrently": "^8.2.2",
+    "wait-on": "^7.2.0",
+    "cross-env": "^7.0.3",
+    "vite": "^5.0.0",
+    "@vitejs/plugin-react": "^4.1.0"
+  },
+  "build": {
+    "appId": "com.mazda.muts",
+    "productName": "MUTS Technician Interface",
+    "directories": {
+      "output": "dist/electron"
+    },
+    "files": [
+      "dist/renderer/**/*",
+      "public/electron.js",
+      "public/preload.js",
+      "node_modules/**/*"
+    ],
+    "mac": {
+      "category": "public.app-category.developer-tools",
+      "target": "dmg"
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "linux": {
+      "target": "AppImage"
+    }
   }
 }

@@ -8,6 +8,13 @@ import { Car, Info, Cpu } from 'lucide-react';
 import { useConnectionState, useAppStore } from '../stores/useAppStore';
 
 const VehicleInfoTab: React.FC = () => {
+  // Component mounted - log via IPC if available
+  useEffect(() => {
+    if (window.electronAPI?.healthCheckpoint) {
+      window.electronAPI.healthCheckpoint('COMPONENT_MOUNT', 'VehicleInfoTab mounted', 'PASS');
+    }
+  }, []);
+  
   const { vehicleInfo, setVehicleInfo } = useAppStore();
   const { isConnected, isDisconnected } = useConnectionState();
   const [isLoading, setIsLoading] = useState(false);
