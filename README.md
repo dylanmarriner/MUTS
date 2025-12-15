@@ -112,7 +112,7 @@ sha256sum MUTS-1.0.0-Installer.exe
 ```
 
 ### First Run
-See [FIRST_RUN.md](FIRST_RUN.md) for detailed setup instructions.
+See [docs/FIRST_RUN.md](docs/FIRST_RUN.md) for detailed setup instructions.
 
 ## Quick Start
 
@@ -124,9 +124,9 @@ See [FIRST_RUN.md](FIRST_RUN.md) for detailed setup instructions.
 
 ## Documentation
 
-- [First Run Guide](FIRST_RUN.md)
-- [Contributing](CONTRIBUTING.md)
-- [Security Policy](SECURITY.md)
+- [First Run Guide](docs/FIRST_RUN.md)
+- [Contributing](docs/CONTRIBUTING.md)
+- [Security Policy](docs/SECURITY.md)
 - [CHANGELOG](CHANGELOG.md)
 
 ## Development
@@ -139,7 +139,7 @@ Built with:
 
 ## Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for development guidelines.
+See [docs/CONTRIBUTING.md](docs/CONTRIBUTING.md) for development guidelines.
 
 ## License
 
@@ -154,7 +154,7 @@ Use at your own risk. Always follow proper tuning procedures and ensure you have
 ## Support
 
 - Issues: [GitHub Issues](https://github.com/dylanmarriner/MUTS/issues)
-- Security: See [SECURITY.md](SECURITY.md)
+- Security: See [docs/SECURITY.md](docs/SECURITY.md)
 - Discussions: [GitHub Discussions](https://github.com/dylanmarriner/MUTS/discussions)
 
 ---
