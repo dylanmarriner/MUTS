@@ -84,3 +84,6 @@ build_artifacts/*.md
 !build_artifacts/*.example
 !build_artifacts/release_manifest.json
 !build_artifacts/installer_build_report.md
+
+gpg/*.key
+gpg/*.gfpack
