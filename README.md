@@ -1,8 +1,23 @@
 # MUTS - Mazda Universal Tuning System
 
-[![Build Status](https://github.com/dylanmarriner/MUTS/workflows/CI/badge.svg)](https://github.com/dylanmarriner/MUTS/actions)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Release](https://img.shields.io/github/v/release/dylanmarriner/MUTS)](https://github.com/dylanmarriner/MUTS/releases)
+[![CI](https://github.com/dylanmarriner/MUTS/actions/workflows/ci.yml/badge.svg)](https://github.com/dylanmarriner/MUTS/actions/workflows/ci.yml)
+[![Build and Release](https://github.com/dylanmarriner/MUTS/actions/workflows/build.yml/badge.svg)](https://github.com/dylanmarriner/MUTS/actions/workflows/build.yml)
+[![Test Coverage](https://img.shields.io/badge/coverage-51--53%25-brightgreen)](COVERAGE_STATUS.md)
+[![License](https://img.shields.io/github/license/dylanmarriner/MUTS)](LICENSE)
+[![Version](https://img.shields.io/github/v/release/dylanmarriner/MUTS)](https://github.com/dylanmarriner/MUTS/releases)
+[![Last Commit](https://img.shields.io/github/last-commit/dylanmarriner/MUTS)](https://github.com/dylanmarriner/MUTS/commits/main)
+[![Open Issues](https://img.shields.io/github/issues/dylanmarriner/MUTS)](https://github.com/dylanmarriner/MUTS/issues)
+[![Community](https://img.shields.io/badge/community-discussions-black?logo=github)](https://github.com/dylanmarriner/MUTS/discussions)
+[![Docs](https://img.shields.io/badge/docs-mkdocs-blue)](docs/)
+[![Code Standards](https://img.shields.io/badge/code%20standards-contributing-blue)](docs/CONTRIBUTING.md#code-standards)
+[![Lint](https://img.shields.io/badge/lint-ruff%20%2B%20mypy-2F8FC6)](.github/workflows/ci.yml)
+
+![React](https://img.shields.io/badge/react-61DAFB?logo=react&logoColor=black)
+![Node.js](https://img.shields.io/badge/node.js-339933?logo=node.js&logoColor=white)
+![TypeScript](https://img.shields.io/badge/typescript-3178C6?logo=typescript&logoColor=white)
+![Prisma](https://img.shields.io/badge/prisma-2D3748?logo=prisma&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/postgresql-4169E1?logo=postgresql&logoColor=white)
+![WebSockets](https://img.shields.io/badge/websockets-010101)
 
 A professional tuning and diagnostic system for Mazda vehicles, built with safety and transparency as core principles.
 
