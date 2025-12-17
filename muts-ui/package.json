@@ -8,12 +8,13 @@
   "scripts": {
     "dev": "concurrently \"npm run dev:vite\" \"wait-on http://localhost:5173 && npm run dev:electron\"",
     "dev:vite": "vite",
-    "dev:electron": "cross-env NODE_ENV=development electron . --no-sandbox",
-    "build": "npm run build:vite && npm run build:electron",
+    "dev:electron": "cross-env NODE_ENV=development electron electron-main.js --no-sandbox",
+    "build": "vite build",
+    "preview": "vite preview",
+    "start": "electron electron-main.js",
     "build:vite": "vite build",
     "build:electron": "electron-builder",
     "dist": "npm run build",
-    "start": "electron .",
     "lint": "next lint"
   },
   "dependencies": {
@@ -26,21 +27,21 @@
     "clsx": "^2.0.0"
   },
   "devDependencies": {
-    "typescript": "^5.3.3",
+    "typescript": "^5.2.2",
     "@types/node": "^20.10.5",
-    "@types/react": "^18.2.45",
-    "@types/react-dom": "^18.2.18",
+    "@types/react": "^18.2.43",
+    "@types/react-dom": "^18.2.17",
     "autoprefixer": "^10.4.16",
     "postcss": "^8.4.32",
     "tailwindcss": "^3.3.6",
     "eslint": "^8.55.0",
-    "electron": "^28.0.0",
+    "electron": "^28.1.4",
     "electron-builder": "^24.6.4",
     "concurrently": "^8.2.2",
     "wait-on": "^7.2.0",
     "cross-env": "^7.0.3",
-    "vite": "^5.0.0",
-    "@vitejs/plugin-react": "^4.1.0"
+    "vite": "^5.0.12",
+    "@vitejs/plugin-react": "^4.2.1"
   },
   "build": {
     "appId": "com.mazda.muts",

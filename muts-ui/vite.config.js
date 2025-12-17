@@ -7,14 +7,11 @@ export default defineConfig({
   
   // Build configuration
   build: {
-    outDir: 'dist/renderer',
+    outDir: 'dist',
     emptyOutDir: true,
-  },
-  
-  // Development server
-  server: {
-    port: 5173,
-    strictPort: true,
+    rollupOptions: {
+      input: path.resolve(__dirname, 'index.html'),
+    },
   },
   
   // Resolve paths
@@ -24,16 +21,6 @@ export default defineConfig({
     },
   },
   
-  // CSS configuration
-  css: {
-    postcss: './postcss.config.js',
-  },
-  
-  // Base path for Electron
+  // Base path for static assets
   base: './',
-  
-  // Environment variables
-  define: {
-    __IS_ELECTRON__: JSON.stringify(true),
-  },
 });

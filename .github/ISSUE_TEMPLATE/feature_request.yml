@@ -1,0 +1,38 @@
+name: Feature Request
+description: Suggest an idea for MUTS
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### Before suggesting
+        - [ ] Searched existing issues
+        - [ ] Checked documentation
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Clear and concise description of the feature
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why is this needed?
+      description: Explain why this feature would be valuable
+    validations:
+      required: true
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed Solution
+      description: Your suggested implementation
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives Considered
+      description: Other solutions you've considered
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional Context
+      description: Screenshots, mockups, or related issues

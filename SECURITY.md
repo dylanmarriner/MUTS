@@ -1,5 +1,7 @@
 # Security Policy
 
+[View our security policy on GitHub](https://github.com/dylanmarriner/MUTS/security/policy)
+
 ## Supported Versions
 
 | Version | Supported          |

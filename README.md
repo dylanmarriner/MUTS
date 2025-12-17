@@ -139,6 +139,10 @@ See [docs/FIRST_RUN.md](docs/FIRST_RUN.md) for detailed setup instructions.
 
 ## Documentation
 
+- [API Reference](/docs/api/README.md)
+- [System Overview](/docs/system/README.md)
+- [Frontend Components](/docs/api/frontend/index.html)
+- [Backend API](/docs/api/openapi.html)
 - [First Run Guide](docs/FIRST_RUN.md)
 - [Contributing](docs/CONTRIBUTING.md)
 - [Security Policy](docs/SECURITY.md)
