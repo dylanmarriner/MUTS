@@ -1,0 +1,76 @@
+<!-- Diagnostics Capability Panel -->
+<div class="holo-panel" id="diagnosticsCapabilityPanel" style="display: none;">
+    <div class="holo-panel-header">
+        <div class="holo-panel-title">Diagnostics Capabilities</div>
+        <div class="panel-status" id="diagnosticsCapabilityStatus">
+            <span class="capability-indicator"></span>
+        </div>
+    </div>
+    <div class="panel-content">
+        <!-- Vehicle Info -->
+        <div class="capability-vehicle-info">
+            <div class="vehicle-info-item">
+                <label>Vehicle:</label>
+                <span id="capabilityVehicleInfo">-</span>
+            </div>
+            <div class="vehicle-info-item">
+                <label>Protocol:</label>
+                <span id="capabilityProtocolInfo">-</span>
+            </div>
+        </div>
+
+        <!-- Capability Matrix -->
+        <div class="capability-matrix-container">
+            <table class="capability-matrix" id="diagnosticsCapabilityMatrix">
+                <thead>
+                    <tr>
+                        <th class="module-column">Module</th>
+                        <th>Read DTCs</th>
+                        <th>Clear DTCs</th>
+                        <th>Live Data</th>
+                        <th>Freeze Frame</th>
+                        <th>Readiness</th>
+                        <th>Coding</th>
+                        <th>Adaptation</th>
+                        <th>Service</th>
+                    </tr>
+                </thead>
+                <tbody id="capabilityMatrixBody">
+                    <!-- Matrix rows will be populated here -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Module Details Panel -->
+        <div class="module-details-panel" id="moduleDetailsPanel" style="display: none;">
+            <h4>Module Details</h4>
+            <div class="module-details-content">
+                <div class="detail-item">
+                    <label>Module:</label>
+                    <span id="detailModuleName">-</span>
+                </div>
+                <div class="detail-item">
+                    <label>Status:</label>
+                    <span id="detailModuleStatus" class="status-badge">-</span>
+                </div>
+                <div class="detail-item">
+                    <label>Protocol:</label>
+                    <span id="detailModuleProtocol">-</span>
+                </div>
+                <div class="detail-item">
+                    <label>Notes:</label>
+                    <span id="detailModuleNotes">-</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Unsupported Features Notice -->
+        <div class="unsupported-notice" id="unsupportedNotice" style="display: none;">
+            <h4>⚠️ Unsupported Features</h4>
+            <p>Some diagnostic modules require manufacturer-specific tools:</p>
+            <ul id="unsupportedFeaturesList">
+                <!-- List will be populated here -->
+            </ul>
+        </div>
+    </div>
+</div>

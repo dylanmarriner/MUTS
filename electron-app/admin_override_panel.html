@@ -1,0 +1,178 @@
+<!-- Admin Override Panel - DANGEROUS -->
+<div class="holo-panel" id="adminOverridePanel" style="display: none;">
+    <div class="holo-panel-header override-header">
+        <div class="holo-panel-title">
+            <span class="override-icon">⚠️</span>
+            ADMIN OVERRIDE
+        </div>
+        <div class="panel-status" id="overrideStatus">
+            <span class="override-indicator inactive"></span>
+        </div>
+    </div>
+    
+    <!-- CRITICAL WARNING BANNER -->
+    <div class="override-warning-banner">
+        <div class="warning-icon">⚠️</div>
+        <div class="warning-text">
+            <strong>ADMIN OVERRIDE ACTIVE</strong>
+            <p>UNSUPPORTED ACTIONS MAY DAMAGE VEHICLE</p>
+        </div>
+    </div>
+    
+    <div class="panel-content">
+        <!-- Override Controls -->
+        <div class="override-controls" id="overrideControls">
+            <div class="control-group">
+                <label>Override Scope</label>
+                <select id="overrideScope" class="holo-select">
+                    <option value="">Select scope...</option>
+                    <option value="ACTION">Single Action</option>
+                    <option value="MODULE">Module (5 min default)</option>
+                    <option value="SESSION">Session Only</option>
+                </select>
+            </div>
+            
+            <div class="control-group" id="moduleGroup" style="display: none;">
+                <label>Module</label>
+                <select id="overrideModule" class="holo-select">
+                    <option value="">Select module...</option>
+                    <option value="ENGINE">Engine ECU</option>
+                    <option value="TCM">TCM (DSG/TCT)</option>
+                    <option value="ABS">ABS</option>
+                    <option value="SRS">SRS/Airbag</option>
+                    <option value="BCM">Body Control</option>
+                </select>
+            </div>
+            
+            <div class="control-group" id="actionGroup" style="display: none;">
+                <label>Action</label>
+                <select id="overrideAction" class="holo-select">
+                    <option value="">Select action...</option>
+                    <option value="READ_DTCS">Read DTCs</option>
+                    <option value="CLEAR_DTCS">Clear DTCs</option>
+                    <option value="LIVE_DATA">Live Data</option>
+                    <option value="CODING">Coding</option>
+                    <option value="ADAPTATION">Adaptation</option>
+                </select>
+            </div>
+            
+            <div class="control-group" id="durationGroup" style="display: none;">
+                <label>Duration (minutes)</label>
+                <input type="number" id="overrideDuration" class="holo-input" 
+                       value="5" min="1" max="60">
+            </div>
+            
+            <div class="control-group">
+                <label>Reason (Required)</label>
+                <textarea id="overrideReason" class="holo-textarea" 
+                          placeholder="Explain why override is necessary..." 
+                          rows="3"></textarea>
+            </div>
+            
+            <div class="control-actions">
+                <button id="activateOverrideBtn" class="holo-button danger" disabled>
+                    ACTIVATE OVERRIDE
+                </button>
+                <button id="revokeOverrideBtn" class="holo-button secondary" style="display: none;">
+                    REVOKE OVERRIDE
+                </button>
+            </div>
+        </div>
+        
+        <!-- Active Override Display -->
+        <div class="active-override-display" id="activeOverrideDisplay" style="display: none;">
+            <h4>Active Override</h4>
+            <div class="override-details">
+                <div class="detail-item">
+                    <label>Scope:</label>
+                    <span id="activeScope">-</span>
+                </div>
+                <div class="detail-item">
+                    <label>Module:</label>
+                    <span id="activeModule">-</span>
+                </div>
+                <div class="detail-item">
+                    <label>Action:</label>
+                    <span id="activeAction">-</span>
+                </div>
+                <div class="detail-item">
+                    <label>Reason:</label>
+                    <span id="activeReason">-</span>
+                </div>
+                <div class="detail-item" id="activeExpiresGroup">
+                    <label>Expires:</label>
+                    <span id="activeExpires">-</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Audit Log Button -->
+        <div class="audit-section">
+            <button id="viewAuditLogBtn" class="holo-button secondary">
+                View Audit Log
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Override Activation Modal -->
+<div class="modal-overlay" id="overrideActivationModal" style="display: none;">
+    <div class="modal-content danger-modal">
+        <div class="modal-header">
+            <h3>⚠️ CONFIRM ADMIN OVERRIDE</h3>
+            <button class="modal-close" onclick="closeOverrideModal()">&times;</button>
+        </div>
+        
+        <div class="modal-body">
+            <div class="danger-notice">
+                <p><strong>WARNING: You are about to bypass safety checks!</strong></p>
+                <p>This override allows execution of unsupported diagnostic actions that may:</p>
+                <ul>
+                    <li>Damage vehicle ECUs</li>
+                    <li>Cause unexpected vehicle behavior</li>
+                    <li>Void vehicle warranty</li>
+                    <li>Create unsafe conditions</li>
+                </ul>
+            </div>
+            
+            <div class="override-summary">
+                <h4>Override Details:</h4>
+                <div class="summary-item">
+                    <label>Scope:</label>
+                    <span id="confirmScope">-</span>
+                </div>
+                <div class="summary-item">
+                    <label>Module:</label>
+                    <span id="confirmModule">-</span>
+                </div>
+                <div class="summary-item">
+                    <label>Action:</label>
+                    <span id="confirmAction">-</span>
+                </div>
+                <div class="summary-item">
+                    <label>Duration:</label>
+                    <span id="confirmDuration">-</span>
+                </div>
+                <div class="summary-item">
+                    <label>Reason:</label>
+                    <span id="confirmReason">-</span>
+                </div>
+            </div>
+            
+            <div class="confirmation-input">
+                <label>Type "OVERRIDE" to confirm:</label>
+                <input type="text" id="overrideConfirmation" class="holo-input" 
+                       placeholder="OVERRIDE" autocomplete="off">
+            </div>
+        </div>
+        
+        <div class="modal-footer">
+            <button class="holo-button secondary" onclick="closeOverrideModal()">
+                CANCEL
+            </button>
+            <button id="confirmOverrideBtn" class="holo-button danger" disabled>
+                CONFIRM OVERRIDE
+            </button>
+        </div>
+    </div>
+</div>

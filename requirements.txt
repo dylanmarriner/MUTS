@@ -7,6 +7,8 @@ joblib>=1.1.0
 
 # Database
 SQLAlchemy>=1.4.0
+fastapi>=0.68.0
+uvicorn>=0.15.0
 
 # CAN communication
 python-can>=4.0.0

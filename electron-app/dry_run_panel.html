@@ -1,0 +1,61 @@
+<!-- Dry-Run Mode Banner - PERSISTENT -->
+<div class="dry-run-banner" id="dryRunBanner" style="display: none;">
+    <div class="dry-run-icon">🛡️</div>
+    <div class="dry-run-text">
+        <strong>DRY-RUN MODE ACTIVE</strong>
+        <p>NO ECU COMMANDS WILL BE SENT</p>
+    </div>
+    <div class="dry-run-stats" id="dryRunStats">
+        <span>Actions: <span id="dryRunActions">0</span></span>
+        <span>Blocked: <span id="dryRunBlocked">0</span></span>
+        <span>Writes Prevented: <span id="dryRunWrites">0</span></span>
+    </div>
+</div>
+
+<!-- Dry-Run Control Panel -->
+<div class="holo-panel" id="dryRunPanel">
+    <div class="holo-panel-header">
+        <div class="holo-panel-title">
+            <span class="dry-run-toggle-icon">🛡️</span>
+            Dry-Run Mode
+        </div>
+        <div class="panel-status">
+            <label class="toggle-switch">
+                <input type="checkbox" id="dryRunToggle">
+                <span class="toggle-slider"></span>
+            </label>
+        </div>
+    </div>
+    
+    <div class="panel-content">
+        <div class="dry-run-info">
+            <p>Dry-run mode allows you to preview diagnostic actions without sending any commands to the vehicle.</p>
+            
+            <div class="dry-run-rules">
+                <h4>Dry-Run Rules:</h4>
+                <ul>
+                    <li>✅ Read operations are simulated</li>
+                    <li>❌ Write operations are blocked</li>
+                    <li>❌ No ECU communication</li>
+                    <li>✅ Capability checks still apply</li>
+                    <li>✅ Admin overrides respected but logged</li>
+                </ul>
+            </div>
+            
+            <div class="dry-run-indicators">
+                <div class="indicator-item">
+                    <label>Would Execute:</label>
+                    <span class="indicator-value" id="wouldExecuteIndicator">-</span>
+                </div>
+                <div class="indicator-item">
+                    <label>Write Risk:</label>
+                    <span class="indicator-value" id="writeRiskIndicator">NONE</span>
+                </div>
+                <div class="indicator-item">
+                    <label>Blocked in Dry-Run:</label>
+                    <span class="indicator-value" id="blockedIndicator">NO</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

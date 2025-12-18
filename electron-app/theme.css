@@ -1,0 +1,414 @@
+/* VersaTuner Sci-fi Theme CSS Variables */
+:root {
+  /* Primary Colors */
+  --color-primary-cyan: #06b6d4;
+  --color-primary-violet: #d946ef;
+  --color-primary-red: #ef4444;
+  --color-primary-amber: #f59e0b;
+  --color-primary-green: #22c55e;
+  --color-primary-rose: #f43f5e;
+
+  /* Background Colors */
+  --color-bg-primary: rgba(15, 23, 42, 1);
+  --color-bg-secondary: rgba(30, 41, 59, 1);
+  --color-bg-panel: rgba(30, 41, 59, 0.8);
+  --color-bg-glass: rgba(30, 41, 59, 0.5);
+  --color-bg-overlay: rgba(0, 0, 0, 0.4);
+  --color-bg-light: rgba(0, 0, 0, 0.2);
+  --color-bg-scanline: rgba(18, 16, 16, 0.5);
+
+  /* Text Colors */
+  --color-text-primary: rgba(248, 250, 252, 1);
+  --color-text-secondary: rgba(203, 213, 225, 1);
+  --color-text-tertiary: rgba(148, 163, 184, 1);
+  --color-text-muted: rgba(100, 116, 139, 1);
+  --color-text-disabled: rgba(71, 85, 105, 1);
+
+  /* Theme-specific colors - will be overridden by theme classes */
+  --color-theme: var(--color-primary-cyan);
+  --color-theme-50: rgba(6, 182, 212, 0.05);
+  --color-theme-100: rgba(6, 182, 212, 0.10);
+  --color-theme-200: rgba(6, 182, 212, 0.20);
+  --color-theme-300: rgba(6, 182, 212, 0.30);
+  --color-theme-400: rgba(6, 182, 212, 0.40);
+  --color-theme-500: rgba(6, 182, 212, 0.50);
+  --color-theme-600: rgba(6, 182, 212, 0.60);
+  --color-theme-700: rgba(6, 182, 212, 0.70);
+  --color-theme-800: rgba(6, 182, 212, 0.80);
+  --color-theme-900: rgba(6, 182, 212, 0.90);
+  --color-theme-950: rgba(6, 182, 212, 0.95);
+
+  /* Glow Effects */
+  --glow-light: rgba(6, 182, 212, 0.15);
+  --glow-medium: rgba(6, 182, 212, 0.2);
+  --glow-strong: rgba(6, 182, 212, 0.3);
+  --glow-intense: rgba(6, 182, 212, 0.5);
+
+  /* Shadows */
+  --shadow-small: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-medium: 0 4px 6px rgba(0, 0, 0, 0.4);
+  --shadow-large: 0 10px 15px rgba(0, 0, 0, 0.5);
+  --shadow-glow: 0 0 15px rgba(6, 182, 212, 0.15);
+  --shadow-glow-active: 0 0 10px rgba(6, 182, 212, 0.2);
+  --shadow-glow-intense: 0 0 20px rgba(6, 182, 212, 0.3);
+
+  /* Gradients */
+  --gradient-scanline: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
+  --gradient-header: linear-gradient(to right, var(--color-theme), var(--color-primary-violet));
+  --gradient-panel: linear-gradient(135deg, var(--color-theme-100), var(--color-theme-50));
+  --gradient-background: radial-gradient(ellipse at center, var(--color-bg-secondary), rgba(0, 0, 0, 1));
+
+  /* Typography */
+  --font-mono: "Fira Code", "SF Mono", Monaco, "Cascadia Code", "Roboto Mono", Consolas, "Courier New", monospace;
+  --font-sans: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-display: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  /* Font Sizes */
+  --text-xs: 0.625rem;
+  --text-sm: 0.75rem;
+  --text-base: 0.875rem;
+  --text-lg: 1rem;
+  --text-xl: 1.125rem;
+  --text-2xl: 1.25rem;
+  --text-3xl: 1.5rem;
+  --text-4xl: 1.875rem;
+  --text-5xl: 2.25rem;
+
+  /* Spacing */
+  --spacing-1: 0.25rem;
+  --spacing-2: 0.5rem;
+  --spacing-3: 0.75rem;
+  --spacing-4: 1rem;
+  --spacing-5: 1.25rem;
+  --spacing-6: 1.5rem;
+  --spacing-8: 2rem;
+  --spacing-10: 2.5rem;
+  --spacing-12: 3rem;
+  --spacing-16: 4rem;
+
+  /* Border Radius */
+  --radius-sm: 0.125rem;
+  --radius-md: 0.25rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1rem;
+
+  /* Transitions */
+  --transition-fast: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Effects */
+  --blur-sm: blur(4px);
+  --blur-md: blur(8px);
+  --blur-lg: blur(16px);
+}
+
+/* Theme Variants */
+.theme-cyan {
+  --color-theme: var(--color-primary-cyan);
+  --color-theme-50: rgba(6, 182, 212, 0.05);
+  --color-theme-100: rgba(6, 182, 212, 0.10);
+  --color-theme-200: rgba(6, 182, 212, 0.20);
+  --color-theme-300: rgba(6, 182, 212, 0.30);
+  --color-theme-400: rgba(6, 182, 212, 0.40);
+  --color-theme-500: rgba(6, 182, 212, 0.50);
+  --color-theme-600: rgba(6, 182, 212, 0.60);
+  --color-theme-700: rgba(6, 182, 212, 0.70);
+  --color-theme-800: rgba(6, 182, 212, 0.80);
+  --color-theme-900: rgba(6, 182, 212, 0.90);
+  --color-theme-950: rgba(6, 182, 212, 0.95);
+  --glow-light: rgba(6, 182, 212, 0.15);
+  --glow-medium: rgba(6, 182, 212, 0.2);
+  --glow-strong: rgba(6, 182, 212, 0.3);
+  --glow-intense: rgba(6, 182, 212, 0.5);
+  --shadow-glow: 0 0 15px rgba(6, 182, 212, 0.15);
+  --shadow-glow-active: 0 0 10px rgba(6, 182, 212, 0.2);
+  --shadow-glow-intense: 0 0 20px rgba(6, 182, 212, 0.3);
+}
+
+.theme-violet {
+  --color-theme: var(--color-primary-violet);
+  --color-theme-50: rgba(217, 70, 239, 0.05);
+  --color-theme-100: rgba(217, 70, 239, 0.10);
+  --color-theme-200: rgba(217, 70, 239, 0.20);
+  --color-theme-300: rgba(217, 70, 239, 0.30);
+  --color-theme-400: rgba(217, 70, 239, 0.40);
+  --color-theme-500: rgba(217, 70, 239, 0.50);
+  --color-theme-600: rgba(217, 70, 239, 0.60);
+  --color-theme-700: rgba(217, 70, 239, 0.70);
+  --color-theme-800: rgba(217, 70, 239, 0.80);
+  --color-theme-900: rgba(217, 70, 239, 0.90);
+  --color-theme-950: rgba(217, 70, 239, 0.95);
+  --glow-light: rgba(217, 70, 239, 0.15);
+  --glow-medium: rgba(217, 70, 239, 0.2);
+  --glow-strong: rgba(217, 70, 239, 0.3);
+  --glow-intense: rgba(217, 70, 239, 0.5);
+  --shadow-glow: 0 0 15px rgba(217, 70, 239, 0.15);
+  --shadow-glow-active: 0 0 10px rgba(217, 70, 239, 0.2);
+  --shadow-glow-intense: 0 0 20px rgba(217, 70, 239, 0.3);
+}
+
+.theme-red {
+  --color-theme: var(--color-primary-red);
+  --color-theme-50: rgba(239, 68, 68, 0.05);
+  --color-theme-100: rgba(239, 68, 68, 0.10);
+  --color-theme-200: rgba(239, 68, 68, 0.20);
+  --color-theme-300: rgba(239, 68, 68, 0.30);
+  --color-theme-400: rgba(239, 68, 68, 0.40);
+  --color-theme-500: rgba(239, 68, 68, 0.50);
+  --color-theme-600: rgba(239, 68, 68, 0.60);
+  --color-theme-700: rgba(239, 68, 68, 0.70);
+  --color-theme-800: rgba(239, 68, 68, 0.80);
+  --color-theme-900: rgba(239, 68, 68, 0.90);
+  --color-theme-950: rgba(239, 68, 68, 0.95);
+  --glow-light: rgba(239, 68, 68, 0.15);
+  --glow-medium: rgba(239, 68, 68, 0.2);
+  --glow-strong: rgba(239, 68, 68, 0.3);
+  --glow-intense: rgba(239, 68, 68, 0.5);
+  --shadow-glow: 0 0 15px rgba(239, 68, 68, 0.15);
+  --shadow-glow-active: 0 0 10px rgba(239, 68, 68, 0.2);
+  --shadow-glow-intense: 0 0 20px rgba(239, 68, 68, 0.3);
+}
+
+.theme-amber {
+  --color-theme: var(--color-primary-amber);
+  --color-theme-50: rgba(245, 158, 11, 0.05);
+  --color-theme-100: rgba(245, 158, 11, 0.10);
+  --color-theme-200: rgba(245, 158, 11, 0.20);
+  --color-theme-300: rgba(245, 158, 11, 0.30);
+  --color-theme-400: rgba(245, 158, 11, 0.40);
+  --color-theme-500: rgba(245, 158, 11, 0.50);
+  --color-theme-600: rgba(245, 158, 11, 0.60);
+  --color-theme-700: rgba(245, 158, 11, 0.70);
+  --color-theme-800: rgba(245, 158, 11, 0.80);
+  --color-theme-900: rgba(245, 158, 11, 0.90);
+  --color-theme-950: rgba(245, 158, 11, 0.95);
+  --glow-light: rgba(245, 158, 11, 0.15);
+  --glow-medium: rgba(245, 158, 11, 0.2);
+  --glow-strong: rgba(245, 158, 11, 0.3);
+  --glow-intense: rgba(245, 158, 11, 0.5);
+  --shadow-glow: 0 0 15px rgba(245, 158, 11, 0.15);
+  --shadow-glow-active: 0 0 10px rgba(245, 158, 11, 0.2);
+  --shadow-glow-intense: 0 0 20px rgba(245, 158, 11, 0.3);
+}
+
+.theme-green {
+  --color-theme: var(--color-primary-green);
+  --color-theme-50: rgba(34, 197, 94, 0.05);
+  --color-theme-100: rgba(34, 197, 94, 0.10);
+  --color-theme-200: rgba(34, 197, 94, 0.20);
+  --color-theme-300: rgba(34, 197, 94, 0.30);
+  --color-theme-400: rgba(34, 197, 94, 0.40);
+  --color-theme-500: rgba(34, 197, 94, 0.50);
+  --color-theme-600: rgba(34, 197, 94, 0.60);
+  --color-theme-700: rgba(34, 197, 94, 0.70);
+  --color-theme-800: rgba(34, 197, 94, 0.80);
+  --color-theme-900: rgba(34, 197, 94, 0.90);
+  --color-theme-950: rgba(34, 197, 94, 0.95);
+  --glow-light: rgba(34, 197, 94, 0.15);
+  --glow-medium: rgba(34, 197, 94, 0.2);
+  --glow-strong: rgba(34, 197, 94, 0.3);
+  --glow-intense: rgba(34, 197, 94, 0.5);
+  --shadow-glow: 0 0 15px rgba(34, 197, 94, 0.15);
+  --shadow-glow-active: 0 0 10px rgba(34, 197, 94, 0.2);
+  --shadow-glow-intense: 0 0 20px rgba(34, 197, 94, 0.3);
+}
+
+.theme-rose {
+  --color-theme: var(--color-primary-rose);
+  --color-theme-50: rgba(244, 63, 94, 0.05);
+  --color-theme-100: rgba(244, 63, 94, 0.10);
+  --color-theme-200: rgba(244, 63, 94, 0.20);
+  --color-theme-300: rgba(244, 63, 94, 0.30);
+  --color-theme-400: rgba(244, 63, 94, 0.40);
+  --color-theme-500: rgba(244, 63, 94, 0.50);
+  --color-theme-600: rgba(244, 63, 94, 0.60);
+  --color-theme-700: rgba(244, 63, 94, 0.70);
+  --color-theme-800: rgba(244, 63, 94, 0.80);
+  --color-theme-900: rgba(244, 63, 94, 0.90);
+  --color-theme-950: rgba(244, 63, 94, 0.95);
+  --glow-light: rgba(244, 63, 94, 0.15);
+  --glow-medium: rgba(244, 63, 94, 0.2);
+  --glow-strong: rgba(244, 63, 94, 0.3);
+  --glow-intense: rgba(244, 63, 94, 0.5);
+  --shadow-glow: 0 0 15px rgba(244, 63, 94, 0.15);
+  --shadow-glow-active: 0 0 10px rgba(244, 63, 94, 0.2);
+  --shadow-glow-intense: 0 0 20px rgba(244, 63, 94, 0.3);
+}
+
+/* Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  color: var(--color-text-primary);
+  background: var(--gradient-background);
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+  cursor: default;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-theme-600);
+  border-radius: var(--radius-sm);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-theme-500);
+}
+
+/* Animations */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes scan {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+/* Component Classes */
+.holo-panel {
+  background: var(--color-bg-panel);
+  backdrop-filter: var(--blur-md);
+  border: 1px solid var(--color-theme-500);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-glow);
+  position: relative;
+  overflow: hidden;
+}
+
+.holo-panel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--gradient-scanline);
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+.holo-panel-header {
+  background: var(--color-bg-overlay);
+  border-bottom: 1px solid var(--color-theme-300);
+  padding: var(--spacing-2) var(--spacing-4);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.holo-panel-title {
+  color: var(--color-theme);
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: var(--text-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.neon-button {
+  background: var(--color-bg-glass);
+  border: 1px solid var(--color-theme-500);
+  color: var(--color-theme);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-2) var(--spacing-4);
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  transition: var(--transition-normal);
+  cursor: pointer;
+  box-shadow: var(--shadow-glow);
+}
+
+.neon-button:hover {
+  background: var(--color-theme-100);
+  border-color: var(--color-theme-400);
+  box-shadow: var(--shadow-glow-active);
+  transform: translateY(-1px);
+}
+
+.neon-button:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-medium);
+}
+
+.window-controls {
+  display: flex;
+  gap: var(--spacing-2);
+  padding: var(--spacing-2);
+}
+
+.window-control {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.window-control.close {
+  background: #ff5f56;
+}
+
+.window-control.minimize {
+  background: #ffbd2e;
+}
+
+.window-control.maximize {
+  background: #27c93f;
+}
+
+.window-control:hover {
+  filter: brightness(1.2);
+}
+
+/* Scanline Effect */
+.scanlines {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--gradient-scanline);
+  background-size: 100% 4px;
+  pointer-events: none;
+  opacity: 0.05;
+  z-index: 9999;
+}
+
+/* Noise Effect */
+.noise {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.02;
+  z-index: 9998;
+  pointer-events: none;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+}

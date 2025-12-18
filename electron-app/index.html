@@ -1,0 +1,1742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline';">
+    <meta name="theme-color" content="#06b6d4">
+    <title>VersaTuner - Sci-fi Edition</title>
+    <link rel="stylesheet" href="theme.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Scanline Effect -->
+    <div class="scanlines"></div>
+    <div class="noise"></div>
+
+    <!-- Main Application -->
+    <div class="app-container">
+        <!-- Title Bar -->
+        <div class="title-bar">
+            <div class="title-bar-left">
+                <div class="app-logo">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M10 2L2 7v6c0 3.31 2.69 6 6 6s6-2.69 6-6V7l-4-2.5V12h-2V4.5L10 2z"/>
+                    </svg>
+                </div>
+                <span class="app-title">VersaTuner</span>
+            </div>
+            <div class="title-bar-center">
+                <span class="connection-status" id="connectionStatus">
+                    <span class="status-dot disconnected"></span>
+                    Disconnected
+                </span>
+            </div>
+            <div class="title-bar-right">
+                <div class="user-session" id="userSession">
+                    <div class="user-info">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                            <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+                        </svg>
+                        <span class="username" id="currentUsername">Guest</span>
+                        <span class="user-role" id="currentUserRole">Viewer</span>
+                    </div>
+                    <div class="session-actions">
+                        <button class="neon-button small" id="loginBtn">Login</button>
+                        <button class="neon-button small" id="logoutBtn" style="display: none;">Logout</button>
+                    </div>
+                </div>
+                <div class="window-controls">
+                    <button class="window-control minimize" id="minimizeWindow">
+                        <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor">
+                            <rect x="1" y="4" width="8" height="1"/>
+                        </svg>
+                    </button>
+                    <button class="window-control maximize" id="maximizeWindow">
+                        <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor">
+                            <rect x="1" y="1" width="8" height="8" stroke="currentColor" stroke-width="1" fill="none"/>
+                        </svg>
+                    </button>
+                    <button class="window-control close" id="closeWindow">
+                        <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor">
+                            <path d="M1 1l8 8M9 1L1 9" stroke="currentColor" stroke-width="1"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <div class="sidebar-section">
+                    <div class="sidebar-title">VEHICLE</div>
+                    <div class="sidebar-item" data-section="vehicles">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                            <path d="M7 1a2 2 0 0 0-2 2v2H2a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-3V3a2 2 0 0 0-2-2H7zM5 5V3a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2H5z"/>
+                        </svg>
+                        Vehicles
+                    </div>
+                    <div class="sidebar-item" data-section="vehicle-constants">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                            <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z"/>
+                            <path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 0-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 2.078 8l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.191 3.34l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z"/>
+                        </svg>
+                        Vehicle Constants
+                    </div>
+                    <div class="sidebar-item active" data-section="dashboard">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                            <path d="M1 3a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3zm2 1v9h10V4H3z"/>
+                            <path d="M5 7h6v2H5V7z"/>
+                        </svg>
+                        Dashboard
+                    </div>
+                    <div class="sidebar-item" data-section="tuning">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                            <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z"/>
+                            <path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.292c.415.764-.42 1.6-1.185 1.184l-.291-.16a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 2.078 8l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.191 3.34l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z"/>
+                        </svg>
+                        Tuning
+                    </div>
+                    <div class="sidebar-item" data-section="maps">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                            <path d="M14.5 10a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0 0 1h3a.5.5 0 0 0 .5-.5zm0-3a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0 0 1h8a.5.5 0 0 0 .5-.5zm0-3a.5.5 0 0 0-.5-.5h-11a.5.5 0 0 0 0 1h11a.5.5 0 0 0 .5-.5z"/>
+                        </svg>
+                        Maps
+                    </div>
+                    <div class="sidebar-item" data-section="diagnostics">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                            <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+                        </svg>
+                        Diagnostics
+                    </div>
+                    <div class="sidebar-item" data-section="logging">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                            <path d="M2 1a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H9.5a1 1 0 0 0-1 1v7.293l2.646-2.647a.5.5 0 0 1 .708.708l-3.5 3.5a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L7.5 9.293V2a2 2 0 0 1 2-2H14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h2.5a.5.5 0 0 1 0 1H2z"/>
+                        </svg>
+                        Data Logging
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-title">TOOLS</div>
+                    <div class="sidebar-item" data-section="performance">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                            <path d="M9.828 3h3.982a2 2 0 0 1 1.992 2.181l-.637 7A2 2 0 0 1 13.174 14H2.826a2 2 0 0 1-1.991-1.819l-.637-7a1.99 1.99 0 0 1 .342-1.31L.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3zm-8.322.12C1.72 3.042 1 3.856 1 4.855V10a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4.855c0-.999-.72-1.813-1.506-1.935l-.637-.7A2 2 0 0 0 9.828 2H3.172a2 2 0 0 0-1.414.586l-.828.828z"/>
+                        </svg>
+                        Performance
+                    </div>
+                    <div class="sidebar-item" data-section="dyno">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                            <path d="M0 0h1v15h15v1H0V0Zm14.817 3.113a.5.5 0 0 1 .07.704l-4.5 5.5a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61 4.15-5.073a.5.5 0 0 1 .704-.07Z"/>
+                        </svg>
+                        Virtual Dyno
+                    </div>
+                    <div class="sidebar-item" data-section="flash">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                            <path d="M7.938 2.016A.13.13 0 0 1 8.002 2a.13.13 0 0 1 .063.016.146.146 0 0 1 .054.057l6.857 11.667c.036.06.035.124.002.183a.163.163 0 0 1-.054.06.116.116 0 0 1-.066.017H1.146a.115.115 0 0 1-.066-.017.163.163 0 0 1-.054-.06.176.176 0 0 1 .002-.183L7.884 2.073a.147.147 0 0 1 .054-.057zm1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566z"/>
+                            <path d="M7.002 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 5.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995z"/>
+                        </svg>
+                        Flash ECU
+                    </div>
+                    <div class="sidebar-item" data-section="security">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                            <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/>
+                        </svg>
+                        Security
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-title">SETTINGS</div>
+                    <div class="sidebar-item" data-section="preferences">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                            <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z"/>
+                            <path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 2.078 8l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.191 3.34l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z"/>
+                        </svg>
+                        Preferences
+                    </div>
+                    <div class="sidebar-item" data-section="ai-learning">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                            <path d="M5 3.5a.5.5 0 0 0-1 0V4h-.5a.5.5 0 0 0 0 1H4v.5a.5.5 0 0 0 1 0V5h.5a.5.5 0 0 0 0-1H5V3.5zM4.5 9a.5.5 0 0 0-.5.5v.5h-.5a.5.5 0 0 0 0 1H4v.5a.5.5 0 0 0 1 0V11h.5a.5.5 0 0 0 0-1H5v-.5a.5.5 0 0 0-.5-.5zM7.5 5.5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5zM7.5 8.5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5z"/>
+                            <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm2-1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H4z"/>
+                        </svg>
+                        AI & Learning
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Area -->
+            <div class="content-area">
+                <!-- Vehicles Section -->
+                <div class="content-section" id="vehicles">
+                    <div class="content-header">
+                        <h1>Vehicles</h1>
+                        <div class="content-actions">
+                            <button class="neon-button" id="addVehicleBtn">Add Vehicle</button>
+                            <button class="neon-button" id="refreshVehiclesBtn">Refresh</button>
+                        </div>
+                    </div>
+
+                    <div class="vehicles-grid">
+                        <!-- Vehicle List Panel -->
+                        <div class="holo-panel">
+                            <div class="holo-panel-header">
+                                <div class="holo-panel-title">Registered Vehicles</div>
+                                <div class="panel-status" id="vehicleCount">0 vehicles</div>
+                            </div>
+                            <div class="panel-content">
+                                <div class="vehicle-list" id="vehicleList">
+                                    <!-- Vehicles will be populated here -->
+                                    <div class="empty-state">
+                                        <div class="empty-icon">🚗</div>
+                                        <div class="empty-text">No vehicles registered</div>
+                                        <div class="empty-subtext">Connect to a vehicle or add manually</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Vehicle Details Panel -->
+                        <div class="holo-panel">
+                            <div class="holo-panel-header">
+                                <div class="holo-panel-title">Vehicle Details</div>
+                            </div>
+                            <div class="panel-content">
+                                <div class="vehicle-details" id="vehicleDetails">
+                                    <div class="empty-state">
+                                        <div class="empty-icon">📋</div>
+                                        <div class="empty-text">Select a vehicle to view details</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dashboard Section -->
+                <div class="content-section active" id="dashboard">
+                    <div class="content-header">
+                        <h1>Dashboard</h1>
+                        <div class="content-actions">
+                            <button class="neon-button" id="connectBtn">Connect</button>
+                            <button class="neon-button" id="refreshBtn">Refresh</button>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-grid">
+                        <!-- Vehicle Info Panel -->
+                        <div class="holo-panel">
+                            <div class="holo-panel-header">
+                                <div class="holo-panel-title">Vehicle Information</div>
+                            </div>
+                            <div class="panel-content">
+                                <div class="info-grid">
+                                    <div class="info-item">
+                                        <span class="info-label">VIN:</span>
+                                        <span class="info-value" id="vinValue">--</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="info-label">ECU:</span>
+                                        <span class="info-value" id="ecuValue">--</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="info-label">Software:</span>
+                                        <span class="info-value" id="softwareValue">--</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="info-label">Hardware:</span>
+                                        <span class="info-value" id="hardwareValue">--</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Live Data Panel -->
+                        <div class="holo-panel">
+                            <div class="holo-panel-header">
+                                <div class="holo-panel-title">Live Data</div>
+                            </div>
+                            <div class="panel-content">
+                                <div class="data-grid">
+                                    <div class="data-item">
+                                        <div class="data-label">RPM</div>
+                                        <div class="data-value" id="rpmValue">0</div>
+                                    </div>
+                                    <div class="data-item">
+                                        <div class="data-label">Speed</div>
+                                        <div class="data-value" id="speedValue">0 km/h</div>
+                                    </div>
+                                    <div class="data-item">
+                                        <div class="data-label">Throttle</div>
+                                        <div class="data-value" id="throttleValue">0%</div>
+                                    </div>
+                                    <div class="data-item">
+                                        <div class="data-label">Boost</div>
+                                        <div class="data-value" id="boostValue">0 psi</div>
+                                    </div>
+                                    <div class="data-item">
+                                        <div class="data-label">AFR</div>
+                                        <div class="data-value" id="afrValue">--</div>
+                                    </div>
+                                    <div class="data-item">
+                                        <div class="data-label">IAT</div>
+                                        <div class="data-value" id="iatValue">0°C</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Performance Gauges -->
+                        <div class="holo-panel full-width">
+                            <div class="holo-panel-header">
+                                <div class="holo-panel-title">Performance Gauges</div>
+                            </div>
+                            <div class="panel-content">
+                                <div class="gauges-container">
+                                    <div class="gauge-wrapper">
+                                        <canvas id="rpmGauge" width="200" height="200"></canvas>
+                                        <div class="gauge-label">RPM</div>
+                                    </div>
+                                    <div class="gauge-wrapper">
+                                        <canvas id="boostGauge" width="200" height="200"></canvas>
+                                        <div class="gauge-label">Boost</div>
+                                    </div>
+                                    <div class="gauge-wrapper">
+                                        <canvas id="afrGauge" width="200" height="200"></canvas>
+                                        <div class="gauge-label">AFR</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Other sections will be loaded dynamically -->
+                <div class="content-section" id="tuning">
+                    <div class="content-header">
+                        <h1>Tuning</h1>
+                    </div>
+                    <div class="panel-content">
+                        <p>Tuning interface coming soon...</p>
+                    </div>
+                </div>
+
+                <div class="content-section" id="maps">
+                    <div class="content-header">
+                        <h1>Maps</h1>
+                    </div>
+                    <div class="panel-content">
+                        <p>Map editor coming soon...</p>
+                    </div>
+                <div class="content-section" id="diagnostics">
+                    <div class="content-header">
+                        <h1>Diagnostics</h1>
+                        <div class="content-actions">
+                            <button class="neon-button" id="scanDtcsBtn">Scan for DTCs</button>
+                            <button class="neon-button" id="clearDtcsBtn">Clear All</button>
+                        </div>
+                    </div>
+
+                    <div class="diagnostics-grid">
+                        <!-- DTC List Panel -->
+                        <div class="holo-panel">
+                            <div class="holo-panel-header">
+                                <div class="holo-panel-title">Diagnostic Trouble Codes</div>
+                                <div class="panel-status" id="dtcCount">0 codes</div>
+                            </div>
+                            <div class="panel-content">
+                                <div class="dtc-list" id="dtcList">
+                                    <!-- DTCs will be populated here -->
+                                    <div class="empty-state">
+                                        <div class="empty-icon">⚠️</div>
+                                        <div class="empty-text">No diagnostic codes</div>
+                                        <div class="empty-subtext">Run a scan to check for issues</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- DTC Details Panel -->
+                        <div class="holo-panel">
+                            <div class="holo-panel-header">
+                                <div class="holo-panel-title">Code Details</div>
+                            </div>
+                            <div class="panel-content">
+                                <div class="dtc-details" id="dtcDetails">
+                                    <div class="empty-state">
+                                        <div class="empty-icon">📝</div>
+                                        <div class="empty-text">Select a code to view details</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-section" id="logging">
+                    <div class="content-header">
+                        <h1>Data Logging</h1>
+                        <div class="content-actions">
+                            <button class="neon-button" id="startLoggingBtn">Start Logging</button>
+                            <button class="neon-button" id="exportLogsBtn">Export</button>
+                        </div>
+                    </div>
+
+                    <!-- Tab Navigation -->
+                    <div class="tab-navigation">
+                        <button class="tab-button active" data-tab="logs">System Logs</button>
+                        <button class="tab-button" data-tab="telemetry">Telemetry History</button>
+                    </div>
+
+                    <!-- System Logs Tab -->
+                    <div class="tab-content active" id="logs-tab">
+                        <div class="logging-grid">
+                            <!-- Log List Panel -->
+                            <div class="holo-panel">
+                                <div class="holo-panel-header">
+                                    <div class="holo-panel-title">System Logs</div>
+                                    <div class="panel-status">
+                                        <select id="logLevelFilter">
+                                            <option value="all">All Levels</option>
+                                            <option value="error">Error</option>
+                                            <option value="warning">Warning</option>
+                                            <option value="info">Info</option>
+                                            <option value="debug">Debug</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="panel-content">
+                                    <div class="log-list" id="logList">
+                                        <!-- Logs will be populated here -->
+                                        <div class="empty-state">
+                                            <div class="empty-icon">📝</div>
+                                            <div class="empty-text">No logs available</div>
+                                            <div class="empty-subtext">Start logging to see data</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Log Details Panel -->
+                            <div class="holo-panel">
+                                <div class="holo-panel-header">
+                                    <div class="holo-panel-title">Log Details</div>
+                                </div>
+                                <div class="panel-content">
+                                    <div class="log-details" id="logDetails">
+                                        <div class="empty-state">
+                                            <div class="empty-icon">🔍</div>
+                                            <div class="empty-text">Select a log entry to view details</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Telemetry History Tab -->
+                    <div class="tab-content" id="telemetry-tab">
+                        <div class="telemetry-grid">
+                            <!-- Telemetry Sessions Panel -->
+                            <div class="holo-panel">
+                                <div class="holo-panel-header">
+                                    <div class="holo-panel-title">Telemetry Sessions</div>
+                                    <div class="panel-status" id="sessionCount">0 sessions</div>
+                                </div>
+                                <div class="panel-content">
+                                    <div class="telemetry-list" id="telemetryList">
+                                        <!-- Telemetry sessions will be populated here -->
+                                        <div class="empty-state">
+                                            <div class="empty-icon">📡</div>
+                                            <div class="empty-text">No telemetry sessions</div>
+                                            <div class="empty-subtext">Start a session to record data</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Telemetry Details Panel -->
+                            <div class="holo-panel">
+                                <div class="holo-panel-header">
+                                    <div class="holo-panel-title">Session Details</div>
+                                </div>
+                                <div class="panel-content">
+                                    <div class="telemetry-details" id="telemetryDetails">
+                                        <div class="empty-state">
+                                            <div class="empty-icon">📊</div>
+                                            <div class="empty-text">Select a session to view details</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-section" id="performance">
+                    <div class="content-header">
+                        <h1>Performance Tracking</h1>
+                        <div class="content-actions">
+                            <button class="neon-button" id="startRunBtn">Start Run</button>
+                            <button class="neon-button" id="exportRunsBtn">Export</button>
+                        </div>
+                    </div>
+
+                    <div class="performance-grid">
+                        <!-- Performance List Panel -->
+                        <div class="holo-panel">
+                            <div class="holo-panel-header">
+                                <div class="holo-panel-title">Performance Runs</div>
+                                <div class="panel-status" id="runCount">0 runs</div>
+                            </div>
+                            <div class="panel-content">
+                                <div class="run-list" id="runList">
+                                    <!-- Runs will be populated here -->
+                                    <div class="empty-state">
+                                        <div class="empty-icon">🏁</div>
+                                        <div class="empty-text">No performance runs</div>
+                                        <div class="empty-subtext">Start a run to track performance</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Run Details Panel -->
+                        <div class="holo-panel">
+                            <div class="holo-panel-header">
+                                <div class="holo-panel-title">Run Details</div>
+                            </div>
+                            <div class="panel-content">
+                                <div class="run-details" id="runDetails">
+                                    <div class="empty-state">
+                                        <div class="empty-icon">📊</div>
+                                        <div class="empty-text">Select a run to view details</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-section" id="flash">
+                    <div class="content-header">
+                        <h1>Flash ECU</h1>
+                    </div>
+                    <div class="panel-content">
+                        <p>ECU flashing coming soon...</p>
+                    </div>
+                </div>
+
+                <div class="content-section" id="security">
+                    <div class="content-header">
+                        <h1>Security</h1>
+                        <div class="content-actions">
+                            <button class="neon-button" id="exportSecurityBtn">Export</button>
+                        </div>
+                    </div>
+
+                    <div class="security-grid">
+                        <!-- Security Events List Panel -->
+                        <div class="holo-panel">
+                            <div class="holo-panel-header">
+                                <div class="holo-panel-title">Security Events</div>
+                                <div class="panel-status">
+                                    <select id="securityFilter">
+                                        <option value="all">All Events</option>
+                                        <option value="login">Login</option>
+                                        <option value="flash">Flash</option>
+                                        <option value="tuning">Tuning</option>
+                                        <option value="access_denied">Access Denied</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="panel-content">
+                                <div class="security-list" id="securityList">
+                                    <!-- Security events will be populated here -->
+                                    <div class="empty-state">
+                                        <div class="empty-icon">🔒</div>
+                                        <div class="empty-text">No security events</div>
+                                        <div class="empty-subtext">Security events will appear here</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Security Event Details Panel -->
+                        <div class="holo-panel">
+                            <div class="holo-panel-header">
+                                <div class="holo-panel-title">Event Details</div>
+                            </div>
+                            <div class="panel-content">
+                                <div class="security-details" id="securityDetails">
+                                    <div class="empty-state">
+                                        <div class="empty-icon">📋</div>
+                                        <div class="empty-text">Select an event to view details</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-section" id="ai-learning">
+                    <div class="content-header">
+                        <h1>AI & Learning</h1>
+                        <div class="content-actions">
+                            <button class="neon-button" id="trainModelBtn">Train Model</button>
+                            <button class="neon-button" id="exportDataBtn">Export Data</button>
+                        </div>
+                    </div>
+
+                    <div class="ai-grid">
+                        <!-- AI Models Panel -->
+                        <div class="holo-panel">
+                            <div class="holo-panel-header">
+                                <div class="holo-panel-title">AI Models</div>
+                                <div class="panel-status" id="modelCount">0 models</div>
+                            </div>
+                            <div class="panel-content">
+                                <div class="ai-model-list" id="aiModelList">
+                                    <!-- AI models will be populated here -->
+                                    <div class="empty-state">
+                                        <div class="empty-icon">🤖</div>
+                                        <div class="empty-text">No AI models trained</div>
+                                        <div class="empty-subtext">Train a model to get started</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Training Data Panel -->
+                        <div class="holo-panel">
+                            <div class="holo-panel-header">
+                                <div class="holo-panel-title">Training Data</div>
+                                <div class="panel-status" id="dataCount">0 datasets</div>
+                            </div>
+                            <div class="panel-content">
+                                <div class="training-data-list" id="trainingDataList">
+                                    <!-- Training data will be populated here -->
+                                    <div class="empty-state">
+                                        <div class="empty-icon">📊</div>
+                                        <div class="empty-text">No training data</div>
+                                        <div class="empty-subtext">Collect data to train models</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- AI Model Details -->
+                    <div class="holo-panel" style="margin-top: 20px;">
+                        <div class="holo-panel-header">
+                            <div class="holo-panel-title">Model Details</div>
+                        </div>
+                        <div class="panel-content">
+                            <div class="ai-model-details" id="aiModelDetails">
+                                <div class="empty-state">
+                                    <div class="empty-icon">🔍</div>
+                                    <div class="empty-text">Select a model to view details</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Virtual Dyno Section -->
+                <div class="content-section" id="dyno">
+                    <div class="content-header">
+                        <h1>Virtual Dyno</h1>
+                        <div class="content-header-actions">
+                            <button class="btn btn-primary" id="startDynoBtn">Start New Run</button>
+                            <button class="btn btn-secondary" id="compareDynoBtn">Compare Runs</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Dyno Status Panel -->
+                    <div class="holo-panel">
+                        <div class="holo-panel-header">
+                            <div class="holo-panel-title">Run Status</div>
+                            <div class="panel-status" id="dynoStatus">Ready</div>
+                        </div>
+                        <div class="panel-content">
+                            <div class="dyno-status-grid">
+                                <div class="status-item">
+                                    <div class="status-label">Input Data</div>
+                                    <div class="status-value" id="inputDataStatus">INSUFFICIENT</div>
+                                </div>
+                                <div class="status-item">
+                                    <div class="status-label">Pull Detection</div>
+                                    <div class="status-value" id="pullDetectionStatus">Idle</div>
+                                </div>
+                                <div class="status-item">
+                                    <div class="status-label">Safety Check</div>
+                                    <div class="status-value" id="safetyCheckStatus">Pass</div>
+                                </div>
+                                <div class="status-item">
+                                    <div class="status-label">Data Quality</div>
+                                    <div class="status-value" id="dataQualityStatus">--</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Vehicle Configuration -->
+                            <div class="dyno-config-section">
+                                <h3>Vehicle Configuration</h3>
+                                <div class="config-grid">
+                                    <div class="config-item">
+                                        <label>Mass (kg)</label>
+                                        <input type="number" id="vehicleMass" value="1450" min="1000" max="3000">
+                                    </div>
+                                    <div class="config-item">
+                                        <label>Drivetrain Loss (%)</label>
+                                        <input type="number" id="drivetrainLoss" value="15" min="0" max="30">
+                                    </div>
+                                    <div class="config-item">
+                                        <label>Tire Radius (m)</label>
+                                        <input type="number" id="tireRadius" value="0.3175" min="0.2" max="0.5" step="0.01">
+                                    </div>
+                                    <div class="config-item">
+                                        <label>Final Drive Ratio</label>
+                                        <input type="number" id="finalDriveRatio" value="4.105" min="2" max="6" step="0.01">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Calculation Parameters Panel -->
+                    <div class="holo-panel">
+                        <div class="holo-panel-header">
+                            <div class="holo-panel-title">Calculation Parameters</div>
+                            <div class="panel-controls">
+                                <button class="btn btn-small" id="togglePhysicsDetails">Show Details</button>
+                            </div>
+                        </div>
+                        <div class="panel-content">
+                            <div class="calc-params-grid">
+                                <div class="param-item">
+                                    <div class="param-label">Mass (m)</div>
+                                    <div class="param-value" id="paramMass">1450 kg</div>
+                                </div>
+                                <div class="param-item">
+                                    <div class="param-label">Drag Coeff (Cd)</div>
+                                    <div class="param-value" id="paramCd">0.33</div>
+                                </div>
+                                <div class="param-item">
+                                    <div class="param-label">Frontal Area (A)</div>
+                                    <div class="param-value" id="paramArea">2.2 m²</div>
+                                </div>
+                                <div class="param-item">
+                                    <div class="param-label">Rolling Resist (Crr)</div>
+                                    <div class="param-value" id="paramCrr">0.01</div>
+                                </div>
+                                <div class="param-item">
+                                    <div class="param-label">Drivetrain Eff (η)</div>
+                                    <div class="param-value" id="paramEff">85%</div>
+                                </div>
+                                <div class="param-item">
+                                    <div class="param-label">Air Density (ρ)</div>
+                                    <div class="param-value" id="paramAirDensity">1.225 kg/m³</div>
+                                </div>
+                                <div class="param-item">
+                                    <div class="param-label">Road Grade (θ)</div>
+                                    <div class="param-value" id="paramGrade">0°</div>
+                                </div>
+                                <div class="param-item">
+                                    <div class="param-label">Smoothing</div>
+                                    <div class="param-value" id="paramSmoothing">OFF</div>
+                                </div>
+                                <div class="param-item">
+                                    <div class="param-label">Confidence</div>
+                                    <div class="param-value" id="paramConfidence">
+                                        <span class="confidence-badge" id="dynoConfidenceBadge">HIGH</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Physics Details (collapsible) -->
+                            <div class="physics-details" id="physicsDetails" style="display: none;">
+                                <h3>Force Components</h3>
+                                <div class="force-breakdown">
+                                    <div class="force-item">
+                                        <span class="force-label">Rolling Resistance:</span>
+                                        <span class="force-formula">F_rr = m × g × Crr</span>
+                                    </div>
+                                    <div class="force-item">
+                                        <span class="force-label">Aerodynamic Drag:</span>
+                                        <span class="force-formula">F_d = 0.5 × ρ × Cd × A × v²</span>
+                                    </div>
+                                    <div class="force-item">
+                                        <span class="force-label">Grade Force:</span>
+                                        <span class="force-formula">F_g = m × g × sin(θ)</span>
+                                    </div>
+                                    <div class="force-item">
+                                        <span class="force-label">Tractive Force:</span>
+                                        <span class="force-formula">F_trac = m × a + F_rr + F_d + F_g</span>
+                                    </div>
+                                </div>
+
+                                <h3>Power Calculations</h3>
+                                <div class="power-breakdown">
+                                    <div class="power-item">
+                                        <span class="power-label">Wheel Power:</span>
+                                        <span class="power-formula">P_wheel = F_trac × v</span>
+                                    </div>
+                                    <div class="power-item">
+                                        <span class="power-label">Engine Power:</span>
+                                        <span class="power-formula">P_engine = P_wheel / η</span>
+                                    </div>
+                                    <div class="power-item">
+                                        <span class="power-label">Engine Torque:</span>
+                                        <span class="power-formula">T_engine = P_engine / ω_e</span>
+                                    </div>
+                                    <div class="power-item">
+                                        <span class="power-label">Angular Velocity:</span>
+                                        <span class="power-formula">ω_e = 2π × RPM / 60</span>
+                                    </div>
+                                </div>
+
+                                <div class="force-chart-container">
+                                    <h3>Force Breakdown Chart</h3>
+                                    <canvas id="forceChart"></canvas>
+                                </div>
+
+                                <!-- Drivetrain Model Panel -->
+                                <div class="drivetrain-model" id="drivetrainModel">
+                                    <h3>Drivetrain Model</h3>
+                                    <div class="drivetrain-grid">
+                                        <div class="drivetrain-item">
+                                            <label>Layout</label>
+                                            <div class="drivetrain-value" id="drivetrainLayout">RWD</div>
+                                        </div>
+                                        <div class="drivetrain-item">
+                                            <label>Transmission</label>
+                                            <div class="drivetrain-value" id="transmissionType">Manual</div>
+                                        </div>
+                                        <div class="drivetrain-item">
+                                            <label>Base Efficiency (η_base)</label>
+                                            <div class="drivetrain-input">
+                                                <input type="number" id="baseEfficiency" min="0.5" max="1.0" step="0.01" value="0.90">
+                                                <span class="unit-label"></span>
+                                            </div>
+                                        </div>
+                                        <div class="drivetrain-item" id="couplingLossItem" style="display: none;">
+                                            <label>Coupling Loss (k_coupling)</label>
+                                            <div class="drivetrain-input">
+                                                <input type="number" id="couplingLoss" min="0" max="0.2" step="0.01" value="0.03">
+                                                <span class="unit-label"></span>
+                                            </div>
+                                        </div>
+                                        <div class="drivetrain-item">
+                                            <label>Actual Efficiency (η_eff)</label>
+                                            <div class="drivetrain-value" id="actualEfficiency">90%</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- AWD Torque Split Controls -->
+                                    <div class="torque-split-section" id="torqueSplitSection" style="display: none;">
+                                        <h4>AWD Torque Split</h4>
+                                        <div class="torque-split-container">
+                                            <div class="torque-bar">
+                                                <div class="torque-axle" id="frontTorqueBar" style="width: 38%;">
+                                                    <span class="torque-label">FRONT</span>
+                                                    <span class="torque-percent" id="frontTorquePercent">38%</span>
+                                                </div>
+                                                <div class="torque-axle rear" id="rearTorqueBar" style="width: 62%;">
+                                                    <span class="torque-label">REAR</span>
+                                                    <span class="torque-percent" id="rearTorquePercent">62%</span>
+                                                </div>
+                                            </div>
+                                            <div class="torque-slider">
+                                                <label>Front Torque Split (α)</label>
+                                                <input type="range" id="torqueSplitSlider" min="0" max="100" value="38" step="1">
+                                                <div class="torque-values">
+                                                    <span>Front: <span id="frontTorqueValue">38</span>%</span>
+                                                    <span>Rear: <span id="rearTorqueValue">62</span>%</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Save Button -->
+                                    <div class="drivetrain-actions">
+                                        <button class="neon-button small" id="saveDrivetrainBtn">Save to Profile</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dyno Results -->
+                    <div class="dyno-results-grid">
+                        <!-- Torque Curve -->
+                        <div class="holo-panel">
+                            <div class="holo-panel-header">
+                                <div class="holo-panel-title">Torque Curve</div>
+                                <div class="panel-controls">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" id="showSmoothedTorque">
+                                        Show Smoothed
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="panel-content">
+                                <div class="dyno-chart-container">
+                                    <canvas id="torqueChart"></canvas>
+                                </div>
+                                <div class="dyno-peak-info">
+                                    <div class="peak-item">
+                                        <span class="peak-label">Peak:</span>
+                                        <span class="peak-value" id="peakTorque">--</span>
+                                    </div>
+                                    <div class="peak-item">
+                                        <span class="peak-label">@ RPM:</span>
+                                        <span class="peak-value" id="peakTorqueRPM">--</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Power Curve -->
+                        <div class="holo-panel">
+                            <div class="holo-panel-header">
+                                <div class="holo-panel-title">Power Curve</div>
+                                <div class="panel-controls">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" id="showSmoothedPower">
+                                        Show Smoothed
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="panel-content">
+                                <div class="dyno-chart-container">
+                                    <canvas id="powerChart"></canvas>
+                                </div>
+                                <div class="dyno-peak-info">
+                                    <div class="peak-item">
+                                        <span class="peak-label">Peak:</span>
+                                        <span class="peak-value" id="peakPower">--</span>
+                                    </div>
+                                    <div class="peak-item">
+                                        <span class="peak-label">@ RPM:</span>
+                                        <span class="peak-value" id="peakPowerRPM">--</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Run History -->
+                    <div class="holo-panel">
+                        <div class="holo-panel-header">
+                            <div class="holo-panel-title">Run History</div>
+                            <div class="panel-status" id="runCount">0 runs</div>
+                        </div>
+                        <div class="panel-content">
+                            <div class="dyno-run-list" id="dynoRunList">
+                                <!-- Dyno runs will be populated here -->
+                                <div class="empty-state">
+                                    <div class="empty-icon">📈</div>
+                                    <div class="empty-text">No dyno runs yet</div>
+                                    <div class="empty-subtext">Start a run to see results</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Safety Violations -->
+                    <div class="holo-panel" id="safetyViolationsPanel" style="display: none;">
+                        <div class="holo-panel-header error">
+                            <div class="holo-panel-title">Safety Violations</div>
+                        </div>
+                        <div class="panel-content">
+                            <div class="violation-list" id="violationList">
+                                <!-- Violations will be listed here -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Comparison View -->
+                    <div class="holo-panel" id="comparisonPanel" style="display: none;">
+                        <div class="holo-panel-header">
+                            <div class="holo-panel-title">Run Comparison</div>
+                            <button class="btn btn-secondary" id="closeComparisonBtn">Close</button>
+                        </div>
+                        <div class="panel-content">
+                            <div class="comparison-grid">
+                                <div class="comparison-chart">
+                                    <h3>Torque Comparison</h3>
+                                    <canvas id="torqueComparisonChart"></canvas>
+                                </div>
+                                <div class="comparison-chart">
+                                    <h3>Power Comparison</h3>
+                                    <canvas id="powerComparisonChart"></canvas>
+                                </div>
+                            </div>
+                            <div class="comparison-summary" id="comparisonSummary">
+                                <!-- Comparison summary will be shown here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-section" id="preferences">
+                    <div class="content-header">
+                        <h1>Preferences</h1>
+                    </div>
+                    <div class="panel-content">
+                        <div class="preferences-grid">
+                            <div class="holo-panel">
+                                <div class="holo-panel-header">
+                                    <div class="holo-panel-title">Theme Settings</div>
+                                </div>
+                                <div class="panel-content">
+                                    <div class="theme-selector">
+                                        <label>Primary Color:</label>
+                                        <select id="themeSelector">
+                                            <option value="cyan">Sci-fi Cyan</option>
+                                            <option value="violet">Sci-fi Violet</option>
+                                            <option value="red">Sci-fi Red</option>
+                                            <option value="amber">Sci-fi Amber</option>
+                                            <option value="green">Sci-fi Green</option>
+                                            <option value="rose">Sci-fi Rose</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vehicle Constants Section -->
+                <div class="content-section" id="vehicle-constants">
+                    <div class="content-header">
+                        <h1>Vehicle Constants</h1>
+                        <div class="content-actions">
+                            <button class="neon-button" id="restoreDefaultsBtn">Restore Defaults</button>
+                            <button class="neon-button" id="saveConstantsBtn">Save Constants</button>
+                            <button class="neon-button" id="recalculateDynoBtn">Recalculate Dyno</button>
+                        </div>
+                    </div>
+
+                    <!-- Tab Navigation -->
+                    <div class="tab-navigation">
+                        <button class="tab-button active" data-tab="selection">Vehicle Selection</button>
+                        <button class="tab-button" data-tab="import">Import Profiles</button>
+                    </div>
+
+                    <!-- Selection Tab -->
+                    <div class="tab-content active" id="selection-tab">
+                        <div class="constants-layout">
+                            <!-- Hierarchical Vehicle Selection -->
+                            <div class="hierarchical-selectors">
+                                <div class="selector-row">
+                                    <div class="selector-group">
+                                        <label>Manufacturer</label>
+                                        <select id="manufacturerSelector" class="holo-select">
+                                            <option value="">Select...</option>
+                                        </select>
+                                    </div>
+                                    <div class="selector-group">
+                                        <label>Platform</label>
+                                        <select id="platformSelector" class="holo-select" disabled>
+                                            <option value="">Select...</option>
+                                        </select>
+                                    </div>
+                                    <div class="selector-group">
+                                        <label>Model</label>
+                                        <select id="modelSelector" class="holo-select" disabled>
+                                            <option value="">Select...</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="selector-row">
+                                    <div class="selector-group">
+                                        <label>Body</label>
+                                        <select id="bodySelector" class="holo-select" disabled>
+                                            <option value="">Select...</option>
+                                        </select>
+                                    </div>
+                                    <div class="selector-group">
+                                        <label>Generation</label>
+                                        <select id="generationSelector" class="holo-select" disabled>
+                                            <option value="">Select...</option>
+                                        </select>
+                                    </div>
+                                    <div class="selector-group">
+                                        <label>Variant</label>
+                                        <select id="variantSelector" class="holo-select" disabled>
+                                            <option value="">Select...</option>
+                                        </select>
+                                    </div>
+                                    <div class="selector-group">
+                                        <label>Transmission</label>
+                                        <select id="transmissionSelector" class="holo-select" disabled>
+                                            <option value="">Select...</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Diagnostics Capability Panel -->
+<div class="holo-panel" id="diagnosticsCapabilityPanel" style="display: none;">
+    <div class="holo-panel-header">
+        <div class="holo-panel-title">Diagnostics Capabilities</div>
+        <div class="panel-status" id="diagnosticsCapabilityStatus">
+            <span class="capability-indicator"></span>
+        </div>
+    </div>
+    <div class="panel-content">
+        <!-- Vehicle Info -->
+        <div class="capability-vehicle-info">
+            <div class="vehicle-info-item">
+                <label>Vehicle:</label>
+                <span id="capabilityVehicleInfo">-</span>
+            </div>
+            <div class="vehicle-info-item">
+                <label>Protocol:</label>
+                <span id="capabilityProtocolInfo">-</span>
+            </div>
+        </div>
+
+        <!-- Capability Matrix -->
+        <div class="capability-matrix-container">
+            <table class="capability-matrix" id="diagnosticsCapabilityMatrix">
+                <thead>
+                    <tr>
+                        <th class="module-column">Module</th>
+                        <th>Read DTCs</th>
+                        <th>Clear DTCs</th>
+                        <th>Live Data</th>
+                        <th>Freeze Frame</th>
+                        <th>Readiness</th>
+                        <th>Coding</th>
+                        <th>Adaptation</th>
+                        <th>Service</th>
+                    </tr>
+                </thead>
+                <tbody id="capabilityMatrixBody">
+                    <!-- Matrix rows will be populated here -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Module Details Panel -->
+        <div class="module-details-panel" id="moduleDetailsPanel" style="display: none;">
+            <h4>Module Details</h4>
+            <div class="module-details-content">
+                <div class="detail-item">
+                    <label>Module:</label>
+                    <span id="detailModuleName">-</span>
+                </div>
+                <div class="detail-item">
+                    <label>Status:</label>
+                    <span id="detailModuleStatus" class="status-badge">-</span>
+                </div>
+                <div class="detail-item">
+                    <label>Protocol:</label>
+                    <span id="detailModuleProtocol">-</span>
+                </div>
+                <div class="detail-item">
+                    <label>Notes:</label>
+                    <span id="detailModuleNotes">-</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Unsupported Features Notice -->
+        <div class="unsupported-notice" id="unsupportedNotice" style="display: none;">
+            <h4>⚠️ Unsupported Features</h4>
+            <p>Some diagnostic modules require manufacturer-specific tools:</p>
+            <ul id="unsupportedFeaturesList">
+                <!-- List will be populated here -->
+            </ul>
+        </div>
+    </div>
+</div>
+
+                            <!-- Admin Override Panel - DANGEROUS -->
+<div class="holo-panel" id="adminOverridePanel" style="display: none;">
+    <div class="holo-panel-header override-header">
+        <div class="holo-panel-title">
+            <span class="override-icon">⚠️</span>
+            ADMIN OVERRIDE
+        </div>
+        <div class="panel-status" id="overrideStatus">
+            <span class="override-indicator inactive"></span>
+        </div>
+    </div>
+    
+    <!-- CRITICAL WARNING BANNER -->
+    <div class="override-warning-banner">
+        <div class="warning-icon">⚠️</div>
+        <div class="warning-text">
+            <strong>ADMIN OVERRIDE ACTIVE</strong>
+            <p>UNSUPPORTED ACTIONS MAY DAMAGE VEHICLE</p>
+        </div>
+    </div>
+    
+    <div class="panel-content">
+        <!-- Override Controls -->
+        <div class="override-controls" id="overrideControls">
+            <div class="control-group">
+                <label>Override Scope</label>
+                <select id="overrideScope" class="holo-select">
+                    <option value="">Select scope...</option>
+                    <option value="ACTION">Single Action</option>
+                    <option value="MODULE">Module (5 min default)</option>
+                    <option value="SESSION">Session Only</option>
+                </select>
+            </div>
+            
+            <div class="control-group" id="moduleGroup" style="display: none;">
+                <label>Module</label>
+                <select id="overrideModule" class="holo-select">
+                    <option value="">Select module...</option>
+                    <option value="ENGINE">Engine ECU</option>
+                    <option value="TCM">TCM (DSG/TCT)</option>
+                    <option value="ABS">ABS</option>
+                    <option value="SRS">SRS/Airbag</option>
+                    <option value="BCM">Body Control</option>
+                </select>
+            </div>
+            
+            <div class="control-group" id="actionGroup" style="display: none;">
+                <label>Action</label>
+                <select id="overrideAction" class="holo-select">
+                    <option value="">Select action...</option>
+                    <option value="READ_DTCS">Read DTCs</option>
+                    <option value="CLEAR_DTCS">Clear DTCs</option>
+                    <option value="LIVE_DATA">Live Data</option>
+                    <option value="CODING">Coding</option>
+                    <option value="ADAPTATION">Adaptation</option>
+                </select>
+            </div>
+            
+            <div class="control-group" id="durationGroup" style="display: none;">
+                <label>Duration (minutes)</label>
+                <input type="number" id="overrideDuration" class="holo-input" 
+                       value="5" min="1" max="60">
+            </div>
+            
+            <div class="control-group">
+                <label>Reason (Required)</label>
+                <textarea id="overrideReason" class="holo-textarea" 
+                          placeholder="Explain why override is necessary..." 
+                          rows="3"></textarea>
+            </div>
+            
+            <div class="control-actions">
+                <button id="activateOverrideBtn" class="holo-button danger" disabled>
+                    ACTIVATE OVERRIDE
+                </button>
+                <button id="revokeOverrideBtn" class="holo-button secondary" style="display: none;">
+                    REVOKE OVERRIDE
+                </button>
+            </div>
+        </div>
+        
+        <!-- Active Override Display -->
+        <div class="active-override-display" id="activeOverrideDisplay" style="display: none;">
+            <h4>Active Override</h4>
+            <div class="override-details">
+                <div class="detail-item">
+                    <label>Scope:</label>
+                    <span id="activeScope">-</span>
+                </div>
+                <div class="detail-item">
+                    <label>Module:</label>
+                    <span id="activeModule">-</span>
+                </div>
+                <div class="detail-item">
+                    <label>Action:</label>
+                    <span id="activeAction">-</span>
+                </div>
+                <div class="detail-item">
+                    <label>Reason:</label>
+                    <span id="activeReason">-</span>
+                </div>
+                <div class="detail-item" id="activeExpiresGroup">
+                    <label>Expires:</label>
+                    <span id="activeExpires">-</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Audit Log Button -->
+        <div class="audit-section">
+            <button id="viewAuditLogBtn" class="holo-button secondary">
+                View Audit Log
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Override Activation Modal -->
+<div class="modal-overlay" id="overrideActivationModal" style="display: none;">
+    <div class="modal-content danger-modal">
+        <div class="modal-header">
+            <h3>⚠️ CONFIRM ADMIN OVERRIDE</h3>
+            <button class="modal-close" onclick="closeOverrideModal()">&times;</button>
+        </div>
+        
+        <div class="modal-body">
+            <div class="danger-notice">
+                <p><strong>WARNING: You are about to bypass safety checks!</strong></p>
+                <p>This override allows execution of unsupported diagnostic actions that may:</p>
+                <ul>
+                    <li>Damage vehicle ECUs</li>
+                    <li>Cause unexpected vehicle behavior</li>
+                    <li>Void vehicle warranty</li>
+                    <li>Create unsafe conditions</li>
+                </ul>
+            </div>
+            
+            <div class="override-summary">
+                <h4>Override Details:</h4>
+                <div class="summary-item">
+                    <label>Scope:</label>
+                    <span id="confirmScope">-</span>
+                </div>
+                <div class="summary-item">
+                    <label>Module:</label>
+                    <span id="confirmModule">-</span>
+                </div>
+                <div class="summary-item">
+                    <label>Action:</label>
+                    <span id="confirmAction">-</span>
+                </div>
+                <div class="summary-item">
+                    <label>Duration:</label>
+                    <span id="confirmDuration">-</span>
+                </div>
+                <div class="summary-item">
+                    <label>Reason:</label>
+                    <span id="confirmReason">-</span>
+                </div>
+            </div>
+            
+            <div class="confirmation-input">
+                <label>Type "OVERRIDE" to confirm:</label>
+                <input type="text" id="overrideConfirmation" class="holo-input" 
+                       placeholder="OVERRIDE" autocomplete="off">
+            </div>
+        </div>
+        
+        <div class="modal-footer">
+            <button class="holo-button secondary" onclick="closeOverrideModal()">
+                CANCEL
+            </button>
+            <button id="confirmOverrideBtn" class="holo-button danger" disabled>
+                CONFIRM OVERRIDE
+            </button>
+        </div>
+    </div>
+</div>
+
+                            <!-- Vehicle Capabilities Panel -->
+                            <div class="holo-panel" id="capabilitiesPanel" style="display: none;">
+                                <div class="holo-panel-header">
+                                    <div class="holo-panel-title">Vehicle Capabilities</div>
+                                    <div class="panel-status" id="capabilityConfidence">
+                                        <span class="confidence-indicator"></span>
+                                    </div>
+                                </div>
+                                <div class="panel-content">
+                                    <div class="capabilities-grid">
+                                        <!-- Interface Information -->
+                                        <div class="capability-section">
+                                            <h4>Interface Requirements</h4>
+                                            <div class="capability-item">
+                                                <label>Required Interface:</label>
+                                                <span id="requiredInterface">-</span>
+                                            </div>
+                                            <div class="capability-item">
+                                                <label>Protocol:</label>
+                                                <span id="vehicleProtocol">-</span>
+                                            </div>
+                                            <div class="capability-item">
+                                                <label>Notes:</label>
+                                                <span id="interfaceNotes">-</span>
+                                            </div>
+                                        </div>
+
+                                        <!-- Supported Modules -->
+                                        <div class="capability-section">
+                                            <h4>Diagnostic Modules</h4>
+                                            <div class="module-list" id="moduleList">
+                                                <!-- Modules will be populated here -->
+                                            </div>
+                                        </div>
+
+                                        <!-- Supported Services -->
+                                        <div class="capability-section">
+                                            <h4>Diagnostic Services</h4>
+                                            <div class="service-list" id="serviceList">
+                                                <!-- Services will be populated here -->
+                                            </div>
+                                        </div>
+
+                                        <!-- Special Features -->
+                                        <div class="capability-section">
+                                            <h4>Special Features</h4>
+                                            <div class="feature-list">
+                                                <div class="feature-item">
+                                                    <label>Virtual Dyno:</label>
+                                                    <span id="virtualDynoSupport" class="status-badge">-</span>
+                                                </div>
+                                                <div class="feature-item">
+                                                    <label>DSG Shift Detection:</label>
+                                                    <span id="dsgShiftSupport" class="status-badge">-</span>
+                                                </div>
+                                                <div class="feature-item">
+                                                    <label>AWD Torque Modeling:</label>
+                                                    <span id="awdModelingSupport" class="status-badge">-</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="confidence-display" id="presetConfidence" style="display: none;">
+                                <span class="confidence-label">Confidence:</span>
+                                <span class="confidence-badge" id="confidenceBadge">HIGH</span>
+                                <div class="confidence-details" id="confidenceDetails"></div>
+                            </div>
+                        </div>
+
+                        <!-- Constants Editor -->
+                        <div class="holo-panel">
+                            <div class="holo-panel-header">
+                                <div class="holo-panel-title">Physics Constants</div>
+                                <div class="panel-notice">
+                                    <span class="notice-icon">⚠️</span>
+                                    Road grade assumed flat unless specified
+                                </div>
+                            </div>
+                            <div class="panel-content">
+                                <div class="constants-grid">
+                                    <!-- Mass Properties -->
+                                    <div class="constants-group">
+                                        <h3>Mass Properties</h3>
+                                        <div class="constant-item">
+                                            <label>Vehicle Mass (kg)</label>
+                                            <div class="constant-input">
+                                                <input type="number" id="vehicleMass" step="0.1" class="neon-input">
+                                                <span class="default-value" id="vehicleMassDefault">1425</span>
+                                                <span class="modified-indicator" id="vehicleMassModified">✏️</span>
+                                            </div>
+                                        </div>
+                                        <div class="constant-item">
+                                            <label>Driver + Fuel (kg)</label>
+                                            <div class="constant-input">
+                                                <input type="number" id="driverFuelMass" step="0.1" class="neon-input">
+                                                <span class="default-value" id="driverFuelMassDefault">95</span>
+                                                <span class="modified-indicator" id="driverFuelMassModified">✏️</span>
+                                            </div>
+                                        </div>
+                                        <div class="constant-item total-mass">
+                                            <label>Total Mass (kg)</label>
+                                            <div class="constant-input">
+                                                <input type="number" id="totalMass" step="0.1" class="neon-input" readonly>
+                                                <span class="notice-text">Calculated</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Aerodynamics -->
+                                    <div class="constants-group">
+                                        <h3>Aerodynamics</h3>
+                                        <div class="constant-item">
+                                            <label>Drag Coefficient (Cd)</label>
+                                            <div class="constant-input">
+                                                <input type="number" id="dragCoeff" step="0.001" class="neon-input">
+                                                <span class="default-value" id="dragCoeffDefault">0.33</span>
+                                                <span class="modified-indicator" id="dragCoeffModified">✏️</span>
+                                            </div>
+                                        </div>
+                                        <div class="constant-item">
+                                            <label>Frontal Area (m²)</label>
+                                            <div class="constant-input">
+                                                <input type="number" id="frontalArea" step="0.01" class="neon-input">
+                                                <span class="default-value" id="frontalAreaDefault">2.20</span>
+                                                <span class="modified-indicator" id="frontalAreaModified">✏️</span>
+                                            </div>
+                                        </div>
+                                        <div class="constant-item">
+                                            <label>Air Density (kg/m³)</label>
+                                            <div class="constant-input">
+                                                <input type="number" id="airDensity" step="0.001" class="neon-input">
+                                                <span class="default-value" id="airDensityDefault">1.225</span>
+                                                <span class="modified-indicator" id="airDensityModified">✏️</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Rolling Resistance -->
+                                    <div class="constants-group">
+                                        <h3>Rolling Resistance</h3>
+                                        <div class="constant-item">
+                                            <label>Rolling Coeff (Crr)</label>
+                                            <div class="constant-input">
+                                                <input type="number" id="rollingCoeff" step="0.001" class="neon-input">
+                                                <span class="default-value" id="rollingCoeffDefault">0.013</span>
+                                                <span class="modified-indicator" id="rollingCoeffModified">✏️</span>
+                                            </div>
+                                        </div>
+                                        <div class="constant-item">
+                                            <label>Wheel Radius (m)</label>
+                                            <div class="constant-input">
+                                                <input type="number" id="wheelRadius" step="0.001" class="neon-input">
+                                                <span class="default-value" id="wheelRadiusDefault">0.318</span>
+                                                <span class="modified-indicator" id="wheelRadiusModified">✏️</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Drivetrain -->
+                                    <div class="constants-group">
+                                        <h3>Drivetrain</h3>
+                                        <div class="constant-item">
+                                            <label>Drivetrain Eff (η)</label>
+                                            <div class="constant-input">
+                                                <input type="number" id="drivetrainEff" step="0.01" min="0" max="1" class="neon-input">
+                                                <span class="default-value" id="drivetrainEffDefault">0.88</span>
+                                                <span class="modified-indicator" id="drivetrainEffModified">✏️</span>
+                                            </div>
+                                        </div>
+                                        <div class="constant-item">
+                                            <label>Final Drive Ratio</label>
+                                            <div class="constant-input">
+                                                <input type="number" id="finalDriveRatio" step="0.001" class="neon-input">
+                                                <span class="default-value" id="finalDriveRatioDefault">3.529</span>
+                                                <span class="modified-indicator" id="finalDriveRatioModified">✏️</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Environment -->
+                                    <div class="constants-group">
+                                        <h3>Environment</h3>
+                                        <div class="constant-item">
+                                            <label>Road Grade (°)</label>
+                                            <div class="constant-input">
+                                                <input type="number" id="roadGrade" step="0.1" class="neon-input">
+                                                <span class="default-value" id="roadGradeDefault">0.0</span>
+                                                <span class="modified-indicator" id="roadGradeModified">✏️</span>
+                                            </div>
+                                        </div>
+                                        <div class="constant-item">
+                                            <label>Gravity (m/s²)</label>
+                                            <div class="constant-input">
+                                                <input type="number" id="gravity" step="0.001" class="neon-input" readonly>
+                                                <span class="default-value" id="gravityDefault">9.80665</span>
+                                                <span class="notice-text">Fixed</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Gear Ratios -->
+                                    <div class="constants-group full-width">
+                                        <h3>Gear Ratios</h3>
+                                        <div class="gear-ratios-grid">
+                                            <div class="gear-item">
+                                                <label>1st Gear</label>
+                                                <div class="constant-input">
+                                                    <input type="number" id="gear1" step="0.001" class="neon-input">
+                                                    <span class="default-value" id="gear1Default">3.538</span>
+                                                    <span class="modified-indicator" id="gear1Modified">✏️</span>
+                                                </div>
+                                            </div>
+                                            <div class="gear-item">
+                                                <label>2nd Gear</label>
+                                                <div class="constant-input">
+                                                    <input type="number" id="gear2" step="0.001" class="neon-input">
+                                                    <span class="default-value" id="gear2Default">2.238</span>
+                                                    <span class="modified-indicator" id="gear2Modified">✏️</span>
+                                                </div>
+                                            </div>
+                                            <div class="gear-item">
+                                                <label>3rd Gear</label>
+                                                <div class="constant-input">
+                                                    <input type="number" id="gear3" step="0.001" class="neon-input">
+                                                    <span class="default-value" id="gear3Default">1.535</span>
+                                                    <span class="modified-indicator" id="gear3Modified">✏️</span>
+                                                </div>
+                                            </div>
+                                            <div class="gear-item">
+                                                <label>4th Gear</label>
+                                                <div class="constant-input">
+                                                    <input type="number" id="gear4" step="0.001" class="neon-input">
+                                                    <span class="default-value" id="gear4Default">1.171</span>
+                                                    <span class="modified-indicator" id="gear4Modified">✏️</span>
+                                                </div>
+                                            </div>
+                                            <div class="gear-item">
+                                                <label>5th Gear</label>
+                                                <div class="constant-input">
+                                                    <input type="number" id="gear5" step="0.001" class="neon-input">
+                                                    <span class="default-value" id="gear5Default">0.971</span>
+                                                    <span class="modified-indicator" id="gear5Modified">✏️</span>
+                                                </div>
+                                            </div>
+                                            <div class="gear-item">
+                                                <label>6th Gear</label>
+                                                <div class="constant-input">
+                                                    <input type="number" id="gear6" step="0.001" class="neon-input">
+                                                    <span class="default-value" id="gear6Default">0.756</span>
+                                                    <span class="modified-indicator" id="gear6Modified">✏️</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Modification Note -->
+                                <div class="modification-note">
+                                    <label>Modification Note</label>
+                                    <textarea id="modificationNote" class="neon-textarea" placeholder="Reason for changes..."></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Version History (Collapsible) -->
+                        <div class="holo-panel" id="versionHistoryPanel" style="display: none;">
+                            <div class="holo-panel-header">
+                                <div class="holo-panel-title">Version History</div>
+                                <button class="btn-link" id="hideVersionHistory">Hide</button>
+                            </div>
+                            <div class="panel-content">
+                                <div class="version-list" id="versionList">
+                                    <!-- Versions will be populated here -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Explicit Assumptions Panel -->
+                        <div class="holo-panel assumptions-panel">
+                            <div class="holo-panel-header">
+                                <div class="holo-panel-title">Explicit Assumptions</div>
+                            </div>
+                            <div class="panel-content">
+                                <div class="assumptions-list">
+                                    <div class="assumption-item">
+                                        <span class="assumption-icon">📐</span>
+                                        <span class="assumption-text">Road grade assumed flat (0°) unless specified</span>
+                                    </div>
+                                    <div class="assumption-item">
+                                        <span class="assumption-icon">💨</span>
+                                        <span class="assumption-text">Wind effects not compensated in calculations</span>
+                                    </div>
+                                    <div class="assumption-item">
+                                        <span class="assumption-icon">🌡️</span>
+                                        <span class="assumption-text">Air density at sea level, 15°C (1.225 kg/m³)</span>
+                                    </div>
+                                    <div class="assumption-item">
+                                        <span class="assumption-icon">⚖️</span>
+                                        <span class="assumption-text">Driver + fuel estimate: 95 kg (typical)</span>
+                                    </div>
+                                    <div class="assumption-item">
+                                        <span class="assumption-icon">🔧</span>
+                                        <span class="assumption-text">Gravity constant: 9.80665 m/s² (non-adjustable)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Import Tab -->
+                    <div class="tab-content" id="import-tab">
+                        <div class="import-layout">
+                            <!-- Upload Area -->
+                            <div class="holo-panel">
+                                <div class="holo-panel-header">
+                                    <div class="holo-panel-title">Import Vehicle Profile</div>
+                                </div>
+                                <div class="panel-content">
+                                    <div class="upload-area" id="uploadArea">
+                                        <div class="upload-content">
+                                            <div class="upload-icon">📁</div>
+                                            <div class="upload-text">
+                                                <p>Drag and drop your CSV or JSON file here</p>
+                                                <p class="upload-subtitle">or</p>
+                                                <button class="neon-button" id="selectFileBtn">Select File</button>
+                                                <input type="file" id="fileInput" accept=".csv,.json" style="display: none;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Format Requirements -->
+                                    <div class="format-requirements">
+                                        <h4>Required Fields:</h4>
+                                        <ul>
+                                            <li>name, manufacturer, model, year</li>
+                                            <li>transmission_type (MANUAL/DSG/TORQUE_CONVERTER/CVT)</li>
+                                            <li>drivetrain_type (FWD/RWD/AWD_HALDEX/AWD_FULL/AWD_PART_TIME)</li>
+                                            <li>vehicle_mass (kg), drag_coefficient, frontal_area (m²)</li>
+                                            <li>rolling_resistance, wheel_radius (m)</li>
+                                            <li>drivetrain_efficiency, gear_ratios (comma-separated)</li>
+                                            <li>final_drive_ratio</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Validation Preview -->
+                            <div class="holo-panel" id="validationPanel" style="display: none;">
+                                <div class="holo-panel-header">
+                                    <div class="holo-panel-title">Validation Results</div>
+                                </div>
+                                <div class="panel-content">
+                                    <div class="validation-status" id="validationStatus">
+                                        <!-- Status will be populated here -->
+                                    </div>
+                                    
+                                    <div class="validation-errors" id="validationErrors" style="display: none;">
+                                        <h5>Errors:</h5>
+                                        <ul id="errorsList"></ul>
+                                    </div>
+                                    
+                                    <div class="validation-warnings" id="validationWarnings" style="display: none;">
+                                        <h5>Warnings:</h5>
+                                        <ul id="warningsList"></ul>
+                                    </div>
+                                    
+                                    <div class="validation-preview" id="validationPreview" style="display: none;">
+                                        <h5>Preview:</h5>
+                                        <div class="preview-grid" id="previewGrid">
+                                            <!-- Preview data will be populated here -->
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="validation-actions" id="validationActions" style="display: none;">
+                                        <p class="confirmation-notice">
+                                            ⚠️ Imported constants directly affect dyno accuracy. 
+                                            Ensure all values are correct before proceeding.
+                                        </p>
+                                        <div class="action-buttons">
+                                            <button class="neon-button secondary" id="cancelImportBtn">Cancel</button>
+                                            <button class="neon-button" id="confirmImportBtn">Import Profile</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner">
+            <div class="spinner"></div>
+            <div class="loading-text">Initializing...</div>
+        </div>
+    </div>
+
+    <script src="renderer.js"></script>
+</body>
+</html>

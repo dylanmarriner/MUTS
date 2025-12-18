@@ -7,6 +7,17 @@ from typing import Dict, List, Tuple
 
 from .diagnostic_manager import DiagnosticManager, DEFAULT_VIN
 
+# Import from new app/mds modules
+from app.mds.protocols.diagnostic_protocols import MazdaDiagnosticProtocol, DiagnosticSession, SecurityAccessLevel
+from app.mds.security.security_algorithms import MazdaSecurityAccess, MazdaSecurityAlgorithm
+from app.mds.diagnostics.diagnostic_database import MazdaDTCDatabase
+from app.mds.calibration.calibration_files import MazdaCalibrationDatabase
+from app.mds.programming.programming_routines import MazdaProgrammingService
+from app.mds.interface.j2534_interface import J2534Interface
+from app.mds.core.ids_software import MazdaIDS
+from app.mds.calibration.calibration_tools import MazdaCalibrationService
+from app.mds.utils.checksum_routines import ChecksumCalculator, ChecksumType
+
 
 class MazdaProtocol(IntEnum):
     ISO_9141_2 = 1
@@ -34,26 +45,25 @@ class SecurityAccessLevel(IntEnum):
 
 class MazdaSeedKeyManager:
     def __init__(self):
-        self.algorithms = {
-            SecurityAccessLevel.LEVEL_1: self._solve_level1,
-            SecurityAccessLevel.LEVEL_2: self._solve_level2,
-            SecurityAccessLevel.LEVEL_3: self._solve_level3,
-        }
+        # Use the new MazdaSecurityAccess from app/mds
+        self.security_access = MazdaSecurityAccess()
 
     def solve(self, level: SecurityAccessLevel, seed: int) -> int:
-        func = self.algorithms.get(level, self._solve_level1)
-        return func(seed)
-
-    def _solve_level1(self, seed: int) -> int:
-        return ((seed ^ 0x7382A91F) + 0x1F47A2B8) & 0xFFFFFFFF
-
-    def _solve_level2(self, seed: int) -> int:
-        key = seed ^ 0xA5C7E93D
-        return ((key << 7) | (key >> 25)) & 0xFFFFFFFF
-
-    def _solve_level3(self, seed: int) -> int:
-        key = seed ^ 0x1F4A7C3E
-        return ((key + 0x8D3A2F47) ^ 0xB5E8C91A) & 0xFFFFFFFF
+        # Convert seed to bytes for the new security access module
+        seed_bytes = seed.to_bytes(4, 'big')
+        
+        # Map old levels to new algorithms
+        algorithm_map = {
+            SecurityAccessLevel.LEVEL_1: MazdaSecurityAlgorithm.ALGORITHM_27_STANDARD,
+            SecurityAccessLevel.LEVEL_2: MazdaSecurityAlgorithm.ALGORITHM_27_ENHANCED,
+            SecurityAccessLevel.LEVEL_3: MazdaSecurityAlgorithm.ALGORITHM_27_RACE,
+        }
+        
+        algorithm = algorithm_map.get(level, MazdaSecurityAlgorithm.ALGORITHM_27_STANDARD)
+        key_bytes = self.security_access.calculate_seed_key(seed_bytes, algorithm)
+        
+        # Convert back to int
+        return int.from_bytes(key_bytes, 'big')
 
 
 class DiagnosticTestStatus(Enum):
@@ -85,6 +95,8 @@ class CalibrationOperationLevel(IntEnum):
 
 class MazdaCalibrationService:
     def __init__(self):
+        # Use the new calibration database from app/mds
+        self.calibration_database = MazdaCalibrationDatabase()
         self.maps = {
             "boost": [random.uniform(6.0, 18.0) for _ in range(10)],
             "fuel": [random.uniform(10.0, 17.0) for _ in range(10)],
@@ -92,6 +104,10 @@ class MazdaCalibrationService:
         }
 
     def list_maps(self) -> List[str]:
+        # Return maps from the new calibration database
+        calibration = self.calibration_database.get_calibration("L3K9-18-881A")
+        if calibration:
+            return list(calibration.maps.keys())
         return list(self.maps.keys())
 
     def adjust_map(self, name: str, offset: int, delta: float) -> bool:
@@ -101,20 +117,38 @@ class MazdaCalibrationService:
         return True
 
     def read_map(self, name: str) -> List[float]:
+        # Try to read from calibration database first
+        calibration = self.calibration_database.get_calibration("L3K9-18-881A")
+        if calibration and name in calibration.maps:
+            map_def = calibration.maps[name]
+            return map_def.values[0] if map_def.values else []
         return self.maps.get(name, [])
 
 
 class MazdaChecksumCalculator:
+    def __init__(self):
+        # Use the new checksum calculator from app/mds
+        self.checksum_calc = ChecksumCalculator()
+    
     def checksum(self, data: bytes, algorithm: str = "crc32") -> str:
-        if algorithm == "crc32":
-            return hex(struct.unpack(">I", struct.pack(">I", random.randint(0, 0xFFFFFFFF)))[0])
-        if algorithm == "crc16":
-            return hex(random.randint(0, 0xFFFF))
-        return "0x0"
+        # Map algorithm names to ChecksumType
+        algorithm_map = {
+            "crc32": ChecksumType.CRC32,
+            "crc16": ChecksumType.CRC16,
+            "simple": ChecksumType.SIMPLE_SUM,
+            "mazda": ChecksumType.MAZDA_PROPRIETARY,
+        }
+        
+        checksum_type = algorithm_map.get(algorithm, ChecksumType.CRC32)
+        checksum_value = self.checksum_calc.calculate_checksum(data, checksum_type)
+        
+        return hex(checksum_value)
 
 
 class MazdaIDSCoordinator:
     def __init__(self, vin: str = DEFAULT_VIN):
+        # Initialize with the new IDS software from app/mds
+        self.ids = MazdaIDS()
         self.protocol = MazdaProtocol.ISO_15765_4_CAN
         self.session = DiagnosticSession.DEFAULT
         self.security_manager = MazdaSeedKeyManager()
@@ -122,14 +156,36 @@ class MazdaIDSCoordinator:
         self.calibration = MazdaCalibrationService()
         self.checksum = MazdaChecksumCalculator()
         self.diag = DiagnosticManager(vin)
+        
+        # Connect the IDS components
+        self._connect_ids_components()
+
+    def _connect_ids_components(self):
+        """Connect IDS components together"""
+        # Set up relationships between components
+        self.ids.programming_service.diagnostic_protocol = self.ids.diagnostic_protocol
+        if hasattr(self.ids, 'calibration_service'):
+            self.ids.calibration_service.diagnostic_protocol = self.ids.diagnostic_protocol
+            self.ids.calibration_service.programming_service = self.ids.programming_service
 
     def switch_protocol(self, protocol: MazdaProtocol) -> None:
         self.protocol = protocol
+        # Update IDS protocol if needed
+        if hasattr(self.ids, 'diagnostic_protocol'):
+            self.ids.diagnostic_protocol.protocol = protocol
 
     def enter_session(self, session: DiagnosticSession) -> None:
         self.session = session
+        # Use IDS to enter session
+        if hasattr(self.ids, 'diagnostic_protocol'):
+            self.ids.diagnostic_protocol.start_diagnostic_session(session)
 
     def run_diagnostic_test(self, test_name: str) -> Tuple[str, DiagnosticTestStatus]:
+        # Use IDS diagnostic modules if available
+        if hasattr(self.ids, 'diagnostic_service'):
+            results = self.ids.diagnostic_service.perform_system_scan()
+            return (f"System scan completed with {len(results.get('dtcs_found', []))} DTCs found", 
+                   DiagnosticTestStatus.COMPLETED)
         return self.tests.run_test(test_name)
 
     def perform_calibration(self, name: str, delta: float) -> bool:
@@ -138,3 +194,15 @@ class MazdaIDSCoordinator:
     def calculate_checksum(self, algorithm: str) -> str:
         data = b"".join(map(lambda m: m.to_bytes(2, "big"), range(8)))
         return self.checksum.checksum(data, algorithm)
+    
+    def connect_to_vehicle(self) -> bool:
+        """Connect to vehicle using IDS"""
+        return self.ids.connect_to_vehicle()
+    
+    def disconnect_from_vehicle(self):
+        """Disconnect from vehicle"""
+        self.ids.disconnect_from_vehicle()
+    
+    def get_vehicle_info(self) -> Dict[str, any]:
+        """Get vehicle information"""
+        return self.ids.current_vehicle_info

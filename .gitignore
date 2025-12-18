@@ -48,3 +48,94 @@ Thumbs.db
 # Temporary files
 *.tmp
 *.temp
+
+# OpenMemory - IDE/Assistant specific rules
+.windsurf/rules/openmemory.md
+
+# MUTS Enterprise Security Additions
+# ===================================
+
+# Security files - NEVER commit these
+*.pem
+*.key
+*.p12
+*.jks
+*.pfx
+secrets.txt
+api_keys.txt
+passwords.txt
+credentials.json
+service-account.json
+keystore.jks
+
+# Configuration with secrets
+config.ini
+config.yaml
+config.yml
+.env.local
+.env.production
+.env.staging
+secrets/
+.secrets
+
+# Build artifacts
+dist-backend/
+dist-electron/
+out/
+target/
+bin/
+obj/
+
+# Electron specific
+electron-app/dist/
+electron-app/build/
+electron-app/node_modules/
+electron-app/.env.local
+electron-app/.env.development.local
+electron-app/.env.test.local
+electron-app/.env.production.local
+
+# Vehicle data - protect customer information
+vehicle_data/
+real_vins/
+customer_data/
+diagnostic_logs/
+ecu_dumps/
+can_logs/
+
+# Database files (including backups)
+*.sqlite
+*.sqlite3
+*.db
+*.db-*
+backups/
+
+# Test data with real information
+test_data/
+*.test
+*.tmp
+
+# Cache and temporary
+cache/
+temp/
+uploads/
+exports/
+user_data/
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Coverage reports
+htmlcov/
+.coverage
+.coverage.*
+*.py,cover
+.pytest_cache/
+
+# Documentation build
+docs/_build/
+
+# Package manager locks (keep these for security)
+# Pipfile.lock - KEEP for security auditing
+# package-lock.json - KEEP for security auditing

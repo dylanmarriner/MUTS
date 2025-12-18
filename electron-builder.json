@@ -1,0 +1,98 @@
+{
+  "appId": "com.muts.vehicle-diagnostics",
+  "productName": "MUTS Vehicle Diagnostics",
+  "copyright": "Copyright © 2025 MUTS Team",
+  "directories": {
+    "output": "dist-electron",
+    "buildResources": "electron-app/build"
+  },
+  "files": [
+    "electron-app/**/*",
+    "!electron-app/node_modules/**/*",
+    "!electron-app/build/**/*",
+    "!electron-app/dist/**/*"
+  ],
+  "extraResources": [
+    {
+      "from": "dist-backend",
+      "to": "backend",
+      "filter": ["**/*"]
+    },
+    {
+      "from": "app/migrations",
+      "to": "migrations",
+      "filter": ["**/*"]
+    }
+  ],
+  "win": {
+    "target": [
+      {
+        "target": "nsis",
+        "arch": ["x64"]
+      },
+      {
+        "target": "portable",
+        "arch": ["x64"]
+      }
+    ],
+    "icon": "electron-app/assets/icon.ico",
+    "requestedExecutionLevel": "asInvoker",
+    "publisherName": "MUTS Team"
+  },
+  "nsis": {
+    "oneClick": false,
+    "allowToChangeInstallationDirectory": true,
+    "allowElevation": true,
+    "installerIcon": "electron-app/assets/icon.ico",
+    "uninstallerIcon": "electron-app/assets/icon.ico",
+    "installerHeaderIcon": "electron-app/assets/icon.ico",
+    "createDesktopShortcut": true,
+    "createStartMenuShortcut": true,
+    "shortcutName": "MUTS Vehicle Diagnostics",
+    "include": "build/installer.nsh"
+  },
+  "mac": {
+    "target": [
+      {
+        "target": "dmg",
+        "arch": ["x64", "arm64"]
+      },
+      {
+        "target": "zip",
+        "arch": ["x64", "arm64"]
+      }
+    ],
+    "icon": "electron-app/assets/icon.icns",
+    "category": "public.app-category.developer-tools",
+    "hardenedRuntime": true,
+    "entitlements": "build/entitlements.mac.plist",
+    "entitlementsInherit": "build/entitlements.mac.plist"
+  },
+  "linux": {
+    "target": [
+      {
+        "target": "AppImage",
+        "arch": ["x64"]
+      },
+      {
+        "target": "deb",
+        "arch": ["x64"]
+      },
+      {
+        "target": "rpm",
+        "arch": ["x64"]
+      }
+    ],
+    "icon": "electron-app/assets/icon.png",
+    "category": "Development"
+  },
+  "publish": {
+    "provider": "github",
+    "owner": "muts-project",
+    "repo": "muts"
+  },
+  "compression": "maximum",
+  "removePackageScripts": true,
+  "beforeBuild": "scripts/before-build.js",
+  "afterSign": "scripts/after-sign.js"
+}

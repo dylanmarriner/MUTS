@@ -1,0 +1,156 @@
+<!-- Hybrid Vehicle Selector -->
+<div class="vehicle-selector-container">
+    <!-- Toggle between Browse All and My Vehicles -->
+    <div class="vehicle-selector-tabs">
+        <button class="tab-button active" id="browseAllTab" onclick="switchVehicleMode('browse')">
+            <i class="icon-hierarchy"></i>
+            Browse All
+        </button>
+        <button class="tab-button" id="myVehiclesTab" onclick="switchVehicleMode('my')">
+            <i class="icon-star"></i>
+            My Vehicles
+        </button>
+    </div>
+    
+    <!-- Browse All Mode (Existing Hierarchy) -->
+    <div id="browseAllMode" class="vehicle-mode active">
+        <div class="hierarchy-selector">
+            <div class="selector-row">
+                <label>Manufacturer:</label>
+                <select id="manufacturerSelect" class="holo-select">
+                    <option value="">Select...</option>
+                </select>
+            </div>
+            <div class="selector-row">
+                <label>Model:</label>
+                <select id="modelSelect" class="holo-select" disabled>
+                    <option value="">Select manufacturer first</option>
+                </select>
+            </div>
+            <div class="selector-row">
+                <label>Generation:</label>
+                <select id="generationSelect" class="holo-select" disabled>
+                    <option value="">Select model first</option>
+                </select>
+            </div>
+            <div class="selector-row">
+                <label>Variant:</label>
+                <select id="variantSelect" class="holo-select" disabled>
+                    <option value="">Select generation first</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    
+    <!-- My Vehicles Mode (Saved Profiles) -->
+    <div id="myVehiclesMode" class="vehicle-mode">
+        <div class="my-vehicles-list" id="myVehiclesList">
+            <!-- Vehicle profiles will be loaded here -->
+            <div class="loading-indicator">
+                <i class="icon-spinner"></i>
+                Loading your vehicles...
+            </div>
+        </div>
+        
+        <!-- Add Vehicle Button -->
+        <div class="add-vehicle-section">
+            <button class="btn-primary" onclick="showAddVehicleDialog()">
+                <i class="icon-plus"></i>
+                Add Vehicle
+            </button>
+        </div>
+    </div>
+    
+    <!-- Selected Vehicle Display -->
+    <div class="selected-vehicle-display" id="selectedVehicleDisplay">
+        <div class="vehicle-info">
+            <span class="vehicle-label">Selected:</span>
+            <span class="vehicle-value" id="selectedVehicleName">None</span>
+        </div>
+    </div>
+</div>
+
+<!-- Add Vehicle Dialog -->
+<div class="modal" id="addVehicleModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>Add Vehicle Profile</h3>
+            <button class="modal-close" onclick="closeAddVehicleDialog()">×</button>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label>VIN (17 characters):</label>
+                <input type="text" id="vinInput" class="holo-input" maxlength="17" placeholder="e.g., 1HGCM82633A004352">
+            </div>
+            <div class="form-group">
+                <label>Plate Number:</label>
+                <input type="text" id="plateInput" class="holo-input" placeholder="e.g., ABC123">
+            </div>
+            <div class="form-group">
+                <label>Engine Number:</label>
+                <input type="text" id="engineNumberInput" class="holo-input" placeholder="Engine serial number">
+            </div>
+            <div class="form-row">
+                <div class="form-group half">
+                    <label>Year:</label>
+                    <input type="number" id="yearInput" class="holo-input" min="1990" max="2025" placeholder="2020">
+                </div>
+                <div class="form-group half">
+                    <label>Make:</label>
+                    <select id="makeInput" class="holo-select">
+                        <option value="">Select...</option>
+                        <option value="Holden">Holden</option>
+                        <option value="Volkswagen">Volkswagen</option>
+                        <option value="Alfa Romeo">Alfa Romeo</option>
+                        <option value="BMW">BMW</option>
+                        <option value="Mercedes-Benz">Mercedes-Benz</option>
+                        <option value="Audi">Audi</option>
+                        <option value="Ford">Ford</option>
+                        <option value="Toyota">Toyota</option>
+                        <option value="Honda">Honda</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Model:</label>
+                <input type="text" id="modelInput" class="holo-input" placeholder="e.g., Commodore, Golf, Giulietta">
+            </div>
+            <div class="form-group">
+                <label>Submodel/Variant:</label>
+                <input type="text" id="submodelInput" class="holo-input" placeholder="e.g., VF Evoke V6 3.0P/6AT">
+            </div>
+            <div class="form-row">
+                <div class="form-group half">
+                    <label>Body Type:</label>
+                    <select id="bodyInput" class="holo-select">
+                        <option value="">Select...</option>
+                        <option value="Sedan">Sedan</option>
+                        <option value="Station Wagon">Station Wagon</option>
+                        <option value="Hatchback">Hatchback</option>
+                        <option value="Coupe">Coupe</option>
+                        <option value="SUV">SUV</option>
+                        <option value="Ute">Ute</option>
+                    </select>
+                </div>
+                <div class="form-group half">
+                    <label>Fuel Type:</label>
+                    <select id="fuelInput" class="holo-select">
+                        <option value="">Select...</option>
+                        <option value="Petrol">Petrol</option>
+                        <option value="Diesel">Diesel</option>
+                        <option value="Hybrid">Hybrid</option>
+                        <option value="Electric">Electric</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Colour:</label>
+                <input type="text" id="colourInput" class="holo-input" placeholder="e.g., Black, White, Red">
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn-secondary" onclick="closeAddVehicleDialog()">Cancel</button>
+            <button class="btn-primary" onclick="saveVehicleProfile()">Save Vehicle</button>
+        </div>
+    </div>
+</div>
