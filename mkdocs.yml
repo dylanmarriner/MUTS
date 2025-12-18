@@ -1,11 +1,15 @@
-
 site_name: MUTS Documentation
 nav:
   - Home: index.md
+  - Product Spec: PRODUCT_SPEC.md
+  - Roadmap: ROADMAP.md
   - Architecture: ARCHITECTURE.md
+  - Implementation Flows: IMPLEMENTATION_FLOWS.md
+  - First Run: FIRST_RUN.md
   - ECU Protocols: ECU_PROTOCOLS.md
   - Maps: MAPS_REFERENCE.md
-  - Safety: SAFETY_MODEL.md
+  - Safety Model: SAFETY_MODEL.md
+  - Security Policy: SECURITY.md
   - Contributing: CONTRIBUTING.md
 
 theme:

@@ -1,0 +1,36 @@
+name: Documentation Issue
+description: Report documentation problems or suggest improvements
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### Before reporting
+        - [ ] Searched existing issues
+        - [ ] Checked current documentation
+  - type: textarea
+    id: location
+    attributes:
+      label: Documentation Location
+      description: Where is the issue?
+      placeholder: URL or file path
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Describe the issue or improvement
+    validations:
+      required: true
+  - type: textarea
+    id: suggested
+    attributes:
+      label: Suggested Fix
+      description: How should this be fixed/improved?
+    validations:
+      required: true
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional Context
+      description: Screenshots, references, etc.

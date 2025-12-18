@@ -1,0 +1,43 @@
+name: Improvement
+description: Suggest an improvement to existing functionality
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### Before suggesting
+        - [ ] Searched existing issues
+        - [ ] Checked documentation
+  - type: textarea
+    id: area
+    attributes:
+      label: Area of Improvement
+      description: Which part of MUTS needs improvement?
+      placeholder: UI, backend, documentation, etc.
+    validations:
+      required: true
+  - type: textarea
+    id: current
+    attributes:
+      label: Current Behavior
+      description: What's currently happening
+    validations:
+      required: true
+  - type: textarea
+    id: proposed
+    attributes:
+      label: Proposed Improvement
+      description: How should this work better?
+    validations:
+      required: true
+  - type: textarea
+    id: benefits
+    attributes:
+      label: Benefits
+      description: What benefits would this improvement provide?
+    validations:
+      required: true
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional Context
+      description: Screenshots, examples, or technical details

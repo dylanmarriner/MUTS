@@ -1,0 +1,112 @@
+#cloud-config
+package_update: true
+package_upgrade: true
+
+# Install required packages
+packages:
+  - curl
+  - wget
+  - git
+  - vim
+  - htop
+  - build-essential
+  - software-properties-common
+  - apt-transport-https
+  - ca-certificates
+  - gnupg
+  - lsb-release
+
+# Create development user with sudo access
+users:
+  - name: developer
+    groups: [sudo, docker]
+    shell: /bin/bash
+    sudo: ["ALL=(ALL) NOPASSWD:ALL"]
+    ssh-authorized_keys:
+      - ${ssh_authorized_keys}
+
+# Set hostname
+hostname: dev-server
+preserve_hostname: false
+
+# Run commands on first boot
+runcmd:
+  # Add Docker's official GPG key
+  - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+  # Set up Docker repository
+  - echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null
+  # Update package index
+  - apt-get update
+  # Install Docker
+  - apt-get install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
+  # Start and enable Docker
+  - systemctl start docker
+  - systemctl enable docker
+  # Install Node.js 18.x
+  - curl -fsSL https://deb.nodesource.com/setup_18.x | bash -
+  - apt-get install -y nodejs
+  # Install Python 3 and pip
+  - apt-get install -y python3 python3-pip python3-venv python3-dev
+  # Install global npm packages
+  - npm install -g typescript ts-node nodemon pm2
+  # Create development directories
+  - mkdir -p /home/developer/projects /home/developer/.local/bin
+  # Set ownership
+  - chown -R developer:developer /home/developer
+  # Add developer user to docker group
+  - usermod -aG docker developer
+  # Install Oh My Zsh
+  - sudo -u developer sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+  # Install useful zsh plugins
+  - sudo -u developer git clone https://github.com/zsh-users/zsh-autosuggestions /home/developer/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+  - sudo -u developer git clone https://github.com/zsh-users/zsh-syntax-highlighting /home/developer/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+  # Configure zsh
+  - sudo -u developer sed -i 's/plugins=(git)/plugins=(git zsh-autosuggestions zsh-syntax-highlighting docker npm node)/' /home/developer/.zshrc
+  # Set zsh as default shell
+  - chsh -s /bin/zsh developer
+
+# Write custom welcome message
+write_files:
+  - path: /etc/motd
+    content: |
+      🚀 Oracle Cloud Development Server Ready!
+      
+      Development environment installed:
+      • Ubuntu 22.04 LTS
+      • Docker & Docker Compose
+      • Node.js 18.x
+      • Python 3
+      • Git
+      • Oh My Zsh
+      
+      Happy coding! 🎉
+    permissions: "0644"
+  - path: /home/developer/.bashrc
+    content: |
+      # Custom bashrc for development
+      export EDITOR=vim
+      export GIT_EDITOR=vim
+      
+      # Useful aliases
+      alias ll='ls -laF'
+      alias la='ls -A'
+      alias l='ls -CF'
+      alias ..='cd ..'
+      alias ...='cd ../..'
+      alias gs='git status'
+      alias ga='git add'
+      alias gc='git commit'
+      alias gp='git push'
+      
+      # Node.js development
+      export PATH="$PATH:/home/developer/.npm-global/bin"
+      
+      # Python development
+      export PYTHONPATH="$PYTHONPATH:/home/developer/projects"
+      
+      echo "🚀 Development environment loaded!"
+    permissions: "0644"
+    owner: developer:developer
+
+# Final message
+final_message: "Oracle Cloud Development Server setup complete!"

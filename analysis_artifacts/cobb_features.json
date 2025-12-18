@@ -1,0 +1,93 @@
+[
+  {
+    "file_path": "cobb1.py",
+    "features_count": 23,
+    "components_count": 1,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "cobb10.py",
+    "features_count": 12,
+    "components_count": 1,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "cobb11.py",
+    "features_count": 18,
+    "components_count": 1,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "cobb12.py",
+    "features_count": 34,
+    "components_count": 2,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "cobb2.py",
+    "features_count": 18,
+    "components_count": 2,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "cobb3.py",
+    "features_count": 18,
+    "components_count": 1,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "cobb4.py",
+    "features_count": 16,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "cobb5.py",
+    "features_count": 27,
+    "components_count": 2,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "cobb6.py",
+    "features_count": 26,
+    "components_count": 1,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "cobb7.py",
+    "features_count": 12,
+    "components_count": 1,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "cobb8.py",
+    "features_count": 21,
+    "components_count": 2,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "cobb9.py",
+    "features_count": 19,
+    "components_count": 1,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "cobbreadme.md",
+    "features_count": 1,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  }
+]

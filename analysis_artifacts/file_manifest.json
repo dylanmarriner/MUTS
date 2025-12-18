@@ -1,0 +1,3262 @@
+{
+  "total_files": 407,
+  "enumeration_timestamp": "2025-12-12T23:40:00Z",
+  "files": [
+    {
+      "file_path": "ARCHITECTURE.md",
+      "file_type": "text",
+      "line_count": 10,
+      "size_bytes": 385,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "ARCHITECTURE_DIAGRAM.txt",
+      "file_type": "text",
+      "line_count": 29,
+      "size_bytes": 1238,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "BUILD_INSTRUCTIONS.md",
+      "file_type": "text",
+      "line_count": 95,
+      "size_bytes": 1776,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "COMPLETE_IMPLEMENTATION_LIST.md",
+      "file_type": "text",
+      "line_count": 1197,
+      "size_bytes": 45285,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "CONTRIBUTING.md",
+      "file_type": "text",
+      "line_count": 3,
+      "size_bytes": 43,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "ECU_PROTOCOLS.md",
+      "file_type": "text",
+      "line_count": 3,
+      "size_bytes": 49,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "EEPROMExploiter.py",
+      "file_type": "python",
+      "line_count": 676,
+      "size_bytes": 27137,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "LICENSE",
+      "file_type": "other",
+      "line_count": 0,
+      "size_bytes": 227,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "MAPS_REFERENCE.md",
+      "file_type": "text",
+      "line_count": 3,
+      "size_bytes": 43,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "MUTS_CROSS_FILE_ANALYSIS.md",
+      "file_type": "text",
+      "line_count": 191,
+      "size_bytes": 9037,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "MUTS_Technical_Spec.pdf",
+      "file_type": "binary",
+      "line_count": 0,
+      "size_bytes": 1863,
+      "readable": false,
+      "parse_errors": []
+    },
+    {
+      "file_path": "MUTS_Technical_Spec_FULL.pdf",
+      "file_type": "binary",
+      "line_count": 0,
+      "size_bytes": 16140,
+      "readable": false,
+      "parse_errors": []
+    },
+    {
+      "file_path": "Makefile",
+      "file_type": "other",
+      "line_count": 0,
+      "size_bytes": 278,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "MazdaCANEngine.py",
+      "file_type": "python",
+      "line_count": 494,
+      "size_bytes": 18971,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "MazdaSecurityCore.py",
+      "file_type": "python",
+      "line_count": 304,
+      "size_bytes": 11271,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "MazdaSpeed3TuningSoftware.py",
+      "file_type": "python",
+      "line_count": 721,
+      "size_bytes": 27096,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "MazdaTunerAPI.py",
+      "file_type": "python",
+      "line_count": 1905,
+      "size_bytes": 69282,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "README.md",
+      "file_type": "text",
+      "line_count": 190,
+      "size_bytes": 5569,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "RacingFeatureController.py",
+      "file_type": "python",
+      "line_count": 1014,
+      "size_bytes": 38670,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "RealTimeAITuner.py",
+      "file_type": "python",
+      "line_count": 564,
+      "size_bytes": 18106,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "RealTimeTelemetry.py",
+      "file_type": "python",
+      "line_count": 391,
+      "size_bytes": 14982,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "SAFETY_MODEL.md",
+      "file_type": "text",
+      "line_count": 3,
+      "size_bytes": 47,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "SRSAirbagExploiter.py",
+      "file_type": "python",
+      "line_count": 678,
+      "size_bytes": 25547,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "SecureDatabase.py",
+      "file_type": "python",
+      "line_count": 2162,
+      "size_bytes": 77891,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "add1.py",
+      "file_type": "python",
+      "line_count": 456,
+      "size_bytes": 16845,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "add10.py",
+      "file_type": "python",
+      "line_count": 645,
+      "size_bytes": 27737,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "add11.py",
+      "file_type": "python",
+      "line_count": 395,
+      "size_bytes": 16478,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "add12.py",
+      "file_type": "python",
+      "line_count": 365,
+      "size_bytes": 14735,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "add13.py",
+      "file_type": "python",
+      "line_count": 153,
+      "size_bytes": 4273,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "add14.py",
+      "file_type": "python",
+      "line_count": 798,
+      "size_bytes": 31300,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "add15.py",
+      "file_type": "python",
+      "line_count": 467,
+      "size_bytes": 20688,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "add16.py",
+      "file_type": "python",
+      "line_count": 547,
+      "size_bytes": 22333,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "add17.py",
+      "file_type": "python",
+      "line_count": 44,
+      "size_bytes": 1589,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "add18.py",
+      "file_type": "python",
+      "line_count": 246,
+      "size_bytes": 8993,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "add19.py",
+      "file_type": "python",
+      "line_count": 249,
+      "size_bytes": 9772,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "add2.py",
+      "file_type": "python",
+      "line_count": 505,
+      "size_bytes": 21330,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "add20.py",
+      "file_type": "python",
+      "line_count": 216,
+      "size_bytes": 6141,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "add21.py",
+      "file_type": "python",
+      "line_count": 523,
+      "size_bytes": 19596,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "add22.py",
+      "file_type": "python",
+      "line_count": 662,
+      "size_bytes": 24929,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "add23.py",
+      "file_type": "python",
+      "line_count": 542,
+      "size_bytes": 26396,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "add24.py",
+      "file_type": "python",
+      "line_count": 511,
+      "size_bytes": 27750,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "add3.py",
+      "file_type": "python",
+      "line_count": 503,
+      "size_bytes": 21931,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "add4.py",
+      "file_type": "python",
+      "line_count": 143,
+      "size_bytes": 7955,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "add5.py",
+      "file_type": "python",
+      "line_count": 323,
+      "size_bytes": 14406,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "add6.py",
+      "file_type": "python",
+      "line_count": 476,
+      "size_bytes": 18579,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "add7.py",
+      "file_type": "python",
+      "line_count": 645,
+      "size_bytes": 27737,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "add8.py",
+      "file_type": "python",
+      "line_count": 476,
+      "size_bytes": 18579,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "add9.py",
+      "file_type": "python",
+      "line_count": 323,
+      "size_bytes": 14406,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "agent.md",
+      "file_type": "text",
+      "line_count": 38,
+      "size_bytes": 860,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "agents.md",
+      "file_type": "text",
+      "line_count": 43,
+      "size_bytes": 1047,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "analysis_artifacts/enumerate_files.py",
+      "file_type": "python",
+      "line_count": 130,
+      "size_bytes": 4197,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "analyze_platforms.py",
+      "file_type": "python",
+      "line_count": 209,
+      "size_bytes": 7799,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "base_exploiter.py",
+      "file_type": "python",
+      "line_count": 590,
+      "size_bytes": 20307,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "claude.md",
+      "file_type": "text",
+      "line_count": 159,
+      "size_bytes": 5188,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "cobb1.py",
+      "file_type": "python",
+      "line_count": 196,
+      "size_bytes": 6556,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "cobb10.py",
+      "file_type": "python",
+      "line_count": 201,
+      "size_bytes": 7284,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "cobb11.py",
+      "file_type": "python",
+      "line_count": 303,
+      "size_bytes": 10529,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "cobb12.py",
+      "file_type": "python",
+      "line_count": 391,
+      "size_bytes": 14849,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "cobb2.py",
+      "file_type": "python",
+      "line_count": 144,
+      "size_bytes": 4834,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "cobb3.py",
+      "file_type": "python",
+      "line_count": 219,
+      "size_bytes": 7318,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "cobb4.py",
+      "file_type": "python",
+      "line_count": 116,
+      "size_bytes": 4300,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "cobb5.py",
+      "file_type": "python",
+      "line_count": 216,
+      "size_bytes": 7224,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "cobb6.py",
+      "file_type": "python",
+      "line_count": 181,
+      "size_bytes": 6645,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "cobb7.py",
+      "file_type": "python",
+      "line_count": 201,
+      "size_bytes": 7284,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "cobb8.py",
+      "file_type": "python",
+      "line_count": 213,
+      "size_bytes": 7059,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "cobb9.py",
+      "file_type": "python",
+      "line_count": 177,
+      "size_bytes": 6466,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "cobbreadme.md",
+      "file_type": "text",
+      "line_count": 25,
+      "size_bytes": 870,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "comms/iso15765_transport.py",
+      "file_type": "python",
+      "line_count": 110,
+      "size_bytes": 4240,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "comms/j2534_api.py",
+      "file_type": "python",
+      "line_count": 41,
+      "size_bytes": 1135,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "comms/j2534_device.py",
+      "file_type": "python",
+      "line_count": 103,
+      "size_bytes": 3818,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "comms/j2534_manager.py",
+      "file_type": "python",
+      "line_count": 80,
+      "size_bytes": 2564,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "comms/kwp2000_protocol.py",
+      "file_type": "python",
+      "line_count": 34,
+      "size_bytes": 1089,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "comms/mazda_ecu.py",
+      "file_type": "python",
+      "line_count": 113,
+      "size_bytes": 4047,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "comms/uds_protocol.py",
+      "file_type": "python",
+      "line_count": 75,
+      "size_bytes": 2787,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "config/defaults.yml",
+      "file_type": "data",
+      "line_count": 2,
+      "size_bytes": 45,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "config/j2534_devices.yml",
+      "file_type": "data",
+      "line_count": 2,
+      "size_bytes": 50,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "config/logging.yml",
+      "file_type": "data",
+      "line_count": 2,
+      "size_bytes": 44,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "config/maps_mps3_gen2.yml",
+      "file_type": "data",
+      "line_count": 2,
+      "size_bytes": 51,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "config/safety_limits.yml",
+      "file_type": "data",
+      "line_count": 2,
+      "size_bytes": 50,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "core/app_state.py",
+      "file_type": "python",
+      "line_count": 388,
+      "size_bytes": 13809,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "core/checksum.py",
+      "file_type": "python",
+      "line_count": 2,
+      "size_bytes": 44,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "core/connection_monitor.py",
+      "file_type": "python",
+      "line_count": 255,
+      "size_bytes": 9884,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "core/data_manager.py",
+      "file_type": "python",
+      "line_count": 2,
+      "size_bytes": 48,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "core/ecu_communication.py",
+      "file_type": "python",
+      "line_count": 491,
+      "size_bytes": 16553,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "core/factory_maps.py",
+      "file_type": "python",
+      "line_count": 2,
+      "size_bytes": 48,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "core/limit_finder.py",
+      "file_type": "python",
+      "line_count": 2,
+      "size_bytes": 48,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "core/logging_manager.py",
+      "file_type": "python",
+      "line_count": 2,
+      "size_bytes": 51,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "core/rom_verifier.py",
+      "file_type": "python",
+      "line_count": 268,
+      "size_bytes": 10442,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "core/safety_limits.py",
+      "file_type": "python",
+      "line_count": 2,
+      "size_bytes": 49,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "core/safety_validator.py",
+      "file_type": "python",
+      "line_count": 320,
+      "size_bytes": 12323,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "database/models.py",
+      "file_type": "python",
+      "line_count": 2,
+      "size_bytes": 42,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "database/session.py",
+      "file_type": "python",
+      "line_count": 2,
+      "size_bytes": 43,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "defaults.yml",
+      "file_type": "data",
+      "line_count": 3,
+      "size_bytes": 65,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "diagnostic_module.py",
+      "file_type": "python",
+      "line_count": 185,
+      "size_bytes": 7070,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "diagnostics/abs_module.py",
+      "file_type": "python",
+      "line_count": 28,
+      "size_bytes": 696,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "diagnostics/bcm_module.py",
+      "file_type": "python",
+      "line_count": 17,
+      "size_bytes": 397,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "diagnostics/dtc_manager.py",
+      "file_type": "python",
+      "line_count": 33,
+      "size_bytes": 901,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "diagnostics/freeze_frame.py",
+      "file_type": "python",
+      "line_count": 10,
+      "size_bytes": 213,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "diagnostics/live_data.py",
+      "file_type": "python",
+      "line_count": 47,
+      "size_bytes": 1422,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "diagnostics/live_data_service.py",
+      "file_type": "python",
+      "line_count": 82,
+      "size_bytes": 2268,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "diagnostics/srs_module.py",
+      "file_type": "python",
+      "line_count": 22,
+      "size_bytes": 503,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "docs/ARCHITECTURE.md",
+      "file_type": "text",
+      "line_count": 19,
+      "size_bytes": 524,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "docs/ASSISTANT_PROMPTS/COPILOT_TASKS.md",
+      "file_type": "text",
+      "line_count": 9,
+      "size_bytes": 482,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "docs/ASSISTANT_PROMPTS/HIGH_LEVEL_DIRECTIVE.md",
+      "file_type": "text",
+      "line_count": 11,
+      "size_bytes": 354,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "docs/CONTRIBUTING.md",
+      "file_type": "text",
+      "line_count": 2,
+      "size_bytes": 48,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "docs/ECU_PROTOCOLS.md",
+      "file_type": "text",
+      "line_count": 2,
+      "size_bytes": 49,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "docs/IMPLEMENTATION_FLOWS.md",
+      "file_type": "text",
+      "line_count": 9,
+      "size_bytes": 523,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "docs/MAPS_REFERENCE.md",
+      "file_type": "text",
+      "line_count": 2,
+      "size_bytes": 50,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "docs/PRODUCT_SPEC.md",
+      "file_type": "text",
+      "line_count": 18,
+      "size_bytes": 704,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "docs/ROADMAP.md",
+      "file_type": "text",
+      "line_count": 7,
+      "size_bytes": 335,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "docs/SAFETY_MODEL.md",
+      "file_type": "text",
+      "line_count": 2,
+      "size_bytes": 48,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "eeprom_exploiter.py",
+      "file_type": "python",
+      "line_count": 711,
+      "size_bytes": 24835,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "elm327_gui.py",
+      "file_type": "python",
+      "line_count": 1434,
+      "size_bytes": 55890,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "example_telemetry_usage.py",
+      "file_type": "python",
+      "line_count": 152,
+      "size_bytes": 5720,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "fix_platforms.py",
+      "file_type": "python",
+      "line_count": 307,
+      "size_bytes": 11823,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "gui/main_window.py",
+      "file_type": "python",
+      "line_count": 773,
+      "size_bytes": 28773,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "hardware_factory.py",
+      "file_type": "python",
+      "line_count": 214,
+      "size_bytes": 7100,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "index.md",
+      "file_type": "text",
+      "line_count": 3,
+      "size_bytes": 74,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "installers/build_linux.sh",
+      "file_type": "other",
+      "line_count": 0,
+      "size_bytes": 47,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "installers/build_macos.sh",
+      "file_type": "other",
+      "line_count": 0,
+      "size_bytes": 47,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "installers/build_windows.bat",
+      "file_type": "other",
+      "line_count": 0,
+      "size_bytes": 50,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "j2534_can_engine.py",
+      "file_type": "python",
+      "line_count": 448,
+      "size_bytes": 16298,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "j2534_devices.yml",
+      "file_type": "data",
+      "line_count": 13,
+      "size_bytes": 258,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "logging.yml",
+      "file_type": "data",
+      "line_count": 12,
+      "size_bytes": 219,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "logs/muts_20251127.log",
+      "file_type": "other",
+      "line_count": 0,
+      "size_bytes": 9568,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "main.py",
+      "file_type": "python",
+      "line_count": 163,
+      "size_bytes": 7573,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "maps_mps3_gen2.yml",
+      "file_type": "data",
+      "line_count": 12,
+      "size_bytes": 184,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "mazda_can_engine.py",
+      "file_type": "python",
+      "line_count": 1294,
+      "size_bytes": 45903,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "mazda_diag/__init__.py",
+      "file_type": "python",
+      "line_count": 8,
+      "size_bytes": 317,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "mazda_ecu_exploiter.py",
+      "file_type": "python",
+      "line_count": 884,
+      "size_bytes": 32177,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "mazda_memory_map.py",
+      "file_type": "python",
+      "line_count": 745,
+      "size_bytes": 26217,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "mazda_obd_service.py",
+      "file_type": "python",
+      "line_count": 796,
+      "size_bytes": 38355,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "mazda_protocols/__init__.py",
+      "file_type": "python",
+      "line_count": 0,
+      "size_bytes": 0,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "mazda_security_core.py",
+      "file_type": "python",
+      "line_count": 516,
+      "size_bytes": 17494,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "mazda_tool/__init__.py",
+      "file_type": "python",
+      "line_count": 0,
+      "size_bytes": 0,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "mazda_tool/core/__init__.py",
+      "file_type": "python",
+      "line_count": 0,
+      "size_bytes": 0,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "mazda_tool/core/advanced_diagnostics.py",
+      "file_type": "python",
+      "line_count": 160,
+      "size_bytes": 7253,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "mazda_tool/core/ai_tuner.py",
+      "file_type": "python",
+      "line_count": 731,
+      "size_bytes": 29539,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "mazda_tool/core/ai_tuning_engine.py",
+      "file_type": "python",
+      "line_count": 220,
+      "size_bytes": 9089,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "mazda_tool/core/config_manager.py",
+      "file_type": "python",
+      "line_count": 100,
+      "size_bytes": 3792,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "mazda_tool/core/data_manager.py",
+      "file_type": "python",
+      "line_count": 190,
+      "size_bytes": 8081,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "mazda_tool/core/dyno_simulator.py",
+      "file_type": "python",
+      "line_count": 206,
+      "size_bytes": 7963,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "mazda_tool/core/mazdaspeed_knowledge.py",
+      "file_type": "python",
+      "line_count": 144,
+      "size_bytes": 5954,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "mazda_tool/core/obd_connection.py",
+      "file_type": "python",
+      "line_count": 362,
+      "size_bytes": 13678,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "mazda_tool/core/real_obd.py",
+      "file_type": "python",
+      "line_count": 126,
+      "size_bytes": 4503,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "mazda_tool/main.py",
+      "file_type": "python",
+      "line_count": 80,
+      "size_bytes": 2764,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "mazda_tool/modules/__init__.py",
+      "file_type": "python",
+      "line_count": 0,
+      "size_bytes": 0,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "mazda_tool/ui/__init__.py",
+      "file_type": "python",
+      "line_count": 0,
+      "size_bytes": 0,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "mazda_tool/ui/ai_learning_tab.py",
+      "file_type": "python",
+      "line_count": 73,
+      "size_bytes": 2857,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "mazda_tool/ui/diagnostic_dashboard.py",
+      "file_type": "python",
+      "line_count": 190,
+      "size_bytes": 7520,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "mazda_tool/ui/help_system.py",
+      "file_type": "python",
+      "line_count": 128,
+      "size_bytes": 4862,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "mazda_tool/ui/main_window.py",
+      "file_type": "python",
+      "line_count": 58,
+      "size_bytes": 2458,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "mazda_tool/utils/__init__.py",
+      "file_type": "python",
+      "line_count": 0,
+      "size_bytes": 0,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "mazda_tool/utils/logger.py",
+      "file_type": "python",
+      "line_count": 18,
+      "size_bytes": 457,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "mazda_tuner_api.py",
+      "file_type": "python",
+      "line_count": 842,
+      "size_bytes": 32756,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "mazdaspeed3_tuning/__init__.py",
+      "file_type": "python",
+      "line_count": 47,
+      "size_bytes": 1648,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "mazdaspeed3_tuning/config/mazdaspeed3_config.py",
+      "file_type": "python",
+      "line_count": 150,
+      "size_bytes": 4108,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "mazdaspeed3_tuning/core/ecu_communication.py",
+      "file_type": "python",
+      "line_count": 129,
+      "size_bytes": 3796,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "mazdaspeed3_tuning/core/safety_validator.py",
+      "file_type": "python",
+      "line_count": 307,
+      "size_bytes": 13574,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "mazdaspeed3_tuning/utils/calculations.py",
+      "file_type": "python",
+      "line_count": 365,
+      "size_bytes": 14735,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "mazdaspeed3_tuning/utils/logger.py",
+      "file_type": "python",
+      "line_count": 60,
+      "size_bytes": 1718,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "mds1.py",
+      "file_type": "python",
+      "line_count": 526,
+      "size_bytes": 19360,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "mds10.py",
+      "file_type": "python",
+      "line_count": 527,
+      "size_bytes": 19447,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "mds11.py",
+      "file_type": "python",
+      "line_count": 993,
+      "size_bytes": 36025,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "mds12.py",
+      "file_type": "python",
+      "line_count": 509,
+      "size_bytes": 18060,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "mds13.py",
+      "file_type": "python",
+      "line_count": 612,
+      "size_bytes": 22405,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "mds14.py",
+      "file_type": "python",
+      "line_count": 571,
+      "size_bytes": 19482,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "mds15.py",
+      "file_type": "python",
+      "line_count": 456,
+      "size_bytes": 16845,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "mds2.py",
+      "file_type": "python",
+      "line_count": 390,
+      "size_bytes": 14708,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "mds3.py",
+      "file_type": "python",
+      "line_count": 605,
+      "size_bytes": 25651,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "mds4.py",
+      "file_type": "python",
+      "line_count": 394,
+      "size_bytes": 17659,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "mds5.py",
+      "file_type": "python",
+      "line_count": 515,
+      "size_bytes": 19344,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "mds6.py",
+      "file_type": "python",
+      "line_count": 444,
+      "size_bytes": 16123,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "mds7.py",
+      "file_type": "python",
+      "line_count": 471,
+      "size_bytes": 18572,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "mds8.py",
+      "file_type": "python",
+      "line_count": 841,
+      "size_bytes": 34297,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "mds9.py",
+      "file_type": "python",
+      "line_count": 258,
+      "size_bytes": 9586,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "mkdocs.yml",
+      "file_type": "data",
+      "line_count": 12,
+      "size_bytes": 240,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "models.py",
+      "file_type": "python",
+      "line_count": 362,
+      "size_bytes": 10623,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "mps safe tune.py",
+      "file_type": "python",
+      "line_count": 560,
+      "size_bytes": 23057,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "mps tune.py",
+      "file_type": "python",
+      "line_count": 490,
+      "size_bytes": 19433,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "mpsrom.py",
+      "file_type": "python",
+      "line_count": 461,
+      "size_bytes": 21261,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "mpsrom2.py",
+      "file_type": "python",
+      "line_count": 510,
+      "size_bytes": 20101,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "mpsrom3.py",
+      "file_type": "python",
+      "line_count": 510,
+      "size_bytes": 20101,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "mpsrom4.py",
+      "file_type": "python",
+      "line_count": 510,
+      "size_bytes": 20101,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "muts/__init__.py",
+      "file_type": "python",
+      "line_count": 17,
+      "size_bytes": 432,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "muts/comms/__init__.py",
+      "file_type": "python",
+      "line_count": 5,
+      "size_bytes": 130,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "muts/comms/can_interface.py",
+      "file_type": "python",
+      "line_count": 523,
+      "size_bytes": 18735,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "muts/config/__init__.py",
+      "file_type": "python",
+      "line_count": 5,
+      "size_bytes": 90,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "muts/config/mazdaspeed3_config.py",
+      "file_type": "python",
+      "line_count": 149,
+      "size_bytes": 4078,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "muts/core/__init__.py",
+      "file_type": "python",
+      "line_count": 5,
+      "size_bytes": 68,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "muts/core/main.py",
+      "file_type": "python",
+      "line_count": 654,
+      "size_bytes": 26227,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "muts/database/__init__.py",
+      "file_type": "python",
+      "line_count": 6,
+      "size_bytes": 260,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "muts/database/ecu_database.py",
+      "file_type": "python",
+      "line_count": 145,
+      "size_bytes": 7913,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "muts/database/tuning_database.py",
+      "file_type": "python",
+      "line_count": 162,
+      "size_bytes": 6688,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "muts/models/__init__.py",
+      "file_type": "python",
+      "line_count": 6,
+      "size_bytes": 189,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "muts/models/engine_models.py",
+      "file_type": "python",
+      "line_count": 358,
+      "size_bytes": 14726,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "muts/models/turbo_models.py",
+      "file_type": "python",
+      "line_count": 466,
+      "size_bytes": 20026,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "muts/security/__init__.py",
+      "file_type": "python",
+      "line_count": 7,
+      "size_bytes": 191,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "muts/security/seed_key.py",
+      "file_type": "python",
+      "line_count": 160,
+      "size_bytes": 5985,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "muts/services/__init__.py",
+      "file_type": "python",
+      "line_count": 8,
+      "size_bytes": 339,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "muts/services/ai_tuner.py",
+      "file_type": "python",
+      "line_count": 475,
+      "size_bytes": 17940,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "muts/services/dealer_service.py",
+      "file_type": "python",
+      "line_count": 419,
+      "size_bytes": 15309,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "muts/services/performance_features.py",
+      "file_type": "python",
+      "line_count": 802,
+      "size_bytes": 30209,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "muts/services/physics_engine.py",
+      "file_type": "python",
+      "line_count": 321,
+      "size_bytes": 13940,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "muts/utils/__init__.py",
+      "file_type": "python",
+      "line_count": 6,
+      "size_bytes": 146,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "muts/utils/calculations.py",
+      "file_type": "python",
+      "line_count": 365,
+      "size_bytes": 14646,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "muts/utils/security.py",
+      "file_type": "python",
+      "line_count": 246,
+      "size_bytes": 8523,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "muts1.py",
+      "file_type": "python",
+      "line_count": 696,
+      "size_bytes": 23347,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "muts10.py",
+      "file_type": "python",
+      "line_count": 184,
+      "size_bytes": 6787,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "muts11.py",
+      "file_type": "python",
+      "line_count": 195,
+      "size_bytes": 6908,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "muts12.py",
+      "file_type": "python",
+      "line_count": 323,
+      "size_bytes": 12387,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "muts13.py",
+      "file_type": "python",
+      "line_count": 456,
+      "size_bytes": 16845,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "muts14.py",
+      "file_type": "python",
+      "line_count": 503,
+      "size_bytes": 21931,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "muts15.py",
+      "file_type": "python",
+      "line_count": 607,
+      "size_bytes": 21328,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "muts16.py",
+      "file_type": "python",
+      "line_count": 785,
+      "size_bytes": 30926,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "muts2.py",
+      "file_type": "python",
+      "line_count": 872,
+      "size_bytes": 30766,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "muts3.py",
+      "file_type": "python",
+      "line_count": 840,
+      "size_bytes": 27502,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "muts4.py",
+      "file_type": "python",
+      "line_count": 1236,
+      "size_bytes": 47735,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "muts5.py",
+      "file_type": "python",
+      "line_count": 720,
+      "size_bytes": 28181,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "muts6.py",
+      "file_type": "python",
+      "line_count": 607,
+      "size_bytes": 21328,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "muts7.py",
+      "file_type": "python",
+      "line_count": 720,
+      "size_bytes": 28181,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "muts8.py",
+      "file_type": "python",
+      "line_count": 1123,
+      "size_bytes": 44689,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "muts9.py",
+      "file_type": "python",
+      "line_count": 109,
+      "size_bytes": 4221,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "muts_architecture_diagram/ARCHITECTURE.md",
+      "file_type": "text",
+      "line_count": 10,
+      "size_bytes": 385,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "muts_architecture_diagram/ARCHITECTURE_DIAGRAM.txt",
+      "file_type": "text",
+      "line_count": 29,
+      "size_bytes": 1238,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "muts_build_instructions/BUILD_INSTRUCTIONS.md",
+      "file_type": "text",
+      "line_count": 95,
+      "size_bytes": 1776,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "muts_technical_spec (2)/MUTS_Technical_Spec.pdf",
+      "file_type": "binary",
+      "line_count": 0,
+      "size_bytes": 1863,
+      "readable": false,
+      "parse_errors": []
+    },
+    {
+      "file_path": "muts_technical_spec (2)/README.md",
+      "file_type": "text",
+      "line_count": 9,
+      "size_bytes": 348,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "muts_technical_spec/MUTS_Technical_Spec.pdf",
+      "file_type": "binary",
+      "line_count": 0,
+      "size_bytes": 1863,
+      "readable": false,
+      "parse_errors": []
+    },
+    {
+      "file_path": "muts_technical_spec/README.md",
+      "file_type": "text",
+      "line_count": 9,
+      "size_bytes": 348,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "muts_tuner/backend/flash_service.py",
+      "file_type": "python",
+      "line_count": 426,
+      "size_bytes": 17801,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "muts_tuner/backend/main.py",
+      "file_type": "python",
+      "line_count": 444,
+      "size_bytes": 14349,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "muts_tuner/backend/static/index.html",
+      "file_type": "other",
+      "line_count": 0,
+      "size_bytes": 33409,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "muts_tuner/backend/test_api.py",
+      "file_type": "python",
+      "line_count": 407,
+      "size_bytes": 14499,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "muts_tuner/complete_tuner/README.md",
+      "file_type": "text",
+      "line_count": 148,
+      "size_bytes": 6159,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "muts_tuner/complete_tuner/advanced_ecu_access.py",
+      "file_type": "python",
+      "line_count": 620,
+      "size_bytes": 24785,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "muts_tuner/complete_tuner/core/__init__.py",
+      "file_type": "python",
+      "line_count": 22,
+      "size_bytes": 567,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "muts_tuner/complete_tuner/core/ecu_communication.py",
+      "file_type": "python",
+      "line_count": 83,
+      "size_bytes": 2605,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "muts_tuner/complete_tuner/core/safety_validator.py",
+      "file_type": "python",
+      "line_count": 229,
+      "size_bytes": 8852,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "muts_tuner/complete_tuner/integration_test.py",
+      "file_type": "python",
+      "line_count": 655,
+      "size_bytes": 25426,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "muts_tuner/complete_tuner/mazda_calibration_manager.py",
+      "file_type": "python",
+      "line_count": 1028,
+      "size_bytes": 40552,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "muts_tuner/complete_tuner/mazda_ecu_core.py",
+      "file_type": "python",
+      "line_count": 449,
+      "size_bytes": 16679,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "muts_tuner/complete_tuner/mazda_tuner_gui.py",
+      "file_type": "python",
+      "line_count": 698,
+      "size_bytes": 27656,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "muts_tuner/complete_tuner/mds1.py",
+      "file_type": "python",
+      "line_count": 526,
+      "size_bytes": 19360,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "muts_tuner/complete_tuner/mds10.py",
+      "file_type": "python",
+      "line_count": 527,
+      "size_bytes": 19447,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "muts_tuner/complete_tuner/mds11.py",
+      "file_type": "python",
+      "line_count": 993,
+      "size_bytes": 36025,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "muts_tuner/complete_tuner/mds12.py",
+      "file_type": "python",
+      "line_count": 509,
+      "size_bytes": 18060,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "muts_tuner/complete_tuner/mds13.py",
+      "file_type": "python",
+      "line_count": 612,
+      "size_bytes": 22405,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "muts_tuner/complete_tuner/mds14.py",
+      "file_type": "python",
+      "line_count": 571,
+      "size_bytes": 19482,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "muts_tuner/complete_tuner/mds15.py",
+      "file_type": "python",
+      "line_count": 456,
+      "size_bytes": 16845,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "muts_tuner/complete_tuner/mds2.py",
+      "file_type": "python",
+      "line_count": 390,
+      "size_bytes": 14708,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "muts_tuner/complete_tuner/mds3.py",
+      "file_type": "python",
+      "line_count": 605,
+      "size_bytes": 25651,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "muts_tuner/complete_tuner/mds4.py",
+      "file_type": "python",
+      "line_count": 394,
+      "size_bytes": 17659,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "muts_tuner/complete_tuner/mds5.py",
+      "file_type": "python",
+      "line_count": 515,
+      "size_bytes": 19344,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "muts_tuner/complete_tuner/mds6.py",
+      "file_type": "python",
+      "line_count": 444,
+      "size_bytes": 16123,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "muts_tuner/complete_tuner/mds7.py",
+      "file_type": "python",
+      "line_count": 471,
+      "size_bytes": 18572,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "muts_tuner/complete_tuner/mds8.py",
+      "file_type": "python",
+      "line_count": 841,
+      "size_bytes": 34297,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "muts_tuner/complete_tuner/mds9.py",
+      "file_type": "python",
+      "line_count": 258,
+      "size_bytes": 9586,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "muts_tuner/complete_tuner/mds_compatibility.py",
+      "file_type": "python",
+      "line_count": 116,
+      "size_bytes": 3977,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "muts_tuner/complete_tuner/protocol_manager.py",
+      "file_type": "python",
+      "line_count": 672,
+      "size_bytes": 22852,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "muts_tuner/complete_tuner/utils.py",
+      "file_type": "python",
+      "line_count": 12,
+      "size_bytes": 246,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "muts_tuner/j2534_interface.py",
+      "file_type": "python",
+      "line_count": 528,
+      "size_bytes": 19575,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "muts_tuner/requirements.txt",
+      "file_type": "text",
+      "line_count": 58,
+      "size_bytes": 1043,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "oracle-cloud-setup/README.md",
+      "file_type": "text",
+      "line_count": 248,
+      "size_bytes": 6140,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "oracle-cloud-setup/a1-flex-deploy.log",
+      "file_type": "other",
+      "line_count": 0,
+      "size_bytes": 11836,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "oracle-cloud-setup/console.log",
+      "file_type": "other",
+      "line_count": 0,
+      "size_bytes": 10240,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "oracle-cloud-setup/console_latest.log",
+      "file_type": "other",
+      "line_count": 0,
+      "size_bytes": 10240,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "oracle-cloud-setup/deploy-a1-flex-retry.sh",
+      "file_type": "other",
+      "line_count": 0,
+      "size_bytes": 4689,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "oracle-cloud-setup/deploy-oracle-server.sh",
+      "file_type": "other",
+      "line_count": 0,
+      "size_bytes": 10359,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "oracle-cloud-setup/known_hosts.tmp",
+      "file_type": "other",
+      "line_count": 0,
+      "size_bytes": 0,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "oracle-cloud-setup/remote-setup.sh",
+      "file_type": "other",
+      "line_count": 0,
+      "size_bytes": 11202,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "oracle-cloud-setup/terraform/cloud-init.yml",
+      "file_type": "data",
+      "line_count": 112,
+      "size_bytes": 3610,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "oracle-cloud-setup/terraform/main.tf",
+      "file_type": "other",
+      "line_count": 0,
+      "size_bytes": 4474,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "oracle-cloud-setup/terraform/terraform.tfstate",
+      "file_type": "other",
+      "line_count": 0,
+      "size_bytes": 35782,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "oracle-cloud-setup/terraform/terraform.tfvars",
+      "file_type": "other",
+      "line_count": 0,
+      "size_bytes": 454,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "oracle-cloud-setup/terraform/tfplan",
+      "file_type": "other",
+      "line_count": 0,
+      "size_bytes": 32257,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "oracle-cloud-setup/terraform/variables.tf",
+      "file_type": "other",
+      "line_count": 0,
+      "size_bytes": 1022,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "pids.py",
+      "file_type": "python",
+      "line_count": 749,
+      "size_bytes": 48262,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "pyproject.toml",
+      "file_type": "other",
+      "line_count": 0,
+      "size_bytes": 3315,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "python_can_engine.py",
+      "file_type": "python",
+      "line_count": 354,
+      "size_bytes": 12586,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "real_time_ai_tuner.py",
+      "file_type": "python",
+      "line_count": 756,
+      "size_bytes": 29156,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "real_time_telemetry.py",
+      "file_type": "python",
+      "line_count": 754,
+      "size_bytes": 28110,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "real_time_tuning_session.py",
+      "file_type": "python",
+      "line_count": 885,
+      "size_bytes": 34147,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "requirements.txt",
+      "file_type": "text",
+      "line_count": 39,
+      "size_bytes": 560,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "run_muts.py",
+      "file_type": "python",
+      "line_count": 47,
+      "size_bytes": 1184,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "safety_limits.yml",
+      "file_type": "data",
+      "line_count": 14,
+      "size_bytes": 165,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "secure_database.py",
+      "file_type": "python",
+      "line_count": 973,
+      "size_bytes": 36408,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "security/anti_theft.py",
+      "file_type": "python",
+      "line_count": 2,
+      "size_bytes": 46,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "security/roles.py",
+      "file_type": "python",
+      "line_count": 2,
+      "size_bytes": 41,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "security/user_auth.py",
+      "file_type": "python",
+      "line_count": 2,
+      "size_bytes": 45,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "security/valet_mode.py",
+      "file_type": "python",
+      "line_count": 2,
+      "size_bytes": 46,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "security_module.py",
+      "file_type": "python",
+      "line_count": 7,
+      "size_bytes": 237,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "simulators/dyno_sim.py",
+      "file_type": "python",
+      "line_count": 2,
+      "size_bytes": 44,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "simulators/virtual_ecu.py",
+      "file_type": "python",
+      "line_count": 2,
+      "size_bytes": 47,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "src/muts.egg-info/PKG-INFO",
+      "file_type": "other",
+      "line_count": 0,
+      "size_bytes": 1215,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "src/muts.egg-info/SOURCES.txt",
+      "file_type": "text",
+      "line_count": 52,
+      "size_bytes": 1479,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "src/muts.egg-info/dependency_links.txt",
+      "file_type": "text",
+      "line_count": 1,
+      "size_bytes": 1,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "src/muts.egg-info/requires.txt",
+      "file_type": "text",
+      "line_count": 16,
+      "size_bytes": 144,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "src/muts.egg-info/top_level.txt",
+      "file_type": "text",
+      "line_count": 1,
+      "size_bytes": 5,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "src/muts/__init__.py",
+      "file_type": "python",
+      "line_count": 1,
+      "size_bytes": 49,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "src/muts/__main__.py",
+      "file_type": "python",
+      "line_count": 4,
+      "size_bytes": 61,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "src/muts/app.py",
+      "file_type": "python",
+      "line_count": 7,
+      "size_bytes": 142,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "src/muts/gui/main_window.py",
+      "file_type": "python",
+      "line_count": 51,
+      "size_bytes": 1913,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "src/muts/gui/tabs/cobb.py",
+      "file_type": "python",
+      "line_count": 281,
+      "size_bytes": 11101,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "src/muts/gui/tabs/comms.py",
+      "file_type": "python",
+      "line_count": 46,
+      "size_bytes": 1787,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "src/muts/gui/tabs/dashboard.py",
+      "file_type": "python",
+      "line_count": 8,
+      "size_bytes": 375,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "src/muts/gui/tabs/diagnostic_library.py",
+      "file_type": "python",
+      "line_count": 100,
+      "size_bytes": 4236,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "src/muts/gui/tabs/diagnostics.py",
+      "file_type": "python",
+      "line_count": 30,
+      "size_bytes": 1187,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "src/muts/gui/tabs/dyno.py",
+      "file_type": "python",
+      "line_count": 18,
+      "size_bytes": 668,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "src/muts/gui/tabs/integration.py",
+      "file_type": "python",
+      "line_count": 102,
+      "size_bytes": 4370,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "src/muts/gui/tabs/mds.py",
+      "file_type": "python",
+      "line_count": 140,
+      "size_bytes": 5331,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "src/muts/gui/tabs/mpsrom.py",
+      "file_type": "python",
+      "line_count": 152,
+      "size_bytes": 6194,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "src/muts/gui/tabs/muts.py",
+      "file_type": "python",
+      "line_count": 135,
+      "size_bytes": 5721,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "src/muts/gui/tabs/repository_explorer.py",
+      "file_type": "python",
+      "line_count": 87,
+      "size_bytes": 3441,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "src/muts/gui/tabs/security.py",
+      "file_type": "python",
+      "line_count": 23,
+      "size_bytes": 870,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "src/muts/gui/tabs/tune_library.py",
+      "file_type": "python",
+      "line_count": 68,
+      "size_bytes": 2564,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "src/muts/gui/tabs/tuning.py",
+      "file_type": "python",
+      "line_count": 23,
+      "size_bytes": 981,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "src/muts/gui/tabs/versa.py",
+      "file_type": "python",
+      "line_count": 170,
+      "size_bytes": 6596,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "src/muts/services/cobb_stack.py",
+      "file_type": "python",
+      "line_count": 290,
+      "size_bytes": 9576,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "src/muts/services/comms_service.py",
+      "file_type": "python",
+      "line_count": 84,
+      "size_bytes": 2455,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "src/muts/services/diagnostic_database.py",
+      "file_type": "python",
+      "line_count": 68,
+      "size_bytes": 2416,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "src/muts/services/diagnostic_manager.py",
+      "file_type": "python",
+      "line_count": 167,
+      "size_bytes": 5955,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "src/muts/services/diagnostics.py",
+      "file_type": "python",
+      "line_count": 13,
+      "size_bytes": 384,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "src/muts/services/dyno.py",
+      "file_type": "python",
+      "line_count": 6,
+      "size_bytes": 236,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "src/muts/services/integration_stack.py",
+      "file_type": "python",
+      "line_count": 110,
+      "size_bytes": 3762,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "src/muts/services/mazda_obd.py",
+      "file_type": "python",
+      "line_count": 56,
+      "size_bytes": 1926,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "src/muts/services/mds_stack.py",
+      "file_type": "python",
+      "line_count": 140,
+      "size_bytes": 4213,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "src/muts/services/metadata.py",
+      "file_type": "python",
+      "line_count": 53,
+      "size_bytes": 1862,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "src/muts/services/mpsrom_stack.py",
+      "file_type": "python",
+      "line_count": 209,
+      "size_bytes": 7533,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "src/muts/services/muts_stack.py",
+      "file_type": "python",
+      "line_count": 135,
+      "size_bytes": 4159,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "src/muts/services/queue.py",
+      "file_type": "python",
+      "line_count": 20,
+      "size_bytes": 513,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "src/muts/services/repository_catalog.py",
+      "file_type": "python",
+      "line_count": 108,
+      "size_bytes": 3447,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "src/muts/services/security.py",
+      "file_type": "python",
+      "line_count": 12,
+      "size_bytes": 382,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "src/muts/services/torque_swas.py",
+      "file_type": "python",
+      "line_count": 8,
+      "size_bytes": 241,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "src/muts/services/tune_library.py",
+      "file_type": "python",
+      "line_count": 107,
+      "size_bytes": 3360,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "src/muts/services/versa_stack.py",
+      "file_type": "python",
+      "line_count": 131,
+      "size_bytes": 4340,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "src/muts/storage.py",
+      "file_type": "python",
+      "line_count": 77,
+      "size_bytes": 1982,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "test_core_system.py",
+      "file_type": "python",
+      "line_count": 351,
+      "size_bytes": 12538,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "test_integration.py",
+      "file_type": "python",
+      "line_count": 169,
+      "size_bytes": 5635,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "test_platform_imports.py",
+      "file_type": "python",
+      "line_count": 102,
+      "size_bytes": 3266,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "test_real_time_telemetry.py",
+      "file_type": "python",
+      "line_count": 195,
+      "size_bytes": 6664,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "tests/test_comms.py",
+      "file_type": "python",
+      "line_count": 2,
+      "size_bytes": 46,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "tests/test_diagnostics.py",
+      "file_type": "python",
+      "line_count": 2,
+      "size_bytes": 52,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "tests/test_live_data_service.py",
+      "file_type": "python",
+      "line_count": 55,
+      "size_bytes": 1921,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "tests/test_queue.py",
+      "file_type": "python",
+      "line_count": 6,
+      "size_bytes": 163,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "tests/test_security.py",
+      "file_type": "python",
+      "line_count": 2,
+      "size_bytes": 49,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "tests/test_tuning.py",
+      "file_type": "python",
+      "line_count": 2,
+      "size_bytes": 47,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "tests/test_ui_smoke.py",
+      "file_type": "python",
+      "line_count": 2,
+      "size_bytes": 49,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "tools/export_tune_to_csv.py",
+      "file_type": "python",
+      "line_count": 2,
+      "size_bytes": 54,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "tools/generate_dummy_logs.py",
+      "file_type": "python",
+      "line_count": 2,
+      "size_bytes": 55,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "tools/import_stock_rom.py",
+      "file_type": "python",
+      "line_count": 2,
+      "size_bytes": 52,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "tuning/boost_control.py",
+      "file_type": "python",
+      "line_count": 12,
+      "size_bytes": 430,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "tuning/fueling_control.py",
+      "file_type": "python",
+      "line_count": 12,
+      "size_bytes": 401,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "tuning/ignition_control.py",
+      "file_type": "python",
+      "line_count": 8,
+      "size_bytes": 276,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "tuning/load_targeting.py",
+      "file_type": "python",
+      "line_count": 16,
+      "size_bytes": 441,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "tuning/map_editor.py",
+      "file_type": "python",
+      "line_count": 2,
+      "size_bytes": 46,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "tuning/models.py",
+      "file_type": "python",
+      "line_count": 29,
+      "size_bytes": 986,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "tuning/performance_features.py",
+      "file_type": "python",
+      "line_count": 12,
+      "size_bytes": 531,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "tuning/rom_manager.py",
+      "file_type": "python",
+      "line_count": 45,
+      "size_bytes": 1638,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "tuning/swas_manager.py",
+      "file_type": "python",
+      "line_count": 14,
+      "size_bytes": 372,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "tuning/torque_manager.py",
+      "file_type": "python",
+      "line_count": 8,
+      "size_bytes": 319,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "tuning/tune_profile_manager.py",
+      "file_type": "python",
+      "line_count": 27,
+      "size_bytes": 850,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "tuning_module.py",
+      "file_type": "python",
+      "line_count": 399,
+      "size_bytes": 15596,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "ui/dialogs/cable_selector_dialog.py",
+      "file_type": "python",
+      "line_count": 2,
+      "size_bytes": 57,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "ui/dialogs/flash_warning_dialog.py",
+      "file_type": "python",
+      "line_count": 2,
+      "size_bytes": 56,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "ui/dialogs/log_export_dialog.py",
+      "file_type": "python",
+      "line_count": 2,
+      "size_bytes": 53,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "ui/dialogs/tune_save_dialog.py",
+      "file_type": "python",
+      "line_count": 2,
+      "size_bytes": 52,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "ui/main_window.py",
+      "file_type": "python",
+      "line_count": 2,
+      "size_bytes": 47,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "ui/style.py",
+      "file_type": "python",
+      "line_count": 2,
+      "size_bytes": 41,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "ui/tabs/dashboard_tab.py",
+      "file_type": "python",
+      "line_count": 2,
+      "size_bytes": 49,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "ui/tabs/diagnostics_tab.py",
+      "file_type": "python",
+      "line_count": 2,
+      "size_bytes": 51,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "ui/tabs/dyno_tab.py",
+      "file_type": "python",
+      "line_count": 2,
+      "size_bytes": 44,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "ui/tabs/logs_tab.py",
+      "file_type": "python",
+      "line_count": 2,
+      "size_bytes": 44,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "ui/tabs/security_tab.py",
+      "file_type": "python",
+      "line_count": 2,
+      "size_bytes": 48,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "ui/tabs/torque_tab.py",
+      "file_type": "python",
+      "line_count": 2,
+      "size_bytes": 46,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "ui/tabs/tuning_tab.py",
+      "file_type": "python",
+      "line_count": 2,
+      "size_bytes": 46,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "ui/widgets/abs_srs_view.py",
+      "file_type": "python",
+      "line_count": 2,
+      "size_bytes": 48,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "ui/widgets/connection_panel.py",
+      "file_type": "python",
+      "line_count": 2,
+      "size_bytes": 52,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "ui/widgets/dtc_view.py",
+      "file_type": "python",
+      "line_count": 2,
+      "size_bytes": 44,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "ui/widgets/dyno_view.py",
+      "file_type": "python",
+      "line_count": 2,
+      "size_bytes": 45,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "ui/widgets/live_gauges.py",
+      "file_type": "python",
+      "line_count": 2,
+      "size_bytes": 47,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "ui/widgets/logging_view.py",
+      "file_type": "python",
+      "line_count": 2,
+      "size_bytes": 48,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "ui/widgets/map_table_editor.py",
+      "file_type": "python",
+      "line_count": 2,
+      "size_bytes": 52,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "ui/widgets/security_panel.py",
+      "file_type": "python",
+      "line_count": 2,
+      "size_bytes": 50,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "ui/widgets/torque_view.py",
+      "file_type": "python",
+      "line_count": 2,
+      "size_bytes": 47,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "utils/logger.py",
+      "file_type": "python",
+      "line_count": 110,
+      "size_bytes": 3408,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "versa1.py",
+      "file_type": "python",
+      "line_count": 377,
+      "size_bytes": 13136,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "versa10.py",
+      "file_type": "python",
+      "line_count": 52,
+      "size_bytes": 1647,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "versa11.py",
+      "file_type": "python",
+      "line_count": 577,
+      "size_bytes": 22152,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "versa12.py",
+      "file_type": "python",
+      "line_count": 577,
+      "size_bytes": 18861,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "versa13.py",
+      "file_type": "python",
+      "line_count": 459,
+      "size_bytes": 16633,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "versa14.py",
+      "file_type": "python",
+      "line_count": 537,
+      "size_bytes": 18467,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "versa15.py",
+      "file_type": "python",
+      "line_count": 227,
+      "size_bytes": 7789,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "versa16.json",
+      "file_type": "data",
+      "line_count": 105,
+      "size_bytes": 3311,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "versa16.py",
+      "file_type": "python",
+      "line_count": 532,
+      "size_bytes": 19345,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "versa17.json",
+      "file_type": "data",
+      "line_count": 106,
+      "size_bytes": 3558,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "versa18.py",
+      "file_type": "python",
+      "line_count": 314,
+      "size_bytes": 12532,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "versa19.py",
+      "file_type": "python",
+      "line_count": 239,
+      "size_bytes": 9436,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "versa2.py",
+      "file_type": "python",
+      "line_count": 254,
+      "size_bytes": 9012,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "versa20.md",
+      "file_type": "text",
+      "line_count": 222,
+      "size_bytes": 6425,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "versa3.py",
+      "file_type": "python",
+      "line_count": 413,
+      "size_bytes": 15237,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "versa4.py",
+      "file_type": "python",
+      "line_count": 467,
+      "size_bytes": 17828,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "versa5.py",
+      "file_type": "python",
+      "line_count": 447,
+      "size_bytes": 16717,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "versa6.py",
+      "file_type": "python",
+      "line_count": 306,
+      "size_bytes": 11339,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "versa7.py",
+      "file_type": "python",
+      "line_count": 719,
+      "size_bytes": 30643,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "versa8.py",
+      "file_type": "python",
+      "line_count": 328,
+      "size_bytes": 12359,
+      "readable": true,
+      "parse_errors": []
+    },
+    {
+      "file_path": "versa9.py",
+      "file_type": "python",
+      "line_count": 105,
+      "size_bytes": 3321,
+      "readable": true,
+      "parse_errors": []
+    }
+  ]
+}

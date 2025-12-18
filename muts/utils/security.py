@@ -23,12 +23,12 @@ class SecurityManager:
     """
 
     def __init__(self, master_key: str = None):
-        self.master_key = master_key or self._generate_master_key()
-        self.fernet = Fernet(self._derive_encryption_key(self.master_key))
-
-        # Security parameters
+        # Security parameters - must be set before using them
         self.key_derivation_iterations = 100000
         self.token_expiry_hours = 24
+        
+        self.master_key = master_key or self._generate_master_key()
+        self.fernet = Fernet(self._derive_encryption_key(self.master_key))
 
     def _generate_master_key(self) -> str:
         """Generate cryptographically secure master key"""

@@ -143,7 +143,9 @@ class AppStateManager:
                     'stock': {'boost': 15.0, 'timing': 10.0},
                     'street': {'boost': 18.0, 'timing': 15.0},
                     'track': {'boost': 22.0, 'timing': 20.0},
-                    'drag': {'boost': 24.0, 'timing': 25.0}
+                    'drag': {'boost': 24.0, 'timing': 25.0},
+                    'eco': {'boost': 14.0, 'timing': 8.0},
+                    'safe': {'boost': 16.0, 'timing': 12.0}
                 }
             }
             

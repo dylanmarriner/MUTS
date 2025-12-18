@@ -1,0 +1,154 @@
+{
+  "name": "muts-ui",
+  "version": "1.0.0",
+  "description": "MUTS Desktop UI",
+  "main": "dist/main.js",
+  "scripts": {
+    "build": "npm run build:main && npm run build:renderer",
+    "build:main": "tsc -p tsconfig.electron.json",
+    "build:renderer": "vite build",
+    "dev": "concurrently \"tsc -p tsconfig.electron.json --watch\" \"npm run dev:renderer\"",
+    "dev:renderer": "vite",
+    "start": "electron dist/main.js",
+    "pack": "electron-builder",
+    "dist": "npm run build && electron-builder --publish never",
+    "self-test": "npm run build && node test/self_test.js",
+    "test": "npm run self-test",
+    "dev:verify": "npm run build && node test/self_test.js",
+    "watch:test": "chokidar 'src/**/*.{ts,tsx}' 'test/**/*.js' -c 'npm run self-test' --initial",
+    "test:e2e": "npm run build && node test/e2e/comprehensive_e2e.js",
+    "test:e2e:basic": "npm run build && node test/e2e/e2e_runner.js",
+    "test:e2e:ui": "npm run build && npx playwright test test/e2e/e2e_test.spec.ts --ui"
+  },
+  "dependencies": {
+    "clsx": "^1.2.1",
+    "electron": "^22.0.0",
+    "lucide-react": "^0.263.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.6.1",
+    "recharts": "^2.4.3",
+    "tailwind-merge": "^1.8.1",
+    "zustand": "^4.3.2"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.40.0",
+    "@types/electron": "^1.6.12",
+    "@types/node": "^25.0.1",
+    "@types/react": "^18.3.27",
+    "@types/react-dom": "^18.3.7",
+    "@types/react-router-dom": "^5.3.3",
+    "@vitejs/plugin-react": "^3.0.1",
+    "autoprefixer": "^10.4.13",
+    "concurrently": "^7.6.0",
+    "electron-builder": "^23.6.0",
+    "postcss": "^8.4.20",
+    "tailwindcss": "^3.2.4",
+    "typescript": "^4.9.4",
+    "vite": "^4.0.4",
+    "zod": "^3.22.4"
+  },
+  "build": {
+    "appId": "com.marriner.muts",
+    "productName": "MUTS - Mazda Universal Tuning System",
+    "copyright": "Copyright © 2025 Dylan Marriner",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "node_modules/**/*",
+      "!node_modules/**/CHANGELOG.md",
+      "!node_modules/**/README.md",
+      "!node_modules/**/LICENSE",
+      "!node_modules/**/package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "../backend",
+        "to": "backend",
+        "filter": [
+          "**/*",
+          "!node_modules/**",
+          "!logs/*",
+          "!dev.db",
+          "!dev.db-journal"
+        ]
+      },
+      {
+        "from": "../rust-core/target/release",
+        "to": "rust-core",
+        "filter": [
+          "muts",
+          "*.dll",
+          "*.so",
+          "*.dylib"
+        ]
+      }
+    ],
+    "mac": {
+      "category": "public.app-category.developer-tools",
+      "icon": "assets/icon.icns",
+      "hardenedRuntime": true,
+      "gatekeeperAssess": false,
+      "entitlements": "assets/entitlements.mac.plist",
+      "entitlementsInherit": "assets/entitlements.mac.plist",
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "x64",
+            "arm64"
+          ]
+        }
+      ]
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "assets/icon.ico"
+    },
+    "linux": {
+      "target": [
+        {
+          "target": "AppImage",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "deb",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "assets/icon.png",
+      "category": "Development"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "MUTS"
+    },
+    "publish": {
+      "provider": "github",
+      "owner": "dylanmarriner",
+      "repo": "MUTS"
+    }
+  }
+}

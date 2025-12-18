@@ -539,4 +539,4 @@ class Mazdaspeed3Database:
             EngineComponentDatabase(
                 component_type="piston",
                 component_name="OEM Forged Piston",
-                oem_part_number="L3K911
+                oem_part_number="L3K9-11-400"

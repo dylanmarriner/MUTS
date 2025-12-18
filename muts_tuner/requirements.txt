@@ -1,0 +1,58 @@
+# MUTS Tuner Requirements
+# Backend dependencies for FastAPI server and Oracle deployment
+
+# Core web framework
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+websockets==12.0
+
+# Data validation and serialization
+pydantic==2.5.0
+
+# HTTP client for testing
+httpx==0.25.2
+requests==2.31.0
+
+# Async support
+asyncio-mqtt==0.16.1
+aiofiles==23.2.1
+
+# Database (for future tune storage)
+sqlalchemy==2.0.23
+alembic==1.13.1
+
+# Security and authentication
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+python-multipart==0.0.6
+
+# Logging and monitoring
+structlog==23.2.0
+prometheus-client==0.19.0
+
+# Data processing
+numpy==1.25.2
+pandas==2.1.4
+
+# File handling
+python-magic==0.4.27
+xlsxwriter==3.1.9
+
+# Testing
+pytest==7.4.3
+pytest-asyncio==0.21.1
+pytest-cov==4.1.0
+httpx==0.25.2
+
+# Development
+black==23.11.0
+flake8==6.1.0
+mypy==1.7.1
+
+# Windows-specific J2534 support (only install on Windows)
+# pywin32==306; sys_platform == "win32"
+# wmi==1.5.1; sys_platform == "win32"
+
+# Oracle deployment dependencies
+gunicorn==21.2.0
+psycopg2-binary==2.9.9

@@ -1,0 +1,30 @@
+[
+  {
+    "file_path": "mpsrom.py",
+    "features_count": 34,
+    "components_count": 3,
+    "algorithms_count": 0,
+    "risks_count": 3
+  },
+  {
+    "file_path": "mpsrom2.py",
+    "features_count": 39,
+    "components_count": 4,
+    "algorithms_count": 16,
+    "risks_count": 0
+  },
+  {
+    "file_path": "mpsrom3.py",
+    "features_count": 39,
+    "components_count": 4,
+    "algorithms_count": 16,
+    "risks_count": 0
+  },
+  {
+    "file_path": "mpsrom4.py",
+    "features_count": 39,
+    "components_count": 4,
+    "algorithms_count": 16,
+    "risks_count": 0
+  }
+]

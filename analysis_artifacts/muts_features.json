@@ -1,0 +1,576 @@
+[
+  {
+    "file_path": "MUTS_CROSS_FILE_ANALYSIS.md",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "MUTS_Technical_Spec.pdf",
+    "features_count": 1,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 1
+  },
+  {
+    "file_path": "MUTS_Technical_Spec_FULL.pdf",
+    "features_count": 1,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 1
+  },
+  {
+    "file_path": "muts/__init__.py",
+    "features_count": 16,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "muts/comms/__init__.py",
+    "features_count": 2,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "muts/comms/can_interface.py",
+    "features_count": 35,
+    "components_count": 3,
+    "algorithms_count": 1,
+    "risks_count": 0
+  },
+  {
+    "file_path": "muts/config/__init__.py",
+    "features_count": 2,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "muts/config/mazdaspeed3_config.py",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "muts/core/__init__.py",
+    "features_count": 2,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "muts/core/main.py",
+    "features_count": 63,
+    "components_count": 1,
+    "algorithms_count": 1,
+    "risks_count": 0
+  },
+  {
+    "file_path": "muts/database/__init__.py",
+    "features_count": 4,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "muts/database/ecu_database.py",
+    "features_count": 16,
+    "components_count": 2,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "muts/database/tuning_database.py",
+    "features_count": 13,
+    "components_count": 5,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "muts/models/__init__.py",
+    "features_count": 4,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "muts/models/engine_models.py",
+    "features_count": 20,
+    "components_count": 3,
+    "algorithms_count": 6,
+    "risks_count": 0
+  },
+  {
+    "file_path": "muts/models/turbo_models.py",
+    "features_count": 21,
+    "components_count": 2,
+    "algorithms_count": 9,
+    "risks_count": 0
+  },
+  {
+    "file_path": "muts/security/__init__.py",
+    "features_count": 2,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "muts/security/seed_key.py",
+    "features_count": 19,
+    "components_count": 2,
+    "algorithms_count": 6,
+    "risks_count": 0
+  },
+  {
+    "file_path": "muts/services/__init__.py",
+    "features_count": 8,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "muts/services/ai_tuner.py",
+    "features_count": 35,
+    "components_count": 3,
+    "algorithms_count": 1,
+    "risks_count": 0
+  },
+  {
+    "file_path": "muts/services/dealer_service.py",
+    "features_count": 28,
+    "components_count": 1,
+    "algorithms_count": 1,
+    "risks_count": 0
+  },
+  {
+    "file_path": "muts/services/performance_features.py",
+    "features_count": 26,
+    "components_count": 4,
+    "algorithms_count": 9,
+    "risks_count": 0
+  },
+  {
+    "file_path": "muts/services/physics_engine.py",
+    "features_count": 22,
+    "components_count": 3,
+    "algorithms_count": 10,
+    "risks_count": 0
+  },
+  {
+    "file_path": "muts/utils/__init__.py",
+    "features_count": 4,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "muts/utils/calculations.py",
+    "features_count": 22,
+    "components_count": 2,
+    "algorithms_count": 9,
+    "risks_count": 0
+  },
+  {
+    "file_path": "muts/utils/security.py",
+    "features_count": 27,
+    "components_count": 2,
+    "algorithms_count": 1,
+    "risks_count": 0
+  },
+  {
+    "file_path": "muts1.py",
+    "features_count": 13,
+    "components_count": 0,
+    "algorithms_count": 5,
+    "risks_count": 0
+  },
+  {
+    "file_path": "muts10.py",
+    "features_count": 22,
+    "components_count": 1,
+    "algorithms_count": 1,
+    "risks_count": 0
+  },
+  {
+    "file_path": "muts11.py",
+    "features_count": 18,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "muts12.py",
+    "features_count": 34,
+    "components_count": 1,
+    "algorithms_count": 0,
+    "risks_count": 5
+  },
+  {
+    "file_path": "muts13.py",
+    "features_count": 33,
+    "components_count": 4,
+    "algorithms_count": 4,
+    "risks_count": 0
+  },
+  {
+    "file_path": "muts14.py",
+    "features_count": 30,
+    "components_count": 4,
+    "algorithms_count": 5,
+    "risks_count": 0
+  },
+  {
+    "file_path": "muts15.py",
+    "features_count": 33,
+    "components_count": 7,
+    "algorithms_count": 2,
+    "risks_count": 0
+  },
+  {
+    "file_path": "muts16.py",
+    "features_count": 42,
+    "components_count": 9,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "muts2.py",
+    "features_count": 8,
+    "components_count": 0,
+    "algorithms_count": 1,
+    "risks_count": 0
+  },
+  {
+    "file_path": "muts3.py",
+    "features_count": 37,
+    "components_count": 3,
+    "algorithms_count": 1,
+    "risks_count": 0
+  },
+  {
+    "file_path": "muts4.py",
+    "features_count": 78,
+    "components_count": 11,
+    "algorithms_count": 5,
+    "risks_count": 0
+  },
+  {
+    "file_path": "muts5.py",
+    "features_count": 74,
+    "components_count": 1,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "muts6.py",
+    "features_count": 33,
+    "components_count": 7,
+    "algorithms_count": 2,
+    "risks_count": 0
+  },
+  {
+    "file_path": "muts7.py",
+    "features_count": 74,
+    "components_count": 1,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "muts8.py",
+    "features_count": 63,
+    "components_count": 7,
+    "algorithms_count": 2,
+    "risks_count": 0
+  },
+  {
+    "file_path": "muts9.py",
+    "features_count": 11,
+    "components_count": 4,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "muts_architecture_diagram/ARCHITECTURE.md",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "muts_architecture_diagram/ARCHITECTURE_DIAGRAM.txt",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "muts_build_instructions/BUILD_INSTRUCTIONS.md",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "muts_technical_spec (2)/MUTS_Technical_Spec.pdf",
+    "features_count": 1,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 1
+  },
+  {
+    "file_path": "muts_technical_spec (2)/README.md",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "muts_technical_spec/MUTS_Technical_Spec.pdf",
+    "features_count": 1,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 1
+  },
+  {
+    "file_path": "muts_technical_spec/README.md",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "muts_tuner/backend/flash_service.py",
+    "features_count": 35,
+    "components_count": 3,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "muts_tuner/backend/main.py",
+    "features_count": 25,
+    "components_count": 5,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "muts_tuner/backend/static/index.html",
+    "features_count": 1,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 1
+  },
+  {
+    "file_path": "muts_tuner/backend/test_api.py",
+    "features_count": 33,
+    "components_count": 6,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "muts_tuner/complete_tuner/README.md",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "muts_tuner/complete_tuner/advanced_ecu_access.py",
+    "features_count": 38,
+    "components_count": 4,
+    "algorithms_count": 8,
+    "risks_count": 0
+  },
+  {
+    "file_path": "muts_tuner/complete_tuner/core/__init__.py",
+    "features_count": 5,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "muts_tuner/complete_tuner/core/ecu_communication.py",
+    "features_count": 14,
+    "components_count": 3,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "muts_tuner/complete_tuner/core/safety_validator.py",
+    "features_count": 17,
+    "components_count": 1,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "muts_tuner/complete_tuner/integration_test.py",
+    "features_count": 77,
+    "components_count": 9,
+    "algorithms_count": 1,
+    "risks_count": 0
+  },
+  {
+    "file_path": "muts_tuner/complete_tuner/mazda_calibration_manager.py",
+    "features_count": 46,
+    "components_count": 5,
+    "algorithms_count": 1,
+    "risks_count": 0
+  },
+  {
+    "file_path": "muts_tuner/complete_tuner/mazda_ecu_core.py",
+    "features_count": 32,
+    "components_count": 3,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "muts_tuner/complete_tuner/mazda_tuner_gui.py",
+    "features_count": 44,
+    "components_count": 4,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "muts_tuner/complete_tuner/mds1.py",
+    "features_count": 39,
+    "components_count": 5,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "muts_tuner/complete_tuner/mds10.py",
+    "features_count": 44,
+    "components_count": 2,
+    "algorithms_count": 24,
+    "risks_count": 0
+  },
+  {
+    "file_path": "muts_tuner/complete_tuner/mds11.py",
+    "features_count": 50,
+    "components_count": 4,
+    "algorithms_count": 2,
+    "risks_count": 0
+  },
+  {
+    "file_path": "muts_tuner/complete_tuner/mds12.py",
+    "features_count": 27,
+    "components_count": 3,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "muts_tuner/complete_tuner/mds13.py",
+    "features_count": 25,
+    "components_count": 2,
+    "algorithms_count": 1,
+    "risks_count": 0
+  },
+  {
+    "file_path": "muts_tuner/complete_tuner/mds14.py",
+    "features_count": 40,
+    "components_count": 1,
+    "algorithms_count": 5,
+    "risks_count": 0
+  },
+  {
+    "file_path": "muts_tuner/complete_tuner/mds15.py",
+    "features_count": 33,
+    "components_count": 4,
+    "algorithms_count": 4,
+    "risks_count": 0
+  },
+  {
+    "file_path": "muts_tuner/complete_tuner/mds2.py",
+    "features_count": 38,
+    "components_count": 2,
+    "algorithms_count": 10,
+    "risks_count": 0
+  },
+  {
+    "file_path": "muts_tuner/complete_tuner/mds3.py",
+    "features_count": 21,
+    "components_count": 4,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "muts_tuner/complete_tuner/mds4.py",
+    "features_count": 30,
+    "components_count": 4,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "muts_tuner/complete_tuner/mds5.py",
+    "features_count": 37,
+    "components_count": 4,
+    "algorithms_count": 2,
+    "risks_count": 0
+  },
+  {
+    "file_path": "muts_tuner/complete_tuner/mds6.py",
+    "features_count": 24,
+    "components_count": 7,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "muts_tuner/complete_tuner/mds7.py",
+    "features_count": 31,
+    "components_count": 1,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "muts_tuner/complete_tuner/mds8.py",
+    "features_count": 43,
+    "components_count": 4,
+    "algorithms_count": 3,
+    "risks_count": 0
+  },
+  {
+    "file_path": "muts_tuner/complete_tuner/mds9.py",
+    "features_count": 20,
+    "components_count": 2,
+    "algorithms_count": 10,
+    "risks_count": 0
+  },
+  {
+    "file_path": "muts_tuner/complete_tuner/mds_compatibility.py",
+    "features_count": 25,
+    "components_count": 6,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "muts_tuner/complete_tuner/protocol_manager.py",
+    "features_count": 21,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "muts_tuner/complete_tuner/utils.py",
+    "features_count": 2,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "muts_tuner/j2534_interface.py",
+    "features_count": 28,
+    "components_count": 5,
+    "algorithms_count": 0,
+    "risks_count": 0
+  },
+  {
+    "file_path": "muts_tuner/requirements.txt",
+    "features_count": 0,
+    "components_count": 0,
+    "algorithms_count": 0,
+    "risks_count": 0
+  }
+]

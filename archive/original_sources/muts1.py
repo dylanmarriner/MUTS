@@ -627,7 +627,7 @@ def demonstrate_security_():
     print("\n3. ADAPTIVE LEARNING RESETS")
     print("-" * 40)
     
-    reset_manager = AdaptiveResetManager)
+    reset_manager = AdaptiveResetManager()
     
     # Fuel trim reset
     fuel_reset = reset_manager.reset_fuel_trims()

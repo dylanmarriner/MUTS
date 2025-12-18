@@ -1,0 +1,31 @@
+{
+  "name": "muts",
+  "version": "0.1.0",
+  "description": "Mazda Universal Tuning System",
+  "private": true,
+  "scripts": {
+    "install:all": "npm install && npm run install:backend && npm run install:desktop && npm run install:core",
+    "install:backend": "cd backend && npm install",
+    "install:desktop": "cd muts-desktop/electron-ui && npm install",
+    "install:core": "cd muts-desktop/rust-core && npm install",
+    "build": "npm run build:backend && npm run build:core && npm run build:desktop",
+    "build:backend": "cd backend && npm run build",
+    "build:core": "cd muts-desktop/rust-core && npm run build",
+    "build:desktop": "cd muts-desktop/electron-ui && npm run build",
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:desktop\"",
+    "dev:backend": "cd backend && npm run dev",
+    "dev:desktop": "cd muts-desktop/electron-ui && npm run dev",
+    "start": "cd muts-desktop/electron-ui && npm start",
+    "test": "npm run test:backend && npm run test:core",
+    "test:backend": "cd backend && npm test",
+    "test:core": "cd muts-desktop/rust-core && npm test",
+    "watchdog": "npm run build:desktop && node watchdog/self_check.js",
+    "clean": "npm run clean:backend && npm run clean:core && npm run clean:desktop",
+    "clean:backend": "cd backend && rm -rf dist node_modules",
+    "clean:core": "cd muts-desktop/rust-core && rm -rf dist node_modules target",
+    "clean:desktop": "cd muts-desktop/electron-ui && rm -rf dist node_modules"
+  },
+  "devDependencies": {
+    "concurrently": "^7.6.0"
+  }
+}

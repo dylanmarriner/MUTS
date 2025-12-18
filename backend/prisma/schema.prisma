@@ -1,0 +1,767 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// Core ECU entity - central to all operations
+model ECU {
+  id                String   @id @default(cuid())
+  vin               String?  @unique
+  ecuType           String   // e.g., "MazdaSpeed3", "Mazda6", "CX-5"
+  protocol          String   // J2534, ISO-TP, UDS, KWP2000, CAN
+  firmwareVersion   String?
+  hardwareVersion   String?
+  serialNumber      String?  @unique
+  securityAlgorithm String?  // M12R v3.4, custom
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  // Relationships
+  diagnosticSessions DiagnosticSession[]
+  tuningProfiles     TuningProfile[]
+  flashSessions      FlashSession[]
+  securitySessions   SecuritySession[]
+  logs               Log[]
+  torqueAdvisories   TorqueAdvisory[]
+  swasConfigurations SWASConfiguration[]
+  jobs               Job[]
+
+  @@map("ecus")
+}
+
+// Diagnostic operations
+model DiagnosticSession {
+  id        String   @id @default(cuid())
+  ecuId     String
+  startTime DateTime @default(now())
+  endTime   DateTime?
+  status    String   // "running", "completed", "error"
+
+  // Diagnostic data
+  dtcs       DTC[]
+  freezeFrames FreezeFrame[]
+  liveData   LiveData[]
+
+  ECU ECU @relation(fields: [ecuId], references: [id], onDelete: Cascade)
+
+  @@map("diagnostic_sessions")
+}
+
+model DTC {
+  id                  String   @id @default(cuid())
+  diagnosticSessionId String
+  code                String   // e.g., "P0300", "U0001"
+  description         String
+  severity            String   // "info", "warning", "error", "critical"
+  status              String   // "active", "stored", "pending"
+  occurrenceCount     Int      @default(1)
+  firstSeen           DateTime @default(now())
+  lastSeen            DateTime @default(now())
+
+  DiagnosticSession DiagnosticSession @relation(fields: [diagnosticSessionId], references: [id], onDelete: Cascade)
+
+  @@unique([diagnosticSessionId, code])
+  @@map("dtcs")
+}
+
+model FreezeFrame {
+  id                  String   @id @default(cuid())
+  diagnosticSessionId String
+  dtcCode            String
+  timestamp          DateTime @default(now())
+  snapshot           String   @default("{}") // Key-value pairs of sensor data
+
+  DiagnosticSession DiagnosticSession @relation(fields: [diagnosticSessionId], references: [id], onDelete: Cascade)
+
+  @@map("freeze_frames")
+}
+
+model LiveData {
+  id                  String   @id @default(cuid())
+  diagnosticSessionId String
+  pid                 String   // Parameter ID
+  name                String   // e.g., "Engine RPM", "Vehicle Speed"
+  value               Float
+  unit                String?  // e.g., "RPM", "km/h", "°C"
+  timestamp           DateTime @default(now())
+
+  DiagnosticSession DiagnosticSession @relation(fields: [diagnosticSessionId], references: [id], onDelete: Cascade)
+
+  @@map("live_data")
+}
+
+// Tuning management
+model TuningProfile {
+  id          String   @id @default(cuid())
+  engineId    String   @default("versa")
+  ecuId       String
+  name        String
+  description String?
+  isActive    Boolean  @default(false)
+  isBase      Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  // Versa tuning extensions
+  version     String?  // Profile version
+  author      String?  // Profile creator
+  category    String?  // Stock, Stage1, Stage2, Custom
+  metadata    String?  @default("{}") // Additional metadata as JSON
+
+  // Maps (legacy models - will be migrated to TuningMap)
+  ignitionMaps IgnitionMap[]
+  fuelMaps     FuelMap[]
+  boostMaps    BoostMap[]
+  limiterMaps  LimiterMap[]
+  
+  // New Versa maps
+  maps         TuningMap[]
+  
+  // Safety checks
+  safetyChecks SafetyCheck[]
+  
+  // Changesets
+  changesets   TuningChangeset[]
+
+  engine      TuningEngine @relation(fields: [engineId], references: [id], onDelete: Cascade)
+  ECU ECU @relation(fields: [ecuId], references: [id], onDelete: Cascade)
+
+  @@unique([ecuId, name])
+  @@map("tuning_profiles")
+}
+
+model IgnitionMap {
+  id             String @id @default(cuid())
+  tuningProfileId String
+  tableName      String
+  axisX          String   @default("[]") // RPM values
+  axisY          String   @default("[]") // Load/TPS values
+  values         String   @default("[]") // 2D array of timing values
+  description    String?
+
+  TuningProfile TuningProfile @relation(fields: [tuningProfileId], references: [id], onDelete: Cascade)
+
+  @@map("ignition_maps")
+}
+
+model FuelMap {
+  id             String @id @default(cuid())
+  tuningProfileId String
+  tableName      String
+  axisX          String   @default("[]") // RPM values
+  axisY          String   @default("[]") // Load/TPS values
+  values         String   @default("[]") // 2D array of fuel values
+  description    String?
+
+  TuningProfile TuningProfile @relation(fields: [tuningProfileId], references: [id], onDelete: Cascade)
+
+  @@map("fuel_maps")
+}
+
+model BoostMap {
+  id             String @id @default(cuid())
+  tuningProfileId String
+  tableName      String
+  axisX          String   @default("[]") // RPM values
+  axisY          String   @default("[]") // Load/TPS values
+  values         String   @default("[]") // 2D array of boost targets
+  description    String?
+
+  TuningProfile TuningProfile @relation(fields: [tuningProfileId], references: [id], onDelete: Cascade)
+
+  @@map("boost_maps")
+}
+
+model LimiterMap {
+  id             String @id @default(cuid())
+  tuningProfileId String
+  type           String // "rev", "speed", "boost"
+  value          Float
+  unit           String?
+  description    String?
+
+  TuningProfile TuningProfile @relation(fields: [tuningProfileId], references: [id], onDelete: Cascade)
+
+  @@map("limiter_maps")
+}
+
+model SafetyCheck {
+  id             String @id @default(cuid())
+  tuningProfileId String
+  parameter      String
+  minValue       Float?
+  maxValue       Float?
+  warningLevel   Float?
+  criticalLevel  Float?
+  enabled        Boolean @default(true)
+
+  TuningProfile TuningProfile @relation(fields: [tuningProfileId], references: [id], onDelete: Cascade)
+
+  @@map("safety_checks")
+}
+
+// Security management
+model SecuritySession {
+  id        String   @id @default(cuid())
+  ecuId     String
+  level     String   // Security access level
+  seed      Bytes?
+  key       Bytes?
+  algorithm String?  // M12R v3.4, etc.
+  success   Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  ECU ECU @relation(fields: [ecuId], references: [id], onDelete: Cascade)
+
+  @@map("security_sessions")
+}
+
+// Flashing operations
+model FlashSession {
+  id          String   @id @default(cuid())
+  ecuId       String
+  jobId       String?  // Link to job for workshop tracking
+  fileName    String
+  fileHash    String   // SHA-256 of flash file
+  status      String   // "preparing", "flashing", "verifying", "completed", "failed", "rollback"
+  progress    Float    @default(0) // 0-100
+  startTime   DateTime @default(now())
+  endTime     DateTime?
+  checksumValidated Boolean @default(false)
+  rollbackAvailable Boolean @default(false)
+
+  ECU ECU @relation(fields: [ecuId], references: [id], onDelete: Cascade)
+  job Job? @relation(fields: [jobId], references: [id], onDelete: SetNull)
+
+  @@map("flash_sessions")
+}
+
+// Logging and analysis
+model Log {
+  id        String   @id @default(cuid())
+  ecuId     String
+  fileName  String
+  format    String   // csv, log, bin
+  startTime DateTime
+  endTime   DateTime?
+  size      Int      // bytes
+  processed Boolean  @default(false)
+
+  // Analysis results
+  dynoResults      DynoResult?
+  torquePredictions TorquePrediction[]
+
+  ECU ECU @relation(fields: [ecuId], references: [id], onDelete: Cascade)
+
+  @@map("logs")
+}
+
+model DynoResult {
+  id     String @id @default(cuid())
+  logId  String @unique
+  power  String   @default("{}") // Power curve data
+  torque String   @default("{}") // Torque curve data
+  peaks  String   @default("{}") // Peak values and RPMs
+
+  Log Log @relation(fields: [logId], references: [id], onDelete: Cascade)
+
+  @@map("dyno_results")
+}
+
+model TorquePrediction {
+  id       String @id @default(cuid())
+  logId    String
+  gear     Int
+  rpm      Float
+  torque   Float
+  confidence Float // 0-1
+
+  Log Log @relation(fields: [logId], references: [id], onDelete: Cascade)
+
+  @@map("torque_predictions")
+}
+
+// Torque advisory system
+model TorqueAdvisory {
+  id             String   @id @default(cuid())
+  ecuId          String
+  gear           Int
+  maxTorque      Float
+  recommendedMax Float
+  reason         String?
+  basedOnLogId   String?
+  createdAt      DateTime @default(now())
+
+  ECU ECU @relation(fields: [ecuId], references: [id], onDelete: Cascade)
+
+  @@map("torque_advisories")
+}
+
+// SWAS (Steering Angle-based Torque Reduction)
+model SWASConfiguration {
+  id                String   @id @default(cuid())
+  ecuId             String
+  enabled           Boolean  @default(true)
+  reductionCurve    String   @default("{}") // Steering angle vs torque reduction
+  activationAngle   Float    // degrees
+  maxReduction      Float    // percentage
+  responseTime      Int      // ms
+  createdAt         DateTime @default(now())
+
+  ECU ECU @relation(fields: [ecuId], references: [id], onDelete: Cascade)
+
+  @@map("swas_configurations")
+}
+
+// Tuning Engine Registry
+model TuningEngine {
+  id          String @id // 'versa' | 'cobb' | 'mds'
+  name        String
+  version     String
+  capabilities String // JSON
+  metadata    String @default("{}")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  profiles    TuningProfile[]
+  changesets  TuningChangeset[]
+  applySessions TuningApplySession[]
+  maps        TuningMap[]
+  applyEvents TuningApplyEvent[]
+  flashJobs   TuningFlashJob[]
+  actions     TuningEngineAction[]
+
+  @@map("tuning_engines")
+}
+
+// Tuning changesets for tracking modifications
+model TuningChangeset {
+  id          String   @id @default(cuid())
+  engineId    String   @default("versa")
+  profileId   String
+  author      String   // User who created changeset
+  notes       String?  // Optional notes about changes
+  createdAt   DateTime @default(now())
+  
+  // Link to engine and profile
+  engine      TuningEngine @relation(fields: [engineId], references: [id], onDelete: Cascade)
+  profile     TuningProfile @relation(fields: [profileId], references: [id], onDelete: Cascade)
+  
+  // Apply sessions using this changeset
+  applySessions TuningApplySession[]
+  
+  // Map changes in this changeset
+  mapChanges  TuningMapChange[]
+
+  @@map("tuning_changesets")
+}
+
+// Tuning apply sessions with 3-level safety model
+model TuningApplySession {
+  id                    String   @id @default(cuid())
+  engineId              String   @default("versa")
+  vehicleSessionId      String   // Link to active vehicle session
+  changesetId           String?
+  mode                  String   // "SIMULATE", "LIVE_APPLY", "FLASH"
+  armed                 Boolean  @default(false) // Multi-step arming state
+  expiresAt             DateTime? // Auto-revert timeout for LIVE_APPLY
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+  
+  // Session state
+  status                String   @default("PENDING") // PENDING, ARMED, ACTIVE, COMPLETED, REVERTED, FAILED
+  applyToken            String?  // Token for explicit arming
+  revertReason          String?
+  
+  // Link to engine and changeset
+  engine                TuningEngine @relation(fields: [engineId], references: [id], onDelete: Cascade)
+  changeset             TuningChangeset? @relation(fields: [changesetId], references: [id], onDelete: SetNull)
+  
+  // Events during this session
+  events                TuningApplyEvent[]
+  
+  // Safety snapshots
+  safetySnapshots       SafetySnapshot[]
+
+  // Flash jobs for this session
+  flashJobs             TuningFlashJob[]
+
+  @@map("tuning_apply_sessions")
+}
+
+// Individual apply events for audit trail
+model TuningApplyEvent {
+  id          String   @id @default(cuid())
+  engineId    String   @default("versa")
+  sessionId   String
+  featureId   String?  // ID of feature being modified
+  mapName     String?  // Name of map being modified
+  paramName   String?  // Name of single parameter
+  beforeValue String?  // Serialized before value
+  afterValue  String?  // Serialized after value
+  result      String   // "SUCCESS", "FAILED", "REVERTED"
+  message     String?  // Optional message
+  timestamp   DateTime @default(now())
+  
+  // Link to engine and session
+  engine      TuningEngine @relation(fields: [engineId], references: [id], onDelete: Cascade)
+  session     TuningApplySession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+
+  @@map("tuning_apply_events")
+}
+
+// Safety snapshots for monitoring and rollback
+model SafetySnapshot {
+  id          String   @id @default(cuid())
+  sessionId   String
+  rpm         Float
+  boost       Float
+  afr         Float
+  knock       Float
+  coolant     Float
+  iat         Float // Intake Air Temp
+  timestamp   DateTime @default(now())
+  
+  // Additional sensor data
+  throttle    Float?
+  speed       Float?
+  oilPressure Float?
+  
+  // Link to session
+  session     TuningApplySession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+
+  @@map("safety_snapshots")
+}
+
+// Generic tuning map model for all map types
+model TuningMap {
+  id            String   @id @default(cuid())
+  engineId      String   @default("versa")
+  profileId     String
+  mapName       String
+  mapType       String   // "IGNITION", "FUEL", "BOOST", "VVT", "TORQUE", "LIMITER", "CORRECTION"
+  address       String   // ROM address
+  size          Int      // Size in bytes
+  dataType      String   // "2D_16x16", "2D_8x8", "1D", "SINGLE"
+  description   String?
+  units         String?
+  conversionFactor Float  @default(1.0)
+  minValue      Float?
+  maxValue      Float?
+  
+  // Axis data (JSON arrays)
+  xAxis        String?  @default("[]") // X-axis values
+  yAxis        String?  @default("[]") // Y-axis values
+  
+  // Map data (serialized as JSON)
+  values       String   @default("[]") // 2D array or 1D array
+  rawBytes     String?  // Raw hex bytes
+  
+  // Metadata
+  category     String   @default("General")
+  isReadonly   Boolean  @default(false)
+  isRuntimeAdjustable Boolean @default(false)
+  
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  
+  // Link to engine and profile
+  engine       TuningEngine @relation(fields: [engineId], references: [id], onDelete: Cascade)
+  profile      TuningProfile @relation(fields: [profileId], references: [id], onDelete: Cascade)
+  
+  // Changes to this map
+  changes      TuningMapChange[]
+
+  @@map("tuning_maps")
+}
+
+// Individual map changes for tracking modifications
+model TuningMapChange {
+  id          String   @id @default(cuid())
+  mapId       String
+  changesetId String
+  xIndex      Int?
+  yIndex      Int?
+  oldValue    Float?
+  newValue    Float?
+  reason      String?
+  timestamp   DateTime @default(now())
+  
+  // Link to map and changeset
+  map         TuningMap @relation(fields: [mapId], references: [id], onDelete: Cascade)
+  changeset   TuningChangeset @relation(fields: [changesetId], references: [id], onDelete: Cascade)
+
+  @@map("tuning_map_changes")
+}
+
+// Flash jobs for tracking ROM flashing operations
+model TuningFlashJob {
+  id            String   @id @default(cuid())
+  engineId      String   @default("versa")
+  sessionId     String
+  state         String   @default("PREPARED") // PREPARED, VALIDATING, FLASHING, VERIFYING, COMPLETED, FAILED, ABORTED
+  progress      Int      @default(0) // 0-100
+  checksumOk    Boolean  @default(false)
+  validationOk  Boolean  @default(false)
+  errorMessage  String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  
+  // Link to engine and session
+  engine        TuningEngine @relation(fields: [engineId], references: [id], onDelete: Cascade)
+  session       TuningApplySession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+
+  @@map("tuning_flash_jobs")
+}
+
+// Engine-specific actions (for MDS requirements)
+model TuningEngineAction {
+  id                  String   @id @default(cuid())
+  engineId            String   @default("versa")
+  actionId            String   // Unique within engine
+  name                String
+  description         String
+  category            String
+  parameters          String   @default("{}") // JSON
+  requiresSafetyLevel String   @default("SIMULATE")
+  
+  // Link to engine
+  engine              TuningEngine @relation(fields: [engineId], references: [id], onDelete: Cascade)
+
+  @@unique([engineId, actionId])
+  @@map("tuning_engine_actions")
+}
+
+// UI Orchestration - Agent coordination
+model AgentStatus {
+  id          String   @id @default(cuid())
+  agentName   String   // ECUComms, Diagnostics, Tuning, etc.
+  status      String   // "idle", "running", "error", "completed"
+  currentTask String?
+  lastUpdate  DateTime @default(now())
+  metadata    String? // JSON metadata
+
+  @@unique([agentName])
+  @@map("agent_status")
+}
+
+// System configuration
+model SystemConfig {
+  id    String @id @default(cuid())
+  key   String @unique
+  value String // JSON value
+  description String?
+
+  @@map("system_config")
+}
+
+// Workshop operation tracking
+model Technician {
+  id          String   @id @default(cuid())
+  name        String   @unique
+  pin         String?  @unique
+  active      Boolean  @default(true)
+  role        String?  @default("technician")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relationships
+  jobs        Job[]
+  jobEvents   JobEvent[]
+  addSessions AddSession[]
+
+  @@map("technicians")
+}
+
+model Job {
+  id            String   @id @default(cuid())
+  vehicleId     String   // VIN or identifier
+  ecuId         String?
+  technicianId  String
+  operatorMode  String   // "dev", "workshop", "lab"
+  status        String   @default("active") // "active", "completed", "error"
+  startTime     DateTime @default(now())
+  endTime       DateTime?
+  notes         String?  // Job notes
+  metadata      String?  @default("{}") // JSON with additional data
+
+  // Relationships
+  technician    Technician @relation(fields: [technicianId], references: [id], onDelete: Restrict)
+  ecu           ECU? @relation(fields: [ecuId], references: [id], onDelete: SetNull)
+  events        JobEvent[]
+  flashSessions FlashSession[]
+  addSessions   AddSession[]
+
+  @@map("jobs")
+}
+
+model JobEvent {
+  id          String   @id @default(cuid())
+  jobId       String
+  technicianId String
+  timestamp   DateTime @default(now())
+  category    String   // "diagnostic", "tuning", "flash", "safety", "error"
+  description String
+  payload     String?  @default("{}") // JSON with additional data
+
+  // Relationships
+  job         Job @relation(fields: [jobId], references: [id], onDelete: Cascade)
+  technician  Technician @relation(fields: [technicianId], references: [id], onDelete: Restrict)
+
+  @@map("job_events")
+}
+
+/// Safety event queue for durable delivery
+model SafetyEvent {
+  id                  String   @id @default(cuid())
+  eventId             String   @unique
+  eventType           String   // "violation", "sessionCreated", "sessionExpired", "sessionArmed", "sessionApplied"
+  eventData           String   // JSON with event data
+  timestamp           DateTime @default(now())
+  delivered           Boolean  @default(false)
+  deliveredAt         DateTime?
+  deliveryAttempts    Int      @default(0)
+  lastDeliveryAttempt DateTime?
+
+  @@map("safety_events")
+  @@index([delivered, deliveryAttempts])
+  @@index([timestamp])
+}
+
+/// ADD (AI Tuner) learning data
+model AddSession {
+  id            String   @id @default(cuid())
+  technicianId  String
+  jobId         String?
+  sessionId     String   @unique
+  startTime     DateTime @default(now())
+  endTime       DateTime?
+  mode          String   @default("LEARN_ONLY") // "LEARN_ONLY", "ACTIVE_TUNING"
+  status        String   @default("ACTIVE") // "ACTIVE", "COMPLETED", "ERROR"
+  
+  // Session statistics
+  sampleCount   Int      @default(0)
+  featureCount  Int      @default(0)
+  recommendationCount Int @default(0)
+  
+  // Learning outcomes
+  confidence    Float?   // Average confidence of recommendations
+  riskScore     Float?   // Average risk score
+  
+  // Relationships
+  technician    Technician @relation(fields: [technicianId], references: [id], onDelete: Restrict)
+  job           Job? @relation(fields: [jobId], references: [id], onDelete: SetNull)
+  
+  // Related data
+  rawSamples    AddRawSample[]
+  derivedFeatures AddDerivedFeature[]
+  recommendations AddRecommendation[]
+
+  @@map("add_sessions")
+  @@index([technicianId, startTime])
+  @@index([sessionId])
+}
+
+/// Raw telemetry samples for learning
+model AddRawSample {
+  id          String   @id @default(cuid())
+  sessionId   String
+  timestamp   DateTime @default(now())
+  
+  // Raw telemetry data
+  rpm         Float
+  boost       Float
+  afr         Float
+  timing      Float
+  coolant     Float
+  iat         Float
+  throttle    Float?
+  speed       Float?
+  oilPressure Float?
+  
+  // Source information
+  source      String   @default("LIVE") // "LIVE", "REPLAY", "SIMULATED"
+  interfaceId String?
+  
+  // Relationships
+  session     AddSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+
+  @@map("add_raw_samples")
+  @@index([sessionId, timestamp])
+  @@index([source])
+}
+
+/// Derived features used for learning
+model AddDerivedFeature {
+  id          String   @id @default(cuid())
+  sessionId   String
+  timestamp   DateTime @default(now())
+  
+  // Feature name and value
+  featureName String
+  featureValue Float
+  featureType String   // "calculated", "statistical", "pattern"
+  
+  // Feature metadata
+  calculation  String?  // How it was calculated
+  confidence   Float?   // Confidence in feature accuracy
+  
+  // Relationships
+  session     AddSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+
+  @@map("add_derived_features")
+  @@index([sessionId, featureName])
+  @@index([featureType])
+}
+
+/// ADD recommendations with full audit trail
+model AddRecommendation {
+  id              String   @id @default(cuid())
+  sessionId       String
+  timestamp       DateTime @default(now())
+  
+  // Recommendation details
+  category        String   // "timing", "fuel", "boost", "vvt"
+  parameterName   String
+  currentValue    Float
+  recommendedValue Float
+  changeAmount    Float
+  
+  // Metrics
+  confidence      Float    // 0-100
+  riskScore       Float    // 0-100
+  expectedImpact  String   // JSON with performance/efficiency/safety impacts
+  
+  // Decision support
+  rationale       String   // Why this recommendation was made
+  evidence        String?  // JSON with supporting data
+  canSimulate     Boolean  @default(true)
+  
+  // Status tracking
+  status          String   @default("PENDING") // "PENDING", "ACCEPTED", "REJECTED", "SIMULATED"
+  acceptedAt      DateTime?
+  rejectedAt      DateTime?
+  appliedAt       DateTime?
+  
+  // Feedback
+  userRating      Int?     // 1-5
+  userNotes       String?
+  
+  // Write prevention
+  writeBlocked    Boolean  @default(true) // Always true in LEARN_ONLY mode
+  
+  // Relationships
+  session         AddSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+
+  @@map("add_recommendations")
+  @@index([sessionId, status])
+  @@index([category, confidence])
+  @@index([timestamp])
+}

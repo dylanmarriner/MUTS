@@ -1,0 +1,84 @@
+{
+  "name": "Deploy Oracle Cloud Development Server",
+  "description": "Deploy a complete Oracle Cloud development server with all tools installed in one click",
+  "command": "/home/lin/Desktop/sd-card/linkr/oracle-cloud-setup/deploy-oracle-server.sh",
+  "category": "Infrastructure",
+  "icon": "🚀",
+  "parameters": [
+    {
+      "name": "confirm",
+      "type": "boolean",
+      "description": "Skip confirmation prompt",
+      "default": false
+    },
+    {
+      "name": "region",
+      "type": "string",
+      "description": "Oracle Cloud region",
+      "default": "uk-london-1"
+    },
+    {
+      "name": "instance_name",
+      "type": "string",
+      "description": "Name for the server instance",
+      "default": "dev-server"
+    }
+  ],
+  "workingDirectory": "/home/lin/Desktop/sd-card/linkr/oracle-cloud-setup",
+  "environment": {
+    "OCI_CLI_AUTH": "api_key",
+    "TF_LOG": "INFO",
+    "TF_LOG_PATH": "./terraform.log"
+  },
+  "shortcuts": [
+    {
+      "key": "ctrl+shift+d",
+      "description": "Quick deploy server"
+    },
+    {
+      "key": "ctrl+shift+r",
+      "description": "Reconnect to server"
+    }
+  ],
+  "dependencies": [
+    "oci-cli",
+    "terraform",
+    "jq"
+  ],
+  "outputs": [
+    {
+      "name": "server_ip",
+      "description": "Public IP of the deployed server",
+      "type": "string"
+    },
+    {
+      "name": "ssh_command",
+      "description": "SSH command to connect to server",
+      "type": "string"
+    },
+    {
+      "name": "vscode_command",
+      "description": "VS Code remote connection command",
+      "type": "string"
+    }
+  ],
+  "cleanup": {
+    "onFailure": {
+      "terraform": {
+        "command": "terraform destroy -auto-approve",
+        "workingDirectory": "./terraform"
+      }
+    }
+  },
+  "validation": {
+    "preRun": [
+      "command -v oci",
+      "command -v terraform", 
+      "command -v jq",
+      "test -f ~/.oci/config"
+    ],
+    "postRun": [
+      "ssh -o ConnectTimeout=10 oracle-dev-server 'echo Server ready'"
+    ]
+  }
+}

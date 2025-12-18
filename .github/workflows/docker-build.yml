@@ -1,0 +1,42 @@
+name: Docker Build
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Validate docker-compose.yml
+        if: ${{ hashFiles('docker-compose.yml') != '' }}
+        run: docker compose -f docker-compose.yml config
+
+      - name: Build root image
+        if: ${{ hashFiles('Dockerfile') != '' }}
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: false
+          tags: muts:ci
+
+      - name: Build backend image
+        if: ${{ hashFiles('backend/Dockerfile') != '' }}
+        uses: docker/build-push-action@v5
+        with:
+          context: backend
+          push: false
+          tags: muts-backend:ci
+
+      - name: Skip Docker builds (no Dockerfile found)
+        if: ${{ hashFiles('Dockerfile') == '' && hashFiles('backend/Dockerfile') == '' }}
+        run: echo "No Dockerfile found (root or backend). Skipping image builds."
